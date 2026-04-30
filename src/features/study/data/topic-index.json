@@ -1,0 +1,796 @@
+[
+  {
+    "id": "cloud-practitioner:account_management_billing_support",
+    "examId": "cloud-practitioner",
+    "slug": "account_management_billing_support",
+    "category": null,
+    "title": "Account Management, Billing & Support",
+    "keywords": [
+      "Account Management, Billing & Support",
+      "AWS Organizations",
+      "Organizations",
+      "AWS Organization",
+      "Organization",
+      "AWS Control Tower",
+      "Control Tower",
+      "AWS Resource Access Manager",
+      "Resource Access Manager",
+      "AWS Service Catalog",
+      "Service Catalog",
+      "RDS",
+      "AWS Compute Optimizer",
+      "Compute Optimizer",
+      "AWS Pricing Calculator",
+      "Pricing Calculator"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:advanced_identity",
+    "examId": "cloud-practitioner",
+    "slug": "advanced_identity",
+    "category": null,
+    "title": "Advanced Identity",
+    "keywords": [
+      "Advanced Identity",
+      "AWS STS",
+      "STS",
+      "Amazon Cognito",
+      "Cognito",
+      "AWS IAM Identity Center",
+      "IAM Identity Center",
+      "IAM"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:architecting_and_ecosystem",
+    "examId": "cloud-practitioner",
+    "slug": "architecting_and_ecosystem",
+    "category": null,
+    "title": "AWS Architecting & Ecosystem",
+    "keywords": [
+      "AWS Architecting",
+      "Architecting",
+      "AWS Architecting & Ecosystem",
+      "AWS Cloud Best Practices",
+      "Cloud Best Practices",
+      "AWS Well",
+      "Well",
+      "AWS Right Sizing",
+      "Right Sizing",
+      "AWS Ecosystem",
+      "Ecosystem",
+      "AWS Marketplace",
+      "Marketplace"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:cloud_computing",
+    "examId": "cloud-practitioner",
+    "slug": "cloud_computing",
+    "category": null,
+    "title": "Cloud Computing",
+    "keywords": [
+      "Cloud Computing",
+      "AWS Global Infrastructure",
+      "Global Infrastructure",
+      "AWS Shared Responsibility Model",
+      "Shared Responsibility Model"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:cloud_integration",
+    "examId": "cloud-practitioner",
+    "slug": "cloud_integration",
+    "category": null,
+    "title": "Cloud Integration",
+    "keywords": [
+      "Cloud Integration",
+      "Amazon SQS",
+      "SQS",
+      "Amazon Kinesis",
+      "Kinesis",
+      "Amazon SNS",
+      "SNS",
+      "Amazon MQ",
+      "MQ"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:cloud_monitoring",
+    "examId": "cloud-practitioner",
+    "slug": "cloud_monitoring",
+    "category": null,
+    "title": "Cloud Monitoring",
+    "keywords": [
+      "Cloud Monitoring",
+      "Amazon CloudWatch",
+      "CloudWatch",
+      "AWS CloudTrail",
+      "CloudTrail",
+      "Amazon CodeGuru",
+      "CodeGuru",
+      "AWS Status",
+      "Status",
+      "AWS Personal Health Dashboard",
+      "Personal Health Dashboard"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:databases",
+    "examId": "cloud-practitioner",
+    "slug": "databases",
+    "category": null,
+    "title": "Databases & Analytics",
+    "keywords": [
+      "Databases & Analytics",
+      "AWS RDS Overview",
+      "RDS Overview",
+      "RDS",
+      "Amazon Aurora",
+      "Aurora",
+      "Amazon ElastiCache Overview",
+      "ElastiCache Overview",
+      "Amazon EMR",
+      "EMR",
+      "Amazon Athena",
+      "Athena",
+      "Amazon QuickSight",
+      "QuickSight",
+      "Amazon Neptune",
+      "Neptune",
+      "Amazon QLDB",
+      "QLDB",
+      "Amazon Managed Blockchain",
+      "Managed Blockchain",
+      "AWS Glue",
+      "Glue",
+      "DMS"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:deploying",
+    "examId": "cloud-practitioner",
+    "slug": "deploying",
+    "category": null,
+    "title": "Deploying and Managing Infrastructure at Scale",
+    "keywords": [
+      "Deploying and Managing Infrastructure at Scale",
+      "AWS Cloud Development Kit",
+      "Cloud Development Kit",
+      "AWS Elastic Beanstalk Overview",
+      "Elastic Beanstalk Overview",
+      "AWS CodeDeploy",
+      "CodeDeploy",
+      "AWS CodeCommit",
+      "CodeCommit",
+      "AWS CodeBuild",
+      "CodeBuild",
+      "AWS CodePipeline",
+      "CodePipeline",
+      "AWS CodeArtifact",
+      "CodeArtifact",
+      "AWS CodeStar",
+      "CodeStar",
+      "AWS Cloud9",
+      "Cloud9",
+      "AWS Systems Manager",
+      "Systems Manager",
+      "AWS OpsWorks",
+      "OpsWorks"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:ec2",
+    "examId": "cloud-practitioner",
+    "slug": "ec2",
+    "category": null,
+    "title": "EC2: Virtual Machines",
+    "keywords": [
+      "EC2",
+      "Virtual Machines",
+      "Amazon EC2"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:ec2_storage",
+    "examId": "cloud-practitioner",
+    "slug": "ec2_storage",
+    "category": null,
+    "title": "EC2 Instance Storage",
+    "keywords": [
+      "EC2",
+      "EC2 Instance Storage",
+      "EBS",
+      "EFS",
+      "Amazon FSx",
+      "FSx",
+      "AMI"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:elb_asg",
+    "examId": "cloud-practitioner",
+    "slug": "elb_asg",
+    "category": null,
+    "title": "Elastic Load Balancing & Auto Scaling Groups",
+    "keywords": [
+      "Elastic Load Balancing & Auto Scaling Groups",
+      "EC2",
+      "ELB",
+      "ASG"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:global_infrastructure",
+    "examId": "cloud-practitioner",
+    "slug": "global_infrastructure",
+    "category": null,
+    "title": "Global Infrastructure",
+    "keywords": [
+      "Global Infrastructure",
+      "Amazon Route",
+      "Route",
+      "AWS CloudFront",
+      "CloudFront",
+      "AWS Global Accelerator",
+      "Global Accelerator",
+      "AWS Outposts",
+      "Outposts",
+      "AWS WaveLength",
+      "WaveLength",
+      "AWS Local Zones",
+      "Local Zones"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:iam",
+    "examId": "cloud-practitioner",
+    "slug": "iam",
+    "category": null,
+    "title": "IAM: Identity Access & Management (IAM)",
+    "keywords": [
+      "IAM",
+      "Identity Access & Management",
+      "MFA",
+      "AWS CLI",
+      "CLI",
+      "AWS SDK",
+      "SDK"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:machine_learning",
+    "examId": "cloud-practitioner",
+    "slug": "machine_learning",
+    "category": null,
+    "title": "Machine Learning",
+    "keywords": [
+      "Machine Learning",
+      "Amazon Rekognition",
+      "Rekognition",
+      "Amazon Transcribe",
+      "Transcribe",
+      "Amazon Polly",
+      "Polly",
+      "Amazon Translate",
+      "Translate",
+      "Amazon Lex",
+      "Lex",
+      "Amazon Comprehend",
+      "Comprehend",
+      "Amazon SageMaker",
+      "SageMaker",
+      "Amazon Forecast",
+      "Forecast",
+      "Amazon Kendra",
+      "Kendra",
+      "Amazon Personalize",
+      "Personalize",
+      "Amazon Textract",
+      "Textract"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:other_aws_services",
+    "examId": "cloud-practitioner",
+    "slug": "other_aws_services",
+    "category": null,
+    "title": "Other AWS Services",
+    "keywords": [
+      "AWS Services",
+      "Services",
+      "Other AWS Services",
+      "Amazon WorkSpaces",
+      "WorkSpaces",
+      "Amazon AppStream",
+      "AppStream",
+      "Amazon Sumerian",
+      "Sumerian",
+      "AWS IoT Core",
+      "IoT Core",
+      "Amazon Elastic Transcoder",
+      "Elastic Transcoder",
+      "AWS AppSync",
+      "AppSync",
+      "AWS Amplify",
+      "Amplify",
+      "AWS Device Farm",
+      "Device Farm",
+      "AWS Backup",
+      "Backup",
+      "AWS Elastic Disaster Recovery",
+      "Elastic Disaster Recovery",
+      "AWS DataSync",
+      "DataSync",
+      "AWS Application Discovery Service",
+      "Application Discovery Service",
+      "AWS Application Migration Service",
+      "Application Migration Service",
+      "AWS Migration Evaluator",
+      "Migration Evaluator",
+      "AWS Migration Hub",
+      "Migration Hub",
+      "AWS Fault Injection Simulator",
+      "Fault Injection Simulator",
+      "AWS Step Functions",
+      "Step Functions",
+      "AWS Ground Station",
+      "Ground Station",
+      "AWS Pinpoint",
+      "Pinpoint"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:other_compute",
+    "examId": "cloud-practitioner",
+    "slug": "other_compute",
+    "category": null,
+    "title": "Other Compute",
+    "keywords": [
+      "Other Compute",
+      "ECS",
+      "ECR",
+      "AWS Lambda",
+      "Lambda",
+      "Amazon API Gateway",
+      "API Gateway",
+      "API",
+      "AWS Batch",
+      "Batch",
+      "Amazon Lightsail",
+      "Lightsail"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:s3",
+    "examId": "cloud-practitioner",
+    "slug": "s3",
+    "category": null,
+    "title": "Amazon S3",
+    "keywords": [
+      "Amazon S3",
+      "S3",
+      "Amazon S3 Overview",
+      "S3 Overview",
+      "AWS Snow Family",
+      "Snow Family",
+      "AWS OpsHub",
+      "OpsHub",
+      "AWS Storage Gateway",
+      "Storage Gateway"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:security_compliance",
+    "examId": "cloud-practitioner",
+    "slug": "security_compliance",
+    "category": null,
+    "title": "Security & Compliance",
+    "keywords": [
+      "Security & Compliance",
+      "AWS Shared Responsibility Model",
+      "Shared Responsibility Model",
+      "DDOS",
+      "AWS Shield",
+      "Shield",
+      "AWS WAF",
+      "WAF",
+      "AWS Cloud",
+      "Cloud",
+      "AWS KMS",
+      "KMS",
+      "AWS CloudHSM",
+      "CloudHSM",
+      "CMK",
+      "AWS Certificate Manager",
+      "Certificate Manager",
+      "AWS Secrets Manager",
+      "Secrets Manager",
+      "AWS Artifact",
+      "Artifact",
+      "AWS GuardDuty",
+      "GuardDuty",
+      "AWS Inspector",
+      "Inspector",
+      "AWS Config",
+      "Config",
+      "Amazon Macie",
+      "Macie",
+      "AWS Security Hub",
+      "Security Hub",
+      "Amazon Detective",
+      "Detective",
+      "AWS Abuse",
+      "Abuse"
+    ]
+  },
+  {
+    "id": "cloud-practitioner:vpc",
+    "examId": "cloud-practitioner",
+    "slug": "vpc",
+    "category": null,
+    "title": "VPC",
+    "keywords": [
+      "VPC",
+      "NAT",
+      "ACL",
+      "VPN"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-and-ml/ai-and-ml-introduction",
+    "examId": "ai-practitioner",
+    "slug": "ai-and-ml-introduction",
+    "category": "ai-and-ml",
+    "title": "AI and Machine Learning Overview",
+    "keywords": [
+      "AI and Machine Learning Overview",
+      "RLHF"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/compliance",
+    "examId": "ai-practitioner",
+    "slug": "compliance",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "Compliance for AI",
+    "keywords": [
+      "Compliance for AI",
+      "AWS Compliance",
+      "Compliance"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/genai-challenges",
+    "examId": "ai-practitioner",
+    "slug": "genai-challenges",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "GenAI Capabilities and Challenges",
+    "keywords": [
+      "GenAI Capabilities and Challenges"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/governance",
+    "examId": "ai-practitioner",
+    "slug": "governance",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "Governance for AI",
+    "keywords": [
+      "Governance for AI",
+      "AWS Tools Supporting AI Governance",
+      "Tools Supporting AI Governance"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/mlops",
+    "examId": "ai-practitioner",
+    "slug": "mlops",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "MLOps (Machine Learning Operations)",
+    "keywords": []
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/responsible-ai",
+    "examId": "ai-practitioner",
+    "slug": "responsible-ai",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "Responsible AI and Security",
+    "keywords": [
+      "Responsible AI and Security",
+      "AWS Services",
+      "Services",
+      "AWS AI Service Cards",
+      "AI Service Cards"
+    ]
+  },
+  {
+    "id": "ai-practitioner:ai-challenges-and-responsibilities/security-and-privacy",
+    "examId": "ai-practitioner",
+    "slug": "security-and-privacy",
+    "category": "ai-challenges-and-responsibilities",
+    "title": "Security and Privacy for AI Systems",
+    "keywords": [
+      "Security and Privacy for AI Systems",
+      "AWS Shared Responsibility Model",
+      "Shared Responsibility Model"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/ai-hardware",
+    "examId": "ai-practitioner",
+    "slug": "ai-hardware",
+    "category": "aws-managed-ai-services",
+    "title": "Hardware for AI",
+    "keywords": [
+      "Hardware for AI",
+      "Amazon EC2",
+      "EC2"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-ai-services-summary",
+    "examId": "ai-practitioner",
+    "slug": "aws-ai-services-summary",
+    "category": "aws-managed-ai-services",
+    "title": "AWS Managed AI Services - Quick Revision Summary",
+    "keywords": [
+      "AWS Managed AI Services",
+      "Managed AI Services",
+      "AWS Managed AI Services - Quick Revision Summary",
+      "aws ai services summary"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-augmented-ai",
+    "examId": "ai-practitioner",
+    "slug": "aws-augmented-ai",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Augmented AI (A2I)",
+    "keywords": [
+      "Amazon Augmented AI",
+      "Augmented AI",
+      "A2I",
+      "aws augmented ai"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-comprehend",
+    "examId": "ai-practitioner",
+    "slug": "aws-comprehend",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Comprehend",
+    "keywords": [
+      "Amazon Comprehend",
+      "Comprehend",
+      "aws comprehend",
+      "Amazon Comprehend Medical",
+      "Comprehend Medical"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-kendra",
+    "examId": "ai-practitioner",
+    "slug": "aws-kendra",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Kendra",
+    "keywords": [
+      "Amazon Kendra",
+      "Kendra",
+      "aws kendra"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-lex",
+    "examId": "ai-practitioner",
+    "slug": "aws-lex",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Lex",
+    "keywords": [
+      "Amazon Lex",
+      "Lex",
+      "aws lex"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-mechanical-turk",
+    "examId": "ai-practitioner",
+    "slug": "aws-mechanical-turk",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Mechanical Turk",
+    "keywords": [
+      "Amazon Mechanical Turk",
+      "Mechanical Turk",
+      "aws mechanical turk"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-personalize",
+    "examId": "ai-practitioner",
+    "slug": "aws-personalize",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Personalize",
+    "keywords": [
+      "Amazon Personalize",
+      "Personalize",
+      "aws personalize"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-polly",
+    "examId": "ai-practitioner",
+    "slug": "aws-polly",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Polly",
+    "keywords": [
+      "Amazon Polly",
+      "Polly",
+      "aws polly"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-rekognition",
+    "examId": "ai-practitioner",
+    "slug": "aws-rekognition",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Rekognition",
+    "keywords": [
+      "Amazon Rekognition",
+      "Rekognition",
+      "aws rekognition"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-textract",
+    "examId": "ai-practitioner",
+    "slug": "aws-textract",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Textract",
+    "keywords": [
+      "Amazon Textract",
+      "Textract",
+      "aws textract"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-transcribe",
+    "examId": "ai-practitioner",
+    "slug": "aws-transcribe",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Transcribe",
+    "keywords": [
+      "Amazon Transcribe",
+      "Transcribe",
+      "aws transcribe",
+      "Amazon Transcribe Medical",
+      "Transcribe Medical"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/aws-translate",
+    "examId": "ai-practitioner",
+    "slug": "aws-translate",
+    "category": "aws-managed-ai-services",
+    "title": "Amazon Translate",
+    "keywords": [
+      "Amazon Translate",
+      "Translate",
+      "aws translate"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-managed-ai-services/introduction-of-aws-managed-ai-services",
+    "examId": "ai-practitioner",
+    "slug": "introduction-of-aws-managed-ai-services",
+    "category": "aws-managed-ai-services",
+    "title": "Introduction of AWS Managed AI Services",
+    "keywords": [
+      "AWS Managed AI Services",
+      "Managed AI Services",
+      "Introduction of AWS Managed AI Services"
+    ]
+  },
+  {
+    "id": "ai-practitioner:aws-security-services/aws-security-services",
+    "examId": "ai-practitioner",
+    "slug": "aws-security-services",
+    "category": "aws-security-services",
+    "title": "AWS Security Services and more",
+    "keywords": [
+      "AWS Security Services",
+      "Security Services",
+      "AWS Security Services and more",
+      "aws security services",
+      "IAM",
+      "Amazon S3",
+      "S3",
+      "Amazon EC2",
+      "EC2",
+      "AWS Lambda",
+      "Lambda",
+      "Amazon Macie",
+      "Macie",
+      "AWS Config",
+      "Config",
+      "Amazon Inspector",
+      "Inspector",
+      "AWS CloudTrail",
+      "CloudTrail",
+      "AWS Artifact",
+      "Artifact",
+      "AWS Audit Manager",
+      "Audit Manager",
+      "AWS Trusted Advisor",
+      "Trusted Advisor",
+      "VPC",
+      "AWS Services",
+      "Services"
+    ]
+  },
+  {
+    "id": "ai-practitioner:cloud-computing/cloud-computing",
+    "examId": "ai-practitioner",
+    "slug": "cloud-computing",
+    "category": "cloud-computing",
+    "title": "Cloud Computing",
+    "keywords": [
+      "Cloud Computing"
+    ]
+  },
+  {
+    "id": "ai-practitioner:gen-ai/amazon-bedrock",
+    "examId": "ai-practitioner",
+    "slug": "amazon-bedrock",
+    "category": "gen-ai",
+    "title": "Amazon Bedrock",
+    "keywords": [
+      "Amazon Bedrock",
+      "Bedrock",
+      "amazon bedrock",
+      "RAG"
+    ]
+  },
+  {
+    "id": "ai-practitioner:gen-ai/amazon-q",
+    "examId": "ai-practitioner",
+    "slug": "amazon-q",
+    "category": "gen-ai",
+    "title": "Amazon Q",
+    "keywords": [
+      "Amazon Q",
+      "amazon q"
+    ]
+  },
+  {
+    "id": "ai-practitioner:gen-ai/genai-introduction",
+    "examId": "ai-practitioner",
+    "slug": "genai-introduction",
+    "category": "gen-ai",
+    "title": "GenAI Introduction",
+    "keywords": [
+      "GenAI Introduction"
+    ]
+  },
+  {
+    "id": "ai-practitioner:gen-ai/prompt-engineering",
+    "examId": "ai-practitioner",
+    "slug": "prompt-engineering",
+    "category": "gen-ai",
+    "title": "Prompt Engineering",
+    "keywords": [
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "id": "ai-practitioner:sagemaker/aws-sagemaker",
+    "examId": "ai-practitioner",
+    "slug": "aws-sagemaker",
+    "category": "sagemaker",
+    "title": "Amazon SageMaker",
+    "keywords": [
+      "Amazon SageMaker",
+      "SageMaker",
+      "aws sagemaker"
+    ]
+  }
+]

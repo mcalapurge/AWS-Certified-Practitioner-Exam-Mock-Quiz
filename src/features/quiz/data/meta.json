@@ -1,0 +1,14 @@
+{
+  "cloud-practitioner": {
+    "examId": "cloud-practitioner",
+    "examName": "AWS Certified Cloud Practitioner",
+    "examShort": "CLF-C02",
+    "questionCount": 1142
+  },
+  "ai-practitioner": {
+    "examId": "ai-practitioner",
+    "examName": "AWS Certified AI Practitioner",
+    "examShort": "AIF-C01",
+    "questionCount": 346
+  }
+}
