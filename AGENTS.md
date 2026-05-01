@@ -6,47 +6,49 @@ Guidance for AI coding agents (Claude Code, Cursor, Codex, etc.) working in this
 
 A quiz + study app that practices and explains AWS certification content
 sourced from two community-maintained markdown collections by
-[@kananinirav](https://github.com/kananinirav):
+[@kananinirav](https://github.com/kananinirav). Both repos are wired in as
+**git submodules** at the repo root:
 
 - [`AWS-Certified-Cloud-Practitioner-Notes`](https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes)
-  — cloned next to this repo as `../AWS-Certified-Cloud-Practitioner-Notes/`
+  — submodule path `AWS-Certified-Cloud-Practitioner-Notes/`
   - `practice-exam/*.md` — 1,142 CLF-C02 practice questions.
   - `sections/*.md` — 19 study notes covering the exam topics.
 - [`aws-certified-ai-practitioner-study-notes`](https://github.com/kananinirav/aws-certified-ai-practitioner-study-notes)
-  — cloned next to this repo as `../aws-certified-ai-practitioner-study-notes/`
+  — submodule path `aws-certified-ai-practitioner-study-notes/`
   - `practice-test/*.md` — 346 AIF-C01 practice questions.
   - `section/<category>/*.md` — 28 study notes grouped by category.
 
 Two parsers under `scripts/` build the datasets the app consumes:
 
-- `parse-questions.mjs` → `src/features/quiz/data/<exam>.json`
-- `parse-sections.mjs` → `src/features/study/data/<exam>.json`
+- `parse-questions.mjs` → `src/features/quiz/data/<exam>.json` + `meta.json`
+- `parse-sections.mjs` → `src/features/study/data/<exam>.json` + `topic-index.json`
 
-Both run automatically before `dev` and `build`. **The two source directories
-are read-only upstream content** — do not modify them. If a question or note
-needs fixing, the change should be sent upstream to the source repos above.
+Both run automatically before `dev` and `build`. **The submodule directories
+are read-only upstream content** — do not commit changes inside them. If a
+question or note needs fixing, the change should be sent upstream to the source
+repos above and pulled in via `git submodule update --remote`.
 
 ## Top-level layout
 
-This repo is the React app itself. The two source directories live as
-**siblings** of the repo on disk, not inside it:
-
 ```
-<workspace>/
-├── AWS-Certified-Cloud-Practitioner-Notes/         # cloned upstream — do not modify
-├── aws-certified-ai-practitioner-study-notes/      # cloned upstream — do not modify
-└── <this repo>/
-    ├── AGENTS.md                                   # this file
-    ├── CLAUDE.md                                   # pointer to AGENTS.md
-    ├── README.md
-    ├── scripts/                                    # markdown → JSON parsers
-    └── src/                                        # the React app
+.
+├── .gitmodules                                     # submodule pins
+├── AGENTS.md                                       # this file
+├── CLAUDE.md                                       # pointer to AGENTS.md
+├── README.md
+├── AWS-Certified-Cloud-Practitioner-Notes/         # submodule — read-only upstream
+├── aws-certified-ai-practitioner-study-notes/      # submodule — read-only upstream
+├── scripts/                                        # markdown → JSON parsers
+└── src/                                            # the React app
 ```
 
-`scripts/parse-questions.mjs` and `scripts/parse-sections.mjs` resolve the
-upstream paths via `path.resolve(__dirname, "..", "..", "<source-dir>")`. If the
-sources aren't checked out (e.g. CI), the parsers log a warning, exit 0, and
-the build uses the JSON already committed under `src/features/{quiz,study}/data/`.
+`scripts/parse-questions.mjs` and `scripts/parse-sections.mjs` resolve upstream
+paths relative to the repo root (`path.resolve(__dirname, "..", "<submodule>")`).
+If the submodules aren't initialized (e.g. CI checkout without
+`submodules: recursive`), the parsers log a warning, exit 0, and the build uses
+the JSON already committed under `src/features/{quiz,study}/data/`. The
+[GitHub Actions workflow](./.github/workflows/main.yaml) sets `submodules:
+recursive` on `actions/checkout` so the parsers see fresh sources on every CI run.
 
 ## Tech stack
 
@@ -204,13 +206,17 @@ Adjust the stopwords or `isAggregateSection()` heuristic in
 
 ## Adding a new exam
 
-1. Drop a new sibling directory next to this repo containing both:
+1. Add the new content repo as a submodule at the repo root:
+   ```sh
+   git submodule add <url> <submodule-name>
+   ```
+   The repo should contain:
    - Practice questions (markdown matching `1. Question…`, `    - A. …`,
      `<details>...Correct answer: X</details>` — see `parseAnswerTail` for the
      answer-format variants the parser already handles).
    - Study notes (`sections/*.md` flat, or `section/<category>/*.md` nested).
 2. In `scripts/parse-questions.mjs` and `scripts/parse-sections.mjs`, append a
-   new entry to the `exams` array of each script with the appropriate paths.
+   new entry to the `exams` array of each script with the submodule paths.
 3. Add the new id to the `ExamId` union in `src/features/quiz/types.ts`.
 4. Add a `case` for the new id in `src/features/quiz/lib/exams.ts#loadExam`
    so it dynamic-imports the new question JSON, and add the new section JSON
@@ -221,8 +227,9 @@ Adjust the stopwords or `isAggregateSection()` heuristic in
 
 - Don't hand-edit files under `src/features/quiz/data/` or
   `src/features/study/data/` — they are regenerated.
-- Don't modify the upstream sibling directories. Send fixes to the source repos
-  linked at the top of this file.
+- Don't commit changes inside the submodule directories. Send fixes upstream
+  to the source repos linked at the top of this file, then bump the pin via
+  `git submodule update --remote`.
 - Don't import the per-exam question JSON synchronously — go through
   `loadExam(id)` so Vite keeps it as its own chunk.
 - Don't bypass `useQuiz` to mutate quiz state from a leaf component.

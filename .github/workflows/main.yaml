@@ -19,6 +19,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Source markdown lives in two git submodules; the parsers walk them
+          # at build time. Without this they'd be empty and the build would
+          # fall back to the committed JSON snapshot.
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

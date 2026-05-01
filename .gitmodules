@@ -1,0 +1,6 @@
+[submodule "AWS-Certified-Cloud-Practitioner-Notes"]
+	path = AWS-Certified-Cloud-Practitioner-Notes
+	url = https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes.git
+[submodule "aws-certified-ai-practitioner-study-notes"]
+	path = aws-certified-ai-practitioner-study-notes
+	url = https://github.com/kananinirav/aws-certified-ai-practitioner-study-notes.git

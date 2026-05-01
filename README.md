@@ -32,19 +32,37 @@ checkbox-driven study guide.
 
 ## Run it locally
 
+The two upstream content repos are wired in as **git submodules**, so a recursive clone
+pulls everything in one step:
+
 ```sh
-git clone https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes.git ../AWS-Certified-Cloud-Practitioner-Notes
-git clone https://github.com/kananinirav/aws-certified-ai-practitioner-study-notes.git ../aws-certified-ai-practitioner-study-notes
+git clone --recurse-submodules <this repo>
+cd <this repo>
 npm install
 npm run dev
 ```
 
 Then open <http://localhost:5173>.
 
-The two `git clone` lines drop the source repos as siblings of this one. The parser
-(`scripts/parse-questions.mjs` and `scripts/parse-sections.mjs`) walks them at build time.
-If the source dirs are missing, the parser logs a warning and uses the JSON already
-committed under `src/features/{quiz,study}/data/`.
+If you already cloned without `--recurse-submodules`, hydrate them now:
+
+```sh
+git submodule update --init --recursive
+```
+
+To bump the pinned upstream commits later (when [@kananinirav](https://github.com/kananinirav)
+adds new questions or notes):
+
+```sh
+git submodule update --remote
+npm run parse              # regenerate JSON from the new sources
+git add -A && git commit   # commit the pin bump + regenerated JSON
+```
+
+The parsers (`scripts/parse-questions.mjs` and `scripts/parse-sections.mjs`) walk the
+submodule trees at build time. If the submodules aren't initialized, they log a warning
+and the build falls back to the JSON already committed under
+`src/features/{quiz,study}/data/`.
 
 ## Production build
 

@@ -5,7 +5,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const repoRoot = path.resolve(__dirname, "..", "..");
+// Source markdown lives in two git submodules at the repo root; the parser
+// runs from scripts/, so one level up is the repo root.
+const repoRoot = path.resolve(__dirname, "..");
 const outDir = path.resolve(__dirname, "..", "src", "features", "quiz", "data");
 
 const exams = [
