@@ -7,13 +7,18 @@ follow when modifying state or styling.
 
 ## Quick orientation
 
-- This repo IS the React app. The two upstream content sources by
+- This repo IS the React app. The two upstream AWS content sources by
   [@kananinirav](https://github.com/kananinirav)
   (`AWS-Certified-Cloud-Practitioner-Notes` and
   `aws-certified-ai-practitioner-study-notes`) are wired in as **git
   submodules** at the repo root and are read-only. Don't commit edits inside
   them — send fixes upstream and bump the pin with
   `git submodule update --remote`.
+- The app is one shell over **two providers** (AWS + Claude) switched by a
+  header toggle (`useProvider`). Claude exams have no submodule — their source
+  JSON is hand-edited under `scripts/sources/`. Provider-scoped state and
+  generated data live under `:aws`/`:claude` localStorage suffixes and
+  `data/<provider>/` folders. See AGENTS.md → "Provider switch".
 - Run from this repo's root: `npm run dev`, `npm run build`, `npm run parse`.
   `predev`/`prebuild` regenerate JSON automatically.
 - Use the `@/*` import alias for everything under `src/`.
@@ -23,3 +28,9 @@ follow when modifying state or styling.
   tokens live in `src/index.css`.
 - Add shadcn primitives via `npx shadcn@latest add <name>` (respects
   `components.json`).
+- Common workflows are skills under `.claude/skills/`: `add-exam`, `check-data`
+  (`npm run check-data`), `sync-upstream`, and `deploy`. Prefer them over
+  improvising.
+- **Deploy footgun:** CI ships to S3 only when a commit pushed to `main` has
+  the literal `[deploy]` in its message — any other push silently does nothing.
+  Use the `deploy` skill and confirm with the user first.

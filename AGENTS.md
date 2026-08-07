@@ -7,9 +7,9 @@ Guidance for AI coding agents (Claude Code, Cursor, Codex, etc.) working in this
 A quiz + study app that doubles as two differently-branded exam-prep tools
 switched via an **AWS ⇄ Claude toggle** (`useProvider`, header `Tabs`): AWS
 certification content sourced from two community-maintained markdown
-collections by [@kananinirav](https://github.com/kananinirav), and a
-Claude-certification exam (CCDV-F) sourced from a pair of prebuilt JSON files.
-Switching providers changes the visual theme (`.theme-claude` in
+collections by [@kananinirav](https://github.com/kananinirav), and two
+Claude-certification exams (CCDV-F and CCAO-F) sourced from prebuilt JSON
+files. Switching providers changes the visual theme (`.theme-claude` in
 `src/index.css`), which exams are selectable, and which data loads — see
 "Provider switch" below.
 
@@ -24,17 +24,21 @@ The two AWS content repos are wired in as **git submodules** at the repo root:
   - `practice-test/*.md` — 346 AIF-C01 practice questions.
   - `section/<category>/*.md` — 28 study notes grouped by category.
 
-The Claude content has no submodule — it's a static, hand-curated pair of
-JSON files at `scripts/sources/ccdvf-practice-questions.json` and
-`scripts/sources/ccdvf-study-guide.json` (500 practice questions + 53 study
-sections for the "Claude Certified Developer – Foundations" exam).
+The Claude content has no submodule — it's static, hand-curated JSON committed
+under `scripts/sources/`, one `_practice_questions.json` + `_study_guide.json`
+pair per exam:
+
+- `ccdvf_practice_questions.json` + `ccdvf_study_guide.json` — Claude Certified
+  Developer – Foundations (CCDV-F): 226 questions + 63 study sections.
+- `ccao_practice_questions.json` + `ccao_study_guide.json` — Claude Certified
+  Associate – Foundations (CCAO-F): 487 questions + 37 study sections.
 
 Two parsers under `scripts/` build the datasets the app consumes, each
 handling both the markdown-sourced (submodule) exams and the prebuilt-JSON
-(Claude) exam:
+(Claude) exams. Output is split into a per-provider subfolder:
 
-- `parse-questions.mjs` → `src/features/quiz/data/<exam>.json` + `meta.json`
-- `parse-sections.mjs` → `src/features/study/data/<exam>.json` + `topic-index.json`
+- `parse-questions.mjs` → `src/features/quiz/data/<provider>/<exam>.json` + `meta.json`
+- `parse-sections.mjs` → `src/features/study/data/<provider>/<exam>.json` + `topic-index.json`
 
 Both run automatically before `dev` and `build`. **The submodule directories
 are read-only upstream content** — do not commit changes inside them. If a
@@ -46,8 +50,11 @@ repos above and pulled in via `git submodule update --remote`.
 ```
 .
 ├── .gitmodules                                     # submodule pins
+├── .github/workflows/main.yaml                     # CI — build + S3 deploy (gated on [deploy] in the commit msg)
+├── .claude/skills/                                 # repo workflows: add-exam, check-data, deploy, sync-upstream
 ├── AGENTS.md                                       # this file
 ├── CLAUDE.md                                       # pointer to AGENTS.md
+├── LICENSE                                         # MIT
 ├── README.md
 ├── AWS-Certified-Cloud-Practitioner-Notes/         # submodule — read-only upstream
 ├── aws-certified-ai-practitioner-study-notes/      # submodule — read-only upstream
@@ -82,16 +89,41 @@ All commands run from the repo root:
 
 ```sh
 npm install
-npm run parse      # regenerate JSON datasets from the markdown sources
-npm run dev        # start Vite on http://localhost:5173 (parse runs first)
+npm run parse      # regenerate JSON datasets from the markdown + prebuilt sources
+npm run dev        # start Vite on http://localhost:5173 (parse runs first; PORT env overrides)
 npm run build      # tsc --noEmit && vite build (parse runs first)
 npm run preview    # preview the production build
+npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
 ```
+
+`check-data` (`scripts/check-topic-mapping.mjs`) is a regression gate for the
+study-guide mapping: it replays `mapQuestionToTopics` against each prebuilt
+question's ground-truth `topic` field and exits non-zero if fewer than
+`--min-correct`% of questions flag their true topic (or more than `--max-wrong`%
+flag only a wrong one). AWS exams carry no per-question topic tag, so they're
+skipped. Run it after editing keywords or adding a prebuilt exam.
 
 `predev` and `prebuild` chain to `npm run parse`, which runs both
 `parse-questions.mjs` and `parse-sections.mjs`. JSON regeneration is hands-off
 in the normal flow; if the upstream sources are missing the parsers no-op and
 the committed JSON is used as-is.
+
+## Repo skills
+
+Common workflows are captured as Claude Code skills under `.claude/skills/`.
+Prefer them over improvising — they encode this repo's conventions and footguns:
+
+- **`add-exam`** — wire a new exam/question bank into the app end to end (both
+  the markdown-submodule and prebuilt-JSON paths; mirrors "Adding a new exam" below).
+- **`check-data`** — audit the weak-topic keyword mapping (`npm run check-data`).
+- **`sync-upstream`** — bump the AWS submodule pins and regenerate the datasets.
+- **`deploy`** — ship to production. **Non-obvious gating:** CI
+  (`.github/workflows/main.yaml`) only deploys when a commit pushed to `main`
+  has the literal string **`[deploy]`** in its message; any other push is a
+  silent no-op. The one build gate is `npm run build` (no separate test/lint
+  stage), so build locally first. The deploy runs `aws s3 sync … --delete` to
+  the production bucket — it's public and effectively irreversible, so get an
+  explicit user yes before pushing.
 
 ## Folder conventions
 
@@ -129,10 +161,10 @@ src/
     ├── types.ts              # Section, StudyData, TopicIndexEntry, StudyGuideEntry
     ├── data/                 # generated by parse-sections.mjs — do not hand-edit
     │   ├── <provider>/<exam>.json  # full sections, one subfolder per provider (lazy-loaded with StudyScreen)
-    │   └── topic-index.json  # lightweight {id, examId, title, keywords} across ALL exams/providers (eager)
+    │   └── topic-index.json  # lightweight {id, examId, slug, category, title, keywords} across ALL exams/providers (eager)
     ├── lib/
     │   ├── sections.ts       # studyData registry + groupSections()
-    │   ├── topics.ts         # mapQuestionToTopics(question) using regex over keywords
+    │   ├── topics.ts         # mapQuestionToTopics(question, examId) using regex over keywords
     │   └── study-guide.ts    # localStorage CRUD for the user's flagged topics
     ├── hooks/
     │   └── useStudyGuide.ts  # reactive read + mutate + cross-component sync
@@ -146,9 +178,19 @@ src/
 
 `useProvider()` (`src/hooks/useProvider.ts`) owns the current `Provider`
 (`"aws" | "claude"`), persisted at `localStorage["examprep:v1:provider"]`
-(default `"aws"`). On change it toggles a `theme-claude` class on
-`<html>` — `src/index.css` keys an entire warm/terracotta/serif palette off
-that class (plus a `.theme-claude.dark` variant) — and updates `document.title`.
+(default `"aws"`) via `src/lib/provider.ts` (`loadProvider`/`saveProvider` +
+`PROVIDER_LABEL`). On change it toggles a `theme-claude` class on `<html>` —
+`src/index.css` keys an entire palette off that class (plus a
+`.theme-claude.dark` variant) — and updates `document.title`.
+
+The two themes differ in **color and typeface**. AWS is the default `:root`
+palette (off-white canvas, smile-orange `--primary`) with `--font-display`
+aliased to the sans stack; `.theme-claude` swaps in a warm cream/terracotta
+palette, sets `--font-sans` to **Inter** and `--font-display` to the
+**Fraunces** serif. Both webfonts are loaded once in `index.html` via Google
+Fonts. Use the `font-display` utility (e.g. the header wordmark, the
+`SetupScreen` card title) for anything that should pick up the serif under the
+Claude theme.
 
 The header `Tabs` switch (`App.tsx`) only renders while `view.kind === "setup"`
 — it's hidden mid-quiz and on the results screen so switching can't pull the
@@ -160,9 +202,11 @@ etc.) resets cleanly on switch rather than needing manual sync effects.
 Each exam's `ExamMeta` (`src/features/quiz/lib/exams.ts`) carries a
 `provider` field; `examsForProvider(provider)` is the single source of truth
 for which exams appear in `SetupScreen`'s exam picker and `StudyScreen`'s exam
-tabs. A saved in-progress quiz is only offered for resume
-(`App.tsx#inProgressForProvider`) if its exam belongs to the currently active
-provider.
+tabs (it skips any id missing from `meta.json`, so a not-yet-parsed exam can't
+crash the picker). `useQuiz(provider)` takes the active provider and re-hydrates
+the in-progress quiz for *that* provider whenever it changes (the mount effect
+is keyed on `provider`), so a saved AWS attempt never surfaces while Claude is
+active, and vice versa.
 
 ### Conventions
 
@@ -176,7 +220,10 @@ provider.
   declarative — don't mutate state inline.
 - **Styling.** Use Tailwind utilities + the `cn()` helper. Don't reintroduce a
   `.css` module or hand-rolled stylesheet. Theme colors come from CSS variables
-  in `index.css` — refer to them by Tailwind name (`bg-primary`, `text-muted-foreground`).
+  in `index.css` — refer to them by Tailwind name (`bg-primary`,
+  `text-muted-foreground`). Both providers share these token names, so styling
+  by token automatically re-themes on switch; never hard-code a hex/oklch color.
+  Use `font-display` for display type (it goes serif under the Claude theme).
 - **shadcn components.** Add new primitives with
   `npx shadcn@latest add <name>` — that respects `components.json`. Edit in place
   if you need to customize; do not re-export from `@/components/ui` indirectly.
@@ -193,10 +240,15 @@ provider.
 ## Adaptive study guide
 
 Incorrect questions are mapped to study topics via
-`features/study/lib/topics.ts#mapQuestionToTopics`, which runs a case-sensitive
-whole-word regex of each section's auto-derived keywords against the question
-stem + options. Matches are unioned and merged into the user's persistent guide
-at `localStorage["examprep:v1:study-guide"]`.
+`features/study/lib/topics.ts#mapQuestionToTopics(question, examId)`, which runs
+a whole-word regex of each section's keywords against the question stem +
+options + explanation. Matching is **case-sensitive for AWS exams** (service
+names are always title-cased, so loose matching false-positives generic words
+like "Backup"/"Translate") but **case-insensitive for Claude exams** (their
+keywords are conceptual labels like "Context"/"Format" that appear lowercase in
+quoted prompts) — the per-exam casing is keyed off `examMeta[examId].provider`.
+Matches are unioned and merged into the user's persistent guide at
+`localStorage["examprep:v1:study-guide"]`.
 
 Unlike in-progress/history/last-viewed (see "Persistence keys" above), this
 key is **not** namespaced per provider — it's a single object keyed by
@@ -227,7 +279,10 @@ Side effects in `useQuiz` (writing to localStorage, dispatching the
 the `hits` counter.
 
 Keyword derivation is deliberately conservative — we'd rather miss a topic
-match than mis-attribute one. The signal sources are:
+match than mis-attribute one. It applies only to the **markdown-sourced (AWS)**
+exams; prebuilt (Claude) sections carry hand-authored `keywords` in their
+source JSON and pass through unchanged — validate those with `npm run
+check-data`. The derived signal sources are:
 - "Amazon X" / "AWS X" service captures (highest precision)
 - ALL-CAPS acronyms 3-5 chars from titles and slugs (filtered against a stopword
   list for very generic terms like `AI`, `ML`, `GB`)
@@ -257,7 +312,8 @@ Adjust the stopwords or `isAggregateSection()` heuristic in
 
 ## Adding a new exam
 
-There are two source paths, depending on where the content comes from.
+The `add-exam` skill automates this; the steps below are the underlying
+contract. There are two source paths, depending on where the content comes from.
 
 ### From a markdown submodule (AWS-style)
 
@@ -280,10 +336,15 @@ Use this when the content is a static, hand-authored dataset rather than a
 markdown collection to parse — see `developer-foundations` for a working
 example.
 
-1. Drop the raw file(s) in `scripts/sources/`. Questions need `id`, `domain`,
-   `question`, `options` (an object keyed by letter), `correct` (array of
-   letters), `explanation`; sections must already match the app's `Section`
-   shape (`{id, examId, slug, category, title, keywords, content}`).
+1. Drop the raw file(s) in `scripts/sources/` as a
+   `<prefix>_practice_questions.json` + `<prefix>_study_guide.json` pair.
+   Questions need `id`, `domain`, `question`, `options` (an object keyed by
+   letter), `correct` (array of letters), `explanation`, and optionally a
+   `topic` matching a study-guide section title (only that lets `check-data`
+   grade the exam's keyword mapping); sections must already match the app's
+   `Section` shape (`{id, examId, slug, category, title, keywords, content}`) —
+   `parse-sections.mjs` validates every required field and throws if one is
+   missing.
 2. Append a new entry to the `prebuiltExams` array in
    `scripts/parse-questions.mjs` (with a normalizer like
    `buildPrebuiltQuestions` if the raw question shape differs) and
