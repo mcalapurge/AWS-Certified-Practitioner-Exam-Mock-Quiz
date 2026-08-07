@@ -2,7 +2,7 @@
   "examId": "ai-practitioner",
   "examName": "AWS Certified AI Practitioner",
   "examShort": "AIF-C01",
-  "generatedAt": "2026-08-06T12:11:50.946Z",
+  "generatedAt": "2026-08-07T15:42:19.114Z",
   "sectionCount": 28,
   "sections": [
     {
@@ -130,7 +130,7 @@
         "A2I",
         "aws augmented ai"
       ],
-      "content": "# Amazon Augmented AI (A2I)\n\n- Human review of ML predictions\n- Human workers can be our own employees, over 500k AWS contractors or can access the Mechanical Turk workforce of vendors\n- Predictions with high confidence are returned immediately, while low confidence predictions are sent for human review.\n- Reviewed predictions are stored and fed back into the model to improve its quality.\n- Some vendors are pre-screened for confidentiality requirements\n- We can builds workflows for reviewing low-confidence predictions\n- It is integrated into Amazon Textract and Rekognition\n- Integrates with SageMaker\n- Similar to SageMaker Ground Truth\n\n![A2I Workflow](../../images/a2i.png)\n[**Source**](https://aws.amazon.com/blogs/machine-learning/amazon-a2i-is-now-generally-available/)\n"
+      "content": "# Amazon Augmented AI (A2I)\n\n- Human review of ML predictions\n- Human workers can be our own employees, over 500k AWS contractors or can access the Mechanical Turk workforce of vendors\n- Predictions with high confidence are returned immediately, while low confidence predictions are sent for human review.\n- Reviewed predictions are stored and fed back into the model to improve its quality.\n- Some vendors are pre-screened for confidentiality requirements\n- We can builds workflows for reviewing low-confidence predictions\n- It is integrated into Amazon Textract and Rekognition\n- Integrates with SageMaker\n- Similar to SageMaker Ground Truth\n\n![A2I Workflow](../../images/a2I.png)\n[**Source**](https://aws.amazon.com/blogs/machine-learning/amazon-a2i-is-now-generally-available/)\n"
     },
     {
       "id": "ai-practitioner:aws-managed-ai-services/aws-comprehend",

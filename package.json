@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "parse": "node scripts/parse-questions.mjs && node scripts/parse-sections.mjs",
+    "check-data": "node scripts/check-topic-mapping.mjs",
     "predev": "npm run parse",
     "prebuild": "npm run parse",
     "dev": "vite",

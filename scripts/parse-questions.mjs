@@ -15,6 +15,7 @@ const exams = [
     id: "cloud-practitioner",
     name: "AWS Certified Cloud Practitioner",
     short: "CLF-C02",
+    provider: "aws",
     dir: path.join(repoRoot, "AWS-Certified-Cloud-Practitioner-Notes", "practice-exam"),
     filePattern: /^practice-exam-(\d+)\.md$/,
   },
@@ -22,10 +23,45 @@ const exams = [
     id: "ai-practitioner",
     name: "AWS Certified AI Practitioner",
     short: "AIF-C01",
+    provider: "aws",
     dir: path.join(repoRoot, "aws-certified-ai-practitioner-study-notes", "practice-test"),
     filePattern: /^practice-test-(\d+)\.md$/,
   },
 ];
+
+// Exams whose questions ship as a single pre-shaped JSON file rather than a
+// folder of markdown to parse (no upstream submodule involved). The source
+// file still needs normalizing into the app's Question/ExamData shape.
+const prebuiltExams = [
+  {
+    id: "developer-foundations",
+    name: "Claude Certified Developer – Foundations",
+    short: "CCDV-F",
+    provider: "claude",
+    source: path.join(repoRoot, "scripts", "sources", "ccdvf_practice_questions.json"),
+  },
+  {
+    id: "associate-foundations",
+    name: "Claude Certified Associate – Foundations",
+    short: "CCAO-F",
+    provider: "claude",
+    source: path.join(repoRoot, "scripts", "sources", "ccao_practice_questions.json"),
+  },
+];
+
+function buildPrebuiltQuestions(exam, raw) {
+  return raw.questions.map((q) => ({
+    id: `${exam.id}-${q.id}`,
+    sourceFile: path.basename(exam.source),
+    examSet: q.domain,
+    number: q.id,
+    stem: q.question,
+    options: Object.entries(q.options).map(([key, text]) => ({ key, text })),
+    correct: q.correct,
+    multi: q.correct.length > 1,
+    explanation: q.explanation,
+  }));
+}
 
 // Strip markdown emphasis/links so plain text reads cleanly in the UI.
 function cleanText(s) {
@@ -205,8 +241,17 @@ function parseBlock(blockLines, sourceFile) {
   };
 }
 
+// Questions and study sections for a given provider live in their own
+// subfolder (e.g. data/aws/, data/claude/) so the two "apps" the provider
+// switch flips between keep visibly separate content on disk.
+async function providerOutDir(provider) {
+  const dir = path.join(outDir, provider);
+  await mkdir(dir, { recursive: true });
+  return dir;
+}
+
 async function build() {
-  if (!existsSync(outDir)) await mkdir(outDir, { recursive: true });
+  await mkdir(outDir, { recursive: true });
 
   const summary = [];
   // meta is eager-imported by the app so the setup screen can show counts
@@ -254,15 +299,45 @@ async function build() {
       questions: rekeyed,
     };
 
-    const outPath = path.join(outDir, `${exam.id}.json`);
+    const outPath = path.join(await providerOutDir(exam.provider), `${exam.id}.json`);
     await writeFile(outPath, JSON.stringify(out, null, 2));
     meta[exam.id] = {
       examId: exam.id,
       examName: exam.name,
       examShort: exam.short,
       questionCount: rekeyed.length,
+      provider: exam.provider,
     };
     summary.push({ exam: exam.id, files: files.length, questions: rekeyed.length });
+  }
+
+  for (const exam of prebuiltExams) {
+    if (!existsSync(exam.source)) {
+      console.warn(`Skipping ${exam.id}: source file not found at ${exam.source}`);
+      continue;
+    }
+    const raw = JSON.parse(await readFile(exam.source, "utf8"));
+    const questions = buildPrebuiltQuestions(exam, raw);
+
+    const out = {
+      examId: exam.id,
+      examName: exam.name,
+      examShort: exam.short,
+      generatedAt: new Date().toISOString(),
+      questionCount: questions.length,
+      questions,
+    };
+
+    const outPath = path.join(await providerOutDir(exam.provider), `${exam.id}.json`);
+    await writeFile(outPath, JSON.stringify(out, null, 2));
+    meta[exam.id] = {
+      examId: exam.id,
+      examName: exam.name,
+      examShort: exam.short,
+      questionCount: questions.length,
+      provider: exam.provider,
+    };
+    summary.push({ exam: exam.id, files: 1, questions: questions.length });
   }
 
   await writeFile(path.join(outDir, "meta.json"), JSON.stringify(meta, null, 2));

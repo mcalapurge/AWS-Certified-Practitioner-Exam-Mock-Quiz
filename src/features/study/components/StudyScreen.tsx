@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, BookOpen, Sparkles, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import type { ExamId } from "../../quiz/types";
-import { examMeta } from "../../quiz/lib/exams";
+import type { ExamId, Provider } from "../../quiz/types";
+import { examsForProvider } from "../../quiz/lib/exams";
 import { studyData, groupSections } from "../lib/sections";
 import type { Section } from "../types";
 import type { SectionGroup } from "../lib/sections";
@@ -11,6 +11,8 @@ import { SectionPicker, type SectionRowAdornment } from "./SectionPicker";
 import { MarkdownView } from "./MarkdownView";
 import { useStudyGuide } from "../hooks/useStudyGuide";
 
+// Namespaced per provider so reading an AWS section doesn't clobber which
+// Claude section you had open, and vice versa.
 const LAST_VIEWED_KEY = "examprep:v1:study-last";
 
 interface LastViewed {
@@ -18,29 +20,32 @@ interface LastViewed {
   sectionId: string;
 }
 
-function loadLastViewed(): LastViewed | null {
+function loadLastViewed(provider: Provider): LastViewed | null {
   try {
-    const raw = window.localStorage.getItem(LAST_VIEWED_KEY);
+    const raw = window.localStorage.getItem(`${LAST_VIEWED_KEY}:${provider}`);
     return raw ? (JSON.parse(raw) as LastViewed) : null;
   } catch {
     return null;
   }
 }
 
-function saveLastViewed(value: LastViewed) {
+function saveLastViewed(provider: Provider, value: LastViewed) {
   try {
-    window.localStorage.setItem(LAST_VIEWED_KEY, JSON.stringify(value));
+    window.localStorage.setItem(`${LAST_VIEWED_KEY}:${provider}`, JSON.stringify(value));
   } catch {
     /* ignore */
   }
 }
 
 interface Props {
+  provider: Provider;
+  initialExamId: ExamId;
   onExit: () => void;
 }
 
-export function StudyScreen({ onExit }: Props) {
-  const [examId, setExamId] = useState<ExamId>("ai-practitioner");
+export function StudyScreen({ provider, initialExamId, onExit }: Props) {
+  const exams = useMemo(() => examsForProvider(provider), [provider]);
+  const [examId, setExamId] = useState<ExamId>(initialExamId);
   const data = studyData[examId];
   const allGroups = useMemo(() => groupSections(data), [data]);
 
@@ -98,19 +103,21 @@ export function StudyScreen({ onExit }: Props) {
     return { total, done, remaining: total - done };
   }, [guideEntries]);
 
-  // Hydrate last-viewed selection on mount.
+  // Hydrate last-viewed section on mount, but only within the exam the user
+  // just selected — otherwise a stale last-viewed exam would silently
+  // override the exam they picked on the setup screen. StudyScreen is
+  // remounted with `key={provider}` on switch, so this only runs once.
   useEffect(() => {
-    const last = loadLastViewed();
-    if (last && studyData[last.examId]) {
+    const last = loadLastViewed(provider);
+    if (last && last.examId === initialExamId) {
       const found = studyData[last.examId].sections.find((s) => s.id === last.sectionId);
       if (found) {
-        setExamId(last.examId);
         setSelectedId(found.id);
         return;
       }
     }
-    // Fall back to the first section of the default exam.
-    setSelectedId(data.sections[0]?.id ?? null);
+    // Fall back to the first section of the selected exam.
+    setSelectedId(studyData[initialExamId].sections[0]?.id ?? null);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // When the exam picker changes, default-select that exam's first section.
@@ -119,13 +126,13 @@ export function StudyScreen({ onExit }: Props) {
     const first = studyData[id].sections[0];
     if (first) {
       setSelectedId(first.id);
-      saveLastViewed({ examId: id, sectionId: first.id });
+      saveLastViewed(provider, { examId: id, sectionId: first.id });
     }
   }
 
   function selectSection(section: Section) {
     setSelectedId(section.id);
-    saveLastViewed({ examId: section.examId, sectionId: section.id });
+    saveLastViewed(provider, { examId: section.examId, sectionId: section.id });
   }
 
   const selected = useMemo(
@@ -142,19 +149,19 @@ export function StudyScreen({ onExit }: Props) {
         </Button>
         <div className="flex items-center gap-2 text-xs">
           <span className="text-muted-foreground">Exam:</span>
-          {(Object.keys(examMeta) as ExamId[]).map((id) => (
+          {exams.map((e) => (
             <button
-              key={id}
+              key={e.examId}
               type="button"
-              onClick={() => changeExam(id)}
+              onClick={() => changeExam(e.examId)}
               className={
                 "px-2 py-1 border text-xs font-medium transition-colors " +
-                (examId === id
+                (examId === e.examId
                   ? "bg-primary text-primary-foreground border-primary"
                   : "bg-background border-border hover:bg-accent")
               }
             >
-              {examMeta[id].examShort}
+              {e.examShort}
             </button>
           ))}
         </div>

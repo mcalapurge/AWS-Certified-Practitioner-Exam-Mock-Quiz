@@ -1,11 +1,15 @@
 import type { ExamId } from "../../quiz/types";
 import type { Section, StudyData } from "../types";
-import cloud from "../data/cloud-practitioner.json";
-import ai from "../data/ai-practitioner.json";
+import cloud from "../data/aws/cloud-practitioner.json";
+import ai from "../data/aws/ai-practitioner.json";
+import developerFoundations from "../data/claude/developer-foundations.json";
+import associateFoundations from "../data/claude/associate-foundations.json";
 
 export const studyData: Record<ExamId, StudyData> = {
   "cloud-practitioner": cloud as StudyData,
   "ai-practitioner": ai as StudyData,
+  "developer-foundations": developerFoundations as StudyData,
+  "associate-foundations": associateFoundations as StudyData,
 };
 
 // Humanize the directory slug used as a category in the AI exam tree.

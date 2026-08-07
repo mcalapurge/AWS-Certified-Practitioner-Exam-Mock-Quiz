@@ -1,0 +1,838 @@
+{
+  "examId": "developer-foundations",
+  "examName": "Claude Certified Developer – Foundations",
+  "examShort": "CCDV-F",
+  "generatedAt": "2026-08-07T00:00:00.000Z",
+  "note": "Original study content written to accompany the CCDV-F practice bank, organized around the same tagged topics — expanded in a coverage pass to add 10 topics (built-in tools, the built-in/custom/Skill/MCP decision framework, MCP transports, tool error handling, agent frameworks, Claude Code Commands/Subagents/Interaction Modes, citations, and code-execution sandboxing) identified as gaps against third-party summaries of the official exam guide. Not official Anthropic exam material, and not guaranteed to be fully exhaustive of the real blueprint — verify against Anthropic's official CCDV-F exam guide before relying on it for exam day. REBUILD (2026-08-07): no duplicate ids, slugs, titles or near-duplicate content were found. 37 thin sections were expanded to the same depth as the rest of the guide, so every section now carries a concept explanation plus what the exam tests and the common wrong-answer patterns. All 63 sections have at least one matching practice question.",
+  "sectionCount": 63,
+  "sections": [
+    {
+      "id": "developer-foundations:streaming_api",
+      "examId": "developer-foundations",
+      "slug": "streaming_api",
+      "category": "Applications and Integration",
+      "title": "Streaming API",
+      "keywords": [
+        "full message",
+        "sequence of server-sent",
+        "arrive",
+        "long stream",
+        "favors streaming"
+      ],
+      "content": "Setting stream=true on a Messages API request returns the response as an ordered sequence of server-sent events instead of one blocking response. The event types (message_start, content_block_start, content_block_delta, content_block_stop, message_delta, message_stop) let a client render output incrementally and reconstruct the full message by accumulating deltas in order. This is what powers 'typing' UIs and reduces perceived latency for user-facing chat.\n\nExam questions here typically test whether you understand these events must be accumulated client-side in order — not polled, and not returned as one final blob. A common wrong-answer pattern describes streaming as a polling mechanism or as returning only metadata."
+    },
+    {
+      "id": "developer-foundations:structured_output",
+      "examId": "developer-foundations",
+      "slug": "structured_output",
+      "category": "Applications and Integration",
+      "title": "Structured Output",
+      "keywords": [
+        "re integrating",
+        "json conforming",
+        "practical mechanism",
+        "extraction service"
+      ],
+      "content": "Reliable structured output (e.g., valid JSON matching a schema) combines prompt-level technique (explicit format instructions, a concrete example of correct output) with application-level safeguards (validating the response and retrying on malformed output). Some applications also use tool-calling itself as a structured-output mechanism, since tool inputs are schema-constrained by design.\n\nOn the exam, a 'sometimes malformed JSON' scenario should be fixed by tightening instructions plus adding an example plus validate-and-retry — not by switching models or abandoning the schema."
+    },
+    {
+      "id": "developer-foundations:error_handling_rate_limits",
+      "examId": "developer-foundations",
+      "slug": "error_handling_rate_limits",
+      "category": "Applications and Integration",
+      "title": "Error Handling & Rate Limits",
+      "keywords": [
+        "exponential backoff",
+        "authentication failure",
+        "python codebase"
+      ],
+      "content": "Production integrations branch behavior on HTTP status code: 400 (fix the malformed request), 401 (fix authentication), 429 (rate-limited — back off and retry), 500 (unexpected server error), 529 (temporary overload — also warrants backoff). Treating every non-200 response identically is the most common exam trap; the correct pattern is always 'recognize the specific code's meaning and respond accordingly,' typically with exponential backoff for 429/529.\n\nThis topic also covers general SDK/HTTP integration: official client SDKs exist for common languages, and since the API is a standard HTTP/JSON interface, any language capable of HTTP requests can integrate directly."
+    },
+    {
+      "id": "developer-foundations:tool_use_mechanics",
+      "examId": "developer-foundations",
+      "slug": "tool_use_mechanics",
+      "category": "Applications and Integration",
+      "title": "Tool Use Mechanics",
+      "keywords": [
+        "tool_result content",
+        "decides whether",
+        "defined tool",
+        "tool executes",
+        "tool-use blocks"
+      ],
+      "content": "When a tool is defined on a request, Claude doesn't execute it — it can respond with a tool_use content block (the tool name plus generated input), and the calling application is responsible for actually running the tool and returning the outcome as a tool_result so the conversation can continue. This division of responsibility (model decides + generates input; application executes) is one of the most heavily tested mechanics on the exam, especially in multi-select form.\n\nCommon wrong answers claim Claude executes tools directly, or that only one tool can be defined per request — multiple tool definitions per request are fine, and the model chooses among them."
+    },
+    {
+      "id": "developer-foundations:prompt_caching",
+      "examId": "developer-foundations",
+      "slug": "prompt_caching",
+      "category": "Applications and Integration",
+      "title": "Prompt Caching",
+      "keywords": [
+        "static system",
+        "cache read",
+        "cached prefix"
+      ],
+      "content": "Prompt caching lets you mark a portion of a request (typically a large, static system prompt, reference document, or tool definitions) so it doesn't need to be reprocessed in full on every call. You mark the cut-off point with a cache_control field; a later request that repeats that exact prefix gets a cheap 'cache read' instead of a full-price 'cache write.' This matters most when the same large context (instructions, few-shot examples, reference docs) is sent on every turn or every request in a high-volume pipeline.\n\nExpect scenario questions asking you to identify caching as the fix for latency/cost problems caused by repeated static content, and to distinguish it from unrelated fixes like shortening the prompt or switching models. Common pitfall: assuming caching helps content that changes on every request — it only pays off for content that's genuinely static and repeated."
+    },
+    {
+      "id": "developer-foundations:stop_reasons",
+      "examId": "developer-foundations",
+      "slug": "stop_reasons",
+      "category": "Applications and Integration",
+      "title": "Stop Reasons",
+      "keywords": [
+        "stop reason",
+        "stop_reason",
+        "now sees"
+      ],
+      "content": "Every Messages API response includes a stop_reason: end_turn (natural completion), max_tokens (hit the length ceiling), stop_sequence (hit a configured stop string), or tool_use (the model wants to call a tool and is pausing for the application to execute it and return a result). Branching application logic on stop_reason is a core integration competency — tool_use means execute the tool and continue the conversation; max_tokens might mean raise the limit or continue generation.\n\nA frequent exam trap treats every stop reason as an equivalent 'done' state rather than a trigger for different application behavior."
+    },
+    {
+      "id": "developer-foundations:multimodal_input_vision_pdf",
+      "examId": "developer-foundations",
+      "slug": "multimodal_input_vision_pdf",
+      "category": "Applications and Integration",
+      "title": "Multimodal Input (Vision/PDF)",
+      "keywords": [
+        "base64",
+        "pdf",
+        "multiple images"
+      ],
+      "content": "Images and PDFs are supplied as typed content blocks inside an ordinary Messages request, alongside text blocks in the same message. There is no separate vision or document endpoint, and a message is not limited to one block — several images can accompany text in a single request. Image data can be provided base64-encoded.\n\nThe exam mainly tests that recognition: multimodal input is a content-block feature of the same API surface, not a different one. The cost point is worth carrying too, since it drives real design decisions — an image's token consumption scales with its dimensions, so downscaling to the smallest size that preserves the detail you need is the main lever on an image-heavy pipeline's cost. For PDFs, expect scenarios like invoice or filing extraction where the correct answer sends the document directly rather than running separate OCR first or converting to another format."
+    },
+    {
+      "id": "developer-foundations:batches_api",
+      "examId": "developer-foundations",
+      "slug": "batches_api",
+      "category": "Applications and Integration",
+      "title": "Batches API",
+      "keywords": [
+        "delay-tolerant work",
+        "submit",
+        "cost reduction",
+        "retrievable until"
+      ],
+      "content": "The Message Batches API is built for large volumes of requests where a multi-hour turnaround is acceptable — overnight classification, bulk tagging — and it comes at a reduced cost compared to synchronous calls.\n\nThe exam consistently tests this as the correct answer whenever a scenario describes high-volume, delay-tolerant work; the wrong-answer pattern recommends it for latency-sensitive, real-time scenarios where it's a poor fit (see also Batch vs. Synchronous Cost under Model Selection)."
+    },
+    {
+      "id": "developer-foundations:citations_document_grounded_responses",
+      "examId": "developer-foundations",
+      "slug": "citations_document_grounded_responses",
+      "category": "Applications and Integration",
+      "title": "Citations (Document-Grounded Responses)",
+      "keywords": [
+        "citations",
+        "citations feature",
+        "source locations"
+      ],
+      "content": "When document content is provided with citations enabled, Claude can ground specific claims in its response back to precise locations in the source document, letting an application display verifiable source attribution alongside generated text rather than an ungrounded summary. This is distinct from prompt-level instructions asking the model to 'cite your sources' — citations is a structured, API-level feature tied to the document content block.\n\nThe exam tests recognition of citations as the correct feature specifically when a requirement calls for traceable, source-linked answers (e.g., a compliance or research tool), not just any request involving documents."
+    },
+    {
+      "id": "developer-foundations:conversation_state_management",
+      "examId": "developer-foundations",
+      "slug": "conversation_state_management",
+      "category": "Applications and Integration",
+      "title": "Conversation State Management",
+      "keywords": [
+        "prior turns",
+        "fresh conversation",
+        "verbatim",
+        "chat product"
+      ],
+      "content": "The Claude API is stateless between calls — there is no server-side memory of prior turns unless your application resends them. To maintain a multi-turn conversation, the calling application must accumulate and pass the full relevant message history (or a summarized/pruned version) with every request.\n\nExpect direct questions asking who is responsible for conversation history — the correct answer is always the calling application, never Anthropic's servers. The related pitfall is forgetting that as conversations grow, you're responsible for managing what stays in context, since nothing is retained automatically (see also Context Drift)."
+    },
+    {
+      "id": "developer-foundations:extended_thinking",
+      "examId": "developer-foundations",
+      "slug": "extended_thinking",
+      "category": "Applications and Integration",
+      "title": "Extended Thinking",
+      "keywords": [
+        "thinking content",
+        "gain",
+        "request-level cost/quality",
+        "thinking output"
+      ],
+      "content": "Extended thinking lets the model produce an internal reasoning block before its final answer, useful for tasks needing more deliberate multi-step reasoning. This reasoning content consumes part of the token budget and is billed accordingly — enabling it is a deliberate cost/quality tradeoff, not a free upgrade.\n\nExam questions typically probe whether you know thinking tokens count toward usage. A common wrong answer claims extended thinking is free or replaces the need for good prompting entirely. Treat it as a request-level configuration decision made based on task complexity, similar in spirit to model selection."
+    },
+    {
+      "id": "developer-foundations:general_applications_and_integration",
+      "examId": "developer-foundations",
+      "slug": "general_applications_and_integration",
+      "category": "Applications and Integration",
+      "title": "General Applications and Integration",
+      "keywords": [
+        "http/json endpoints",
+        "sending plain",
+        "key live"
+      ],
+      "content": "This is the connective tissue of the exam's single heaviest domain (33.1% of the CCDV-F blueprint): translating a product requirement into a concrete technical integration plan — choosing between synchronous and batch processing, structuring requests correctly, and applying sound general software-engineering judgment to how Claude is wired into a real application.\n\nIf you take one thing from this domain: it's tested through applied scenarios, not isolated trivia — study by building something end-to-end, not just reading a feature list."
+    },
+    {
+      "id": "developer-foundations:batch_vs_synchronous_cost",
+      "examId": "developer-foundations",
+      "slug": "batch_vs_synchronous_cost",
+      "category": "Model Selection and Optimization",
+      "title": "Batch vs Synchronous Cost",
+      "keywords": [
+        "top priority",
+        "discount",
+        "relaxed",
+        "synchronous real-time"
+      ],
+      "content": "A large share of Model Selection questions boil down to one judgment call: does this workload need an immediate response (synchronous, real-time call) or can it tolerate delay (Batches API for a cost discount)? The exam frames this across many business scenarios (chat vs. nightly job, live vs. bulk processing), but the underlying test is always the same.\n\nLatency sensitivity is the deciding factor — not team size, programming language, or other unrelated distractor details."
+    },
+    {
+      "id": "developer-foundations:model_tier_selection",
+      "examId": "developer-foundations",
+      "slug": "model_tier_selection",
+      "category": "Model Selection and Optimization",
+      "title": "Model Tier Selection",
+      "keywords": [
+        "light tier",
+        "task complexity",
+        "quality bar",
+        "tier selection",
+        "capable available",
+        "tier change"
+      ],
+      "content": "Anthropic offers model tiers with different cost/speed/capability tradeoffs. The core competency is matching tier to task: simple, high-volume, pattern-based work (classification, extraction, short replies) suits a smaller/faster model, while complex multi-step reasoning justifies a larger, more capable (and more expensive) one.\n\nThe exam rewards recognizing task complexity as the deciding signal and penalizes 'always use the biggest model' or 'always use the cheapest model' as universal answers."
+    },
+    {
+      "id": "developer-foundations:cost_optimization",
+      "examId": "developer-foundations",
+      "slug": "cost_optimization",
+      "category": "Model Selection and Optimization",
+      "title": "Cost Optimization",
+      "keywords": [
+        "repeated input",
+        "constraining response length",
+        "roughly 10",
+        "tiered routing"
+      ],
+      "content": "Cost optimisation starts with measurement rather than a favourite lever, because the right remedy depends on where the tokens actually go. Input-dominated spend from a large prefix resent every call points to prompt caching. Output-dominated spend from responses longer than anything consumed points to length control. Over-provisioned capability or always-on extended thinking on simple work points to tier selection.\n\nSeveral levers are independent of tier and worth knowing as a set: caching stable prefixes, constraining output length, trimming irrelevant conversation history, and routing delay-tolerant volume through batch for roughly half the synchronous cost. Tiered routing — cheap model by default, escalation for hard cases — is effective but shifts the risk onto the router's accuracy, so the classifier itself needs evaluating. The reliable wrong answers cut monitoring to reduce overhead, or lower the token ceiling as a substitute for asking for shorter output."
+    },
+    {
+      "id": "developer-foundations:latency_vs_throughput_tradeoffs",
+      "examId": "developer-foundations",
+      "slug": "latency_vs_throughput_tradeoffs",
+      "category": "Model Selection and Optimization",
+      "title": "Latency vs Throughput Tradeoffs",
+      "keywords": [
+        "throughput",
+        "measures",
+        "duration"
+      ],
+      "content": "Latency is how long one request takes; throughput is how much work completes per unit time. They are optimised differently and frequently trade against each other, so the first question is which one the workload is actually bound by. A moderation check that blocks a user's action is latency-bound and points to a light tier with a tight output budget. An overnight enrichment queue with nobody waiting is throughput-bound and points to concurrency and batching.\n\nTwo refinements come up. Raising concurrency increases throughput only until the account's rate limits bind, past which requests are throttled and queue — which lengthens latency and surfaces rate-limit errors, the signature of over-provisioned concurrency. And time-to-first-token is governed mainly by processing the input prefix, which is why caching a large stable prefix improves it while output length governs total duration instead. Streaming is the special case worth remembering: it changes no timing at all but lets a user start reading immediately, so it addresses perceived latency specifically."
+    },
+    {
+      "id": "developer-foundations:output_token_cost_management",
+      "examId": "developer-foundations",
+      "slug": "output_token_cost_management",
+      "category": "Model Selection and Optimization",
+      "title": "Output Token Cost Management",
+      "keywords": [
+        "output ceiling",
+        "ceiling truncates",
+        "verbosity",
+        "directly affect",
+        "maximum-tokens parameter"
+      ],
+      "content": "Output tokens are billed separately from input and usually at a higher rate, so verbose responses are a distinct cost centre from large prompts and need a different remedy. Generating a paragraph of justification for a request that consumes only a label, or a summary three times longer than the panel that displays it, is spend on text that is discarded.\n\nThe lever is instructing the length and shape you actually consume, with max_tokens as a ceiling rather than the mechanism — the ceiling truncates mid-generation instead of yielding a complete shorter answer. Extended thinking is worth remembering here too, since reasoning tokens are billed and enabling deliberation across a whole high-volume pipeline raises cost with no benefit on simple tasks. Expect scenarios contrasting an input-heavy workload, where caching is the answer, with an output-heavy one, where length control is."
+    },
+    {
+      "id": "developer-foundations:manager_subagent_architecture",
+      "examId": "developer-foundations",
+      "slug": "manager_subagent_architecture",
+      "category": "Agents and Workflows",
+      "title": "Manager/Subagent Architecture",
+      "keywords": [
+        "primary benefit",
+        "decomposing",
+        "remit"
+      ],
+      "content": "Manager/subagent architectures decompose a complex goal into narrower subtasks, each handled by a subagent operating with tighter, more focused context — generally improving reliability over a single monolithic agent trying to do everything at once.\n\nThe exam frequently frames this as 'why use N subagents instead of one big agent,' and the correct reasoning is always about scoped context and manageability — not eliminating errors entirely or removing the need for tools/evaluation."
+    },
+    {
+      "id": "developer-foundations:workflow_vs_agent_distinction",
+      "examId": "developer-foundations",
+      "slug": "workflow_vs_agent_distinction",
+      "category": "Agents and Workflows",
+      "title": "Workflow vs Agent Distinction",
+      "keywords": [
+        "orchestrated",
+        "planning",
+        "developer-orchestrated workflow"
+      ],
+      "content": "A foundational distinction the exam returns to repeatedly: a workflow follows a fixed, developer-defined sequence of steps, while an agent uses the model itself to dynamically decide what steps/tool calls to take next.\n\nPredictable, well-understood, low-variance tasks favor fixed workflows (more auditable, more predictable); open-ended, highly variable tasks favor agents (more flexible, less predictable). Don't fall for 'these terms are interchangeable' — the exam treats them as architecturally distinct choices."
+    },
+    {
+      "id": "developer-foundations:stopping_conditions",
+      "examId": "developer-foundations",
+      "slug": "stopping_conditions",
+      "category": "Agents and Workflows",
+      "title": "Stopping Conditions",
+      "keywords": [
+        "fixed number",
+        "success condition",
+        "agent halts"
+      ],
+      "content": "An agent needs both a definition of done and a backstop, and the exam consistently rewards recognising that it is both rather than either. The success condition states what completion means and is checked explicitly; the safety bound — an iteration cap, a token or time budget — halts the agent when the allowance is exhausted regardless of progress.\n\nThe subtle point is why 'the model stopped requesting tools' is insufficient on its own: ceasing to call tools means the model has nothing further to try, which is not the same as having achieved the objective. Verification against the success condition is what distinguishes completion from quietly giving up. The related failure is the agent that repeats the same call indefinitely, which is why progress detection belongs alongside the iteration cap rather than relying on the cap alone to end a stuck loop."
+    },
+    {
+      "id": "developer-foundations:general_agents_and_workflows",
+      "examId": "developer-foundations",
+      "slug": "general_agents_and_workflows",
+      "category": "Agents and Workflows",
+      "title": "General Agents and Workflows",
+      "keywords": [
+        "assigned randomly",
+        "strongly indicates"
+      ],
+      "content": "This domain's broader theme is applied judgment about when and how to give a system autonomy: workflow vs. agent, fixed vs. dynamic, decomposed vs. monolithic, and how much guardrail is appropriate for a given action's risk.\n\nExpect many scenario-flavored questions reusing these same underlying principles across different business contexts (booking, procurement, incident response, etc.) — the pattern matters more than memorizing any one scenario."
+    },
+    {
+      "id": "developer-foundations:agent_frameworks_langgraph_strands_vs_native_sdk",
+      "examId": "developer-foundations",
+      "slug": "agent_frameworks_langgraph_strands_vs_native_sdk",
+      "category": "Agents and Workflows",
+      "title": "Agent Frameworks (LangGraph / Strands) vs Native SDK",
+      "keywords": [
+        "native",
+        "native sdk",
+        "third-party frameworks"
+      ],
+      "content": "Beyond Anthropic's own Claude Agent SDK, developers sometimes build agents using third-party orchestration frameworks such as LangGraph or AWS Strands, which provide their own abstractions for agent loops, state graphs, and multi-agent coordination. The exam expects awareness that these exist as alternative/complementary approaches — not deep framework-specific syntax — and that the underlying design patterns (tool-use loops, subagents, memory) are conceptually consistent across the native SDK and third-party frameworks, even though implementation details differ.\n\nA typical question tests whether you recognize that choosing a framework is a build-tooling decision layered on top of the same core agent-design principles tested elsewhere in this domain, not a separate set of concepts."
+    },
+    {
+      "id": "developer-foundations:agent_safety_guardrails",
+      "examId": "developer-foundations",
+      "slug": "agent_safety_guardrails",
+      "category": "Agents and Workflows",
+      "title": "Agent Safety & Guardrails",
+      "keywords": [
+        "guardrail",
+        "autonomous coding",
+        "meaningfully bound"
+      ],
+      "content": "Guardrails for an agent are the controls that bound what it can do, as distinct from what it is asked to do. The load-bearing distinction is that a prompt instruction influences behaviour but cannot guarantee it, so anything that must not happen requires enforcement outside the model.\n\nIn practice this means three things working together: credentials scoped so the agent can only reach the resources its task requires, limits enforced in the service that executes the action rather than described in the prompt, and explicit human approval before irreversible or high-impact operations. A refund agent gets a refund cap enforced by the refund service and an approval gate above a threshold — not a system prompt asking it to stay under the limit, and not a weekly review reversing mistakes after the fact. Note that raising the iteration limit or the model tier expands capability rather than bounding risk."
+    },
+    {
+      "id": "developer-foundations:claude_agent_sdk",
+      "examId": "developer-foundations",
+      "slug": "claude_agent_sdk",
+      "category": "Agents and Workflows",
+      "title": "Claude Agent SDK",
+      "keywords": [
+        "scaffolding",
+        "general purpose",
+        "history-management code repetitive"
+      ],
+      "content": "The Claude Agent SDK supplies the scaffolding an agent needs — the loop that alternates model turns with tool execution, tool wiring and dispatch, session and history management, retries — so teams write domain-specific tools and policy rather than rebuilding that layer.\n\nThe recognisable signal for adopting it is a team writing its second or third bespoke agent loop and finding the plumbing repetitive. What it does not provide is worth knowing for the wrong answers: no special model access, no elimination of token cost, and no guarantee an agent cannot take unsafe actions — guardrails remain the developer's responsibility. Against third-party frameworks, the SDK's argument is tighter alignment with Claude-specific capabilities and one less abstraction layer; the framework's argument is portability across providers."
+    },
+    {
+      "id": "developer-foundations:custom_agent_loops",
+      "examId": "developer-foundations",
+      "slug": "custom_agent_loops",
+      "category": "Agents and Workflows",
+      "title": "Custom Agent Loops",
+      "keywords": [
+        "custom agent",
+        "loop occasionally",
+        "custom agent loop"
+      ],
+      "content": "An agent loop alternates model turns with tool execution: call the model, execute any tools it requests, append the results to the conversation, and repeat until a termination condition holds. A fixed sequence of steps decided in advance is a workflow, not an agent loop — the loop exists precisely because the next step depends on what the last one returned.\n\nWriting one by hand means owning the failure modes. Non-termination is the main one: an agent can repeat the same call indefinitely, so a maximum-iteration cap plus detection of repeated no-progress states is required, and a more capable model does not guarantee termination. Others worth knowing are unbounded context growth as results accumulate, and errors returned in a form the model cannot act on. These are the concerns the Agent SDK packages, which is why repeatedly rebuilding this layer is the signal to adopt it."
+    },
+    {
+      "id": "developer-foundations:context_memory_management",
+      "examId": "developer-foundations",
+      "slug": "context_memory_management",
+      "category": "Agents and Workflows",
+      "title": "Context/Memory Management",
+      "keywords": [
+        "restart",
+        "context/memory management",
+        "retaining only decision-relevant"
+      ],
+      "content": "An agent's context window is a working buffer, not storage. It fills as tool results, intermediate reasoning, and conversation accumulate, and once it is compacted or the session ends, whatever lived only there is gone. Two consequences follow.\n\nFirst, compact at ingestion: summarise or trim verbose tool output before appending it, keeping only decision-relevant fields, so the objective and current state are not crowded out by payload. Second, persist durable state — progress made, decisions taken, facts established — outside the context in storage the agent can read back. Expect scenarios where a long-running agent loses track of its goal, and note that the wrong answers typically drop the objective or restart from scratch, both of which discard precisely what needed to survive."
+    },
+    {
+      "id": "developer-foundations:role_prompting",
+      "examId": "developer-foundations",
+      "slug": "role_prompting",
+      "category": "Prompt and Context Engineering",
+      "title": "Role Prompting",
+      "keywords": [
+        "senior security",
+        "assigning"
+      ],
+      "content": "Assigning a role sets the perspective, vocabulary, and priorities a response is written from — 'you are a technical editor' produces different emphasis and register than no framing at all. It is genuinely useful for controlling tone and for surfacing a particular angle on a problem.\n\nWhat it does not do is what the wrong answers claim: it grants no tools or capabilities, restricts no vocabulary mechanically, and guarantees no factual accuracy within the named domain. The refinement the exam tests is that a role alone tends to produce generic output, because stance is not the same as specification. 'Senior security reviewer' says nothing about what to look for, so it needs pairing with the actual review criteria and the expected output shape. Role sets the voice; criteria and format do the work."
+    },
+    {
+      "id": "developer-foundations:negative_instructions",
+      "examId": "developer-foundations",
+      "slug": "negative_instructions",
+      "category": "Prompt and Context Engineering",
+      "title": "Negative Instructions",
+      "keywords": [
+        "desired behavior",
+        "negative",
+        "forcefully without specifying"
+      ],
+      "content": "A prompt built from prohibitions bounds the output without specifying it, which is why long lists of things not to do produce inconsistent compliance. The reframing is to state positively what the model should produce: 'write in paragraphs of no more than three sentences' rather than 'do not write long paragraphs'.\n\nThe test for a good rewrite is whether it replaces the prohibition with a concrete, checkable target. Restating the same prohibition more forcefully — 'never', 'under no circumstances', repeating it three times — is not a rewrite and is the distractor pattern to recognise. Negative instructions are not useless: a specific carve-out such as ruling out an approach already tried and rejected is genuinely informative. The failure mode is using them as the primary means of describing desired behaviour rather than as narrow exclusions alongside a positive specification."
+    },
+    {
+      "id": "developer-foundations:chain_of_thought_prompting",
+      "examId": "developer-foundations",
+      "slug": "chain_of_thought_prompting",
+      "category": "Prompt and Context Engineering",
+      "title": "Chain-of-Thought Prompting",
+      "keywords": [
+        "reason step",
+        "multi-step pricing",
+        "step-by-step reasoning"
+      ],
+      "content": "Asking the model to work through intermediate steps before committing to an answer improves accuracy on multi-step problems — calculations, constraint satisfaction, layered comparisons — and has the side benefit of exposing where a wrong answer diverged, which makes failures diagnosable.\n\nIt is not free: reasoning consumes output tokens, and on single-step or mechanical tasks it adds cost without improving anything. The integration question the exam likes is how to keep the accuracy benefit while returning clean structured output — the answer is to have the model reason inside a delimited section and place the final result in a separate section the application extracts. Note the relationship to extended thinking: that is a request-level configuration achieving a similar end through a dedicated reasoning budget, while chain-of-thought is a prompting technique."
+    },
+    {
+      "id": "developer-foundations:output_length_constraints",
+      "examId": "developer-foundations",
+      "slug": "output_length_constraints",
+      "category": "Prompt and Context Engineering",
+      "title": "Output Length Constraints",
+      "keywords": [
+        "considering explicitly",
+        "reliably produces",
+        "considering explicitly specifying"
+      ],
+      "content": "Length is controlled at two independent layers, and conflating them is the classic mistake. The prompt states the target — 'no more than three sentences', 'under 200 words', 'a single label and nothing else' — while max_tokens sets a hard ceiling that halts generation wherever it lands. The prompt shapes a complete shorter answer; the ceiling produces a truncated one.\n\nSo the correct pattern is to instruct the length you want and set the ceiling as a backstop, not to rely on the ceiling for concision. Countable limits outperform subjective ones: 'brief' and 'concise but thorough' leave the target undefined, and the latter sets two competing goals. Expect scenarios where output overruns a fixed UI element, or where a classifier returns a paragraph of justification instead of a label — both are prompt-level fixes with a ceiling as insurance."
+    },
+    {
+      "id": "developer-foundations:system_vs_user_prompt_separation",
+      "examId": "developer-foundations",
+      "slug": "system_vs_user_prompt_separation",
+      "category": "Prompt and Context Engineering",
+      "title": "System vs User Prompt Separation",
+      "keywords": [
+        "considering putting",
+        "document-analysis product",
+        "mixing untrusted"
+      ],
+      "content": "The system prompt carries standing instructions — persona, rules, output conventions, constraints that hold across turns — while the user turn carries the per-request content the model should act on. Durable behaviour in one, variable data in the other.\n\nThis separation does two jobs. It keeps instructions salient across a long conversation instead of receding as turns accumulate, and it is the foundation of injection resistance: untrusted user-supplied text stays in the user turn where it is data, not mixed into the operator's instructions where the boundary between instruction and content blurs. There is a caching consequence too, since a stable system prompt is exactly the kind of prefix worth caching, while interleaving variable text into it destroys the match. Expect a document-analysis scenario where rules belong in the system prompt and the document and question belong in the user turn."
+    },
+    {
+      "id": "developer-foundations:few_shot_prompting",
+      "examId": "developer-foundations",
+      "slug": "few_shot_prompting",
+      "category": "Prompt and Context Engineering",
+      "title": "Few-Shot Prompting",
+      "keywords": [
+        "few-shot prompting",
+        "diminishing",
+        "typically improve format/style"
+      ],
+      "content": "Few-shot prompting supplies worked examples of input paired with correctly formatted output, which conveys format and edge-case handling far more reliably than describing them in prose. It is the standard fix when output shape is inconsistent despite clear instructions.\n\nTwo properties matter more than example count. Representativeness: examples are read as a sample of the expected distribution, so a set drawn only from one class teaches that skew and the model over-predicts it. Diminishing returns: quality typically plateaus after a few examples while every one continues to be billed as input, so the count should be tuned rather than maximised. Expect scenarios describing a biased example set producing biased predictions, and others where a team has added a dozen examples with no gain past the first few."
+    },
+    {
+      "id": "developer-foundations:context_drift_long_conversations",
+      "examId": "developer-foundations",
+      "slug": "context_drift_long_conversations",
+      "category": "Prompt and Context Engineering",
+      "title": "Context Drift & Long Conversations",
+      "keywords": [
+        "force",
+        "original instructions/goal",
+        "conflicting information accumulates"
+      ],
+      "content": "Instructions given early in a long exchange lose force as turns accumulate, and superseded decisions left in the history compete with current intent. Both present as the model gradually ignoring a rule or reverting to an abandoned plan.\n\nThe two remedies map to the two causes. For a rule that should always hold, persist it in the system prompt or refresh it near the active turn so it stays salient — increasing the token ceiling or lowering temperature addresses neither. For accumulated contradictions, compact the history into a summary recording only what still holds, which removes the stale material instead of asking the model to arbitrate between conflicting statements. Appending the newest decision more emphatically is the tempting wrong answer, since the contradictory context remains in place."
+    },
+    {
+      "id": "developer-foundations:xml_structuring",
+      "examId": "developer-foundations",
+      "slug": "xml_structuring",
+      "category": "Prompt and Context Engineering",
+      "title": "XML Structuring",
+      "keywords": [
+        "named tags",
+        "structural constraints/schemas"
+      ],
+      "content": "Wrapping each part of a prompt in clearly named tags makes boundaries explicit, which matters as soon as a request combines instructions with reference material and user-supplied content. Tagged sections stop the model conflating a policy document with the customer email it is meant to be evaluated against, and let instructions refer to a section by name.\n\nTagging also pays off on the output side: asking for the answer inside named tags gives the application a deterministic anchor to extract against, which is more robust than pattern-matching prose, and lets reasoning be separated from the final result so only the result is passed downstream. Expect scenarios with three or more prompt components where the model mixes them up — the fix is delimiting, not shortening. Tag names only need to be consistent and descriptive; no schema is imposed."
+    },
+    {
+      "id": "developer-foundations:structured_output_reliability",
+      "examId": "developer-foundations",
+      "slug": "structured_output_reliability",
+      "category": "Prompt and Context Engineering",
+      "title": "Structured Output Reliability",
+      "keywords": [
+        "remove the schema",
+        "application-side validate-and-retry loop",
+        "application-side validate-and-retry"
+      ],
+      "content": "Getting reliably parseable output combines prompt-level technique with application-level safeguards. On the prompt side: state the format explicitly, supply a concrete example, and delimit where the structured portion begins and ends. The stronger mechanism is a schema-bearing tool definition, since tool inputs are schema-constrained by design — a widely used pattern even when the 'tool' performs no external action and exists only to shape the response.\n\nOn the application side, validation with a retry path is a required layer, not an optional one: no prompting technique or sampling setting guarantees conformance, so an occasional malformed response must be handled rather than assumed away. One schema-design point the exam likes: allow an explicit null or not-found value for fields that may genuinely be absent, because forcing every field to be populated actively encourages fabricated values."
+    },
+    {
+      "id": "developer-foundations:mcp_resources_tools_prompts",
+      "examId": "developer-foundations",
+      "slug": "mcp_resources_tools_prompts",
+      "category": "Tools and MCPs",
+      "title": "MCP Resources/Tools/Prompts",
+      "keywords": [
+        "re building",
+        "compressing the context",
+        "change which underlying"
+      ],
+      "content": "MCP servers expose three kinds of capability, and telling them apart is the most direct thing the exam tests here. Tools are actions a client can invoke, with input schemas defining their arguments. Resources are read-only or reference data — documents, records — that a client can retrieve. Prompts are predefined, reusable prompt templates the server offers for clients to use.\n\nThe recurring wrong answers describe something entirely outside the protocol's concerns: changing which model is in use, tracking API spend, compressing the context window, or rendering a user interface. None of the three primitives does any of those. Expect questions that name a concrete integration — a CRM, a ticketing system, a document store — and ask which primitive fits a described need: retrieving records points to resources, performing an update points to tools, and standardising how clients ask for something points to prompts."
+    },
+    {
+      "id": "developer-foundations:built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
+      "examId": "developer-foundations",
+      "slug": "built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
+      "category": "Tools and MCPs",
+      "title": "Built-in vs Custom Tools vs Skills vs MCP (Decision Framework)",
+      "keywords": [
+        "skill",
+        "since skills",
+        "pure instructional/behavioral pattern"
+      ],
+      "content": "A recurring exam theme is choosing the right mechanism for a given capability: a built-in tool (fastest to enable, but limited to what Anthropic provides), a custom tool (full control over a specific action, defined and executed by your application), a Skill (packaged, reusable instructions for a recurring task pattern, with no new backend action), or an MCP server (a standardized integration point, especially valuable when multiple different clients need the same external capability).\n\nQuestions here are almost always framed as 'which of these four should you use,' and the deciding factors are reusability across clients/teams, whether the logic is pure instruction vs. requires real code/API execution, and whether you're integrating something Anthropic already built vs. something bespoke. This was explicitly flagged by exam prep sources as a table worth knowing cold — memorize the decision axes, not just the definitions."
+    },
+    {
+      "id": "developer-foundations:built_in_tools_web_search_code_execution_computer_use",
+      "examId": "developer-foundations",
+      "slug": "built_in_tools_web_search_code_execution_computer_use",
+      "category": "Tools and MCPs",
+      "title": "Built-In Tools (Web Search, Code Execution, Computer Use)",
+      "keywords": [
+        "defined and maintained",
+        "interact",
+        "up-to-date information"
+      ],
+      "content": "Beyond custom, developer-defined tools, Claude's platform offers several built-in tools maintained by Anthropic: a web search tool (retrieves current information from the web), a code execution tool (runs code in a sandboxed environment), and computer use (lets Claude interact with a screen via screenshots, clicks, and keystrokes). These ship with pre-built definitions, so you enable them rather than writing a schema from scratch — a meaningfully different integration path than custom tools.\n\nThe exam expects you to recognize these by name, know roughly what each is for, and know they're Anthropic-provided rather than developer-defined. This sets up the closely related decision-framework topic below: when to reach for a built-in tool vs. build your own."
+    },
+    {
+      "id": "developer-foundations:mcp_transport_mechanisms_stdio_vs_http_sse",
+      "examId": "developer-foundations",
+      "slug": "mcp_transport_mechanisms_stdio_vs_http_sse",
+      "category": "Tools and MCPs",
+      "title": "MCP Transport Mechanisms (stdio vs HTTP/SSE)",
+      "keywords": [
+        "stdio",
+        "http-based transports",
+        "local subprocess"
+      ],
+      "content": "MCP servers can communicate with clients over different transports: stdio (standard input/output — typically a local subprocess on the same machine as the client) and HTTP-based transports including SSE (used for remote servers accessed over a network). The choice affects deployment: a stdio server is simple to run locally but isn't naturally reachable across a network, while an HTTP-based server can be centrally hosted and shared across many clients/users.\n\nExpect the exam to test recognition of which transport fits a described deployment scenario — personal local tool vs. shared team-wide integration — rather than deep protocol-level implementation detail."
+    },
+    {
+      "id": "developer-foundations:tool_error_handling_descriptions",
+      "examId": "developer-foundations",
+      "slug": "tool_error_handling_descriptions",
+      "category": "Tools and MCPs",
+      "title": "Tool Error Handling & Descriptions",
+      "keywords": [
+        "description quality",
+        "explicit error",
+        "strongest tool"
+      ],
+      "content": "A tool's natural-language description directly affects whether and how correctly Claude chooses to call it — vague or missing descriptions lead to the model ignoring a useful tool or misusing it. Separately, when a tool execution fails, the application should return that failure as an explicit error result so the model can see what happened and adapt, rather than silently swallowing the error or looping blindly.\n\nThe exam tests both halves: good tool design (clear, specific descriptions) as a reliability lever, and correct error propagation back to the model as an integration best practice."
+    },
+    {
+      "id": "developer-foundations:mcp_server_design",
+      "examId": "developer-foundations",
+      "slug": "mcp_server_design",
+      "category": "Tools and MCPs",
+      "title": "MCP Server Design",
+      "keywords": [
+        "well-defined tools/resources",
+        "exposing well-defined tools/resources",
+        "tools/resources/prompts with clear"
+      ],
+      "content": "An MCP server's job is to expose well-defined capabilities that a client can discover and invoke: tools for actions, resources for reference data, prompts for reusable templates, each with clear schemas. What it does not do is select models, render interfaces, or manage anything about the model's internals — those are recurring wrong answers.\n\nDesign quality mostly reduces to the clarity of what you expose. Tool descriptions and parameter schemas are the model's only specification of an interface, so vague descriptions, unstated formats, and tools with overlapping responsibilities are the leading causes of wrong or missing calls. Errors should come back as informative flagged results the model can act on rather than opaque failures. Scope matters too: a server exposing one narrowly useful set of operations is easier to use correctly than one exposing a large undifferentiated surface."
+    },
+    {
+      "id": "developer-foundations:mcp_fundamentals",
+      "examId": "developer-foundations",
+      "slug": "mcp_fundamentals",
+      "category": "Tools and MCPs",
+      "title": "MCP Fundamentals",
+      "keywords": [
+        "external tools/resources/prompts",
+        "tools/resources/prompts are exposed",
+        "interoperability across different"
+      ],
+      "content": "The Model Context Protocol is an open standard for connecting models to external tools and data through a common interface, so an integration written once can be consumed by any compliant client instead of being rebuilt per application. A server exposes capabilities; a client connects and discovers them.\n\nThe value the exam emphasises is standardisation and reuse. If one application needs one bespoke action, a custom tool defined in that application is simpler. If several clients or teams need the same external capability, MCP is what stops that integration being written repeatedly. Expect questions that contrast these two situations directly, and wrong answers describing MCP as a model, a hosting service, a prompt-optimisation layer, or a way to change which model is in use."
+    },
+    {
+      "id": "developer-foundations:tool_choice_parameter",
+      "examId": "developer-foundations",
+      "slug": "tool_choice_parameter",
+      "category": "Tools and MCPs",
+      "title": "tool_choice Parameter",
+      "keywords": [
+        "tool_choice parameter",
+        "tool_choice parameter control",
+        "tool_choice controls"
+      ],
+      "content": "tool_choice controls how directively the model is pushed toward tool use on a given request: let it decide, require that some tool be used, force one named tool, or disallow tool use entirely. It is a request-level configuration distinct from merely defining tools, and the exam expects you to know it exists as a named parameter with this purpose.\n\nThe practical cases are worth attaching to it. Forcing a specific tool is how a request is turned into a structured-extraction call where the schema-bearing tool is the only acceptable response. Requiring some tool suits a step that must consult an external system rather than answer from parametric knowledge. Disallowing tools is how a summarising or explaining turn is kept from taking action mid-conversation. Automatic selection is the default and the right choice when the model should judge whether a tool is needed at all."
+    },
+    {
+      "id": "developer-foundations:parallel_tool_use",
+      "examId": "developer-foundations",
+      "slug": "parallel_tool_use",
+      "category": "Tools and MCPs",
+      "title": "Parallel Tool Use",
+      "keywords": [
+        "defining multiple",
+        "consider several available",
+        "requesting multiple tool"
+      ],
+      "content": "A single assistant turn can contain more than one tool-use block when the calls are independent, letting the application execute them concurrently instead of serialising round trips. For a request needing three unrelated lookups, this is the difference between one turn and three.\n\nThe mechanical requirement the exam tests: every tool-use block must be answered with its own matching result before the conversation continues, keyed to that call's identifier. Returning one merged result, or answering only the first call and deferring the rest, leaves the turn incomplete. Parallelism also only applies where calls genuinely do not depend on one another — a sequence in which each call's arguments come from the previous result cannot be parallelised, and recognising that dependency is often the point of the question."
+    },
+    {
+      "id": "developer-foundations:third_party_mcp_trust_boundaries",
+      "examId": "developer-foundations",
+      "slug": "third_party_mcp_trust_boundaries",
+      "category": "Tools and MCPs",
+      "title": "Third-Party MCP Trust Boundaries",
+      "keywords": [
+        "validation/permission scrutiny",
+        "permission and validation",
+        "third-party mcp servers"
+      ],
+      "content": "Connecting a third-party MCP server extends your trust boundary to whoever operates it. That server's tool descriptions and returned content enter the model's context, which means a compromised or malicious server can attempt to influence behaviour through the data it returns — a supply-chain concern, not merely a reliability one.\n\nThe controls are the ordinary ones applied deliberately: evaluate and pin the servers you depend on, scope the credentials you hand them to the minimum required, treat their output as untrusted data rather than instructions, and require human approval for consequential actions that depend on it. Expect scenario questions contrasting a vetted internal server with an arbitrary public one, where the correct answer restricts privilege and adds review rather than trusting the integration because it is convenient."
+    },
+    {
+      "id": "developer-foundations:human_in_the_loop_approval",
+      "examId": "developer-foundations",
+      "slug": "human_in_the_loop_approval",
+      "category": "Security and Safety",
+      "title": "Human-in-the-Loop Approval",
+      "keywords": [
+        "high-impact/irreversible actions",
+        "agent capable",
+        "approval for high-impact/irreversible"
+      ],
+      "content": "Human approval is the checkpoint placed between a model's decision and an action's execution, and its placement is a design decision rather than a blanket policy. Gating everything makes a system unusable and trains reviewers to approve reflexively; gating nothing removes the last barrier before irreversible harm.\n\nThe axes that determine where the gate goes are reversibility, blast radius, and confidence. Sending an email, issuing a refund above a threshold, deleting data, merging to a protected branch, or moving money are the recognisable candidates; reading a record or drafting text for review is not. Two refinements the exam probes: the approval must carry enough context for the reviewer to judge rather than merely confirm, and the threshold belongs in the executing service, since an agent instructed to seek approval can fail to do so."
+    },
+    {
+      "id": "developer-foundations:general_security_and_safety",
+      "examId": "developer-foundations",
+      "slug": "general_security_and_safety",
+      "category": "Security and Safety",
+      "title": "General Security and Safety",
+      "keywords": [
+        "false framing",
+        "llm feature",
+        "sufficiently well-written prompt"
+      ],
+      "content": "The organising principle is that the model is a component that produces text, not a security boundary. Its output is untrusted data, its input may be adversarial, and its behaviour is probabilistic — so authorisation, validation, and enforcement belong to the surrounding system regardless of how carefully the prompt is written.\n\nEverything else in this domain follows from that: least privilege because privilege determines the consequence of any mistake, human approval because irreversible actions need a checkpoint outside the model, sandboxing because generated code must run somewhere it cannot cause harm, output validation because responses feed executors, and audit logging because consequential actions must be reconstructable. The reliable wrong-answer pattern across the whole domain is any option in which a prompt instruction stands in for a technical control."
+    },
+    {
+      "id": "developer-foundations:sandboxing_code_execution_safety",
+      "examId": "developer-foundations",
+      "slug": "sandboxing_code_execution_safety",
+      "category": "Security and Safety",
+      "title": "Sandboxing & Code Execution Safety",
+      "keywords": [
+        "sandboxing",
+        "filesystem",
+        "buggy or manipulated"
+      ],
+      "content": "When an agent can execute code (via the code execution tool, computer use, or a custom tool that runs generated code), that code should run in an isolated, sandboxed environment with constrained access to the network, filesystem, and credentials — limiting the damage if the generated code is buggy or manipulated via injected instructions.\n\nThis is a specific application of least-privilege and defense-in-depth to the particular risk of arbitrary code execution, and the exam tests it as its own scenario flavor: recognizing sandboxing as the answer whenever a described agent capability includes running model-generated code."
+    },
+    {
+      "id": "developer-foundations:prompt_injection_defense",
+      "examId": "developer-foundations",
+      "slug": "prompt_injection_defense",
+      "category": "Security and Safety",
+      "title": "Prompt Injection Defense",
+      "keywords": [
+        "trusted",
+        "standard prompt-injection mitigations",
+        "constraining available actions/tools"
+      ],
+      "content": "Prompt injection is untrusted content attempting to redirect the model's behaviour — instructions hidden in a document, a web page, an email, or a tool result. The defining insight is that no prompting technique eliminates it, so defence is architectural rather than a matter of wording the system prompt more firmly.\n\nThe layers that actually bound the damage: keep untrusted content in the user turn as data rather than mixing it into the system prompt, scope credentials so a successful injection reaches little, require human approval before consequential actions, validate output before anything executes it, and treat tool results — including those from third-party MCP servers — as untrusted input in their own right. Expect the wrong answers to propose 'instruct the model to ignore instructions in the document' as a sufficient control; it raises the bar without being a boundary, which is why privilege and approval carry the weight."
+    },
+    {
+      "id": "developer-foundations:least_privilege",
+      "examId": "developer-foundations",
+      "slug": "least_privilege",
+      "category": "Security and Safety",
+      "title": "Least Privilege",
+      "keywords": [
+        "designing tool/agent",
+        "read customer",
+        "permissions/tool access necessary"
+      ],
+      "content": "Least privilege means the credentials and tool access granted to a model-driven component match exactly what its task requires, and nothing more. A read-only question-answering agent gets read-only access, scoped to the specific records and fields it needs; it does not get a broad or shared credential on the argument that future features might want one.\n\nThe reasoning is that the model's behaviour is probabilistic and its input may be adversarial, so privilege determines the consequence of any mistake or successful injection. This is also why prompt-level restriction is not a substitute: an instruction not to delete records does not remove delete permission. Expect scenarios where an agent is over-provisioned 'for flexibility', and where the correct answer narrows the credential and adds approval gates for irreversible operations."
+    },
+    {
+      "id": "developer-foundations:output_validation",
+      "examId": "developer-foundations",
+      "slug": "output_validation",
+      "category": "Security and Safety",
+      "title": "Output Validation",
+      "keywords": [
+        "before execution",
+        "unintended real-world effects",
+        "including tool-call arguments"
+      ],
+      "content": "Model output is untrusted input to the rest of your system. Whatever the prompt says and however well specified the schema, a response can be malformed, incomplete, or wrong, so validation belongs in the application: parse and check against the schema, verify values fall in permitted ranges or enumerations, and define what happens on failure — retry, fall back, or escalate.\n\nThe stakes rise sharply when output feeds an executor rather than a display. Generated SQL, shell commands, or file paths must be constrained at the execution boundary — parameterised queries, allow-listed operations, least-privileged accounts — because a prompt instruction to 'only generate safe queries' is advisory and logging after the fact does not stop a harmful call. Expect the exam to reject 'instruct the model not to' as a control wherever a technical constraint is available."
+    },
+    {
+      "id": "developer-foundations:logging_audit_trails",
+      "examId": "developer-foundations",
+      "slug": "logging_audit_trails",
+      "category": "Security and Safety",
+      "title": "Logging & Audit Trails",
+      "keywords": [
+        "logs",
+        "significantly degrades security",
+        "standard production practice"
+      ],
+      "content": "Logging for an LLM feature has to capture more than a conventional application log. Reconstructing why an agent did something requires the action taken, the arguments it used, the model output or reasoning that led to it, which tools were available, and any human approval obtained. Outcome-only logging tells you a refund was issued but not what convinced the agent to issue it.\n\nThis matters for three separate purposes the exam tends to blur: debugging (why did this fail), audit and compliance (who authorised this action), and evaluation (building a dataset of real traffic to test against). Expect wrong answers that propose logging only errors, only token usage, or only final outcomes — each is insufficient for at least one of those purposes. Sensitive input still needs the usual redaction discipline before it reaches a log."
+    },
+    {
+      "id": "developer-foundations:claude_code_custom_commands_slash_commands",
+      "examId": "developer-foundations",
+      "slug": "claude_code_custom_commands_slash_commands",
+      "category": "Claude Code",
+      "title": "Claude Code Custom Commands (Slash Commands)",
+      "keywords": [
+        "custom slash",
+        "shortcuts for standardizing",
+        "underlying model weights"
+      ],
+      "content": "Claude Code supports custom slash commands — reusable, named shortcuts (invoked like /command-name) that trigger a predefined prompt or action, typically defined as files within the project. These let a team standardize common requests (e.g., '/review' for a code-review pass) so everyone invokes the same well-tuned instruction instead of retyping it.\n\nOn the exam, expect this positioned alongside CLAUDE.md, Skills, and Hooks as one of Claude Code's core configurable building blocks — know that Commands are specifically about quick, named, repeatable invocations, distinct from CLAUDE.md's role as always-loaded background context."
+    },
+    {
+      "id": "developer-foundations:claude_code_subagents",
+      "examId": "developer-foundations",
+      "slug": "claude_code_subagents",
+      "category": "Claude Code",
+      "title": "Claude Code Subagents",
+      "keywords": [
+        "claude.md entirely",
+        "test-writer or code-reviewer",
+        "narrowly-scoped assistants"
+      ],
+      "content": "Within Claude Code specifically, subagents let you define specialized, narrowly-scoped assistants (e.g., a dedicated 'test-writer' or 'code-reviewer' subagent) that the main session can delegate specific tasks to, each potentially with its own instructions and tool access. This is the Claude Code-specific instance of the more general manager/subagent architecture pattern tested under the Agents & Workflows domain.\n\nThe exam may test the connection between the two: recognizing that Claude Code subagents are a concrete implementation of the same decomposition principle taught more abstractly elsewhere."
+    },
+    {
+      "id": "developer-foundations:claude_code_interaction_modes_interactive_headless_plan_mode",
+      "examId": "developer-foundations",
+      "slug": "claude_code_interaction_modes_interactive_headless_plan_mode",
+      "category": "Claude Code",
+      "title": "Claude Code Interaction Modes (Interactive/Headless/Plan Mode)",
+      "keywords": [
+        "headless/non-interactive mode",
+        "live back-and-forth conversation"
+      ],
+      "content": "Claude Code can run in different interaction modes: interactive (a live back-and-forth session in the terminal), headless/non-interactive (scripted, one-shot invocations suitable for CI pipelines or automation), and plan mode (Claude proposes an approach and waits for explicit approval before making changes, useful for higher-stakes or unfamiliar codebases).\n\nExpect scenario questions asking which mode fits a described need — automating a routine check in a CI pipeline points to headless mode, while a first pass on unfamiliar, sensitive code points to plan mode."
+    },
+    {
+      "id": "developer-foundations:claude_md_configuration",
+      "examId": "developer-foundations",
+      "slug": "claude_md_configuration",
+      "category": "Claude Code",
+      "title": "CLAUDE.md Configuration",
+      "keywords": [
+        "claude.md file",
+        "persistent project-level context/instructions",
+        "project-level context/instructions"
+      ],
+      "content": "CLAUDE.md supplies persistent project context — architecture, conventions, commands, constraints, things a newcomer would need told — that Claude Code reads automatically so it does not have to be re-explained each session. Files resolve across levels, letting a user's personal preferences sit alongside project and enterprise conventions.\n\nThe exam's interest is the boundary against the two enforcement mechanisms. CLAUDE.md is instructional and depends on compliance; settings.json controls what is permitted; hooks make something happen deterministically. So a coding convention belongs in CLAUDE.md, a rule that certain commands need approval belongs in settings.json, and a formatter that must run after every edit belongs in a hook. Expect a scenario where a standard is being followed inconsistently — that inconsistency is the signal to move it out of CLAUDE.md."
+    },
+    {
+      "id": "developer-foundations:settings_json_permissions",
+      "examId": "developer-foundations",
+      "slug": "settings_json_permissions",
+      "category": "Claude Code",
+      "title": "settings.json & Permissions",
+      "keywords": [
+        "store project",
+        "purpose of settings.json",
+        "project or environment"
+      ],
+      "content": "settings.json is Claude Code's configuration layer, applied at user, project, or enterprise level, controlling which tools and actions are permitted and which require explicit approval. Rules can allow or deny specific commands and file operations, so a team can permit routine reads and edits while gating anything destructive.\n\nThe contrast the exam draws is with CLAUDE.md: settings.json governs what Claude is permitted to do and is enforced, while CLAUDE.md supplies context and conventions and depends on compliance. A permission that must hold belongs in settings; a preference about style belongs in CLAUDE.md. Because settings resolve across levels, an enterprise or project rule can constrain what an individual user's configuration allows — useful when a scenario asks how an organisation enforces a standard across many developers."
+    },
+    {
+      "id": "developer-foundations:skills",
+      "examId": "developer-foundations",
+      "slug": "skills",
+      "category": "Claude Code",
+      "title": "Skills",
+      "keywords": [
+        "packaged instructions/capabilities",
+        "package reusable instructions/workflows",
+        "instructions/workflows for specific"
+      ],
+      "content": "Skills package reusable instructions so a recurring task is performed consistently without being re-explained. A Skill carries the procedure, conventions, and reference material for a type of work, and is loaded when that work comes up.\n\nThe exam's interest is almost entirely in the boundary against MCP. A Skill is instructional content — it changes how Claude approaches a task using capabilities it already has. An MCP server is an integration that supplies new tools or data from an external system. So 'apply our house style to this document' is a Skill; 'read records out of our CRM' needs MCP. Expect a question that describes a repeated procedure with no external system involved, where the wrong answers propose building an MCP server for something that requires no new backend action."
+    },
+    {
+      "id": "developer-foundations:hooks",
+      "examId": "developer-foundations",
+      "slug": "hooks",
+      "category": "Claude Code",
+      "title": "Hooks",
+      "keywords": [
+        "custom scripts/logic",
+        "allow custom scripts/logic",
+        "enabling custom validation"
+      ],
+      "content": "Hooks let custom scripts run automatically at defined points in Claude Code's workflow — before or after a tool call, at session start, or when a prompt is submitted — so validation, logging, formatting, or policy checks happen without anyone remembering to invoke them. A hook that runs a formatter after every file edit, or blocks a commit when tests fail, turns a convention into an enforced step.\n\nThe distinction the exam draws is between hooks and instructions: CLAUDE.md asks Claude to do something and depends on it complying, whereas a hook executes deterministically outside the model. Anything that must happen every time belongs in a hook. Expect scenarios where a team's standard is being followed inconsistently — the answer is to move it from guidance into a hook."
+    },
+    {
+      "id": "developer-foundations:regression_testing_golden_datasets",
+      "examId": "developer-foundations",
+      "slug": "regression_testing_golden_datasets",
+      "category": "Eval, Testing, and Debugging",
+      "title": "Regression Testing & Golden Datasets",
+      "keywords": [
+        "golden dataset"
+      ],
+      "content": "A golden dataset is a curated set of representative inputs with known-good expected outputs, used as a stable benchmark to measure quality over time or across changes. Automated regression tests run new prompt/model versions against this dataset before deployment to catch quality regressions early.\n\nThe smallest domain on the exam (2.6%), but still tested via clear scenario questions favoring 'test against a golden dataset before deploying' over ad hoc spot-checking."
+    },
+    {
+      "id": "developer-foundations:general_eval_testing_and_debugging",
+      "examId": "developer-foundations",
+      "slug": "general_eval_testing_and_debugging",
+      "category": "Eval, Testing, and Debugging",
+      "title": "General Eval, Testing, and Debugging",
+      "keywords": [
+        "prompt/integration change",
+        "comparing before/after behavior",
+        "increase temperature until"
+      ],
+      "content": "Evaluation is the discipline of knowing whether a change helped. It rests on a representative dataset with known-good expectations, a scoring method appropriate to the output (exact match or schema validation where the answer is objective, model-as-judge or human review where it is not), and running that set before and after any change to prompt, model, or configuration.\n\nThe habit the exam rewards is treating prompts and model choices as things that require regression testing, exactly like code. Ad hoc spot-checking of a few outputs feels like verification but detects neither small systematic regressions nor improvements. Expect scenarios where a team is about to ship a prompt change or tier switch on the strength of a handful of examples, where the correct answer is to score a fixed evaluation set and compare."
+    },
+    {
+      "id": "developer-foundations:model_as_judge_evaluation",
+      "examId": "developer-foundations",
+      "slug": "model_as_judge_evaluation",
+      "category": "Eval, Testing, and Debugging",
+      "title": "Model-as-Judge Evaluation",
+      "keywords": [
+        "human reviewers",
+        "assess/score the quality",
+        "against defined criteria"
+      ],
+      "content": "Model-as-judge uses a model to score outputs against stated criteria, making it possible to evaluate qualities like tone, faithfulness, or helpfulness that no string comparison captures. It scales far beyond manual review, which is why it appears wherever an exam scenario needs quality measured on subjective dimensions.\n\nIt works only as well as its rubric. A judge needs explicit criteria, ideally a scale with described anchor points, and calibration against human judgements on a sample before its scores are trusted. Known weaknesses the exam may probe: judges can favour longer or more confident-sounding answers, and using the same model to produce and grade its own work introduces correlated blind spots. Treat it as a measurement instrument requiring validation, not an oracle — and prefer deterministic checks wherever the property is objectively checkable."
+    },
+    {
+      "id": "developer-foundations:debugging_tool_call_failures",
+      "examId": "developer-foundations",
+      "slug": "debugging_tool_call_failures",
+      "category": "Eval, Testing, and Debugging",
+      "title": "Debugging Tool-Call Failures",
+      "keywords": [
+        "tool execution/integration",
+        "wrong format",
+        "indefinitely without investigation"
+      ],
+      "content": "When a model calls a tool wrongly, the description and parameter schema are the first place to look, because they are its only specification of that interface. Systematically malformed arguments, a tool that is never called when it should be, or the wrong tool chosen among several usually trace to a vague description, an unstated format, missing units, or overlapping tool responsibilities.\n\nThe diagnostic order the exam expects is: inspect the definition, then the arguments actually produced, then whether the error was reported back to the model in a form it could act on. Reaching first for a more capable tier or a temperature change is the wrong-answer pattern — those mask an underspecified contract rather than fixing it. A tool result returned as a flagged error with a useful message often lets the model correct itself on the next turn."
+    }
+  ]
+}

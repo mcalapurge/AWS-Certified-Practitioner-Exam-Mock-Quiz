@@ -1,11 +1,16 @@
-import { lazy, Suspense, useState } from "react";
-import { ScrollText } from "lucide-react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Asterisk, Cloud } from "lucide-react";
 import { useQuiz } from "@/features/quiz/hooks/useQuiz";
 import { examMeta } from "@/features/quiz/lib/exams";
 import { SetupScreen } from "@/features/quiz/components/SetupScreen";
 import { QuizScreen } from "@/features/quiz/components/QuizScreen";
 import { ResultsScreen } from "@/features/quiz/components/ResultsScreen";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useProvider } from "@/hooks/useProvider";
+import { PROVIDER_LABEL } from "@/lib/provider";
+import type { ExamId, Provider } from "@/features/quiz/types";
+import { examsForProvider } from "@/features/quiz/lib/exams";
 
 // Study mode pulls in react-markdown + remark-gfm + ~400KB of section JSON.
 // Lazy-load so the practice flow stays lean for users who never open notes.
@@ -16,6 +21,9 @@ const StudyScreen = lazy(() =>
 );
 
 export default function App() {
+  const { provider, setProvider } = useProvider();
+  const ProviderIcon = provider === "claude" ? Asterisk : Cloud;
+
   const {
     view,
     inProgress,
@@ -28,27 +36,45 @@ export default function App() {
     finishQuiz,
     exitToSetup,
     restart,
-  } = useQuiz();
+  } = useQuiz(provider);
 
   // Study mode is independent of the quiz state machine — it overlays the
   // setup screen rather than interrupting an in-progress quiz.
   const [studyOpen, setStudyOpen] = useState(false);
+  const [studyExamId, setStudyExamId] = useState<ExamId>(
+    () => examsForProvider(provider)[0].examId
+  );
+
+  // When the provider switches, reset studyExamId to the new provider's first
+  // exam so StudyScreen never remounts with a cross-provider initialExamId.
+  useEffect(() => {
+    setStudyExamId(examsForProvider(provider)[0].examId);
+  }, [provider]);
 
   return (
     <div className="min-h-full flex flex-col">
       <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
         <div className="max-w-3xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 text-sm font-semibold tracking-tight">
+          <div className="flex items-center gap-2.5 text-sm font-semibold tracking-tight font-display">
             <span className="grid place-items-center size-8 rounded-md bg-primary text-primary-foreground">
-              <ScrollText className="size-4" />
+              <ProviderIcon className="size-4" />
             </span>
-            <span>AWS Exam Practice</span>
+            <span>{PROVIDER_LABEL[provider]} Exam Practice</span>
           </div>
-          {view.kind === "quiz" && (
-            <span className="text-xs text-muted-foreground">
-              {examMeta[view.state.config.examId].examShort} •{" "}
-              {view.state.config.feedback === "instant" ? "instant" : "submit at end"}
-            </span>
+          {view.kind === "setup" ? (
+            <Tabs value={provider} onValueChange={(v) => setProvider(v as Provider)}>
+              <TabsList>
+                <TabsTrigger value="aws">AWS</TabsTrigger>
+                <TabsTrigger value="claude">Claude</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          ) : (
+            view.kind === "quiz" && (
+              <span className="text-xs text-muted-foreground">
+                {examMeta[view.state.config.examId].examShort} •{" "}
+                {view.state.config.feedback === "instant" ? "instant" : "submit at end"}
+              </span>
+            )
           )}
         </div>
       </header>
@@ -62,17 +88,27 @@ export default function App() {
       >
         {studyOpen && view.kind === "setup" && (
           <Suspense fallback={<StudyFallback />}>
-            <StudyScreen onExit={() => setStudyOpen(false)} />
+            <StudyScreen
+              key={provider}
+              provider={provider}
+              initialExamId={studyExamId}
+              onExit={() => setStudyOpen(false)}
+            />
           </Suspense>
         )}
         {!studyOpen && view.kind === "setup" && (
           <SetupScreen
+            key={provider}
+            provider={provider}
             inProgress={inProgress}
             starting={starting}
             onStart={startQuiz}
             onResume={resumeQuiz}
             onDiscard={discardInProgress}
-            onOpenStudy={() => setStudyOpen(true)}
+            onOpenStudy={(examId) => {
+              setStudyExamId(examId);
+              setStudyOpen(true);
+            }}
           />
         )}
         {view.kind === "quiz" && (
@@ -95,7 +131,7 @@ export default function App() {
 
       <footer className="text-center px-6 pb-6">
         <span className="text-xs text-muted-foreground">
-          Questions sourced from local markdown files. Progress saved to your browser only.
+          Questions sourced from local data files. Progress saved to your browser only.
         </span>
       </footer>
     </div>

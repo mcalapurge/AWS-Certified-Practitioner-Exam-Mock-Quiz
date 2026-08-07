@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { AnswerRecord, QuizConfig, QuizResult, QuizState } from "../types";
+import type { AnswerRecord, Provider, QuizConfig, QuizResult, QuizState } from "../types";
 import { loadExam } from "../lib/exams";
 import { buildQuiz, emptyAnswer, finalize, isAnswerCorrect } from "../lib/scoring";
 import { mapQuestionToTopics } from "../../study/lib/topics";
@@ -18,17 +18,21 @@ export type View =
 
 const PERSIST_DEBOUNCE_MS = 200;
 
-export function useQuiz() {
+// AWS and Claude keep independent in-progress quizzes and history — see
+// storage.ts. `provider` is only ever changed while `view.kind === "setup"`
+// (the switcher is hidden otherwise), so re-hydrating on provider change
+// never has to reconcile against an active quiz/results view.
+export function useQuiz(provider: Provider) {
   const [view, setView] = useState<View>({ kind: "setup" });
   const [inProgress, setInProgress] = useState<QuizState | null>(null);
   // True while the dynamic-imported exam JSON is being fetched.
   const [starting, setStarting] = useState(false);
 
-  // Hydrate any saved quiz on mount.
+  // Hydrate the saved quiz for whichever provider is active.
   useEffect(() => {
-    const saved = loadInProgress();
-    if (saved && saved.questions?.length) setInProgress(saved);
-  }, []);
+    const saved = loadInProgress(provider);
+    setInProgress(saved && saved.questions?.length ? saved : null);
+  }, [provider]);
 
   // Debounced persistence so rapid keypresses don't thrash localStorage.
   const persistTimer = useRef<number | null>(null);
@@ -36,25 +40,28 @@ export function useQuiz() {
     if (view.kind !== "quiz") return;
     if (persistTimer.current) window.clearTimeout(persistTimer.current);
     persistTimer.current = window.setTimeout(() => {
-      saveInProgress(view.state);
+      saveInProgress(provider, view.state);
     }, PERSIST_DEBOUNCE_MS);
     return () => {
       if (persistTimer.current) window.clearTimeout(persistTimer.current);
     };
-  }, [view]);
+  }, [view, provider]);
 
-  const startQuiz = useCallback(async (config: QuizConfig) => {
-    setStarting(true);
-    try {
-      const exam = await loadExam(config.examId);
-      const state = buildQuiz(exam, config);
-      saveInProgress(state);
-      setInProgress(state);
-      setView({ kind: "quiz", state });
-    } finally {
-      setStarting(false);
-    }
-  }, []);
+  const startQuiz = useCallback(
+    async (config: QuizConfig) => {
+      setStarting(true);
+      try {
+        const exam = await loadExam(config.examId);
+        const state = buildQuiz(exam, config);
+        saveInProgress(provider, state);
+        setInProgress(state);
+        setView({ kind: "quiz", state });
+      } finally {
+        setStarting(false);
+      }
+    },
+    [provider]
+  );
 
   const resumeQuiz = useCallback(() => {
     if (!inProgress) return;
@@ -62,9 +69,9 @@ export function useQuiz() {
   }, [inProgress]);
 
   const discardInProgress = useCallback(() => {
-    clearInProgress();
+    clearInProgress(provider);
     setInProgress(null);
-  }, []);
+  }, [provider]);
 
   const updateQuiz = useCallback((next: QuizState) => {
     setView({ kind: "quiz", state: next });
@@ -76,17 +83,17 @@ export function useQuiz() {
     const result = finalize(view.state);
     // Side effects run before setState so React StrictMode's double-invocation
     // of updater functions doesn't double-fire localStorage writes.
-    appendHistory(result);
+    appendHistory(provider, result);
     if (result.config.feedback === "end") {
       // Instant mode flags topics in real-time on each lock — re-flagging here
       // would double-count `hits`. Only end-mode aggregates at submission.
       addIncorrectTopicsToGuide(result);
     }
-    clearInProgress();
+    clearInProgress(provider);
     setInProgress(null);
     setView({ kind: "results", result });
     window.dispatchEvent(new Event("examprep:study-guide-changed"));
-  }, [view]);
+  }, [view, provider]);
 
   // Instant-feedback variant of locking: applies the lock and, if the answer
   // was wrong, immediately maps the question to study topics so the guide

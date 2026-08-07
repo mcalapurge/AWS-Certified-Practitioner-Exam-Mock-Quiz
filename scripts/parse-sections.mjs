@@ -15,6 +15,7 @@ const exams = [
     id: "cloud-practitioner",
     name: "AWS Certified Cloud Practitioner",
     short: "CLF-C02",
+    provider: "aws",
     dir: path.join(repoRoot, "AWS-Certified-Cloud-Practitioner-Notes", "sections"),
     nested: false,
   },
@@ -22,10 +23,41 @@ const exams = [
     id: "ai-practitioner",
     name: "AWS Certified AI Practitioner",
     short: "AIF-C01",
+    provider: "aws",
     dir: path.join(repoRoot, "aws-certified-ai-practitioner-study-notes", "section"),
     nested: true,
   },
 ];
+
+// Exams whose sections ship as a single pre-shaped JSON file rather than a
+// folder of markdown to parse. The source already matches the app's Section
+// shape ({id, examId, slug, category, title, keywords, content}), so this is
+// mostly a passthrough with a regenerated envelope.
+const prebuiltExams = [
+  {
+    id: "developer-foundations",
+    name: "Claude Certified Developer – Foundations",
+    short: "CCDV-F",
+    provider: "claude",
+    source: path.join(repoRoot, "scripts", "sources", "ccdvf_study_guide.json"),
+  },
+  {
+    id: "associate-foundations",
+    name: "Claude Certified Associate – Foundations",
+    short: "CCAO-F",
+    provider: "claude",
+    source: path.join(repoRoot, "scripts", "sources", "ccao_study_guide.json"),
+  },
+];
+
+// Questions and study sections for a given provider live in their own
+// subfolder (e.g. data/aws/, data/claude/) so the two "apps" the provider
+// switch flips between keep visibly separate content on disk.
+async function providerOutDir(provider) {
+  const dir = path.join(outDir, provider);
+  await mkdir(dir, { recursive: true });
+  return dir;
+}
 
 function titleFromContent(content, fallback) {
   // Use the first markdown H1 as the title; fall back to a humanized filename.
@@ -176,8 +208,19 @@ async function readSectionFile(filePath, examId, category) {
   };
 }
 
+const REQUIRED_SECTION_FIELDS = ["id", "examId", "slug", "category", "title", "keywords", "content"];
+
+function validateSection(s, sourcePath) {
+  const missing = REQUIRED_SECTION_FIELDS.filter((f) => !(f in s));
+  if (missing.length) {
+    throw new Error(
+      `Section missing required field(s) [${missing.join(", ")}] in ${path.basename(sourcePath)}: id=${s.id ?? "(unknown)"}`
+    );
+  }
+}
+
 async function build() {
-  if (!existsSync(outDir)) await mkdir(outDir, { recursive: true });
+  await mkdir(outDir, { recursive: true });
 
   // A lightweight cross-exam index — id, examId, title, keywords — that the
   // app eager-loads so it can map incorrect questions to topics without
@@ -228,11 +271,44 @@ async function build() {
       sections,
     };
 
-    const outPath = path.join(outDir, `${exam.id}.json`);
+    const outPath = path.join(await providerOutDir(exam.provider), `${exam.id}.json`);
     await writeFile(outPath, JSON.stringify(out, null, 2));
     console.log(`[sections] ${exam.id}: ${sections.length} sections`);
 
     for (const s of sections) {
+      topicIndex.push({
+        id: s.id,
+        examId: s.examId,
+        slug: s.slug,
+        category: s.category,
+        title: s.title,
+        keywords: s.keywords,
+      });
+    }
+  }
+
+  for (const exam of prebuiltExams) {
+    if (!existsSync(exam.source)) {
+      console.warn(`[sections] Skipping ${exam.id}: ${exam.source} not found`);
+      continue;
+    }
+    const raw = JSON.parse(await readFile(exam.source, "utf8"));
+    for (const s of raw.sections) validateSection(s, exam.source);
+
+    const out = {
+      examId: exam.id,
+      examName: exam.name,
+      examShort: exam.short,
+      generatedAt: new Date().toISOString(),
+      sectionCount: raw.sections.length,
+      sections: raw.sections,
+    };
+
+    const outPath = path.join(await providerOutDir(exam.provider), `${exam.id}.json`);
+    await writeFile(outPath, JSON.stringify(out, null, 2));
+    console.log(`[sections] ${exam.id}: ${raw.sections.length} sections`);
+
+    for (const s of raw.sections) {
       topicIndex.push({
         id: s.id,
         examId: s.examId,

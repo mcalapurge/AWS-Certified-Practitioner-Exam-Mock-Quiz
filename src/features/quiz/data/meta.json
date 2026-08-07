@@ -3,12 +3,28 @@
     "examId": "cloud-practitioner",
     "examName": "AWS Certified Cloud Practitioner",
     "examShort": "CLF-C02",
-    "questionCount": 1142
+    "questionCount": 1142,
+    "provider": "aws"
   },
   "ai-practitioner": {
     "examId": "ai-practitioner",
     "examName": "AWS Certified AI Practitioner",
     "examShort": "AIF-C01",
-    "questionCount": 346
+    "questionCount": 346,
+    "provider": "aws"
+  },
+  "developer-foundations": {
+    "examId": "developer-foundations",
+    "examName": "Claude Certified Developer – Foundations",
+    "examShort": "CCDV-F",
+    "questionCount": 226,
+    "provider": "claude"
+  },
+  "associate-foundations": {
+    "examId": "associate-foundations",
+    "examName": "Claude Certified Associate – Foundations",
+    "examShort": "CCAO-F",
+    "questionCount": 487,
+    "provider": "claude"
   }
 }

@@ -6,23 +6,30 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
-import type { ExamId, FeedbackMode, QuizConfig, QuizState } from "../types";
-import { examMeta, examMetaList } from "../lib/exams";
+import type { ExamId, FeedbackMode, Provider, QuizConfig, QuizState } from "../types";
+import { examsForProvider } from "../lib/exams";
 import { ResumeBanner } from "./ResumeBanner";
 import { useStudyGuide } from "../../study/hooks/useStudyGuide";
 
 const LENGTH_PRESETS = [10, 25, 50, 65];
 
+const PROVIDER_TITLE: Record<Provider, string> = {
+  aws: "AWS Exam Practice",
+  claude: "Claude Exam Practice",
+};
+
 interface Props {
+  provider: Provider;
   inProgress: QuizState | null;
   starting: boolean;
   onStart: (config: QuizConfig) => void;
   onResume: () => void;
   onDiscard: () => void;
-  onOpenStudy: () => void;
+  onOpenStudy: (examId: ExamId) => void;
 }
 
 export function SetupScreen({
+  provider,
   inProgress,
   starting,
   onStart,
@@ -30,12 +37,13 @@ export function SetupScreen({
   onDiscard,
   onOpenStudy,
 }: Props) {
-  const [examId, setExamId] = useState<ExamId>("ai-practitioner");
+  const exams = useMemo(() => examsForProvider(provider), [provider]);
+  const [examId, setExamId] = useState<ExamId>(exams[0].examId);
   const [feedback, setFeedback] = useState<FeedbackMode>("instant");
   const [length, setLength] = useState<number>(25);
   const [shuffle, setShuffle] = useState<boolean>(true);
 
-  const exam = examMeta[examId];
+  const exam = exams.find((e) => e.examId === examId) ?? exams[0];
   const maxLen = exam.questionCount;
 
   const { entriesFor } = useStudyGuide();
@@ -48,8 +56,7 @@ export function SetupScreen({
     return Array.from(set).sort((a, b) => a - b);
   }, [maxLen]);
 
-  const totalQuestions =
-    examMeta["cloud-practitioner"].questionCount + examMeta["ai-practitioner"].questionCount;
+  const totalQuestions = exams.reduce((sum, e) => sum + e.questionCount, 0);
 
   return (
     <div>
@@ -57,37 +64,18 @@ export function SetupScreen({
         <ResumeBanner inProgress={inProgress} onResume={onResume} onDiscard={onDiscard} />
       )}
 
-      {guideRemaining > 0 && (
-        <button
-          type="button"
-          onClick={onOpenStudy}
-          className="mb-6 w-full flex items-center gap-3 border border-primary/40 bg-primary/5 px-4 py-3 text-left transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          <Sparkles className="size-4 text-primary shrink-0" />
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-medium">
-              {guideRemaining} weak topic{guideRemaining === 1 ? "" : "s"} for {exam.examShort}
-            </div>
-            <div className="text-xs text-muted-foreground">
-              From recent incorrect answers. Tap to review and tick off.
-            </div>
-          </div>
-          <ArrowRight className="size-4 text-muted-foreground shrink-0" />
-        </button>
-      )}
-
       <Card>
         <CardHeader>
-          <CardTitle>AWS Exam Practice</CardTitle>
+          <CardTitle className="font-display">{PROVIDER_TITLE[provider]}</CardTitle>
           <CardDescription>
-            {totalQuestions} questions across two exams. Pick a setup and go.
+            {totalQuestions} questions across {exams.length === 1 ? "one exam" : `${exams.length} exams`}. Pick a setup and go.
           </CardDescription>
         </CardHeader>
 
         <CardContent className="flex flex-col gap-7">
           <Section title="Exam">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {examMetaList.map((e) => (
+            <div className={cn("grid gap-3", exams.length > 1 && "sm:grid-cols-2")}>
+              {exams.map((e) => (
                 <OptionCard
                   key={e.examId}
                   selected={examId === e.examId}
@@ -164,7 +152,7 @@ export function SetupScreen({
           </Section>
 
           <div className="flex justify-between items-center pt-2 gap-3 flex-wrap">
-            <Button variant="outline" onClick={onOpenStudy} disabled={starting}>
+            <Button variant="outline" onClick={() => onOpenStudy(examId)} disabled={starting}>
               <BookOpen />
               Study notes
             </Button>
@@ -186,6 +174,25 @@ export function SetupScreen({
               )}
             </Button>
           </div>
+
+          {guideRemaining > 0 && (
+            <button
+              type="button"
+              onClick={() => onOpenStudy(examId)}
+              className="w-full flex items-center gap-3 border border-primary/40 bg-primary/5 px-4 py-3 text-left transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Sparkles className="size-4 text-primary shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium">
+                  {guideRemaining} weak topic{guideRemaining === 1 ? "" : "s"} for {exam.examShort}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  From recent incorrect answers. Tap to review and tick off.
+                </div>
+              </div>
+              <ArrowRight className="size-4 text-muted-foreground shrink-0" />
+            </button>
+          )}
         </CardContent>
       </Card>
     </div>
