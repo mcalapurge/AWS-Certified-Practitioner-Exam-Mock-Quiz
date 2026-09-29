@@ -94,6 +94,7 @@ npm run parse      # regenerate JSON datasets from the markdown + prebuilt sourc
 npm run dev        # start Vite on http://localhost:5173 (parse runs first; PORT env overrides)
 npm run build      # tsc --noEmit && vite build (parse runs first)
 npm run preview    # preview the production build
+npm run test:e2e   # Playwright browser tests against the built app (run `npm run build` first)
 npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
 ```
 
@@ -381,3 +382,12 @@ example.
 - Don't downgrade React below 19 — Radix's current minor versions require it.
 - Don't put localStorage writes or other side effects inside a `setState`
   updater — StrictMode runs them twice in dev.
+
+## Browser tests
+
+`tests/e2e/app.spec.ts` (Playwright, Chromium) drives the production build served
+by `vite preview` on port 4173: setup-screen screenshots at five viewports, the
+AWS ⇄ Claude toggle, a quiz start, and study notes. Each screenshot lands in
+`test-results/` and CI uploads every PNG as its own unzipped artifact. Build with
+the submodules initialised first, otherwise the parsers overwrite the committed
+AWS data.

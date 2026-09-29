@@ -16,6 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # The build runs the parsers, which read the content submodules.
+          # Without them the parsers would overwrite the committed AWS data
+          # with an empty set.
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,3 +40,41 @@ jobs:
 
       - name: Topic mapping accuracy
         run: npm run check-data
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser tests
+        timeout-minutes: 6
+        run: npm run test:e2e
+
+      # upload-artifact only skips the zip for a single file, so call its client
+      # library directly and upload each screenshot as its own unzipped artifact.
+      # Unzipped PNGs open in the browser from the run page.
+      - name: Install artifact client
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/artifact-client"
+          npm install --prefix "$RUNNER_TEMP/artifact-client" @actions/artifact@6.2.1
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { basename, dirname } = await import('node:path')
+            const { DefaultArtifactClient } = await import(
+              `${process.env.RUNNER_TEMP}/artifact-client/node_modules/@actions/artifact/lib/artifact.js`
+            )
+            const client = new DefaultArtifactClient()
+            const screenshots = await glob.create('test-results/*/*.png')
+            for await (const file of screenshots.globGenerator()) {
+              const { id } = await client.uploadArtifact(basename(file), [file], dirname(file), {
+                skipArchive: true,
+                retentionDays: 7,
+              })
+              core.info(`Uploaded ${basename(file)} as artifact ${id}`)
+            }
