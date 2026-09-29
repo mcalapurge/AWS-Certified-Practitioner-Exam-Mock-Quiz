@@ -7,3 +7,5 @@ aws-certified-ai-practitioner-study-notes
 src/features/quiz/data
 src/features/study/data
 LICENSE
+playwright-report
+test-results
