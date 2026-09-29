@@ -52,7 +52,7 @@ repos above and pulled in via `git submodule update --remote`.
 ├── .gitmodules                                     # submodule pins
 ├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, check-data
 ├── .github/workflows/main.yaml                     # CD on push to main — build + S3 deploy
-├── .claude/skills/                                 # repo workflows: add-exam, check-data, deploy, sync-upstream
+├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream
 ├── AGENTS.md                                       # this file
 ├── CLAUDE.md                                       # pointer to AGENTS.md
 ├── LICENSE                                         # MIT
@@ -118,12 +118,14 @@ Prefer them over improvising — they encode this repo's conventions and footgun
   the markdown-submodule and prebuilt-JSON paths; mirrors "Adding a new exam" below).
 - **`check-data`** — audit the weak-topic keyword mapping (`npm run check-data`).
 - **`sync-upstream`** — bump the AWS submodule pins and regenerate the datasets.
-- **`deploy`** — ship to production. CI (`.github/workflows/ci.yaml`) runs on
-  every push: `npm run format:check`, `npm run typecheck`, `npm run check-data`
-  (run all locally with `npm run ci`, plus `npm run format` to fix style). CD
-  (`.github/workflows/main.yaml`) runs on **every** push to `main` and does
-  `aws s3 sync … --delete` to the production bucket — public and effectively
-  irreversible, so get an explicit user yes before pushing to `main`.
+
+## CI/CD
+
+CI (`.github/workflows/ci.yaml`) runs on every push: `npm run format:check`,
+`npm run typecheck`, `npm run check-data` (run locally with `npm run ci`;
+`npm run format` fixes style). CD (`.github/workflows/main.yaml`) deploys to S3
+(`aws s3 sync … --delete`) on every push to `main` — public and effectively
+irreversible, so get an explicit user yes before pushing to `main`.
 
 ## Folder conventions
 
