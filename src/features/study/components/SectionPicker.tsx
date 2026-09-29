@@ -57,7 +57,8 @@ export function SectionPicker({ groups, selectedId, onSelect, adornments }: Prop
                       "hover:bg-accent hover:text-accent-foreground",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                       isCurrent && "bg-accent text-accent-foreground font-medium",
-                      adorn?.mastered && "text-muted-foreground line-through decoration-muted-foreground/50"
+                      adorn?.mastered &&
+                        "text-muted-foreground line-through decoration-muted-foreground/50",
                     )}
                     aria-current={isCurrent ? "page" : undefined}
                   >
@@ -74,7 +75,7 @@ export function SectionPicker({ groups, selectedId, onSelect, adornments }: Prop
                       <ChevronRight
                         className={cn(
                           "size-3.5 text-muted-foreground transition-opacity",
-                          isCurrent ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                          isCurrent ? "opacity-100" : "opacity-0 group-hover:opacity-100",
                         )}
                       />
                     </span>

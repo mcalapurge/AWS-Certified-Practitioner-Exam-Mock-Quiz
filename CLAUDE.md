@@ -31,6 +31,6 @@ follow when modifying state or styling.
 - Common workflows are skills under `.claude/skills/`: `add-exam`, `check-data`
   (`npm run check-data`), `sync-upstream`, and `deploy`. Prefer them over
   improvising.
-- **Deploy footgun:** CI ships to S3 only when a commit pushed to `main` has
-  the literal `[deploy]` in its message — any other push silently does nothing.
-  Use the `deploy` skill and confirm with the user first.
+- **CI/CD:** CI (prettier, typecheck, check-data) runs on every push; every push
+  to `main` deploys to S3. Run `npm run ci` before pushing. Use the `deploy`
+  skill and confirm with the user before pushing to `main`.

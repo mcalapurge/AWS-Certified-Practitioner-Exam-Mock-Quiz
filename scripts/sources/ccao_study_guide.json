@@ -98,11 +98,7 @@
       "slug": "task_decomposition_breaking_big_requests_into_steps",
       "category": "Prompting and Task Execution",
       "title": "Task Decomposition (Breaking Big Requests into Steps)",
-      "keywords": [
-        "decomposition",
-        "prompt is always",
-        "before requesting"
-      ],
+      "keywords": ["decomposition", "prompt is always", "before requesting"],
       "content": "Large, multi-part deliverables (a full report, a complete analysis, a multi-stage plan) are generally better handled as a sequence of smaller, reviewable steps than as one giant request. The value isn't just organizational — it's that each stage becomes a checkpoint where you can catch and fix a misunderstanding before it propagates into a much larger piece of finished work.\n\nExpect questions contrasting a single all-at-once mega-prompt against a staged approach (outline → draft → review → finalize), where the staged approach is correct specifically because of the review opportunity it creates. A related trap: decomposing into steps but never actually reviewing between them forfeits most of the benefit."
     },
     {
@@ -281,12 +277,7 @@
       "slug": "claude_model_tiers_for_business_tasks",
       "category": "Product and Model Selection",
       "title": "Claude Model Tiers for Business Tasks",
-      "keywords": [
-        "model tier",
-        "tier choice",
-        "lighter tier",
-        "moderately complex"
-      ],
+      "keywords": ["model tier", "tier choice", "lighter tier", "moderately complex"],
       "content": "Claude's model tiers trade off speed/cost against depth of reasoning capability: lighter, faster tiers suit simple, high-volume, low-stakes tasks (quick classification, simple formatting), while more capable tiers suit nuanced, high-stakes, judgment-heavy work (a sensitive client communication, a complex synthesis). Defaulting to the most capable tier for everything wastes cost/speed without a quality benefit on simple tasks; defaulting to the lightest tier for everything risks insufficient quality on complex ones.\n\nExpect scenario questions naming a specific task and asking which tier fits — match task complexity/stakes to tier capability, and recognize that empirically testing a lighter tier's sufficiency is a reasonable way to validate the choice for a recurring task."
     },
     {
@@ -295,12 +286,7 @@
       "slug": "claude_plans_and_business_deployment_considerations",
       "category": "Product and Model Selection",
       "title": "Claude Plans and Business Deployment Considerations",
-      "keywords": [
-        "deployment",
-        "individual accounts",
-        "plan tier",
-        "plan permits"
-      ],
+      "keywords": ["deployment", "individual accounts", "plan tier", "plan permits"],
       "content": "Organization-oriented plans/deployments typically add centralized administration, consistent policy enforcement, and collaboration features that individual personal accounts don't provide — value that grows as a team's size and coordination needs grow. Business users should understand their organization's actual plan and its data-handling implications, rather than assuming based on personal past experience or what an unrelated organization uses.\n\nExpect questions on why an organization might move from individual accounts toward a managed deployment as it scales, and on checking with policy/an administrator rather than assuming when uncertain about what a given plan permits."
     },
     {
@@ -361,11 +347,7 @@
       "slug": "integrating_claude_into_existing_business_processes",
       "category": "Workflow Integration and Solution Design",
       "title": "Integrating Claude into Existing Business Processes",
-      "keywords": [
-        "integration",
-        "entire process",
-        "existing business"
-      ],
+      "keywords": ["integration", "entire process", "existing business"],
       "content": "Sound integration targets specific high-value steps (drafting, extraction, summarization) within an existing process while preserving necessary existing controls and human decision points elsewhere — not wholesale replacement of the whole process. Legally required review steps must still happen as mandated; AI can support preparation for them but can't substitute for them. Starting with a small, well-defined pilot step makes it easier to evaluate results before expanding.\n\nExpect scenarios asking where within an existing process (onboarding, invoicing, hiring, publishing) Claude should be integrated — the correct pattern always keeps human ownership of the actual decision/final action while AI accelerates the supporting work."
     },
     {
@@ -517,10 +499,7 @@
       "slug": "recognizing_when_human_review_or_escalation_is_required",
       "category": "Governance, Risk, and Responsible Use",
       "title": "Recognizing When Human Review or Escalation Is Required",
-      "keywords": [
-        "escalation",
-        "human expertise"
-      ],
+      "keywords": ["escalation", "human expertise"],
       "content": "Specialized expertise, significant potential consequences, or domains like legal/safety/compliance are the substantive signals for escalating to a qualified human rather than resolving something solely through AI assistance — not task length or how long it took. Existing organizational escalation policies continue to apply regardless of whether AI was used in drafting related content, and when genuinely uncertain whether something is serious enough, erring toward raising it is the safer default.\n\nExpect scenarios embedding a legal threat, a safety hazard, or a conflict-of-interest question inside an otherwise routine drafting task — the correct answer always escalates the substantive issue rather than resolving it via the AI-drafted content alone."
     },
     {
@@ -544,12 +523,7 @@
       "slug": "risk_categorization_for_high_stakes_outputs",
       "category": "Governance, Risk, and Responsible Use",
       "title": "Risk Categorization for High-Stakes Outputs",
-      "keywords": [
-        "risk categorization",
-        "risk level",
-        "risk category",
-        "risk categories"
-      ],
+      "keywords": ["risk categorization", "risk level", "risk category", "risk categories"],
       "content": "Categorizing content by risk level (based on the real-world consequences if it's wrong — financial, legal, medical, safety, reputational) enables proportional review effort, rather than treating everything identically. Critically, the same type of content can fall into different risk categories depending on context — an internal brainstorm is generally low-risk, but the same kind of written explanation becomes high-risk if it's about to go to regulators or the public, so risk category should be reassessed when context/audience changes.\n\nExpect scenarios testing this context-dependence directly, plus the reasonable default of erring toward the higher of two plausible categories when genuinely ambiguous."
     },
     {
@@ -558,11 +532,7 @@
       "slug": "document_chunking_for_oversized_input_files",
       "category": "Troubleshooting and Optimization",
       "title": "Document Chunking for Oversized Input Files",
-      "keywords": [
-        "chunk",
-        "large documents",
-        "meaningful sections"
-      ],
+      "keywords": ["chunk", "large documents", "meaningful sections"],
       "content": "Extremely large input documents may need to be split into smaller chunks to process within practical context limits — but where you split matters: chunking at logical boundaries (sections, clauses) preserves coherent meaning, while arbitrary splits (mid-sentence, by raw page count) risk breaking up a unit of meaning the analysis needed to see together. After chunk-level analysis, a synthesis step ties the pieces back into one coherent overall result, and some brief overlap or continuity context between chunks helps preserve cross-chunk references.\n\nExpect scenarios contrasting logical-boundary splitting against arbitrary splitting, and the importance of the final synthesis step."
     },
     {
@@ -586,12 +556,7 @@
       "slug": "fixing_formatting_problems_in_output",
       "category": "Troubleshooting and Optimization",
       "title": "Fixing Formatting Problems in Output",
-      "keywords": [
-        "reformatted",
-        "desired formatting",
-        "fix assume",
-        "check formatting"
-      ],
+      "keywords": ["reformatted", "desired formatting", "fix assume", "check formatting"],
       "content": "Misaligned tables, inconsistent bullet/paragraph mixing, or irregular heading hierarchies are fixed by explicitly naming the exact syntax or structure wanted (Markdown table syntax with headers, a specific numbering convention) — a concrete example of the target format resolves ambiguity a verbal description might leave open, the same principle as example-driven prompting. It's also worth checking formatting against the actual destination's real conventions, since something that looks fine in isolation may still not match a specific template or platform's requirements.\n\nExpect direct 'what's the fix' questions pairing a described formatting problem with the specific corrective instruction."
     },
     {

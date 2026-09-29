@@ -19,7 +19,7 @@ function broadcast() {
 
 export function useStudyGuide() {
   const [guide, setGuide] = useState<StudyGuide>(() =>
-    typeof window === "undefined" ? {} : loadStudyGuide()
+    typeof window === "undefined" ? {} : loadStudyGuide(),
   );
 
   // Re-hydrate on mount and on cross-component updates so opening the study
@@ -46,21 +46,21 @@ export function useStudyGuide() {
       if (!topicIds.length) return;
       persist(addTopics(loadStudyGuide(), topicIds, examId));
     },
-    [persist]
+    [persist],
   );
 
   const toggleMastered = useCallback(
     (topicId: string, mastered: boolean) => {
       persist(setMastered(loadStudyGuide(), topicId, mastered));
     },
-    [persist]
+    [persist],
   );
 
   const remove = useCallback(
     (topicId: string) => {
       persist(removeTopic(loadStudyGuide(), topicId));
     },
-    [persist]
+    [persist],
   );
 
   const clearDone = useCallback(() => {

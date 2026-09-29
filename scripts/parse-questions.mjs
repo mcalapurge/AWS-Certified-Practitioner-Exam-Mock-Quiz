@@ -65,16 +65,18 @@ function buildPrebuiltQuestions(exam, raw) {
 
 // Strip markdown emphasis/links so plain text reads cleanly in the UI.
 function cleanText(s) {
-  return s
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/\*\*([^*]+)\*\*/g, "$1")
-    .replace(/\*([^*]+)\*/g, "$1")
-    // Markdown link [label](url) -> "label"
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    // Markdown autolink <https://…> -> "https://…"
-    .replace(/<((?:https?|mailto):[^>\s]+)>/g, "$1")
-    .replace(/\s+/g, " ")
-    .trim();
+  return (
+    s
+      .replace(/`([^`]+)`/g, "$1")
+      .replace(/\*\*([^*]+)\*\*/g, "$1")
+      .replace(/\*([^*]+)\*/g, "$1")
+      // Markdown link [label](url) -> "label"
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      // Markdown autolink <https://…> -> "https://…"
+      .replace(/<((?:https?|mailto):[^>\s]+)>/g, "$1")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 }
 
 function parseFile(content, sourceFile) {
@@ -215,7 +217,10 @@ function parseBlock(blockLines, sourceFile) {
       continue;
     }
     if (inExplanation) {
-      const cleaned = line.replace(/^\s+/, "").replace(/^Explanation:\s*/i, "").trim();
+      const cleaned = line
+        .replace(/^\s+/, "")
+        .replace(/^Explanation:\s*/i, "")
+        .trim();
       if (cleaned) explanation += cleaned + " ";
     }
   }

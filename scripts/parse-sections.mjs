@@ -75,20 +75,48 @@ function humanize(slug) {
 // Words that appear so generally in question text they would over-match if used
 // as keywords (e.g. "AWS", "Amazon", "Service"). Excluded from auto-derivation.
 const STOPWORDS = new Set([
-  "AWS", "Amazon", "Service", "Services", "What", "Which", "How", "The", "And", "For",
-  "Cloud", "Computing", "Introduction", "Overview", "Section", "Summary", "Quick",
-  "Revision", "Other", "More",
+  "AWS",
+  "Amazon",
+  "Service",
+  "Services",
+  "What",
+  "Which",
+  "How",
+  "The",
+  "And",
+  "For",
+  "Cloud",
+  "Computing",
+  "Introduction",
+  "Overview",
+  "Section",
+  "Summary",
+  "Quick",
+  "Revision",
+  "Other",
+  "More",
   // Too broad — appear in nearly every AI/ML question and would over-match.
-  "AI", "ML",
+  "AI",
+  "ML",
   // Storage units / file-size noise.
-  "GB", "MB", "KB", "TB", "PB", "TPS", "RPS",
+  "GB",
+  "MB",
+  "KB",
+  "TB",
+  "PB",
+  "TPS",
+  "RPS",
 ]);
 
 // Sections that aggregate other sections (summary pages) shouldn't mine H2
 // headings for keywords — that pulls in every service mentioned and then those
 // services double-flag this section alongside their own dedicated page.
 function isAggregateSection(title, slug) {
-  return /summary|introduction/i.test(title) || /-summary$/i.test(slug) || slug.startsWith("introduction-");
+  return (
+    /summary|introduction/i.test(title) ||
+    /-summary$/i.test(slug) ||
+    slug.startsWith("introduction-")
+  );
 }
 
 // Derive a small set of high-precision keyword phrases per section. We feed
@@ -99,10 +127,12 @@ function deriveKeywords(title, slug, content) {
   const out = new Set();
 
   // Multi-word "Amazon X" / "AWS X" service captures (highest precision).
-  const serviceCaptures = [...title.matchAll(/\b(?:Amazon|AWS)\s+([A-Z][A-Za-z0-9]+(?:\s+[A-Z][A-Za-z0-9]+)*)/g)];
+  const serviceCaptures = [
+    ...title.matchAll(/\b(?:Amazon|AWS)\s+([A-Z][A-Za-z0-9]+(?:\s+[A-Z][A-Za-z0-9]+)*)/g),
+  ];
   for (const m of serviceCaptures) {
-    out.add(m[0]);     // e.g. "Amazon Bedrock"
-    out.add(m[1]);     // e.g. "Bedrock"
+    out.add(m[0]); // e.g. "Amazon Bedrock"
+    out.add(m[1]); // e.g. "Bedrock"
   }
 
   // Acronyms and ALL-CAPS tokens 2-5 chars from title and slug.
@@ -114,18 +144,17 @@ function deriveKeywords(title, slug, content) {
 
   // Title minus parens & "(X)" suffixes. Useful when the title is a phrase
   // ("Elastic Load Balancing"); skip if it's just an acronym or already covered.
-  const cleanTitle = title.replace(/\s*\(.*?\)\s*/g, "").replace(/^.+:\s*/, "").trim();
+  const cleanTitle = title
+    .replace(/\s*\(.*?\)\s*/g, "")
+    .replace(/^.+:\s*/, "")
+    .trim();
   if (cleanTitle.length > 4 && /\s/.test(cleanTitle) && !STOPWORDS.has(cleanTitle)) {
     out.add(cleanTitle);
   }
 
   // Slug words joined as a phrase if it's clearly a service name.
   const slugPhrase = slug.replace(/[-_]+/g, " ");
-  if (
-    slugPhrase.length > 3 &&
-    /^(amazon |aws )/i.test(slugPhrase) &&
-    /\s/.test(slugPhrase)
-  ) {
+  if (slugPhrase.length > 3 && /^(amazon |aws )/i.test(slugPhrase) && /\s/.test(slugPhrase)) {
     out.add(slugPhrase);
   }
 
@@ -135,7 +164,9 @@ function deriveKeywords(title, slug, content) {
     const h2Lines = (content.match(/^##\s+(.+?)\s*$/gm) ?? []).slice(0, 20);
     for (const line of h2Lines) {
       const heading = line.replace(/^##\s+/, "").replace(/\s*\(.*?\)\s*/g, "");
-      const captures = [...heading.matchAll(/\b(?:Amazon|AWS)\s+([A-Z][A-Za-z0-9]+(?:\s+[A-Z][A-Za-z0-9]+)*)/g)];
+      const captures = [
+        ...heading.matchAll(/\b(?:Amazon|AWS)\s+([A-Z][A-Za-z0-9]+(?:\s+[A-Z][A-Za-z0-9]+)*)/g),
+      ];
       for (const c of captures) {
         out.add(c[0]);
         out.add(c[1]);
@@ -208,13 +239,21 @@ async function readSectionFile(filePath, examId, category) {
   };
 }
 
-const REQUIRED_SECTION_FIELDS = ["id", "examId", "slug", "category", "title", "keywords", "content"];
+const REQUIRED_SECTION_FIELDS = [
+  "id",
+  "examId",
+  "slug",
+  "category",
+  "title",
+  "keywords",
+  "content",
+];
 
 function validateSection(s, sourcePath) {
   const missing = REQUIRED_SECTION_FIELDS.filter((f) => !(f in s));
   if (missing.length) {
     throw new Error(
-      `Section missing required field(s) [${missing.join(", ")}] in ${path.basename(sourcePath)}: id=${s.id ?? "(unknown)"}`
+      `Section missing required field(s) [${missing.join(", ")}] in ${path.basename(sourcePath)}: id=${s.id ?? "(unknown)"}`,
     );
   }
 }
@@ -243,9 +282,7 @@ async function build() {
 
       for (const cat of categoryDirs) {
         const catDir = path.join(exam.dir, cat);
-        const files = (await readdir(catDir))
-          .filter((f) => f.endsWith(".md"))
-          .sort();
+        const files = (await readdir(catDir)).filter((f) => f.endsWith(".md")).sort();
         for (const f of files) {
           const filePath = path.join(catDir, f);
           const s = await stat(filePath);
@@ -254,9 +291,7 @@ async function build() {
         }
       }
     } else {
-      const files = (await readdir(exam.dir))
-        .filter((f) => f.endsWith(".md"))
-        .sort();
+      const files = (await readdir(exam.dir)).filter((f) => f.endsWith(".md")).sort();
       for (const f of files) {
         sections.push(await readSectionFile(path.join(exam.dir, f), exam.id, null));
       }
@@ -320,10 +355,7 @@ async function build() {
     }
   }
 
-  await writeFile(
-    path.join(outDir, "topic-index.json"),
-    JSON.stringify(topicIndex, null, 2)
-  );
+  await writeFile(path.join(outDir, "topic-index.json"), JSON.stringify(topicIndex, null, 2));
 }
 
 build().catch((err) => {

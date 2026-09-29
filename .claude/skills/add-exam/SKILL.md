@@ -27,13 +27,13 @@ prose version; this skill is the executable checklist.
 Two things determine the shape of the work:
 
 - **Provider** — `"aws"` or `"claude"`. Every exam belongs to one. If the exam
-  needs a *brand-new* provider (its own theme, toggle label, etc.), stop: that's
+  needs a _brand-new_ provider (its own theme, toggle label, etc.), stop: that's
   a bigger change (theme block in `src/index.css`, `Provider` type,
   `useProvider`, `provider.ts`) and out of scope here. Confirm with the user
   before proceeding — this skill assumes an existing provider.
 - **Source path** — where the raw content comes from:
   - **Markdown submodule (AWS-style)** — a folder of markdown practice questions
-    + study notes, pulled in as a read-only git submodule. Use for community
+    - study notes, pulled in as a read-only git submodule. Use for community
       markdown collections.
   - **Prebuilt JSON (Claude-style)** — a static, hand-authored JSON pair under
     `scripts/sources/`. Use when the content is already structured data, not
@@ -53,9 +53,11 @@ The two parsers are independent and each needs its own entry.
 ### Path A — markdown submodule
 
 1. Add the submodule at the repo root:
+
    ```bash
    git submodule add <url> <submodule-name>
    ```
+
    Confirm it contains practice questions (numbered markdown lists with
    `<details>…Correct answer: X</details>` — see `parseAnswerTail` in
    `scripts/parse-questions.mjs` for the answer formats already handled) and
@@ -86,6 +88,7 @@ The two parsers are independent and each needs its own entry.
      nested: false, // true if notes are section/<category>/*.md
    }
    ```
+
    Match `filePattern` and `nested` to how the upstream repo actually lays out
    its files — check the submodule before assuming.
 
@@ -117,6 +120,7 @@ The two parsers are independent and each needs its own entry.
      source: path.join(repoRoot, "scripts", "sources", "<study-guide>.json"),
    }
    ```
+
    If the raw question shape differs from `buildPrebuiltQuestions`' expectations
    in `parse-questions.mjs`, add a normalizer modeled on it.
 
@@ -128,8 +132,10 @@ exhaustive `Record<ExamId, …>` types and the `loadExam` switch.
 
 1. **`ExamId` union** — add the id in
    [src/features/quiz/types.ts](../../../src/features/quiz/types.ts):
+
    ```ts
-   export type ExamId = "cloud-practitioner" | "ai-practitioner" | "developer-foundations" | "<exam-id>";
+   export type ExamId =
+     "cloud-practitioner" | "ai-practitioner" | "developer-foundations" | "<exam-id>";
    ```
 
 2. **Quiz registry** — in
@@ -162,6 +168,7 @@ npm run parse
 ```
 
 This regenerates, for the new exam:
+
 - `src/features/quiz/data/<provider>/<exam-id>.json`
 - `src/features/study/data/<provider>/<exam-id>.json`
 - and the eager indexes `src/features/quiz/data/meta.json` +

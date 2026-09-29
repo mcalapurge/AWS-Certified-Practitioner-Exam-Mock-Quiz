@@ -22,7 +22,7 @@ export function MarkdownView({ content, className }: Props) {
         "prose-pre:bg-muted prose-pre:text-foreground prose-pre:border",
         "prose-table:text-sm",
         "prose-img:my-3",
-        className
+        className,
       )}
     >
       <ReactMarkdown

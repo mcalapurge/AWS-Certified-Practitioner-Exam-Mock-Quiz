@@ -92,9 +92,7 @@ export function QuestionCard({
           </div>
         )}
 
-        {showResult && (
-          <ResultBanner question={question} correct={isCorrect} />
-        )}
+        {showResult && <ResultBanner question={question} correct={isCorrect} />}
       </CardContent>
     </Card>
   );
@@ -119,13 +117,12 @@ function OptionButton({
 }) {
   const stateClass = (() => {
     if (!showResult) {
-      return selected
-        ? "border-primary bg-primary/10"
-        : "border-border hover:border-primary/60";
+      return selected ? "border-primary bg-primary/10" : "border-border hover:border-primary/60";
     }
     if (selected && correct) return "border-success bg-success/10 text-foreground";
     if (selected && !correct) return "border-destructive bg-destructive/10 text-foreground";
-    if (!selected && correct) return "border-success bg-success/5 outline outline-1 outline-dashed outline-success";
+    if (!selected && correct)
+      return "border-success bg-success/5 outline outline-1 outline-dashed outline-success";
     return "border-border opacity-70";
   })();
 
@@ -139,14 +136,14 @@ function OptionButton({
         "w-full flex items-start gap-3 text-left rounded-lg border bg-card px-4 py-3 transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         "disabled:cursor-default",
-        stateClass
+        stateClass,
       )}
     >
       <span
         className={cn(
           "shrink-0 grid place-items-center size-7 rounded-md border bg-background text-xs font-semibold",
           selected && !showResult && "border-primary text-primary",
-          showResult && correct && "border-success text-success"
+          showResult && correct && "border-success text-success",
         )}
       >
         {optKey}
@@ -161,7 +158,7 @@ function ResultBanner({ question, correct }: { question: Question; correct: bool
     <div
       className={cn(
         "border px-4 py-3 flex gap-3",
-        correct ? "border-success/60 bg-success/10" : "border-destructive/60 bg-destructive/10"
+        correct ? "border-success/60 bg-success/10" : "border-destructive/60 bg-destructive/10",
       )}
     >
       {correct ? (

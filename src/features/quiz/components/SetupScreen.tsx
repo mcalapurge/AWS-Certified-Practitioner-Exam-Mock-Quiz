@@ -68,7 +68,8 @@ export function SetupScreen({
         <CardHeader>
           <CardTitle className="font-display">{PROVIDER_TITLE[provider]}</CardTitle>
           <CardDescription>
-            {totalQuestions} questions across {exams.length === 1 ? "one exam" : `${exams.length} exams`}. Pick a setup and go.
+            {totalQuestions} questions across{" "}
+            {exams.length === 1 ? "one exam" : `${exams.length} exams`}. Pick a setup and go.
           </CardDescription>
         </CardHeader>
 
@@ -142,10 +143,7 @@ export function SetupScreen({
 
           <Section title="Order">
             <label className="flex items-center gap-3 cursor-pointer select-none">
-              <Checkbox
-                checked={shuffle}
-                onCheckedChange={(v) => setShuffle(v === true)}
-              />
+              <Checkbox checked={shuffle} onCheckedChange={(v) => setShuffle(v === true)} />
               <Shuffle className="size-4 text-muted-foreground" />
               <span className="text-sm">Shuffle questions (randomly drawn from the pool)</span>
             </label>
@@ -224,16 +222,14 @@ function OptionCard({ selected, onSelect, title, description }: OptionCardProps)
       className={cn(
         "group relative text-left rounded-lg border p-4 transition-all",
         "bg-card hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        selected
-          ? "border-primary ring-2 ring-primary/40 bg-primary/5"
-          : "border-border"
+        selected ? "border-primary ring-2 ring-primary/40 bg-primary/5" : "border-border",
       )}
     >
       <div className="flex items-start gap-3">
         <div
           className={cn(
             "mt-0.5 size-4 rounded-full border-2 transition-colors shrink-0",
-            selected ? "border-primary bg-primary" : "border-muted-foreground/40"
+            selected ? "border-primary bg-primary" : "border-muted-foreground/40",
           )}
         />
         <div className="flex flex-col gap-1 min-w-0">
