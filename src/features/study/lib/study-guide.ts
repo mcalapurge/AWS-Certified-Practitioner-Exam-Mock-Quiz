@@ -37,11 +37,7 @@ export function saveStudyGuide(guide: StudyGuide) {
 // are kept — including mastered=true ones — so the user's "this is sorted"
 // decisions persist; we only bump `lastSeenAt`/`hits` on re-encounter so the
 // UI can surface recurring weaknesses.
-export function addTopics(
-  guide: StudyGuide,
-  topicIds: string[],
-  examId: ExamId
-): StudyGuide {
+export function addTopics(guide: StudyGuide, topicIds: string[], examId: ExamId): StudyGuide {
   const now = Date.now();
   const next: StudyGuide = { ...guide };
   for (const topicId of topicIds) {
@@ -66,11 +62,7 @@ export function addTopics(
   return next;
 }
 
-export function setMastered(
-  guide: StudyGuide,
-  topicId: string,
-  mastered: boolean
-): StudyGuide {
+export function setMastered(guide: StudyGuide, topicId: string, mastered: boolean): StudyGuide {
   const existing = guide[topicId];
   if (!existing) return guide;
   return { ...guide, [topicId]: { ...existing, mastered } };

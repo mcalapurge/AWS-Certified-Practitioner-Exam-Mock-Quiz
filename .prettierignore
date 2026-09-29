@@ -1,0 +1,11 @@
+node_modules
+dist
+package-lock.json
+tsconfig.tsbuildinfo
+AWS-Certified-Cloud-Practitioner-Notes
+aws-certified-ai-practitioner-study-notes
+src/features/quiz/data
+src/features/study/data
+LICENSE
+playwright-report
+test-results

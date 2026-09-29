@@ -38,15 +38,12 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
         <div
           className={cn(
             "flex items-center justify-between gap-4 rounded-xl border p-5",
-            passed ? "border-success/60 bg-success/10" : "border-destructive/60 bg-destructive/10"
+            passed ? "border-success/60 bg-success/10" : "border-destructive/60 bg-destructive/10",
           )}
         >
           <div className="flex items-center gap-4">
             <Trophy
-              className={cn(
-                "size-10 shrink-0",
-                passed ? "text-success" : "text-destructive"
-              )}
+              className={cn("size-10 shrink-0", passed ? "text-success" : "text-destructive")}
             />
             <div>
               <div className="text-3xl font-bold tabular-nums tracking-tight">{pct}%</div>
@@ -58,7 +55,8 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
           <div className="text-right text-sm">
             <div className="font-medium">{examName}</div>
             <div className="text-muted-foreground">
-              ~{minutes} min • {result.config.feedback === "instant" ? "instant feedback" : "submit at end"}
+              ~{minutes} min •{" "}
+              {result.config.feedback === "instant" ? "instant feedback" : "submit at end"}
             </div>
           </div>
         </div>
@@ -90,7 +88,7 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
                 key={q.id}
                 className={cn(
                   "rounded-xl border-l-4 border bg-card p-4",
-                  correct ? "border-l-success" : "border-l-destructive"
+                  correct ? "border-l-success" : "border-l-destructive",
                 )}
               >
                 <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -108,7 +106,8 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
                     const cls = (() => {
                       if (isSel && isCor) return "border-success bg-success/10";
                       if (isSel && !isCor) return "border-destructive bg-destructive/10";
-                      if (!isSel && isCor) return "border-success bg-success/5 outline outline-1 outline-dashed outline-success";
+                      if (!isSel && isCor)
+                        return "border-success bg-success/5 outline outline-1 outline-dashed outline-success";
                       return "border-border bg-card";
                     })();
                     return (
@@ -116,7 +115,7 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
                         key={o.key}
                         className={cn(
                           "flex items-start gap-3 rounded-md border px-3 py-2 text-sm",
-                          cls
+                          cls,
                         )}
                       >
                         <span className="shrink-0 grid place-items-center size-6 rounded border bg-background text-xs font-semibold">

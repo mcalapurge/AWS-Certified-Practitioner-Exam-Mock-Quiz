@@ -51,7 +51,7 @@ git submodule update --remote
 
 This moves each submodule's checked-out commit to the latest on its tracked
 branch, which shows up in the parent repo as a staged gitlink change (the commit
-pointer). That staged pointer change is expected and correct — it is *not* an
+pointer). That staged pointer change is expected and correct — it is _not_ an
 edit to files inside the submodule.
 
 ## Step 3 — Regenerate the data
@@ -82,7 +82,7 @@ and `topic-index.json` from the freshly-updated sources.
    investigate `scripts/parse-questions.mjs` (`parseAnswerTail` / `parseBlock`)
    against the new source markdown before committing — don't ship a regression.
 3. **Confirm no edits leaked into the submodule trees.** The only submodule
-   change should be the pointer bump, never modified files *inside* them:
+   change should be the pointer bump, never modified files _inside_ them:
    ```bash
    git -C AWS-Certified-Cloud-Practitioner-Notes status --short
    git -C aws-certified-ai-practitioner-study-notes status --short
@@ -103,16 +103,13 @@ git commit -m "chore: bump upstream submodules and regenerate exam data"
 Adjust the staged submodule paths to whichever you actually bumped. Confirm the
 commit message with the user first if they have a convention in mind.
 
-Do **not** add `[deploy]` to this message unless the user explicitly wants this
-change to go live — that tag triggers the production deploy (see the `deploy`
-skill). Committing here does not deploy; pushing a `[deploy]`-tagged commit to
-`main` does.
+Committing here does not deploy, but pushing to `main` does, so only push to `main` when the user wants this change live.
 
 ## Gotchas
 
 - **Submodules are upstream mirrors, not editable content.** If a question is
   wrong, the fix is a PR to the source repo, then a pin bump here — not a local
-  edit. Any modified file *inside* a submodule is a mistake.
+  edit. Any modified file _inside_ a submodule is a mistake.
 - **A silent count drop is the failure mode to watch for.** The build stays
   green even if the parser drops questions, so Step 4's count check is the only
   thing standing between an upstream format change and shipping fewer questions.

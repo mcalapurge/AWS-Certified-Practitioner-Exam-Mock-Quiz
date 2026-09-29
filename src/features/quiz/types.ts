@@ -1,8 +1,5 @@
 export type ExamId =
-  | "cloud-practitioner"
-  | "ai-practitioner"
-  | "developer-foundations"
-  | "associate-foundations";
+  "cloud-practitioner" | "ai-practitioner" | "developer-foundations" | "associate-foundations";
 
 export type Provider = "aws" | "claude";
 

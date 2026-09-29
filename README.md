@@ -73,8 +73,9 @@ npm run preview    # serve the production bundle locally
 
 The build output goes to `dist/` and can be deployed to any static host (S3, Netlify,
 Vercel, GitHub Pages). A GitHub Actions workflow that pushes to S3 is included at
-`.github/workflows/main.yaml` — it runs on commits to `main` whose message contains
-`[deploy]`.
+`.github/workflows/main.yaml` — it deploys on every push to `main`. A separate CI
+workflow (`.github/workflows/ci.yaml`) runs prettier, typecheck and the data check
+on every push (`npm run ci` locally).
 
 ## Tech stack
 
@@ -109,9 +110,9 @@ See [`AGENTS.md`](./AGENTS.md) for a deeper map of conventions and how to add a 
 This app is a renderer — every practice question, study note, and explanation comes from
 two open-source repos by **[Nirav Kanani (@kananinirav)](https://github.com/kananinirav)**:
 
-| Source | Used for | License |
-|---|---|---|
-| [AWS-Certified-Cloud-Practitioner-Notes](https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes) | CLF-C02 practice questions and study notes | See repo |
+| Source                                                                                                                | Used for                                   | License  |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | -------- |
+| [AWS-Certified-Cloud-Practitioner-Notes](https://github.com/kananinirav/AWS-Certified-Cloud-Practitioner-Notes)       | CLF-C02 practice questions and study notes | See repo |
 | [aws-certified-ai-practitioner-study-notes](https://github.com/kananinirav/aws-certified-ai-practitioner-study-notes) | AIF-C01 practice questions and study notes | See repo |
 
 If you find the content useful, please **⭐ star the source repos** above and consider
