@@ -103,7 +103,7 @@ git commit -m "chore: bump upstream submodules and regenerate exam data"
 Adjust the staged submodule paths to whichever you actually bumped. Confirm the
 commit message with the user first if they have a convention in mind.
 
-Committing here does not deploy; pushing to `main` does so only push to `main` when the user wants this change live.
+Committing here does not deploy, but pushing to `main` does, so only push to `main` when the user wants this change live.
 
 ## Gotchas
 
