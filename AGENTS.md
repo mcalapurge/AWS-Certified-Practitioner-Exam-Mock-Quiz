@@ -50,7 +50,7 @@ repos above and pulled in via `git submodule update --remote`.
 ```
 .
 ├── .gitmodules                                     # submodule pins
-├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, check-data
+├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, unit tests, check-data, build, report, e2e
 ├── .github/workflows/main.yaml                     # CD on push to main — build + S3 deploy
 ├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream
 ├── AGENTS.md                                       # this file
@@ -59,7 +59,7 @@ repos above and pulled in via `git submodule update --remote`.
 ├── README.md
 ├── AWS-Certified-Cloud-Practitioner-Notes/         # submodule — read-only upstream
 ├── aws-certified-ai-practitioner-study-notes/      # submodule — read-only upstream
-├── scripts/                                        # markdown/JSON → app-data parsers
+├── scripts/                                        # markdown/JSON → app-data parsers, data check, coverage report
 │   └── sources/                                    # static source JSON for prebuilt exams (Claude)
 └── src/                                            # the React app
 ```
@@ -96,6 +96,8 @@ npm run build      # tsc --noEmit && vite build (parse runs first)
 npm run preview    # preview the production build
 npm run test:e2e   # Playwright browser tests against the built app (run `npm run build` first)
 npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
+npm test           # unit tests (Node's built-in runner, tests/unit/**/*.test.mjs)
+npm run report     # question-coverage report → report/question-report.{html,json}
 ```
 
 `check-data` (`scripts/check-topic-mapping.mjs`) is a regression gate for the
@@ -123,8 +125,11 @@ Prefer them over improvising — they encode this repo's conventions and footgun
 ## CI/CD
 
 CI (`.github/workflows/ci.yaml`) runs on every push: `npm run format:check`,
-`npm run typecheck`, `npm run check-data` (run locally with `npm run ci`;
-`npm run format` fixes style). CD (`.github/workflows/main.yaml`) deploys to S3
+`npm run typecheck`, `npm test`, `npm run check-data`, the build, `npm run
+report`, and the Playwright tests (run the fast subset locally with `npm run
+ci`; `npm run format` fixes style). The question report and screenshots are
+uploaded as unzipped artifacts, and the report's digest is added to the job
+summary. CD (`.github/workflows/main.yaml`) deploys to S3
 (`aws s3 sync … --delete`) on every push to `main` — public and effectively
 irreversible, so get an explicit user yes before pushing to `main`.
 
@@ -382,6 +387,27 @@ example.
 - Don't downgrade React below 19 — Radix's current minor versions require it.
 - Don't put localStorage writes or other side effects inside a `setState`
   updater — StrictMode runs them twice in dev.
+
+## Question coverage report
+
+`scripts/question-report.mjs` counts questions per exam and per category:
+domains for prebuilt (Claude) exams, with blueprint weight and drift, or
+practice sets for AWS exams. Prebuilt exams also get per-topic counts, the
+complexity mix and the answer-key spread. It reads the generated
+`src/features/quiz/data/` plus `scripts/sources/` (only the source banks carry
+topics and weights) and writes to `report/` (gitignored):
+
+- `question-report.json`: the canonical data, with a versioned `schemaVersion`.
+- `question-report.html`: a self-contained view of the same data (inline CSS,
+  no scripts or network, light/dark), with the JSON embedded in a
+  `<script type="application/json" id="report-data">` block.
+
+Warnings flag meta/data count mismatches, untagged questions, topics with no
+study section or no questions, thin topics (< 3 questions), and domains more
+than 5 percentage points off their blueprint weight. They are informational and
+never fail CI. Pure functions are exported and covered by
+`tests/unit/question-report.test.mjs`. If you change the JSON shape, bump
+`SCHEMA_VERSION`.
 
 ## Browser tests
 

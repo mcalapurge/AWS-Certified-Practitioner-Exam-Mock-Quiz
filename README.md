@@ -74,8 +74,10 @@ npm run preview    # serve the production bundle locally
 The build output goes to `dist/` and can be deployed to any static host (S3, Netlify,
 Vercel, GitHub Pages). A GitHub Actions workflow that pushes to S3 is included at
 `.github/workflows/main.yaml` — it deploys on every push to `main`. A separate CI
-workflow (`.github/workflows/ci.yaml`) runs prettier, typecheck and the data check
-on every push (`npm run ci` locally).
+workflow (`.github/workflows/ci.yaml`) runs prettier, typecheck, unit tests, the data
+check and the browser tests on every push (`npm run ci` runs the fast checks locally).
+It also publishes a question-coverage report (`npm run report`): an HTML page plus JSON
+showing question counts per exam and category, uploaded as a run artifact.
 
 ## Tech stack
 

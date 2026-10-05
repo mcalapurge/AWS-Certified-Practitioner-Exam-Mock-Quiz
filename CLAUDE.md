@@ -31,6 +31,7 @@ follow when modifying state or styling.
 - Common workflows are skills under `.claude/skills/`: `add-exam`, `check-data`
   (`npm run check-data`), and `sync-upstream`. Prefer them over
   improvising.
-- **CI/CD:** CI (prettier, typecheck, check-data) runs on every push; every push
+- **CI/CD:** CI (prettier, typecheck, unit tests, check-data, build, question
+  report, e2e) runs on every push; every push
   to `main` deploys to S3. Run `npm run ci` before pushing, and confirm with
   the user before pushing to `main`.
