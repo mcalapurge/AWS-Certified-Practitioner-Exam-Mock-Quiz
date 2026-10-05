@@ -52,7 +52,7 @@ repos above and pulled in via `git submodule update --remote`.
 ├── .gitmodules                                     # submodule pins
 ├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, unit tests, check-data, build, report, e2e
 ├── .github/workflows/main.yaml                     # CD on push to main — build + S3 deploy
-├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream
+├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream, validate-questions
 ├── AGENTS.md                                       # this file
 ├── CLAUDE.md                                       # pointer to AGENTS.md
 ├── LICENSE                                         # MIT
@@ -98,6 +98,7 @@ npm run test:e2e   # Playwright browser tests against the built app (run `npm ru
 npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
 npm test           # unit tests (Node's built-in runner, tests/unit/**/*.test.mjs)
 npm run report     # question-coverage report → report/question-report.{html,json}
+npm run questions -- diff  # lint + list questions added/changed since origin/main that still need a review
 ```
 
 `check-data` (`scripts/check-topic-mapping.mjs`) is a regression gate for the
@@ -121,6 +122,12 @@ Prefer them over improvising — they encode this repo's conventions and footgun
   the markdown-submodule and prebuilt-JSON paths; mirrors "Adding a new exam" below).
 - **`check-data`** — audit the weak-topic keyword mapping (`npm run check-data`).
 - **`sync-upstream`** — bump the AWS submodule pins and regenerate the datasets.
+- **`validate-questions`** — validate the prebuilt questions a diff (PR/MR,
+  branch, commit range or uncommitted work) adds or changes: lint them, have
+  subagents answer them blind against Anthropic's docs, adjudicate
+  disagreements, then populate each one's `confidence` rating, `source_id`, the
+  bank totals and topic keywords (`scripts/review-questions.mjs`,
+  `npm run questions -- <diff|prepare|compare|apply|keywords|lint>`).
 
 ## CI/CD
 
@@ -427,8 +434,10 @@ questions, show no footnote.
 rules that tie a rating to its evidence: green needs `high` + `docs` + a
 source, low confidence must be red, and sources must be Anthropic-owned docs. It
 also checks that every CCDV-F question is rated. When you add or edit a
-prebuilt question, re-review it and set `confidence` to match, or the test will
-fail. The coverage report counts ratings per exam and warns on red or unrated
+prebuilt question, run the `validate-questions` skill: it reviews the questions
+your diff touched and writes `confidence` for you (don't hand-edit it), or the
+test will fail. `npm run questions -- diff` flags any rating older than the
+latest edit to its question. The coverage report counts ratings per exam and warns on red or unrated
 questions. User-facing wording lives in `features/quiz/lib/confidence.ts`, which
 `tests/unit/confidence.test.mjs` imports directly through Node's type
 stripping, so keep that file free of runtime imports.

@@ -7,6 +7,7 @@
     "parse": "node scripts/parse-questions.mjs && node scripts/parse-sections.mjs",
     "check-data": "node scripts/check-topic-mapping.mjs",
     "report": "node scripts/question-report.mjs",
+    "questions": "node scripts/review-questions.mjs",
     "predev": "npm run parse",
     "prebuild": "npm run parse",
     "dev": "vite",

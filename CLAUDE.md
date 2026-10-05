@@ -29,8 +29,8 @@ follow when modifying state or styling.
 - Add shadcn primitives via `npx shadcn@latest add <name>` (respects
   `components.json`).
 - Common workflows are skills under `.claude/skills/`: `add-exam`, `check-data`
-  (`npm run check-data`), and `sync-upstream`. Prefer them over
-  improvising.
+  (`npm run check-data`), `sync-upstream`, and `validate-questions` (review and
+  rate the questions a diff adds or changes). Prefer them over improvising.
 - **CI/CD:** CI (prettier, typecheck, unit tests, check-data, build, question
   report, e2e) runs on every push; every push
   to `main` deploys to S3. Run `npm run ci` before pushing, and confirm with
