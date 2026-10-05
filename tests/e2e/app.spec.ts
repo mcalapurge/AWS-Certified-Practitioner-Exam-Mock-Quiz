@@ -118,8 +118,12 @@ test("CCDV-F questions show an answer-confidence footnote", async ({ browser }, 
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
 
-    await page.locator("button[aria-pressed]").first().click();
-    await page.getByRole("button", { name: "Submit answer" }).click();
+    // Questions are drawn at random and some are multi-select, which keeps
+    // Submit disabled until enough options are picked.
+    const submit = page.getByRole("button", { name: "Submit answer" });
+    const options = page.locator("button[aria-pressed]");
+    for (let i = 0; !(await submit.isEnabled()); i++) await options.nth(i).click();
+    await submit.click();
     await trigger.click();
     await expect(page.getByRole("dialog")).toBeVisible();
     await settle(page);
