@@ -111,6 +111,13 @@ export function reviewReason(versions, { all = false } = {}) {
   const head = versions.at(-1);
   if (all) return "re-review requested (--all)";
   if (!head.confidence) return "no confidence rating";
+  // A rating made by `apply` records the content it rated, which also covers a
+  // re-review whose outcome (and date) matched the old rating exactly.
+  if (head.confidence.contentHash) {
+    return head.confidence.contentHash === contentHash(head)
+      ? null
+      : "content changed after it was last rated";
+  }
   let content = -1;
   let rating = -1;
   versions.forEach((v, i) => {
@@ -289,6 +296,8 @@ export function lintConfidence(c) {
     out.push("confidence.reviewed must be YYYY-MM-DD");
   if (c.reworded !== undefined && c.reworded !== true)
     out.push("confidence.reworded is true or absent");
+  if (c.contentHash !== undefined && !/^[0-9a-f]{16}$/.test(c.contentHash))
+    out.push("confidence.contentHash must be 16 hex characters");
   for (const u of c.sources ?? [])
     if (!ANTHROPIC_DOCS.test(u)) out.push(`confidence source is not Anthropic docs: ${u}`);
   if (c.rag === "green" && !(c.level === "high" && c.basis === "docs" && c.sources?.length)) {
@@ -911,7 +920,7 @@ async function cmdApply(root, opts) {
         verdict: verdict?.verdict ?? null,
         ...confidence,
       });
-      return { ...next, confidence };
+      return { ...next, confidence: { ...confidence, contentHash: contentHash(next) } };
     });
     updated.set(bankName, {
       ...bank,

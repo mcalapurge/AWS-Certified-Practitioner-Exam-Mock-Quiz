@@ -36,7 +36,18 @@
       },
       "correct": ["D"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 1
+      "source_id": 1,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "e9afcb58b44d25b5"
+      }
     },
     {
       "id": 2,
@@ -53,7 +64,18 @@
       },
       "correct": ["D"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 2
+      "source_id": 2,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "cd8c999ec3996368"
+      }
     },
     {
       "id": 3,
@@ -70,7 +92,18 @@
       },
       "correct": ["B"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 3
+      "source_id": 3,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "e64d2b7111273037"
+      }
     },
     {
       "id": 4,
@@ -87,7 +120,18 @@
       },
       "correct": ["B"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 4
+      "source_id": 4,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "ebce64cd74bad8c3"
+      }
     },
     {
       "id": 5,
@@ -104,7 +148,18 @@
       },
       "correct": ["C"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 5
+      "source_id": 5,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "cae568d21da3aa63"
+      }
     },
     {
       "id": 6,
@@ -121,7 +176,18 @@
       },
       "correct": ["D"],
       "explanation": "The strongest prompt supplies role, context, the concrete task, constraints (length, tone), and the desired output format — the five building blocks that remove guesswork.",
-      "source_id": 6
+      "source_id": 6,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "3181b5a15681f60f"
+      }
     },
     {
       "id": 7,
@@ -155,7 +221,18 @@
       },
       "correct": ["C"],
       "explanation": "Missing context, specifics, constraints, and format forces guesswork and produces a generic, likely unusable result.",
-      "source_id": 8
+      "source_id": 8,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "7090c7603a39f45c"
+      }
     },
     {
       "id": 9,
@@ -172,7 +249,18 @@
       },
       "correct": ["C"],
       "explanation": "Clarifying audience, length, and purpose (for example, 'for an executive who needs 3 bullet points to decide whether to approve the budget') turns a vague request into one Claude can target precisely.",
-      "source_id": 9
+      "source_id": 9,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "683e7c2a56fb430c"
+      }
     },
     {
       "id": 10,
@@ -223,7 +311,18 @@
       },
       "correct": ["C"],
       "explanation": "Explicitly assigning a role ('As an experienced brand strategist') focuses the perspective and expertise Claude brings to the task. A detailed task with no role still leaves the perspective unstated.",
-      "source_id": 12
+      "source_id": 12,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "8548d5f4d6f19b27"
+      }
     },
     {
       "id": 13,
@@ -240,7 +339,18 @@
       },
       "correct": ["A"],
       "explanation": "Claude has no independent knowledge of your specific business situation. Context supplies the background information it needs to tailor a relevant, accurate response instead of a generic one.",
-      "source_id": 13
+      "source_id": 13,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "d4c7ecd597a756c9"
+      }
     },
     {
       "id": 14,
@@ -257,7 +367,18 @@
       },
       "correct": ["D"],
       "explanation": "A generic prompt without the building blocks predictably yields a generic response — this is a prompting issue, not a tool failure.",
-      "source_id": 14
+      "source_id": 14,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "3c905907f531e1b6"
+      }
     },
     {
       "id": 15,
@@ -274,7 +395,18 @@
       },
       "correct": ["D"],
       "explanation": "This prompt specifies role (support lead), context (a long-time client's complaint), task (reply to it), constraints (empathetic, under 120 words) and format (a ready-to-send email) all together. A long prompt with only a task and general encouragement still leaves most of the building blocks out.",
-      "source_id": 15
+      "source_id": 15,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "6c8c432a09e35137"
+      }
     },
     {
       "id": 16,
@@ -291,7 +423,18 @@
       },
       "correct": ["C"],
       "explanation": "Even excellent content can require rework if it arrives in the wrong shape for its intended use.",
-      "source_id": 16
+      "source_id": 16,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "a86bf477bfa91ee0"
+      }
     },
     {
       "id": 17,
@@ -316,7 +459,7 @@
       "topic": "Task Decomposition (Breaking Big Requests into Steps)",
       "complexity": "Foundational",
       "topic_difficulty": "Easy",
-      "question": "Why is breaking a large, complex request into smaller steps generally more effective than asking for everything at once?",
+      "question": "What is the main benefit of breaking a large, complex request into smaller steps?",
       "options": {
         "A": "It never actually helps; one large prompt is always equivalent",
         "B": "You can review and correct each stage before building on it",
@@ -325,7 +468,19 @@
       },
       "correct": ["B"],
       "explanation": "Reviewing intermediate steps catches misunderstandings early, before they propagate and compound into a flawed final deliverable.",
-      "source_id": 18
+      "source_id": 18,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "reworded": true,
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "3af35ce150e264c3"
+      }
     },
     {
       "id": 19,
@@ -342,7 +497,18 @@
       },
       "correct": ["B"],
       "explanation": "Staged decomposition (competitor research, then pricing analysis, then a synthesized recommendation) lets you validate each component before the final synthesis depends on it.",
-      "source_id": 19
+      "source_id": 19,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "d91b949f6c9205c0"
+      }
     },
     {
       "id": 20,
@@ -359,7 +525,18 @@
       },
       "correct": ["D"],
       "explanation": "Large, multi-part deliverables with dependent stages benefit most from decomposition.",
-      "source_id": 20
+      "source_id": 20,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "79d171e327e49608"
+      }
     },
     {
       "id": 21,
@@ -410,7 +587,15 @@
       },
       "correct": ["C"],
       "explanation": "A single misunderstanding early in a long response can propagate through the rest of the output. Errors are easier to catch and fix when surfaced at each stage rather than buried inside one long, undifferentiated response.",
-      "source_id": 23
+      "source_id": 23,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "11f59b3afdc5908f"
+      }
     },
     {
       "id": 24,
@@ -512,7 +697,18 @@
       },
       "correct": ["B"],
       "explanation": "Naming the specific problems and the specific desired direction gives Claude concrete, actionable feedback.",
-      "source_id": 29
+      "source_id": 29,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "5ff050f062cc181b"
+      }
     },
     {
       "id": 30,
@@ -529,7 +725,15 @@
       },
       "correct": ["C"],
       "explanation": "Concrete, diagnosed feedback removes the guesswork that vague dissatisfaction leaves for the next attempt.",
-      "source_id": 30
+      "source_id": 30,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3dc87b6b710467a6"
+      }
     },
     {
       "id": 31,
@@ -546,7 +750,18 @@
       },
       "correct": ["C"],
       "explanation": "Naming the specific issue and the specific fix is the actionable refinement.",
-      "source_id": 31
+      "source_id": 31,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "94cfa42496327f37"
+      }
     },
     {
       "id": 32,
@@ -580,7 +795,15 @@
       },
       "correct": ["D"],
       "explanation": "Without added or corrected information, there's no new signal to change the outcome meaningfully.",
-      "source_id": 33
+      "source_id": 33,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f216a9e6c58e3361"
+      }
     },
     {
       "id": 34,
@@ -597,7 +820,15 @@
       },
       "correct": ["A"],
       "explanation": "Prompting Claude to surface its reasoning/assumptions can help pinpoint vague discomfort into something specific and fixable.",
-      "source_id": 34
+      "source_id": 34,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "78dd468ea487a44b"
+      }
     },
     {
       "id": 35,
@@ -614,7 +845,18 @@
       },
       "correct": ["A"],
       "explanation": "If an unstated requirement wasn't met, that's a prompting gap to fill in, not necessarily a model mistake.",
-      "source_id": 35
+      "source_id": 35,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "1bfeff0be04a9b15"
+      }
     },
     {
       "id": 36,
@@ -631,7 +873,15 @@
       },
       "correct": ["C"],
       "explanation": "Isolating changes makes it easier to confirm each fix worked and trace any new issue back to its source.",
-      "source_id": 36
+      "source_id": 36,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "794e850ffad5069e"
+      }
     },
     {
       "id": 37,
@@ -648,7 +898,15 @@
       },
       "correct": ["D"],
       "explanation": "A repeated, unresolved issue across multiple rounds signals a need to re-diagnose the actual root cause.",
-      "source_id": 37
+      "source_id": 37,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3cc4dc519f6142f0"
+      }
     },
     {
       "id": 38,
@@ -665,7 +923,15 @@
       },
       "correct": ["D"],
       "explanation": "Brainstorming benefits from explicitly requesting volume and diversity, and separating idea generation from evaluation.",
-      "source_id": 38
+      "source_id": 38,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "16b1d526e5a44e91"
+      }
     },
     {
       "id": 39,
@@ -682,7 +948,18 @@
       },
       "correct": ["B"],
       "explanation": "Specifying source material and the specific questions to answer focuses a research summary on what's actually needed.",
-      "source_id": 39
+      "source_id": 39,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "d0f09a33d90cc3c1"
+      }
     },
     {
       "id": 40,
@@ -733,7 +1010,15 @@
       },
       "correct": ["B"],
       "explanation": "The right balance of constraint vs. openness shifts with the task's goal: brainstorming benefits from loosening constraints to encourage volume and variety, while drafting benefits from tighter constraints to produce a usable, polished result.",
-      "source_id": 42
+      "source_id": 42,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e7a04254f37a6d46"
+      }
     },
     {
       "id": 43,
@@ -750,7 +1035,18 @@
       },
       "correct": ["B"],
       "explanation": "Directly asking for range, unconventional options, or varied angles (for example, grouped by different themes) counteracts a tendency toward safe, similar suggestions.",
-      "source_id": 43
+      "source_id": 43,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "6ba536a34eb30fc9"
+      }
     },
     {
       "id": 44,
@@ -767,7 +1063,15 @@
       },
       "correct": ["B"],
       "explanation": "Claude's knowledge may not reflect the most recent developments unless you are using a feature designed for current information. Recognizing the limits of static knowledge and verifying time-sensitive claims is central to responsible research use.",
-      "source_id": 44
+      "source_id": 44,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e15394fd2481954a"
+      }
     },
     {
       "id": 45,
@@ -784,7 +1088,15 @@
       },
       "correct": ["A"],
       "explanation": "Matching tone and structure to the audience and stakes of each document type is a core task-type prompting adjustment.",
-      "source_id": 45
+      "source_id": 45,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a457344323d321a9"
+      }
     },
     {
       "id": 46,
@@ -801,7 +1113,15 @@
       },
       "correct": ["C"],
       "explanation": "Each task type has different success criteria, shifting the prompting emphasis accordingly.",
-      "source_id": 46
+      "source_id": 46,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ddf3e9b37c1ba8aa"
+      }
     },
     {
       "id": 47,
@@ -818,7 +1138,15 @@
       },
       "correct": ["C"],
       "explanation": "Separating divergent brainstorming from convergent evaluation avoids one goal narrowing the other prematurely.",
-      "source_id": 47
+      "source_id": 47,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5c6192d063a75534"
+      }
     },
     {
       "id": 48,
@@ -835,7 +1163,15 @@
       },
       "correct": ["A"],
       "explanation": "Tailoring depth, jargon, and emphasis to the audience's needs is central to adapting a summary for a different reader.",
-      "source_id": 48
+      "source_id": 48,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "20beae86cc60c43a"
+      }
     },
     {
       "id": 49,
@@ -852,7 +1188,15 @@
       },
       "correct": ["B"],
       "explanation": "Naming the task type helps Claude calibrate whether to prioritize breadth/creativity or precision/finality.",
-      "source_id": 49
+      "source_id": 49,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "1a17dd7816a8d9f4"
+      }
     },
     {
       "id": 50,
@@ -869,7 +1213,15 @@
       },
       "correct": ["C"],
       "explanation": "Explicitly inviting unconventional ideas up front, with feasibility filtering deferred, tends to widen the range generated.",
-      "source_id": 50
+      "source_id": 50,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2ab5d41e2f48ed0c"
+      }
     },
     {
       "id": 51,
@@ -886,7 +1238,15 @@
       },
       "correct": ["B"],
       "explanation": "Premature judgment during generation can filter out ideas that seem odd at first but have real value.",
-      "source_id": 51
+      "source_id": 51,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c6452a70742365fe"
+      }
     },
     {
       "id": 52,
@@ -903,7 +1263,15 @@
       },
       "correct": ["B"],
       "explanation": "Requesting more ideas across explicitly different tones, with quality filtering deferred, maximizes variety.",
-      "source_id": 52
+      "source_id": 52,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8fbeae94670b58a5"
+      }
     },
     {
       "id": 53,
@@ -920,7 +1288,15 @@
       },
       "correct": ["A"],
       "explanation": "Explicitly ruling out the already-rejected direction gives Claude a concrete constraint that pushes toward new territory.",
-      "source_id": 53
+      "source_id": 53,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "75cf7c679d25936e"
+      }
     },
     {
       "id": 54,
@@ -937,7 +1313,18 @@
       },
       "correct": ["B"],
       "explanation": "Persona framing is a lightweight way to inject a different perspective: it can surface angles and concerns a neutral, generic response would miss, widening the range of ideas generated.",
-      "source_id": 54
+      "source_id": 54,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "a803701937d86a9a"
+      }
     },
     {
       "id": 55,
@@ -954,7 +1341,15 @@
       },
       "correct": ["D"],
       "explanation": "Explicitly varying the framing/angle for each batch of ideas breaks out of formulaic, interchangeable output.",
-      "source_id": 55
+      "source_id": 55,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d2ce13f05e74e3be"
+      }
     },
     {
       "id": 56,
@@ -971,7 +1366,15 @@
       },
       "correct": ["B"],
       "explanation": "Widening the net during generation and filtering later increases the odds of finding valuable ideas a narrower framing would exclude.",
-      "source_id": 56
+      "source_id": 56,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "206a381132d5395b"
+      }
     },
     {
       "id": 57,
@@ -1005,7 +1408,18 @@
       },
       "correct": ["C"],
       "explanation": "Concrete examples anchor abstract style descriptions and give Claude something specific to match.",
-      "source_id": 58
+      "source_id": 58,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "068ada7d686b04f2"
+      }
     },
     {
       "id": 59,
@@ -1039,7 +1453,18 @@
       },
       "correct": ["B"],
       "explanation": "Providing one or more examples to guide style/format is example-driven, or 'few-shot,' prompting.",
-      "source_id": 60
+      "source_id": 60,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "5f7c7be6b3469e8c"
+      }
     },
     {
       "id": 61,
@@ -1056,7 +1481,18 @@
       },
       "correct": ["D"],
       "explanation": "A single example risks the model picking up incidental specifics rather than the general pattern.",
-      "source_id": 61
+      "source_id": 61,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "f2ee80552411f7f0"
+      }
     },
     {
       "id": 62,
@@ -1107,7 +1543,18 @@
       },
       "correct": ["A"],
       "explanation": "Abstract tone descriptions can be interpreted several ways; a concrete example pins down exactly what's intended.",
-      "source_id": 64
+      "source_id": 64,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "80cb65f84f667fd9"
+      }
     },
     {
       "id": 65,
@@ -1158,7 +1605,18 @@
       },
       "correct": ["B"],
       "explanation": "An unspecified length leaves Claude guessing, which risks a mismatch with what's actually usable.",
-      "source_id": 67
+      "source_id": 67,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "9f7bc1eb75410473"
+      }
     },
     {
       "id": 68,
@@ -1192,7 +1650,18 @@
       },
       "correct": ["C"],
       "explanation": "Stating the length constraint directly in the prompt is the most reliable way to get a concise response the first time.",
-      "source_id": 69
+      "source_id": 69,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "bc9fa34bbdf9a58e"
+      }
     },
     {
       "id": 70,
@@ -1209,7 +1678,18 @@
       },
       "correct": ["D"],
       "explanation": "Naming the destination and its conventions (for example, comma-separated values for a spreadsheet, short bullets for a slide) gives Claude the concrete target format needed for smooth downstream use.",
-      "source_id": 70
+      "source_id": 70,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "a52d8bcad6e7ff1c"
+      }
     },
     {
       "id": 71,
@@ -1226,7 +1706,18 @@
       },
       "correct": ["A"],
       "explanation": "This prompt specifies structure (bullet points), count (3), and length per point (one sentence).",
-      "source_id": 71
+      "source_id": 71,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "c81ae9ae93818220"
+      }
     },
     {
       "id": 72,
@@ -1243,7 +1734,15 @@
       },
       "correct": ["A"],
       "explanation": "Adapting format to the reading context improves usability on constrained screens.",
-      "source_id": 72
+      "source_id": 72,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3cbae1936a28c545"
+      }
     },
     {
       "id": 73,
@@ -1311,7 +1810,18 @@
       },
       "correct": ["B"],
       "explanation": "A hallucination is fabricated or incorrect content stated with the same fluent confidence as accurate content, with no built-in warning sign.",
-      "source_id": 76
+      "source_id": 76,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "fdd5ce2c495f3f13"
+      }
     },
     {
       "id": 77,
@@ -1345,7 +1855,15 @@
       },
       "correct": ["B"],
       "explanation": "The fluency and confidence of hallucinated content is exactly what makes it dangerous: there's no stylistic tell distinguishing it from accurate content, so it is hard to catch without independent verification.",
-      "source_id": 78
+      "source_id": 78,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "27be4358cc514a35"
+      }
     },
     {
       "id": 79,
@@ -1362,7 +1880,18 @@
       },
       "correct": ["A"],
       "explanation": "Fabricated citations that look completely legitimate are a well-documented hallucination pattern, warranting verification against a primary source regardless of tone.",
-      "source_id": 79
+      "source_id": 79,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "11d8adc7e4b98509"
+      }
     },
     {
       "id": 80,
@@ -1396,7 +1925,18 @@
       },
       "correct": ["D"],
       "explanation": "Asking for specific data that isn't actually available anywhere is a classic setup for a fabricated-sounding, false-confidence answer.",
-      "source_id": 81
+      "source_id": 81,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "67dc6c88d3c3b563"
+      }
     },
     {
       "id": 82,
@@ -1498,7 +2038,18 @@
       },
       "correct": ["B"],
       "explanation": "A vague attribution like 'recent market data' isn't a real source. The figure needs to be traced to something concrete and verifiable, such as a specific financial data provider or filing, before it goes in the final report.",
-      "source_id": 87
+      "source_id": 87,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "10c693e587413a2f"
+      }
     },
     {
       "id": 88,
@@ -1515,7 +2066,18 @@
       },
       "correct": ["D"],
       "explanation": "Fabricated numeric thresholds in safety-relevant contexts carry real-world consequences if acted on without verification.",
-      "source_id": 88
+      "source_id": 88,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "9fe0e713dddb08ff"
+      }
     },
     {
       "id": 89,
@@ -1549,7 +2111,15 @@
       },
       "correct": ["A"],
       "explanation": "Where reliable information is thin, there's more room for confident-sounding gap-filling that isn't grounded in fact.",
-      "source_id": 90
+      "source_id": 90,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "21ced1eaabbc81b9"
+      }
     },
     {
       "id": 91,
@@ -1566,7 +2136,18 @@
       },
       "correct": ["A"],
       "explanation": "Internally inconsistent numbers are a concrete, easily checkable red flag worth investigating before the figures are used further.",
-      "source_id": 91
+      "source_id": 91,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "faf43b4973576022"
+      }
     },
     {
       "id": 92,
@@ -1608,7 +2189,7 @@
       "topic": "Hallucination Detection (Fabricated Facts and Plausible-Looking Errors)",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "Which statement best summarizes the core skill this topic is testing?",
+      "question": "Which statement best summarizes the core skill involved in detecting hallucinations in Claude's output?",
       "options": {
         "A": "Understanding that hallucinations only occur in coding-related responses",
         "B": "Memorizing a list of topics Claude cannot discuss, and avoiding those topics entirely",
@@ -1617,7 +2198,19 @@
       },
       "correct": ["D"],
       "explanation": "The central skill is separating the feeling of confidence in a response from its actual, independently verifiable accuracy.",
-      "source_id": 94
+      "source_id": 94,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "reworded": true,
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "77726ebf85a25f7e"
+      }
     },
     {
       "id": 95,
@@ -1634,7 +2227,15 @@
       },
       "correct": ["A"],
       "explanation": "Time pressure doesn't reduce the risk of an unverified figure being wrong — the responsible options are quick verification or explicit flagging/removal, not silent inclusion.",
-      "source_id": 95
+      "source_id": 95,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4c00a08b4010bb5b"
+      }
     },
     {
       "id": 96,
@@ -1651,7 +2252,15 @@
       },
       "correct": ["A"],
       "explanation": "A primary source is the original, authoritative origin of a fact (for example the actual filing, statute, or dataset), which is what should be checked against, not a secondhand summary or restatement.",
-      "source_id": 96
+      "source_id": 96,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8881342e3663b1be"
+      }
     },
     {
       "id": 97,
@@ -1719,7 +2328,15 @@
       },
       "correct": ["B"],
       "explanation": "Safety-relevant technical specifications need to be traced to and confirmed against an authoritative standard, not assumed correct.",
-      "source_id": 100
+      "source_id": 100,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a3bd90b556a760d2"
+      }
     },
     {
       "id": 101,
@@ -1736,7 +2353,15 @@
       },
       "correct": ["D"],
       "explanation": "Inability to locate a primary source is a reason for caution and flagging, not for treating an unverifiable claim as confirmed.",
-      "source_id": 101
+      "source_id": 101,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "82e1e0c389b08670"
+      }
     },
     {
       "id": 102,
@@ -1770,7 +2395,15 @@
       },
       "correct": ["B"],
       "explanation": "The stakes of an incorrect or fabricated legal citation, combined with the known hallucination risk, make primary-source verification essential here.",
-      "source_id": 103
+      "source_id": 103,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4d263025701d8a09"
+      }
     },
     {
       "id": 104,
@@ -1804,7 +2437,15 @@
       },
       "correct": ["C"],
       "explanation": "Careful reading assesses internal plausibility; fact-checking requires an external, independent comparison point.",
-      "source_id": 105
+      "source_id": 105,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "65bfc65073a13ec7"
+      }
     },
     {
       "id": 106,
@@ -1855,7 +2496,15 @@
       },
       "correct": ["B"],
       "explanation": "Tracing to the original study or dataset and confirming both the number and its context (for example sample size and year) is the thorough, correct verification approach.",
-      "source_id": 108
+      "source_id": 108,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "bf8e9d10dd09ae39"
+      }
     },
     {
       "id": 109,
@@ -1872,7 +2521,15 @@
       },
       "correct": ["D"],
       "explanation": "A correct number with missing or misrepresented context can still lead to a misleading conclusion, so context is part of a complete fact-check.",
-      "source_id": 109
+      "source_id": 109,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "be6bfb48fa73741c"
+      }
     },
     {
       "id": 110,
@@ -1889,7 +2546,15 @@
       },
       "correct": ["B"],
       "explanation": "A vague attribution like 'a well-known study' isn't a real, checkable source — the specific study needs to be identified and checked directly.",
-      "source_id": 110
+      "source_id": 110,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a213872d8bf1f491"
+      }
     },
     {
       "id": 111,
@@ -1906,7 +2571,15 @@
       },
       "correct": ["A"],
       "explanation": "Consistent verification habits catch the rare but costly cases where an 'obvious' fact turns out to be subtly wrong or outdated.",
-      "source_id": 111
+      "source_id": 111,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4f5bd718b01709aa"
+      }
     },
     {
       "id": 112,
@@ -1940,7 +2613,15 @@
       },
       "correct": ["B"],
       "explanation": "Internal consistency means the document doesn't contradict itself across its own sections, numbers, or conclusions.",
-      "source_id": 113
+      "source_id": 113,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "83a129a6e3862c6e"
+      }
     },
     {
       "id": 114,
@@ -1957,7 +2638,15 @@
       },
       "correct": ["C"],
       "explanation": "A conclusion unsupported by the body's evidence is a genuine logical-consistency flaw, not a cosmetic issue.",
-      "source_id": 114
+      "source_id": 114,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "34c3e5a0e6d87c10"
+      }
     },
     {
       "id": 115,
@@ -1974,7 +2663,15 @@
       },
       "correct": ["D"],
       "explanation": "Sentence-level polish doesn't guarantee document-level coherence — the overall argument structure needs separate evaluation.",
-      "source_id": 115
+      "source_id": 115,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "7b9f306641ddcd8f"
+      }
     },
     {
       "id": 116,
@@ -1991,7 +2688,15 @@
       },
       "correct": ["C"],
       "explanation": "A direct contradiction between the supporting data and the stated conclusion must be resolved, by correcting either the recommendation or the comparison table, not published or ignored.",
-      "source_id": 116
+      "source_id": 116,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "82491ceaa4e75e48"
+      }
     },
     {
       "id": 117,
@@ -2008,7 +2713,15 @@
       },
       "correct": ["B"],
       "explanation": "Audience suitability is about matching depth, tone, and structure to the actual reader's needs and expertise level.",
-      "source_id": 117
+      "source_id": 117,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ce4115b004f736b8"
+      }
     },
     {
       "id": 118,
@@ -2025,7 +2738,15 @@
       },
       "correct": ["D"],
       "explanation": "Content that doesn't match the audience's background undermines the document's usefulness, regardless of technical accuracy. The mismatch should be flagged and revised before distribution.",
-      "source_id": 118
+      "source_id": 118,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9a173af2074bf236"
+      }
     },
     {
       "id": 119,
@@ -2042,7 +2763,15 @@
       },
       "correct": ["B"],
       "explanation": "A conclusion misaligned with its own supporting evidence is a structural/logical flaw, distinct from a factual accuracy error.",
-      "source_id": 119
+      "source_id": 119,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "be33109f64bbd0b2"
+      }
     },
     {
       "id": 120,
@@ -2059,7 +2788,15 @@
       },
       "correct": ["B"],
       "explanation": "Inconsistent terminology is a structural/clarity issue that should simply be standardized during review, not treated as a fatal flaw or a factual error.",
-      "source_id": 120
+      "source_id": 120,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2ac4f8cdc14c2f19"
+      }
     },
     {
       "id": 121,
@@ -2076,7 +2813,15 @@
       },
       "correct": ["B"],
       "explanation": "A logical section order (for example, background before analysis before recommendation) supports the reader's ability to follow and be persuaded by the overall argument, regardless of individual sentence quality.",
-      "source_id": 121
+      "source_id": 121,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9231e8108e58861e"
+      }
     },
     {
       "id": 122,
@@ -2093,7 +2838,15 @@
       },
       "correct": ["A"],
       "explanation": "For a skeptical audience, evidence-before-conclusion structuring is generally more persuasive than leading with an unsupported claim: the reader sees the reasoning before being asked to accept the conclusion.",
-      "source_id": 122
+      "source_id": 122,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fc1795b8ff2ec5d0"
+      }
     },
     {
       "id": 123,
@@ -2110,7 +2863,15 @@
       },
       "correct": ["B"],
       "explanation": "Each significant claim should be traceable to either in-document reasoning/evidence or an external source — unsupported assertions are a structural weakness.",
-      "source_id": 123
+      "source_id": 123,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b6cce5c1fc003535"
+      }
     },
     {
       "id": 124,
@@ -2127,7 +2888,15 @@
       },
       "correct": ["D"],
       "explanation": "A gap between what's being compared and what's actually justified is a concrete completeness issue that should be caught and fixed.",
-      "source_id": 124
+      "source_id": 124,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "90cb7ba3393f6b94"
+      }
     },
     {
       "id": 125,
@@ -2144,7 +2913,15 @@
       },
       "correct": ["C"],
       "explanation": "Accuracy at the fact level doesn't guarantee soundness at the argument/structure level — both need to be checked independently.",
-      "source_id": 125
+      "source_id": 125,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d2ee10154c5d0846"
+      }
     },
     {
       "id": 126,
@@ -2161,7 +2938,15 @@
       },
       "correct": ["A"],
       "explanation": "Resolving the mismatch — by completing the content or correcting the promise — restores internal consistency between the introduction and the body.",
-      "source_id": 126
+      "source_id": 126,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "65dbdfe7d243d7c6"
+      }
     },
     {
       "id": 127,
@@ -2178,7 +2963,15 @@
       },
       "correct": ["A"],
       "explanation": "SME sign-off is a formal review and approval by a qualified expert, reserved for content where errors carry serious consequences (for example medical, legal, financial or safety content), before it is finalized or acted upon.",
-      "source_id": 127
+      "source_id": 127,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "985ccc96e7ee48a4"
+      }
     },
     {
       "id": 128,
@@ -2195,7 +2988,15 @@
       },
       "correct": ["C"],
       "explanation": "Medical guidance affecting patient safety requires qualified expert sign-off regardless of how polished or confident the draft reads.",
-      "source_id": 128
+      "source_id": 128,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "859efb2dfb34e07e"
+      }
     },
     {
       "id": 129,
@@ -2246,7 +3047,15 @@
       },
       "correct": ["B"],
       "explanation": "How something reads has no necessary connection to whether it's actually correct in a specialized, high-stakes domain — that requires genuine expertise to assess.",
-      "source_id": 131
+      "source_id": 131,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9b8b92752b19056b"
+      }
     },
     {
       "id": 132,
@@ -2263,7 +3072,15 @@
       },
       "correct": ["B"],
       "explanation": "Investor-facing financial projections carry real stakes and require qualified financial review of substance, not just formatting.",
-      "source_id": 132
+      "source_id": 132,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "89aecd2b9634e171"
+      }
     },
     {
       "id": 133,
@@ -2297,7 +3114,15 @@
       },
       "correct": ["D"],
       "explanation": "Sign-off rigor should scale with actual risk; a low-stakes internal FAQ doesn't carry the same consequences as regulated or safety-critical content.",
-      "source_id": 134
+      "source_id": 134,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e4533933ac111633"
+      }
     },
     {
       "id": 135,
@@ -2331,7 +3156,15 @@
       },
       "correct": ["D"],
       "explanation": "A significant decision resting on legal accuracy warrants review by someone with actual legal qualification, who confirms the summary's accuracy and completeness, not self-review by the AI.",
-      "source_id": 136
+      "source_id": 136,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a5a8dfb5c83b03e6"
+      }
     },
     {
       "id": 137,
@@ -2348,7 +3181,15 @@
       },
       "correct": ["C"],
       "explanation": "The potential cost of an undetected high-stakes error typically dwarfs the time saved by skipping expert review.",
-      "source_id": 137
+      "source_id": 137,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e0e2f7e5c2f88c29"
+      }
     },
     {
       "id": 138,
@@ -2365,7 +3206,15 @@
       },
       "correct": ["D"],
       "explanation": "Safety procedures directly affect physical wellbeing and require qualified expert validation before being used operationally.",
-      "source_id": 138
+      "source_id": 138,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5e8243678f342f20"
+      }
     },
     {
       "id": 139,
@@ -2382,7 +3231,15 @@
       },
       "correct": ["B"],
       "explanation": "A consistent, explicit categorization process ensures higher-risk content reliably gets the review it needs, rather than depending on inconsistent individual judgment.",
-      "source_id": 139
+      "source_id": 139,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "15490955e2ceecd6"
+      }
     },
     {
       "id": 140,
@@ -2399,7 +3256,15 @@
       },
       "correct": ["D"],
       "explanation": "Construction safety and liability stakes call for qualified engineering/safety expert review before stakeholder distribution.",
-      "source_id": 140
+      "source_id": 140,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6e290305e01a74c3"
+      }
     },
     {
       "id": 141,
@@ -2433,7 +3298,15 @@
       },
       "correct": ["C"],
       "explanation": "Given the asymmetric cost of an undetected high-stakes error, erring toward expert review in ambiguous cases, especially for medical, legal, financial or safety-adjacent content, is the safer default.",
-      "source_id": 142
+      "source_id": 142,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "14cebfed6d0997d0"
+      }
     },
     {
       "id": 143,
@@ -2450,7 +3323,15 @@
       },
       "correct": ["D"],
       "explanation": "AI assistance changes how a draft is produced, not who is ultimately accountable for its accuracy and appropriateness in high-stakes domains.",
-      "source_id": 143
+      "source_id": 143,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3f4db47fa04aa3a8"
+      }
     },
     {
       "id": 144,
@@ -2467,7 +3348,15 @@
       },
       "correct": ["A"],
       "explanation": "Artifacts earn their place for standalone, reusable, or visually or structurally rich content (for example a chart, a reusable document, a diagram), not for quick conversational answers.",
-      "source_id": 144
+      "source_id": 144,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c7cb63f2de508103"
+      }
     },
     {
       "id": 145,
@@ -2484,7 +3373,15 @@
       },
       "correct": ["B"],
       "explanation": "Brief conversational answers don't benefit from being pulled out into a separate artifact — that adds friction rather than value.",
-      "source_id": 145
+      "source_id": 145,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2732630e09cf4835"
+      }
     },
     {
       "id": 146,
@@ -2501,7 +3398,15 @@
       },
       "correct": ["C"],
       "explanation": "Structured, tabular output is directly usable in a spreadsheet, unlike prose or non-structured formats.",
-      "source_id": 146
+      "source_id": 146,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2fcb50eef713e6a3"
+      }
     },
     {
       "id": 147,
@@ -2518,7 +3423,15 @@
       },
       "correct": ["D"],
       "explanation": "A visual process is best served by an actual diagram rather than prose description, especially when it will be reused in a presentation.",
-      "source_id": 147
+      "source_id": 147,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8d6f744b26a9b8fe"
+      }
     },
     {
       "id": 148,
@@ -2535,7 +3448,15 @@
       },
       "correct": ["C"],
       "explanation": "Over-using artifacts for simple content adds friction without adding value — the format should match the content's actual needs.",
-      "source_id": 148
+      "source_id": 148,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "26d9d2759d9215db"
+      }
     },
     {
       "id": 149,
@@ -2569,7 +3490,15 @@
       },
       "correct": ["D"],
       "explanation": "Multi-dimensional comparisons (for example, several options across several criteria) are typically much clearer in tabular form than buried in prose.",
-      "source_id": 150
+      "source_id": 150,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "1f90386a6babcba8"
+      }
     },
     {
       "id": 151,
@@ -2586,7 +3515,15 @@
       },
       "correct": ["D"],
       "explanation": "A quick, small list embedded in an ongoing conversation is well-served by a simple inline reply, not a heavyweight standalone artifact.",
-      "source_id": 151
+      "source_id": 151,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "656c7b6c56a32db9"
+      }
     },
     {
       "id": 152,
@@ -2637,7 +3574,15 @@
       },
       "correct": ["C"],
       "explanation": "The key signals are substance, reusability, and whether visual/structural presentation adds real value — not an arbitrary default in either direction.",
-      "source_id": 154
+      "source_id": 154,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "79d6cda42aea28ae"
+      }
     },
     {
       "id": 155,
@@ -2654,7 +3599,15 @@
       },
       "correct": ["B"],
       "explanation": "Serving each need with the format suited to it — quick inline answer plus a separate polished artifact — satisfies both without compromising either.",
-      "source_id": 155
+      "source_id": 155,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a53546b25b0594a8"
+      }
     },
     {
       "id": 156,
@@ -2671,7 +3624,15 @@
       },
       "correct": ["C"],
       "explanation": "Mismatched format (for example, prose where a table was needed) creates avoidable manual rework. Correct format selection is a genuine productivity consideration, not just an aesthetic preference.",
-      "source_id": 156
+      "source_id": 156,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f49cada191132b8e"
+      }
     },
     {
       "id": 157,
@@ -2688,7 +3649,18 @@
       },
       "correct": ["A"],
       "explanation": "The apparent precision of a number can create false confidence, making numerical claims a particularly important category to verify.",
-      "source_id": 157
+      "source_id": 157,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "862c81fa8220b172"
+      }
     },
     {
       "id": 158,
@@ -2705,7 +3677,15 @@
       },
       "correct": ["C"],
       "explanation": "A percentage without a clear, specific baseline (year-over-year vs. month-over-month, and which periods) is ambiguous and can be interpreted, or misused, in misleading ways.",
-      "source_id": 158
+      "source_id": 158,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6f08b6d1c145753e"
+      }
     },
     {
       "id": 159,
@@ -2722,7 +3702,15 @@
       },
       "correct": ["C"],
       "explanation": "Averages can be distorted by outliers, so understanding what's driving the number is part of responsibly verifying and presenting it.",
-      "source_id": 159
+      "source_id": 159,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ca7230f398996ff8"
+      }
     },
     {
       "id": 160,
@@ -2739,7 +3727,15 @@
       },
       "correct": ["D"],
       "explanation": "Sample size and representativeness are essential context for whether a ratio-based claim is actually meaningful and defensible.",
-      "source_id": 160
+      "source_id": 160,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f8f7684135162c66"
+      }
     },
     {
       "id": 161,
@@ -2756,7 +3752,18 @@
       },
       "correct": ["C"],
       "explanation": "Real-world business data is often messier or rounder than an oddly precise figure suggests, so precision where it wouldn't realistically exist can be a subtle sign of fabrication or miscalculation.",
-      "source_id": 161
+      "source_id": 161,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "edf206794192365f"
+      }
     },
     {
       "id": 162,
@@ -2773,7 +3780,15 @@
       },
       "correct": ["D"],
       "explanation": "Inconsistent figures for the same metric within one document is a credibility-damaging error that needs to be resolved, not glossed over.",
-      "source_id": 162
+      "source_id": 162,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a2cb1aa373f5a9ea"
+      }
     },
     {
       "id": 163,
@@ -2790,7 +3805,15 @@
       },
       "correct": ["A"],
       "explanation": "A single statistic often supports a more limited or qualified conclusion than a sweeping absolute claim implies. Checking that alignment is part of responsible use.",
-      "source_id": 163
+      "source_id": 163,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "54f2f9a9c407ab2d"
+      }
     },
     {
       "id": 164,
@@ -2807,7 +3830,15 @@
       },
       "correct": ["B"],
       "explanation": "Extrapolating confidently from very few data points is a real statistical weakness worth flagging before the projection is relied upon.",
-      "source_id": 164
+      "source_id": 164,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d68363680a042822"
+      }
     },
     {
       "id": 165,
@@ -2824,7 +3855,15 @@
       },
       "correct": ["D"],
       "explanation": "Percentage-point vs. relative-percentage confusion is a real, common way to produce a misleading claim without any individual fabricated number.",
-      "source_id": 165
+      "source_id": 165,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "409972191bd65ae8"
+      }
     },
     {
       "id": 166,
@@ -2841,7 +3880,15 @@
       },
       "correct": ["A"],
       "explanation": "Relative framing ('doubled') without absolute context can create a misleading impression of significance when the underlying numbers are actually small.",
-      "source_id": 166
+      "source_id": 166,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "969eedc4bb0a0369"
+      }
     },
     {
       "id": 167,
@@ -2858,7 +3905,15 @@
       },
       "correct": ["A"],
       "explanation": "Understanding provenance, definition, and methodology is the core discipline behind responsibly using any statistic in a real decision.",
-      "source_id": 167
+      "source_id": 167,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5f0c257900dd3ca6"
+      }
     },
     {
       "id": 168,
@@ -2875,7 +3930,15 @@
       },
       "correct": ["D"],
       "explanation": "Correlation-implies-causation is a classic reasoning gap worth checking whenever a causal claim is made from what may only be a correlational observation.",
-      "source_id": 168
+      "source_id": 168,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "7aa30df72d772075"
+      }
     },
     {
       "id": 169,
@@ -2892,7 +3955,18 @@
       },
       "correct": ["C"],
       "explanation": "Confidence in phrasing has no necessary link to actual correctness, making it an unreliable heuristic for trustworthiness.",
-      "source_id": 169
+      "source_id": 169,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "54b3000b77ace73c"
+      }
     },
     {
       "id": 170,
@@ -2909,7 +3983,18 @@
       },
       "correct": ["D"],
       "explanation": "Confident-sounding answers to niche questions deserve extra scrutiny precisely because sparse underlying information raises the odds of an ungrounded answer.",
-      "source_id": 170
+      "source_id": 170,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations"
+        ],
+        "contentHash": "dabe9df5d6bd5945"
+      }
     },
     {
       "id": 171,
@@ -2926,7 +4011,15 @@
       },
       "correct": ["D"],
       "explanation": "Treating output as a verifiable first draft — not an automatically trustworthy final answer — better matches how fluency and accuracy actually relate.",
-      "source_id": 171
+      "source_id": 171,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fc9628dab2f263d4"
+      }
     },
     {
       "id": 172,
@@ -2960,7 +4053,15 @@
       },
       "correct": ["B"],
       "explanation": "Elaboration and detail don't inherently correlate with correctness — a fabricated claim can be just as elaborately wrong as a brief one.",
-      "source_id": 173
+      "source_id": 173,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "843ea313ce1a0308"
+      }
     },
     {
       "id": 174,
@@ -2977,7 +4078,15 @@
       },
       "correct": ["C"],
       "explanation": "Specificity creating unearned trust is a known bias; the fix is deliberate verification rather than letting detail substitute for it.",
-      "source_id": 174
+      "source_id": 174,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "24dacdefaf951cd0"
+      }
     },
     {
       "id": 175,
@@ -2994,7 +4103,15 @@
       },
       "correct": ["C"],
       "explanation": "Because internal cues like tone are unreliable, an external verification step is the substantive corrective — regardless of how confident or hedged the original response sounded.",
-      "source_id": 175
+      "source_id": 175,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5551186a3e4f3325"
+      }
     },
     {
       "id": 176,
@@ -3011,7 +4128,15 @@
       },
       "correct": ["A"],
       "explanation": "Sound evaluation focuses on the substance of reasoning and evidence, with verification proportional to stakes — not on surface confidence, length, or blanket rejection.",
-      "source_id": 176
+      "source_id": 176,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "22f0fe23781844db"
+      }
     },
     {
       "id": 177,
@@ -3062,7 +4187,16 @@
       },
       "correct": ["D"],
       "explanation": "The core tradeoff is speed and cost versus depth of reasoning: faster, lighter tiers suit simpler, high-volume tasks, while more capable tiers handle nuanced or complex reasoning, generally at higher cost and latency. Matching the tier to the task's actual complexity is the practical skill.",
-      "source_id": 183
+      "source_id": 183,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "a18d2fda35d9a1b4"
+      }
     },
     {
       "id": 180,
@@ -3113,7 +4247,16 @@
       },
       "correct": ["C"],
       "explanation": "Unnecessary capability for simple tasks means paying a cost/speed penalty without a corresponding quality benefit.",
-      "source_id": 186
+      "source_id": 186,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "fe1012a3d18aeca1"
+      }
     },
     {
       "id": 183,
@@ -3147,7 +4290,16 @@
       },
       "correct": ["A"],
       "explanation": "Empirically checking whether the lighter tier's quality meets the actual bar for the task is the practical way to validate the choice, upgrading to a more capable tier if it falls short.",
-      "source_id": 188
+      "source_id": 188,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "0f31b22ea2eb6790"
+      }
     },
     {
       "id": 185,
@@ -3181,7 +4333,16 @@
       },
       "correct": ["A"],
       "explanation": "Tier selection is a practical, product-level decision that affects speed, cost, and reasoning depth regardless of whether the user writes code.",
-      "source_id": 190
+      "source_id": 190,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "37b632e1fb57b007"
+      }
     },
     {
       "id": 187,
@@ -3198,7 +4359,15 @@
       },
       "correct": ["B"],
       "explanation": "Projects let related work share persistent context, instructions, and knowledge sources, so context doesn't need to be re-explained in each conversation.",
-      "source_id": 191
+      "source_id": 191,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2cfb71ccd24e4c65"
+      }
     },
     {
       "id": 188,
@@ -3215,7 +4384,15 @@
       },
       "correct": ["D"],
       "explanation": "This is precisely the recurring, shared-context scenario Projects are designed to solve.",
-      "source_id": 192
+      "source_id": 192,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "aa03cd74d13c71a8"
+      }
     },
     {
       "id": 189,
@@ -3232,7 +4409,15 @@
       },
       "correct": ["B"],
       "explanation": "Artifacts are a distinct content pane for substantial, reusable outputs (like a document, diagram, or code snippet), separate from the back-and-forth conversational thread.",
-      "source_id": 193
+      "source_id": 193,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "0a89222eb2c663e1"
+      }
     },
     {
       "id": 190,
@@ -3266,7 +4451,15 @@
       },
       "correct": ["A"],
       "explanation": "Substantial standalone content benefits from a dedicated, uncluttered view rather than being embedded in a scrolling conversation thread.",
-      "source_id": 195
+      "source_id": 195,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "01324bdc0785345f"
+      }
     },
     {
       "id": 192,
@@ -3300,7 +4493,15 @@
       },
       "correct": ["D"],
       "explanation": "The core value of a Project is persistent, shared context across multiple related conversations — something separate, unconnected chats don't provide.",
-      "source_id": 197
+      "source_id": 197,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c9a0842291b3de29"
+      }
     },
     {
       "id": 194,
@@ -3402,7 +4603,15 @@
       },
       "correct": ["C"],
       "explanation": "Match the feature to the task's actual shape: shared or persistent context favors Projects, substantial reusable content favors Artifacts, current-information needs favor a research or search mode, and simple one-offs favor plain chat.",
-      "source_id": 203
+      "source_id": 203,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3c173afcced8349b"
+      }
     },
     {
       "id": 200,
@@ -3419,7 +4628,18 @@
       },
       "correct": ["B"],
       "explanation": "Live, constantly-changing data like stock prices requires a current-information-retrieval feature, not static training knowledge.",
-      "source_id": 204
+      "source_id": 204,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+        ],
+        "contentHash": "b323b90065c6751a"
+      }
     },
     {
       "id": 201,
@@ -3436,7 +4656,18 @@
       },
       "correct": ["A"],
       "explanation": "Correctly identifying whether a task needs current data or stable, established knowledge determines whether a search/research feature is actually necessary.",
-      "source_id": 205
+      "source_id": 205,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+        ],
+        "contentHash": "d689322589ac99df"
+      }
     },
     {
       "id": 202,
@@ -3470,7 +4701,15 @@
       },
       "correct": ["D"],
       "explanation": "Substance and reuse/reference likelihood are the relevant signals for choosing an artifact over a quick inline reply.",
-      "source_id": 207
+      "source_id": 207,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "57530cd11914d38a"
+      }
     },
     {
       "id": 204,
@@ -3504,7 +4743,15 @@
       },
       "correct": ["C"],
       "explanation": "Centralized administration and shared collaboration capabilities are the typical value proposition of organization-oriented plans over individual accounts.",
-      "source_id": 209
+      "source_id": 209,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6a2209ab2af01572"
+      }
     },
     {
       "id": 206,
@@ -3538,7 +4785,15 @@
       },
       "correct": ["A"],
       "explanation": "Feature availability and data-handling policies that vary by plan directly affect appropriate day-to-day usage, not just billing.",
-      "source_id": 211
+      "source_id": 211,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b8fc626e0f73b4fb"
+      }
     },
     {
       "id": 208,
@@ -3555,7 +4810,15 @@
       },
       "correct": ["C"],
       "explanation": "Organization-specific policy can vary, so checking with the relevant policy or administrator is the responsible step rather than assuming.",
-      "source_id": 212
+      "source_id": 212,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "352f6fbfb26d1531"
+      }
     },
     {
       "id": 209,
@@ -3572,7 +4835,15 @@
       },
       "correct": ["D"],
       "explanation": "As collaboration and governance needs grow, organization-oriented plans generally provide more of what a scaling team actually needs.",
-      "source_id": 213
+      "source_id": 213,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e0cbe650f6b6af85"
+      }
     },
     {
       "id": 210,
@@ -3708,7 +4979,15 @@
       },
       "correct": ["B"],
       "explanation": "This design captures AI's drafting speed while preserving human accountability at the exact point where real financial consequences occur.",
-      "source_id": 221
+      "source_id": 221,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "62a444e0b983b677"
+      }
     },
     {
       "id": 218,
@@ -3725,7 +5004,15 @@
       },
       "correct": ["B"],
       "explanation": "Pre-action review can prevent a mistake from causing real harm, while post-action review can only respond to harm that has already occurred.",
-      "source_id": 222
+      "source_id": 222,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ec9b5d59aba02f34"
+      }
     },
     {
       "id": 219,
@@ -3759,7 +5046,15 @@
       },
       "correct": ["C"],
       "explanation": "Removing the checkpoint removes the opportunity to catch an error before it causes a real consequence — the central risk of skipping HITL for high-stakes actions.",
-      "source_id": 224
+      "source_id": 224,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "01b08c25822d4b63"
+      }
     },
     {
       "id": 221,
@@ -3776,7 +5071,15 @@
       },
       "correct": ["A"],
       "explanation": "High financial stakes and consequential, hard-to-reverse actions are exactly where a human checkpoint adds the most value.",
-      "source_id": 225
+      "source_id": 225,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "82289d7108c4004d"
+      }
     },
     {
       "id": 222,
@@ -3793,7 +5096,15 @@
       },
       "correct": ["C"],
       "explanation": "In HITL design, AI accelerates and supports the preparatory work while the human retains the actual authorizing judgment.",
-      "source_id": 226
+      "source_id": 226,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "09e63e6f0e88e3cd"
+      }
     },
     {
       "id": 223,
@@ -3810,7 +5121,15 @@
       },
       "correct": ["D"],
       "explanation": "Using AI to triage and focus human attention, while preserving human decision authority, is an efficient and sound HITL pattern.",
-      "source_id": 227
+      "source_id": 227,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a3939f663fb9b5f0"
+      }
     },
     {
       "id": 224,
@@ -3861,7 +5180,15 @@
       },
       "correct": ["B"],
       "explanation": "Meaningful review requires genuine examination and real authority to intervene — a nominal rubber-stamp step doesn't provide the actual safety benefit HITL is meant to deliver.",
-      "source_id": 230
+      "source_id": 230,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6f7bbfbd2e3bf6d3"
+      }
     },
     {
       "id": 227,
@@ -3878,7 +5205,15 @@
       },
       "correct": ["A"],
       "explanation": "This is a textbook HITL pattern: AI drafts, human reviews and retains sending authority.",
-      "source_id": 231
+      "source_id": 231,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f777ca6edb9692b6"
+      }
     },
     {
       "id": 228,
@@ -3895,7 +5230,15 @@
       },
       "correct": ["A"],
       "explanation": "An unassigned or ambiguous review responsibility risks becoming a checkpoint that exists on paper but doesn't function in practice.",
-      "source_id": 232
+      "source_id": 232,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6e15f4b35696c408"
+      }
     },
     {
       "id": 229,
@@ -3929,7 +5272,15 @@
       },
       "correct": ["A"],
       "explanation": "Consequence-based risk assessment (financial, legal, reputational, safety) is the sound basis for deciding where mandatory human checkpoints actually add value, with checkpoints proportional to that risk.",
-      "source_id": 234
+      "source_id": 234,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "bc12898de8fe0def"
+      }
     },
     {
       "id": 231,
@@ -3946,7 +5297,15 @@
       },
       "correct": ["C"],
       "explanation": "The personal and career-consequential nature of performance reviews makes them a strong candidate for mandatory human review before distribution.",
-      "source_id": 235
+      "source_id": 235,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f40724dc20f9b946"
+      }
     },
     {
       "id": 232,
@@ -3963,7 +5322,15 @@
       },
       "correct": ["B"],
       "explanation": "The goal is efficiency gains from AI assistance without sacrificing human accountability where decisions actually matter.",
-      "source_id": 236
+      "source_id": 236,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a41cd17fc8ba48f0"
+      }
     },
     {
       "id": 233,
@@ -3980,7 +5347,15 @@
       },
       "correct": ["D"],
       "explanation": "AI's value here is informing and accelerating the human's decision, not replacing the human's authority to make it.",
-      "source_id": 237
+      "source_id": 237,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "40ebf6edccbed754"
+      }
     },
     {
       "id": 234,
@@ -3997,7 +5372,15 @@
       },
       "correct": ["A"],
       "explanation": "Different downstream uses (for example import into a system, human reading, presentation) require different formats. Format mismatches with the actual downstream use create avoidable rework, so matching format to purpose is a core workflow-integration skill.",
-      "source_id": 238
+      "source_id": 238,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "138197e9cc5266d2"
+      }
     },
     {
       "id": 235,
@@ -4031,7 +5414,15 @@
       },
       "correct": ["A"],
       "explanation": "Manual reformatting work directly erodes the time savings that prompted using AI assistance in the first place.",
-      "source_id": 240
+      "source_id": 240,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "dd6a581249234294"
+      }
     },
     {
       "id": 237,
@@ -4048,7 +5439,15 @@
       },
       "correct": ["B"],
       "explanation": "Matching the format to the specific destination (a client email) means producing genuine email-ready prose rather than a mismatched format.",
-      "source_id": 241
+      "source_id": 241,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4de080f3e3c78e62"
+      }
     },
     {
       "id": 238,
@@ -4065,7 +5464,15 @@
       },
       "correct": ["A"],
       "explanation": "Front-loading the format requirement avoids the wasted cycle of generating, then reformatting, then re-verifying.",
-      "source_id": 242
+      "source_id": 242,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5541732f6d29ee46"
+      }
     },
     {
       "id": 239,
@@ -4116,7 +5523,16 @@
       },
       "correct": ["A"],
       "explanation": "Very long conversations can dilute relevant context or approach practical limits, making periodic summarization or a fresh start a reasonable workflow choice.",
-      "source_id": 245
+      "source_id": 245,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"],
+        "contentHash": "5025fbb1748433cd"
+      }
     },
     {
       "id": 242,
@@ -4150,7 +5566,15 @@
       },
       "correct": ["D"],
       "explanation": "Deliberately persisting context — via Project configuration or explicit summaries — is the practical way to maintain continuity across separate conversations.",
-      "source_id": 247
+      "source_id": 247,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3c734775cc24065b"
+      }
     },
     {
       "id": 244,
@@ -4162,12 +5586,21 @@
       "options": {
         "A": "Assume this indicates malfunction and stop using Claude",
         "B": "Assume the new conversation will somehow retroactively access the old one with no setup",
-        "C": "Separate conversations don't share context, so supply it explicitly",
+        "C": "A new chat may not carry over prior specifics, so supply them explicitly",
         "D": "Wait indefinitely for the context to appear on its own"
       },
       "correct": ["C"],
-      "explanation": "Separate conversations generally don't share context automatically unless configured to (for example, via a Project), so the necessary background has to be provided explicitly. Understanding this is key to designing an effective workflow around it.",
-      "source_id": 248
+      "explanation": "A new conversation doesn't reliably include the earlier conversation's details. Memory and chat search, where enabled, can bring some earlier context forward, but they don't guarantee every specific carries over, and incognito chats and projects keep their own context. The dependable move is to restate the needed background, and designing workflows around this avoids surprises.",
+      "source_id": 248,
+      "confidence": {
+        "rag": "amber",
+        "level": "medium",
+        "basis": "reasoning",
+        "timeSensitive": true,
+        "reviewed": "2026-10-05",
+        "reworded": true,
+        "contentHash": "201460fa2b07b8d9"
+      }
     },
     {
       "id": 245,
@@ -4184,7 +5617,16 @@
       },
       "correct": ["A"],
       "explanation": "A focused restart can outperform an overloaded long conversation by keeping only what's actually relevant in view.",
-      "source_id": 249
+      "source_id": 249,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"],
+        "contentHash": "01762527d7559006"
+      }
     },
     {
       "id": 246,
@@ -4269,7 +5711,15 @@
       },
       "correct": ["B"],
       "explanation": "Explicitly re-supplying or persisting relevant context is the reliable approach, rather than assuming automatic carryover between separate conversations.",
-      "source_id": 254
+      "source_id": 254,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e51efa70751c2d50"
+      }
     },
     {
       "id": 251,
@@ -4371,7 +5821,15 @@
       },
       "correct": ["C"],
       "explanation": "Targeted integration at the steps where AI adds the most value (for example drafting, extraction, summarization), while preserving necessary controls and human decision points elsewhere, is more sound than wholesale replacement or random insertion.",
-      "source_id": 260
+      "source_id": 260,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5d804a7a32e5e9fc"
+      }
     },
     {
       "id": 257,
@@ -4388,7 +5846,15 @@
       },
       "correct": ["B"],
       "explanation": "Layering AI assistance onto the most time-consuming step, without disturbing existing review/approval controls, captures efficiency gains while preserving established safeguards.",
-      "source_id": 261
+      "source_id": 261,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "25be7ef2861cc0a0"
+      }
     },
     {
       "id": 258,
@@ -4439,7 +5905,15 @@
       },
       "correct": ["A"],
       "explanation": "Evaluating actual quality and efficiency outcomes — and adjusting if they fall short — is the practical way to validate an integration decision.",
-      "source_id": 264
+      "source_id": 264,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "57002669ea586c1a"
+      }
     },
     {
       "id": 261,
@@ -4456,7 +5930,15 @@
       },
       "correct": ["C"],
       "explanation": "AI assistance can support preparation for a mandatory step, but cannot substitute for a legally required review itself.",
-      "source_id": 265
+      "source_id": 265,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d3f7894cd5d7360f"
+      }
     },
     {
       "id": 262,
@@ -4473,7 +5955,15 @@
       },
       "correct": ["B"],
       "explanation": "A contained, evaluable pilot reduces risk and provides real information to guide a broader rollout.",
-      "source_id": 266
+      "source_id": 266,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f55d6f6b62188f61"
+      }
     },
     {
       "id": 263,
@@ -4507,7 +5997,15 @@
       },
       "correct": ["A"],
       "explanation": "Checkpoints placed before the outline is expanded, and again before finalization, are well-timed to catch problems before they multiply.",
-      "source_id": 268
+      "source_id": 268,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f59594094f58039b"
+      }
     },
     {
       "id": 265,
@@ -4558,7 +6056,15 @@
       },
       "correct": ["C"],
       "explanation": "The right number of stages balances catching real risks at meaningful transitions against unnecessary process overhead.",
-      "source_id": 271
+      "source_id": 271,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9bc38a2026b02561"
+      }
     },
     {
       "id": 268,
@@ -4575,7 +6081,15 @@
       },
       "correct": ["D"],
       "explanation": "Verifying alignment with original requirements before investing in final formatting avoids polishing a draft that doesn't actually meet the need.",
-      "source_id": 272
+      "source_id": 272,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "7e75e4341da407e9"
+      }
     },
     {
       "id": 269,
@@ -4592,7 +6106,15 @@
       },
       "correct": ["B"],
       "explanation": "Distinct stages let each type of work get focused attention, rather than blending generation and verification in a way that can shortchange both.",
-      "source_id": 273
+      "source_id": 273,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3ff03f009d387f08"
+      }
     },
     {
       "id": 270,
@@ -4609,7 +6131,15 @@
       },
       "correct": ["A"],
       "explanation": "Project-level custom instructions provide standing guidance (tone, format, constraints, conventions) that applies automatically, so it doesn't need to be repeated in every conversation.",
-      "source_id": 274
+      "source_id": 274,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "1b005b25cd3df5e1"
+      }
     },
     {
       "id": 271,
@@ -4677,7 +6207,15 @@
       },
       "correct": ["D"],
       "explanation": "Distinct Projects keep unrelated bodies of work cleanly separated, each with its own appropriate context and instructions.",
-      "source_id": 278
+      "source_id": 278,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3e50c039f50c4e5b"
+      }
     },
     {
       "id": 275,
@@ -4728,7 +6266,15 @@
       },
       "correct": ["A"],
       "explanation": "Custom instructions should be kept current — updating them after a meaningful change like a rebrand keeps future outputs aligned with reality.",
-      "source_id": 281
+      "source_id": 281,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f2ed7c0aff83d2b9"
+      }
     },
     {
       "id": 278,
@@ -4745,7 +6291,15 @@
       },
       "correct": ["A"],
       "explanation": "Knowledge sources ground a Project's conversations in specific, relevant reference material rather than relying solely on general background knowledge.",
-      "source_id": 282
+      "source_id": 282,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8af2642f1c535229"
+      }
     },
     {
       "id": 279,
@@ -4762,7 +6316,15 @@
       },
       "correct": ["A"],
       "explanation": "Adding a knowledge source at the Project level makes it persistently available without repeated manual uploading.",
-      "source_id": 283
+      "source_id": 283,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4e472aa8eb86da31"
+      }
     },
     {
       "id": 280,
@@ -4779,7 +6341,15 @@
       },
       "correct": ["B"],
       "explanation": "The value of grounding responses in reference material depends on that material being accurate and current — stale sources undermine that benefit.",
-      "source_id": 284
+      "source_id": 284,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9f417e41f8cb0a63"
+      }
     },
     {
       "id": 281,
@@ -4796,7 +6366,15 @@
       },
       "correct": ["B"],
       "explanation": "An outdated knowledge source can be used to generate confidently-stated but incorrect current information, exactly the kind of risk configuration upkeep is meant to prevent.",
-      "source_id": 285
+      "source_id": 285,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "557fc42a9027e88a"
+      }
     },
     {
       "id": 282,
@@ -4830,7 +6408,15 @@
       },
       "correct": ["D"],
       "explanation": "Checking whether the relevant material is actually configured as a knowledge source is the direct, practical first troubleshooting step.",
-      "source_id": 287
+      "source_id": 287,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4dc9968e4f74408a"
+      }
     },
     {
       "id": 284,
@@ -4847,7 +6433,15 @@
       },
       "correct": ["D"],
       "explanation": "Because knowledge sources become accessible within a Project's conversations, sensitivity and access-control considerations should inform the decision to add them.",
-      "source_id": 288
+      "source_id": 288,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "83ea04bf3b05e9b3"
+      }
     },
     {
       "id": 285,
@@ -4898,7 +6492,15 @@
       },
       "correct": ["C"],
       "explanation": "An explicit, specific instruction for a given conversation can reasonably override a standing default for that instance, without requiring a permanent change.",
-      "source_id": 291
+      "source_id": 291,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "991a740c0a2477a4"
+      }
     },
     {
       "id": 288,
@@ -4915,7 +6517,15 @@
       },
       "correct": ["A"],
       "explanation": "Understanding scope is what allows a user to predict behavior and troubleshoot conflicts between standing defaults and specific requests.",
-      "source_id": 292
+      "source_id": 292,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9526e4c33d3f9da7"
+      }
     },
     {
       "id": 289,
@@ -4932,7 +6542,15 @@
       },
       "correct": ["C"],
       "explanation": "Confirming whether the expected rule was actually persisted at the Project level (versus a one-off past mention) is the direct way to diagnose this kind of confusion.",
-      "source_id": 293
+      "source_id": 293,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6010faf58621f90f"
+      }
     },
     {
       "id": 290,
@@ -4949,7 +6567,15 @@
       },
       "correct": ["B"],
       "explanation": "Clear documentation of Project-level configuration helps a team use it consistently and troubleshoot effectively.",
-      "source_id": 294
+      "source_id": 294,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4377114293a29f98"
+      }
     },
     {
       "id": 291,
@@ -5017,7 +6643,15 @@
       },
       "correct": ["B"],
       "explanation": "Assessing genuine overlap in context and purpose is the practical basis for deciding whether to reuse or create a new Project.",
-      "source_id": 298
+      "source_id": 298,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e47dcc37ed36e43b"
+      }
     },
     {
       "id": 295,
@@ -5051,7 +6685,15 @@
       },
       "correct": ["B"],
       "explanation": "Business context evolves, so periodic review keeps a Project's standing configuration aligned with current reality rather than growing stale.",
-      "source_id": 300
+      "source_id": 300,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "bd4d1e04c107569c"
+      }
     },
     {
       "id": 297,
@@ -5085,7 +6727,15 @@
       },
       "correct": ["B"],
       "explanation": "Responsible handling of sensitive data starts with deliberately considering applicable privacy/policy implications rather than sharing by default.",
-      "source_id": 307
+      "source_id": 307,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "dfada50f88ec841c"
+      }
     },
     {
       "id": 299,
@@ -5102,7 +6752,15 @@
       },
       "correct": ["B"],
       "explanation": "Data handling and retention settings can vary, so checking actual policy/settings (or asking an administrator) is the responsible approach rather than assuming.",
-      "source_id": 308
+      "source_id": 308,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "bef1c6f2f097a78f"
+      }
     },
     {
       "id": 300,
@@ -5119,7 +6777,15 @@
       },
       "correct": ["C"],
       "explanation": "When genuinely uncertain, erring toward caution (omitting, anonymizing, or checking first) is the safer default than sharing and hoping it's fine.",
-      "source_id": 309
+      "source_id": 309,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "0664b8cf28810f52"
+      }
     },
     {
       "id": 301,
@@ -5153,7 +6819,15 @@
       },
       "correct": ["D"],
       "explanation": "Different regulatory contexts, industries, and risk profiles legitimately lead to different organizational policies on data sharing.",
-      "source_id": 311
+      "source_id": 311,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "17b3d9cb305ed05a"
+      }
     },
     {
       "id": 303,
@@ -5170,7 +6844,15 @@
       },
       "correct": ["B"],
       "explanation": "Considering whether real identifying/sensitive details are actually necessary — versus a placeholder — is a practical way to reduce unnecessary exposure.",
-      "source_id": 312
+      "source_id": 312,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b595fbc3f1ed8733"
+      }
     },
     {
       "id": 304,
@@ -5221,7 +6903,15 @@
       },
       "correct": ["D"],
       "explanation": "Responsible use is a set of practical habits (verifying outputs, privacy awareness, avoiding reliance on AI for decisions beyond its appropriate scope, and transparency about AI's role where relevant), not blanket avoidance or blanket automation.",
-      "source_id": 315
+      "source_id": 315,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "1a47cf1dd7bdcf91"
+      }
     },
     {
       "id": 307,
@@ -5238,7 +6928,15 @@
       },
       "correct": ["D"],
       "explanation": "Hiring carries fairness, legal, and bias considerations that require human oversight and awareness, with the process kept fair and compliant with applicable employment laws, not full unsupervised automation.",
-      "source_id": 316
+      "source_id": 316,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f7bb41d534ed2f0d"
+      }
     },
     {
       "id": 308,
@@ -5255,7 +6953,15 @@
       },
       "correct": ["B"],
       "explanation": "Awareness of potential bias supports critical evaluation of AI outputs in sensitive contexts, rather than assuming outputs are automatically neutral.",
-      "source_id": 317
+      "source_id": 317,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4e01b3f21f0df54c"
+      }
     },
     {
       "id": 309,
@@ -5289,7 +6995,15 @@
       },
       "correct": ["A"],
       "explanation": "Appropriate transparency about AI's role supports trust and accountability, especially where a decision meaningfully affects someone else.",
-      "source_id": 319
+      "source_id": 319,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9d553af8422c5501"
+      }
     },
     {
       "id": 311,
@@ -5323,7 +7037,15 @@
       },
       "correct": ["A"],
       "explanation": "Proportional scrutiny — more care for higher-consequence tasks — is a practical, efficient application of responsible-use principles.",
-      "source_id": 321
+      "source_id": 321,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ae95478c3927da2f"
+      }
     },
     {
       "id": 313,
@@ -5340,7 +7062,15 @@
       },
       "correct": ["C"],
       "explanation": "Substantive responsible-use guidelines address data handling, review requirements, and verification expectations — not just cosmetic or purely financial details.",
-      "source_id": 322
+      "source_id": 322,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c1a2add7e6003c9a"
+      }
     },
     {
       "id": 314,
@@ -5357,7 +7087,15 @@
       },
       "correct": ["A"],
       "explanation": "Specialized expertise requirements and significant consequence potential, especially in domains such as medical, legal, financial or safety where qualified judgment is required, are the meaningful signals for escalation, not task length or time spent.",
-      "source_id": 323
+      "source_id": 323,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "61b2d374545563ad"
+      }
     },
     {
       "id": 315,
@@ -5374,7 +7112,15 @@
       },
       "correct": ["C"],
       "explanation": "A legal threat is exactly the kind of situation that calls for escalation to a qualified human rather than being resolved solely via an AI-assisted response.",
-      "source_id": 324
+      "source_id": 324,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d26e139d3d671776"
+      }
     },
     {
       "id": 316,
@@ -5391,7 +7137,15 @@
       },
       "correct": ["C"],
       "explanation": "Understanding where AI assistance stops being appropriate — and human expertise/authority is required — is central to using AI responsibly rather than over-relying on it.",
-      "source_id": 325
+      "source_id": 325,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6b102695d6e51dce"
+      }
     },
     {
       "id": 317,
@@ -5408,7 +7162,15 @@
       },
       "correct": ["B"],
       "explanation": "Serious safety hazards call for real escalation to qualified safety personnel — AI guidance can supplement but not substitute for that.",
-      "source_id": 326
+      "source_id": 326,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b56e94c3ced28d9a"
+      }
     },
     {
       "id": 318,
@@ -5425,7 +7187,15 @@
       },
       "correct": ["C"],
       "explanation": "Significant legal/regulatory exposure is a clear, high-stakes signal for escalation to qualified human expertise.",
-      "source_id": 327
+      "source_id": 327,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "19bcd36960d5b747"
+      }
     },
     {
       "id": 319,
@@ -5442,7 +7212,15 @@
       },
       "correct": ["D"],
       "explanation": "A substantive conflict-of-interest question is an organizational judgment call requiring the appropriate human function, not something to be resolved via AI-drafted text alone.",
-      "source_id": 328
+      "source_id": 328,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9728d50711ddb7ad"
+      }
     },
     {
       "id": 320,
@@ -5459,7 +7237,15 @@
       },
       "correct": ["C"],
       "explanation": "The presence of AI assistance in drafting doesn't change whether an underlying situation requires the organization's normal escalation process.",
-      "source_id": 329
+      "source_id": 329,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3dfc9bb8184be972"
+      }
     },
     {
       "id": 321,
@@ -5476,7 +7262,15 @@
       },
       "correct": ["C"],
       "explanation": "Given the asymmetric cost of missing a genuinely serious issue, erring toward raising uncertain cases is the safer default.",
-      "source_id": 330
+      "source_id": 330,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f813105be4bb7842"
+      }
     },
     {
       "id": 322,
@@ -5527,7 +7321,15 @@
       },
       "correct": ["A"],
       "explanation": "Risk categorization enables proportional review — the practical goal of distinguishing risk levels in the first place.",
-      "source_id": 337
+      "source_id": 337,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a9e8e54d6d85b1e4"
+      }
     },
     {
       "id": 325,
@@ -5544,7 +7346,15 @@
       },
       "correct": ["A"],
       "explanation": "Potential real-world consequences of an error (financial, legal, medical, safety, reputational) are the substantive basis for risk categorization, not superficial factors like length, formatting, or timing.",
-      "source_id": 338
+      "source_id": 338,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "333df126ae057e25"
+      }
     },
     {
       "id": 326,
@@ -5561,7 +7371,15 @@
       },
       "correct": ["C"],
       "explanation": "Audience and consequence context — not just content type — determine actual risk level, so the same content type can fall into different categories.",
-      "source_id": 339
+      "source_id": 339,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "26caee6b88b7d41b"
+      }
     },
     {
       "id": 327,
@@ -5578,7 +7396,15 @@
       },
       "correct": ["A"],
       "explanation": "Proportional review based on genuine assessed risk is more sound and efficient than either uniform minimal review or uniform maximal review.",
-      "source_id": 340
+      "source_id": 340,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5d8896b93d1887b8"
+      }
     },
     {
       "id": 328,
@@ -5595,7 +7421,15 @@
       },
       "correct": ["D"],
       "explanation": "Shared, explicit criteria support consistent categorization across a team, rather than leaving it to unguided individual judgment.",
-      "source_id": 341
+      "source_id": 341,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9f1672b008b03181"
+      }
     },
     {
       "id": 329,
@@ -5612,7 +7446,15 @@
       },
       "correct": ["D"],
       "explanation": "Specific organizational rules (for example approved use cases, data restrictions, required disclosures) can add requirements or restrictions beyond generic best practice, based on that organization's industry and risk profile.",
-      "source_id": 342
+      "source_id": 342,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "cf73aac60b32f85e"
+      }
     },
     {
       "id": 330,
@@ -5629,7 +7471,15 @@
       },
       "correct": ["B"],
       "explanation": "When a policy doesn't clearly address a specific use case, checking with the appropriate internal contact is more responsible than assuming automatic approval.",
-      "source_id": 343
+      "source_id": 343,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "15f61f7226db4426"
+      }
     },
     {
       "id": 331,
@@ -5663,7 +7513,15 @@
       },
       "correct": ["B"],
       "explanation": "A policy concern involving AI use should be handled the same way other policy concerns are — through appropriate internal channels, not ignored or handled outside normal process.",
-      "source_id": 345
+      "source_id": 345,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b044b305ef9b3876"
+      }
     },
     {
       "id": 333,
@@ -5697,7 +7555,15 @@
       },
       "correct": ["D"],
       "explanation": "Directly locating the actual policy or asking the right internal contact is more reliable than guessing or assuming.",
-      "source_id": 347
+      "source_id": 347,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5471324b98a95d84"
+      }
     },
     {
       "id": 335,
@@ -5714,7 +7580,15 @@
       },
       "correct": ["A"],
       "explanation": "Internal policy in regulated industries typically needs to operationalize compliance with the relevant external regulatory requirements.",
-      "source_id": 348
+      "source_id": 348,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "764e5d9f8f5a4871"
+      }
     },
     {
       "id": 336,
@@ -5782,7 +7656,15 @@
       },
       "correct": ["D"],
       "explanation": "Reducing the amount of content requested per individual response reduces the chance any single response hits the length ceiling.",
-      "source_id": 352
+      "source_id": 352,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "20d98b0fdb98ef97"
+      }
     },
     {
       "id": 340,
@@ -5816,7 +7698,15 @@
       },
       "correct": ["A"],
       "explanation": "Recognizing that a very large deliverable is likely to approach output limits allows for proactive chunking rather than reactive fixes after truncation occurs.",
-      "source_id": 354
+      "source_id": 354,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f3c70ab5020a0a10"
+      }
     },
     {
       "id": 342,
@@ -5833,7 +7723,15 @@
       },
       "correct": ["B"],
       "explanation": "Checking the seam between the original and continued portions is a quick, worthwhile step to catch any duplication or gap introduced by the continuation.",
-      "source_id": 355
+      "source_id": 355,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "7ffaea050a81942c"
+      }
     },
     {
       "id": 343,
@@ -5918,7 +7816,15 @@
       },
       "correct": ["A"],
       "explanation": "Cross-references and dependencies that span chunk boundaries (for example, a term defined in one chunk and used in another) can be lost without deliberate overlap or a linking summary between chunks.",
-      "source_id": 360
+      "source_id": 360,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "46e7322579c11bda"
+      }
     },
     {
       "id": 348,
@@ -5935,7 +7841,15 @@
       },
       "correct": ["B"],
       "explanation": "Deliberately varying framing, examples, or explicitly requesting a different approach are the direct levers for breaking a formulaic pattern.",
-      "source_id": 361
+      "source_id": 361,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "19e120e17b67fe82"
+      }
     },
     {
       "id": 349,
@@ -5952,7 +7866,15 @@
       },
       "correct": ["D"],
       "explanation": "Varying the creative framing/persona per request breaks the pattern of reusing a template that naturally produces similar-sounding results.",
-      "source_id": 362
+      "source_id": 362,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "018b89f0523ca495"
+      }
     },
     {
       "id": 350,
@@ -5969,7 +7891,18 @@
       },
       "correct": ["C"],
       "explanation": "A consistently reused reference example can over-anchor output to its particular pattern, at the cost of genuine variety.",
-      "source_id": 363
+      "source_id": 363,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "bb8aab90bc1d9493"
+      }
     },
     {
       "id": 351,
@@ -5986,7 +7919,15 @@
       },
       "correct": ["A"],
       "explanation": "Explicitly assigning different angles or framings per item is a direct way to produce genuinely distinct outputs rather than near-duplicates.",
-      "source_id": 364
+      "source_id": 364,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4f0b38de21d460f8"
+      }
     },
     {
       "id": 352,
@@ -6003,7 +7944,15 @@
       },
       "correct": ["D"],
       "explanation": "Specific, named feedback about the observed pattern is exactly the kind of concrete signal that supports a genuinely different next attempt.",
-      "source_id": 365
+      "source_id": 365,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "da07f30e19224542"
+      }
     },
     {
       "id": 353,
@@ -6020,7 +7969,15 @@
       },
       "correct": ["C"],
       "explanation": "Explicitly requesting proper table/Markdown formatting with clear headers is the direct fix for a misaligned or unstructured attempt at tabular output.",
-      "source_id": 366
+      "source_id": 366,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "97b07dcb3cf96467"
+      }
     },
     {
       "id": 354,
@@ -6054,7 +8011,15 @@
       },
       "correct": ["D"],
       "explanation": "Precise syntax instructions reduce ambiguity, directly increasing the likelihood of correctly structured output.",
-      "source_id": 368
+      "source_id": 368,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "eaaeb858b5bcadd9"
+      }
     },
     {
       "id": 356,
@@ -6071,7 +8036,15 @@
       },
       "correct": ["B"],
       "explanation": "A direct request to standardize the format throughout is the straightforward fix for inconsistent formatting within a single piece of content.",
-      "source_id": 369
+      "source_id": 369,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "da5c3a7c8325c98f"
+      }
     },
     {
       "id": 357,
@@ -6088,7 +8061,15 @@
       },
       "correct": ["D"],
       "explanation": "Explicitly recognizing and resolving the conflict — rather than ignoring it or overreacting — is the practical troubleshooting step.",
-      "source_id": 370
+      "source_id": 370,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5f46d99f52736fbe"
+      }
     },
     {
       "id": 358,
@@ -6100,12 +8081,21 @@
       "options": {
         "A": "This situation cannot actually occur",
         "B": "The AI system is fundamentally broken",
-        "C": "A one-off past mention doesn't persist; save it as a Project instruction",
+        "C": "A passing mention in another chat isn't a standing rule; save it as a Project instruction",
         "D": "Standing rules are never possible to configure, so each conversation must restate them"
       },
       "correct": ["C"],
-      "explanation": "This is a configuration gap, not a malfunction — properly saving the rule as a Project instruction is the direct fix.",
-      "source_id": 371
+      "explanation": "This is a configuration gap, not a malfunction. A rule mentioned once in a separate chat isn't reliably applied elsewhere, because projects keep their own memory space apart from other chats. Saving the rule as a Project instruction makes it apply to every conversation in that project.",
+      "source_id": 371,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": true,
+        "reviewed": "2026-10-05",
+        "reworded": true,
+        "contentHash": "e639a0397f2827e9"
+      }
     },
     {
       "id": 359,
@@ -6122,7 +8112,15 @@
       },
       "correct": ["D"],
       "explanation": "Growing configuration complexity increases the chance of unnoticed contradictions, making periodic review a practical maintenance habit.",
-      "source_id": 372
+      "source_id": 372,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5719773e47436201"
+      }
     },
     {
       "id": 360,
@@ -6139,7 +8137,15 @@
       },
       "correct": ["B"],
       "explanation": "Directly reviewing and reconciling the contradictory instructions is the appropriate fix, rather than leaving them unresolved or over-reacting.",
-      "source_id": 373
+      "source_id": 373,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "65ece6c21701ffab"
+      }
     },
     {
       "id": 361,
@@ -6190,7 +8196,16 @@
       },
       "correct": ["C"],
       "explanation": "As needs and available options change over time, periodically confirming the tier choice still fits is a reasonable practice rather than a one-time, permanent decision.",
-      "source_id": 376
+      "source_id": 376,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "b4eee0cc56e0cf18"
+      }
     },
     {
       "id": 364,
@@ -6207,7 +8222,16 @@
       },
       "correct": ["C"],
       "explanation": "Consistent, substantial correction needs are a practical signal that the chosen tier may be under-matched to the task's real complexity, and a more capable tier could reduce the correction burden.",
-      "source_id": 377
+      "source_id": 377,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "fa3da27c102eb85f"
+      }
     },
     {
       "id": 365,
@@ -6224,7 +8248,16 @@
       },
       "correct": ["D"],
       "explanation": "A small-scale trial against real requirements is a practical, low-risk way to validate tier sufficiency before broader adoption.",
-      "source_id": 378
+      "source_id": 378,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "74a6434ac07bf4ec"
+      }
     },
     {
       "id": 366,
@@ -6241,7 +8274,16 @@
       },
       "correct": ["A"],
       "explanation": "Complexity of reasoning required — not just how long the output is — is a primary driver of appropriate tier selection.",
-      "source_id": 379
+      "source_id": 379,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "d94cec80b6d75efa"
+      }
     },
     {
       "id": 367,
@@ -6258,7 +8300,16 @@
       },
       "correct": ["C"],
       "explanation": "Sound tier selection weighs complexity/stakes against cost/speed together, rather than optimizing a single dimension in isolation.",
-      "source_id": 380
+      "source_id": 380,
+      "confidence": {
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/about-claude/models/choosing-a-model"],
+        "contentHash": "01aa1ea7942f0c96"
+      }
     },
     {
       "id": 368,
@@ -6292,7 +8343,15 @@
       },
       "correct": ["A"],
       "explanation": "The defining feature of a Project is persistence and sharing of context across multiple related conversations, unlike a standalone single conversation.",
-      "source_id": 382
+      "source_id": 382,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "05b15df6ffba2e8a"
+      }
     },
     {
       "id": 370,
@@ -6309,7 +8368,15 @@
       },
       "correct": ["A"],
       "explanation": "An evolving, editable reference is best supported by a persistent artifact, especially when paired with a Project for ongoing context.",
-      "source_id": 383
+      "source_id": 383,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fb9a2f3cc0072d1f"
+      }
     },
     {
       "id": 371,
@@ -6326,7 +8393,15 @@
       },
       "correct": ["C"],
       "explanation": "Matching surface to task need (ongoing project work, standalone reusable content, current information needs, or quick chat) is a practical efficiency skill; the various surfaces exist because different tasks have genuinely different requirements.",
-      "source_id": 384
+      "source_id": 384,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fcde9cdb5fe39174"
+      }
     },
     {
       "id": 372,
@@ -6360,7 +8435,15 @@
       },
       "correct": ["D"],
       "explanation": "Product surfaces are often complementary rather than mutually exclusive, each serving a different aspect of the same body of work.",
-      "source_id": 386
+      "source_id": 386,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "a5ed21199b99bbd7"
+      }
     },
     {
       "id": 374,
@@ -6377,7 +8460,15 @@
       },
       "correct": ["C"],
       "explanation": "Even within a larger task, the specific need for current information should be met with a current-information-retrieval feature rather than static knowledge alone.",
-      "source_id": 387
+      "source_id": 387,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "d5b48fe8f6792484"
+      }
     },
     {
       "id": 375,
@@ -6394,7 +8485,15 @@
       },
       "correct": ["C"],
       "explanation": "Mismatched feature choice creates avoidable manual overhead that the correctly-matched feature would have eliminated.",
-      "source_id": 388
+      "source_id": 388,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "77edb8734e8be621"
+      }
     },
     {
       "id": 376,
@@ -6411,7 +8510,15 @@
       },
       "correct": ["C"],
       "explanation": "Serving the immediate need while also recognizing the value of setting up persistent context for the future addresses both needs without compromising either.",
-      "source_id": 389
+      "source_id": 389,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "847332820ef1b9cd"
+      }
     },
     {
       "id": 377,
@@ -6428,7 +8535,15 @@
       },
       "correct": ["A"],
       "explanation": "These three questions — persistence, currency of information, and substance/reusability — map directly onto the decision points between Projects, search-enabled modes, and artifacts.",
-      "source_id": 390
+      "source_id": 390,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3ab743e070318c28"
+      }
     },
     {
       "id": 378,
@@ -6462,7 +8577,15 @@
       },
       "correct": ["C"],
       "explanation": "Organization-level deployments are typically built with business/compliance-oriented administrative and data-handling features not present in individual personal accounts.",
-      "source_id": 392
+      "source_id": 392,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f5e65d4c5a04f58a"
+      }
     },
     {
       "id": 380,
@@ -6530,7 +8653,15 @@
       },
       "correct": ["A"],
       "explanation": "Matching feature intensity to actual task needs avoids unnecessary overhead — over-provisioning has a real efficiency cost even when it doesn't reduce quality.",
-      "source_id": 396
+      "source_id": 396,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8785c52def4b7184"
+      }
     },
     {
       "id": 384,
@@ -6598,7 +8729,15 @@
       },
       "correct": ["D"],
       "explanation": "The same underlying content often needs different structural treatment depending on where it's going next, for example a spreadsheet import, a client email, or a slide deck.",
-      "source_id": 400
+      "source_id": 400,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "666d807417868ff7"
+      }
     },
     {
       "id": 388,
@@ -6615,7 +8754,15 @@
       },
       "correct": ["C"],
       "explanation": "Producing purpose-appropriate versions from the same underlying analysis serves both audiences properly, rather than forcing one format to fit two different needs.",
-      "source_id": 401
+      "source_id": 401,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f0f0c32f108ba375"
+      }
     },
     {
       "id": 389,
@@ -6649,7 +8796,15 @@
       },
       "correct": ["A"],
       "explanation": "Persistence trades upfront setup/maintenance effort for reduced repetitive work — a good trade specifically when the context is genuinely reused across many future instances.",
-      "source_id": 403
+      "source_id": 403,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "632e7e03b79bf7c8"
+      }
     },
     {
       "id": 391,
@@ -6666,7 +8821,15 @@
       },
       "correct": ["B"],
       "explanation": "Growing inconsistency in a very long conversation is a practical signal that summarizing and restarting may help restore focus.",
-      "source_id": 404
+      "source_id": 404,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "014577b935b5f434"
+      }
     },
     {
       "id": 392,
@@ -6683,7 +8846,15 @@
       },
       "correct": ["C"],
       "explanation": "Distinguishing recurring from one-off context is what informs a sensible decision about whether persistence effort is actually worthwhile.",
-      "source_id": 405
+      "source_id": 405,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "79dcdec3d0897fdc"
+      }
     },
     {
       "id": 393,
@@ -6700,7 +8871,15 @@
       },
       "correct": ["D"],
       "explanation": "Assisting the existing analyst's drafting work — while preserving their review and ownership of the final output — is a sound, targeted integration.",
-      "source_id": 406
+      "source_id": 406,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e27c4740d98a3aa3"
+      }
     },
     {
       "id": 394,
@@ -6717,7 +8896,15 @@
       },
       "correct": ["D"],
       "explanation": "Clear communication about what changed and where responsibilities now sit helps a new AI-assisted step actually function well within an existing team process.",
-      "source_id": 407
+      "source_id": 407,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3d57af393d3710f1"
+      }
     },
     {
       "id": 395,
@@ -6734,7 +8921,15 @@
       },
       "correct": ["C"],
       "explanation": "Targeted investigation and adjustment for the specific cases where integration isn't helping is a more proportionate response than blanket dismissal or blanket abandonment.",
-      "source_id": 408
+      "source_id": 408,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8861436b2205f530"
+      }
     },
     {
       "id": 396,
@@ -6751,7 +8946,15 @@
       },
       "correct": ["A"],
       "explanation": "Catching problems during internal review — before external/client exposure — protects the client relationship and avoids a more costly correction later.",
-      "source_id": 409
+      "source_id": 409,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "878bc50cf3ba9596"
+      }
     },
     {
       "id": 397,
@@ -6768,7 +8971,15 @@
       },
       "correct": ["D"],
       "explanation": "Clarity about each stage's role supports better coordination and makes checkpoint placement more deliberate rather than accidental.",
-      "source_id": 410
+      "source_id": 410,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e0d8f210b0984b90"
+      }
     },
     {
       "id": 398,
@@ -6785,7 +8996,15 @@
       },
       "correct": ["D"],
       "explanation": "Trimming checkpoints proportional to actual risk — rather than removing them all or leaving excessive checkpoints everywhere — balances speed and safety.",
-      "source_id": 411
+      "source_id": 411,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c797d62da0ed28cd"
+      }
     },
     {
       "id": 399,
@@ -6802,7 +9021,15 @@
       },
       "correct": ["D"],
       "explanation": "Establishing standing custom instructions (tone, format, recurring context) and the knowledge sources that should be available across the Project's conversations is the foundational setup step for a Project meant to support recurring work.",
-      "source_id": 412
+      "source_id": 412,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3c481a6c21373536"
+      }
     },
     {
       "id": 400,
@@ -6836,7 +9063,15 @@
       },
       "correct": ["B"],
       "explanation": "Streamlining overly long or unfocused instructions to their genuinely important core tends to improve consistency more than adding further length.",
-      "source_id": 414
+      "source_id": 414,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9f617ca4cf6c324c"
+      }
     },
     {
       "id": 402,
@@ -6853,7 +9088,15 @@
       },
       "correct": ["A"],
       "explanation": "Stable, predictable, recurring requirements are exactly what standing custom instructions are best suited to capture and enforce consistently.",
-      "source_id": 415
+      "source_id": 415,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fc9cf84d8f304092"
+      }
     },
     {
       "id": 403,
@@ -6921,7 +9164,15 @@
       },
       "correct": ["A"],
       "explanation": "A stated purpose gives useful context for handling edge cases the specific rules don't explicitly anticipate.",
-      "source_id": 419
+      "source_id": 419,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "9ffdd2ae3ca2075c"
+      }
     },
     {
       "id": 407,
@@ -6938,7 +9189,15 @@
       },
       "correct": ["D"],
       "explanation": "Content calibrated for an internal-audience Project may need review before external distribution, since the original configuration wasn't designed with that audience in mind.",
-      "source_id": 420
+      "source_id": 420,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5b038e79ea56ea0a"
+      }
     },
     {
       "id": 408,
@@ -6955,7 +9214,15 @@
       },
       "correct": ["A"],
       "explanation": "Overlapping, contradictory knowledge sources can lead to inconsistent grounding — reconciling which source is authoritative addresses the actual risk.",
-      "source_id": 421
+      "source_id": 421,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3df85a60bbacab3e"
+      }
     },
     {
       "id": 409,
@@ -7006,7 +9273,15 @@
       },
       "correct": ["A"],
       "explanation": "Periodic review catches drift toward outdated or irrelevant material, keeping the knowledge base genuinely useful over time.",
-      "source_id": 424
+      "source_id": 424,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "0aade195c74b859b"
+      }
     },
     {
       "id": 412,
@@ -7074,7 +9349,15 @@
       },
       "correct": ["D"],
       "explanation": "Focused knowledge sources reduce dilution/contradiction risk and avoid unnecessarily exposing unrelated content within that Project's context.",
-      "source_id": 428
+      "source_id": 428,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3603d22b37b656fa"
+      }
     },
     {
       "id": 416,
@@ -7108,7 +9391,15 @@
       },
       "correct": ["C"],
       "explanation": "This relationship mirrors general-policy-with-specific-exception reasoning: a sensible default that can flex for an explicitly stated, specific case.",
-      "source_id": 430
+      "source_id": 430,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "193ef4109be5f0e0"
+      }
     },
     {
       "id": 418,
@@ -7142,7 +9433,15 @@
       },
       "correct": ["C"],
       "explanation": "The 'default' framing captures the practical reality: consistent baseline behavior that can still flex for a clearly stated specific case.",
-      "source_id": 432
+      "source_id": 432,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c98cfd52b4f7841d"
+      }
     },
     {
       "id": 420,
@@ -7193,7 +9492,15 @@
       },
       "correct": ["A"],
       "explanation": "Redundant, overlapping Projects risk inconsistent configuration and confusion about where a given piece of work should actually happen.",
-      "source_id": 435
+      "source_id": 435,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "6ff5d3bf57096b16"
+      }
     },
     {
       "id": 423,
@@ -7227,7 +9534,15 @@
       },
       "correct": ["D"],
       "explanation": "Clear ownership ensures someone is actually responsible for keeping a shared Project's configuration accurate and current over time.",
-      "source_id": 437
+      "source_id": 437,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b2de50783945d1d5"
+      }
     },
     {
       "id": 425,
@@ -7244,7 +9559,15 @@
       },
       "correct": ["B"],
       "explanation": "Using a placeholder when the exact sensitive figure isn't actually necessary for the task is a practical data-minimization step.",
-      "source_id": 438
+      "source_id": 438,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c55e16850888085c"
+      }
     },
     {
       "id": 426,
@@ -7261,7 +9584,15 @@
       },
       "correct": ["A"],
       "explanation": "Proportional caution is the sound, risk-based approach: more sensitive categories (financial, health, personal identifiers, confidential business information) warrant more scrutiny of applicable policy before sharing.",
-      "source_id": 439
+      "source_id": 439,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "13943d88ef262e73"
+      }
     },
     {
       "id": 427,
@@ -7295,7 +9626,15 @@
       },
       "correct": ["D"],
       "explanation": "Removing unnecessary identifying detail is a practical way to reduce exposure while still getting the actual task done.",
-      "source_id": 441
+      "source_id": 441,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5f6865596bd78d7d"
+      }
     },
     {
       "id": 429,
@@ -7312,7 +9651,15 @@
       },
       "correct": ["A"],
       "explanation": "A fictional or anonymized example serves the training purpose just as well without exposing actual customer data.",
-      "source_id": 442
+      "source_id": 442,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "33a8d97dda081eb6"
+      }
     },
     {
       "id": 430,
@@ -7346,7 +9693,15 @@
       },
       "correct": ["B"],
       "explanation": "Public-facing, reputationally significant statements warrant careful human review before release, regardless of how the draft was produced.",
-      "source_id": 444
+      "source_id": 444,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "ea74265686450216"
+      }
     },
     {
       "id": 432,
@@ -7363,7 +9718,15 @@
       },
       "correct": ["A"],
       "explanation": "Verification is the practical bridge between AI's genuine usefulness and the real risk that fluent output can still be wrong or inappropriate.",
-      "source_id": 445
+      "source_id": 445,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "33a95725fc766c0e"
+      }
     },
     {
       "id": 433,
@@ -7380,7 +9743,15 @@
       },
       "correct": ["C"],
       "explanation": "Personal judgment and direct knowledge should still shape and validate AI-assisted feedback before it's finalized, given its impact on a real person.",
-      "source_id": 446
+      "source_id": 446,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e88eae23d31cd027"
+      }
     },
     {
       "id": 434,
@@ -7397,7 +9768,15 @@
       },
       "correct": ["D"],
       "explanation": "Thoughtful workflow design lets efficiency gains and responsible-use safeguards coexist, rather than treating them as strictly opposed.",
-      "source_id": 447
+      "source_id": 447,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "dabd49a49ffc26a7"
+      }
     },
     {
       "id": 435,
@@ -7414,7 +9793,15 @@
       },
       "correct": ["A"],
       "explanation": "Content that meaningfully influences a consequential decision — even an internal one — warrants proportional scrutiny before being relied upon.",
-      "source_id": 448
+      "source_id": 448,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f20a41dff422a9ba"
+      }
     },
     {
       "id": 436,
@@ -7448,7 +9835,15 @@
       },
       "correct": ["B"],
       "explanation": "A persistent error pattern is a signal worth escalating beyond a one-off fix, since it may point to a systemic issue needing broader attention.",
-      "source_id": 450
+      "source_id": 450,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fbc5c023b10e88f1"
+      }
     },
     {
       "id": 438,
@@ -7465,7 +9860,15 @@
       },
       "correct": ["A"],
       "explanation": "Surfacing an apparent policy conflict to the appropriate person — rather than resolving it unilaterally or ignoring it — is the responsible escalation path.",
-      "source_id": 451
+      "source_id": 451,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "4536f6d25fa74c7b"
+      }
     },
     {
       "id": 439,
@@ -7482,7 +9885,15 @@
       },
       "correct": ["B"],
       "explanation": "Concrete examples and clear criteria in training/policy help build shared, consistent understanding of when escalation is actually warranted.",
-      "source_id": 452
+      "source_id": 452,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "c0f7bcef3a63e686"
+      }
     },
     {
       "id": 440,
@@ -7499,7 +9910,15 @@
       },
       "correct": ["D"],
       "explanation": "Limited audience and lack of direct consequential reliance are exactly the factors that generally place content in a lower risk category — though that categorization should be revisited if its use expands.",
-      "source_id": 453
+      "source_id": 453,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "97f224914096e77d"
+      }
     },
     {
       "id": 441,
@@ -7550,7 +9969,15 @@
       },
       "correct": ["B"],
       "explanation": "Given the asymmetric cost of under-reviewing higher-stakes content, erring toward the higher plausible category is a reasonably safe default in genuinely ambiguous cases.",
-      "source_id": 456
+      "source_id": 456,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "64c25788e168b817"
+      }
     },
     {
       "id": 444,
@@ -7567,7 +9994,15 @@
       },
       "correct": ["C"],
       "explanation": "Client-specific contractual or regulatory requirements can mean different rules genuinely apply per account, making a specific check worthwhile.",
-      "source_id": 457
+      "source_id": 457,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b15c88b86a64032a"
+      }
     },
     {
       "id": 445,
@@ -7584,7 +10019,15 @@
       },
       "correct": ["D"],
       "explanation": "Explicit prohibited-use guidance provides clear guardrails for known problem areas, complementing guidance on what's approved.",
-      "source_id": 458
+      "source_id": 458,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3ea8a98733d2d8af"
+      }
     },
     {
       "id": 446,
@@ -7618,7 +10061,15 @@
       },
       "correct": ["A"],
       "explanation": "Anticipating a very long output based on the nature or past experience of similar requests is the practical cue for proactive sectioning.",
-      "source_id": 460
+      "source_id": 460,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fbb89b594b7ef1fe"
+      }
     },
     {
       "id": 448,
@@ -7635,7 +10086,15 @@
       },
       "correct": ["D"],
       "explanation": "A quick manual edit at the boundary is a proportionate fix for the occasional duplication that can occur when stitching together a continued response.",
-      "source_id": 461
+      "source_id": 461,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "597d75a81547eecb"
+      }
     },
     {
       "id": 449,
@@ -7652,7 +10111,15 @@
       },
       "correct": ["C"],
       "explanation": "An unnoticed truncated response risks being used as if it were complete, so recognizing the signs is a practically important check.",
-      "source_id": 462
+      "source_id": 462,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f3819fb7cac42338"
+      }
     },
     {
       "id": 450,
@@ -7703,7 +10170,15 @@
       },
       "correct": ["B"],
       "explanation": "Splitting by an arbitrary boundary like page number, rather than logical structure like clauses, risks breaking up meaningful units of text mid-analysis.",
-      "source_id": 465
+      "source_id": 465,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b28ce089eca641d1"
+      }
     },
     {
       "id": 453,
@@ -7720,7 +10195,15 @@
       },
       "correct": ["D"],
       "explanation": "Brief continuity context bridges the gap between chunks, helping preserve connections that a strict, isolated chunk-by-chunk approach might otherwise lose.",
-      "source_id": 466
+      "source_id": 466,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "114fa8223f9301d7"
+      }
     },
     {
       "id": 454,
@@ -7737,7 +10220,15 @@
       },
       "correct": ["C"],
       "explanation": "When minor wording tweaks aren't enough, a more substantial change is the next lever: a different persona, a constraint that forces a new angle, or breaking the request into a different sequence of sub-steps.",
-      "source_id": 467
+      "source_id": 467,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2e2e41b91bccef83"
+      }
     },
     {
       "id": 455,
@@ -7754,7 +10245,15 @@
       },
       "correct": ["B"],
       "explanation": "Explicitly ruling out the recurring pattern removes the path of least resistance, encouraging a genuinely different response.",
-      "source_id": 468
+      "source_id": 468,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "fb8de88a6391c1cc"
+      }
     },
     {
       "id": 456,
@@ -7771,7 +10270,15 @@
       },
       "correct": ["B"],
       "explanation": "Directly naming the specific pattern to avoid is the most reliable lever for eliminating it, especially for well-known, extremely common stock phrasings.",
-      "source_id": 469
+      "source_id": 469,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "0365c0eb1fd734c3"
+      }
     },
     {
       "id": 457,
@@ -7788,7 +10295,15 @@
       },
       "correct": ["A"],
       "explanation": "Explicitly specifying the exact convention (with an example if useful) is the direct way to get headers reformatted to match a specific numbering style.",
-      "source_id": 470
+      "source_id": 470,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "95077aafca73843e"
+      }
     },
     {
       "id": 458,
@@ -7805,7 +10320,15 @@
       },
       "correct": ["D"],
       "explanation": "Just as with style-matching, a concrete formatting example resolves ambiguity that a purely verbal description might leave open.",
-      "source_id": 471
+      "source_id": 471,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "51215fc119db01d3"
+      }
     },
     {
       "id": 459,
@@ -7822,7 +10345,15 @@
       },
       "correct": ["C"],
       "explanation": "A substantive conflict — as opposed to a minor style question — deserves explicit clarification rather than an unexamined default assumption.",
-      "source_id": 472
+      "source_id": 472,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "b46674712fd178c6"
+      }
     },
     {
       "id": 460,
@@ -7873,7 +10404,15 @@
       },
       "correct": ["C"],
       "explanation": "Projects and Artifacts serve complementary roles — persistent context versus specific standalone deliverables — and are often used together.",
-      "source_id": 475
+      "source_id": 475,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2cf7de9f9e2ba62d"
+      }
     },
     {
       "id": 463,
@@ -7890,7 +10429,15 @@
       },
       "correct": ["D"],
       "explanation": "Whether the task genuinely depends on current or recently-changing information is the substantive test for needing a search-enabled mode.",
-      "source_id": 476
+      "source_id": 476,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "7a4c0b789397c1e8"
+      }
     },
     {
       "id": 464,
@@ -7907,7 +10454,15 @@
       },
       "correct": ["B"],
       "explanation": "Evolving organizational needs are a legitimate reason to periodically reassess whether the current plan/deployment still fits, rather than treating the initial choice as permanent.",
-      "source_id": 477
+      "source_id": 477,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "043c2fc37e870a7c"
+      }
     },
     {
       "id": 465,
@@ -7992,7 +10547,15 @@
       },
       "correct": ["D"],
       "explanation": "Checking whether the preference was a one-off in-conversation request (versus a persisted Project-level instruction) is the most likely, checkable explanation.",
-      "source_id": 482
+      "source_id": 482,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3f3864a9b2a29cf7"
+      }
     },
     {
       "id": 470,
@@ -8026,7 +10589,15 @@
       },
       "correct": ["D"],
       "explanation": "The degree of genuine shared context between initiatives is the substantive factor in deciding Project granularity, not arbitrary factors like naming.",
-      "source_id": 484
+      "source_id": 484,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "8d2e390912aabfa6"
+      }
     },
     {
       "id": 472,
@@ -8043,7 +10614,15 @@
       },
       "correct": ["B"],
       "explanation": "Excessive fragmentation trades one problem (an overly broad Project) for another (duplicated setup and confusion among many overlapping narrow ones).",
-      "source_id": 485
+      "source_id": 485,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "2efdaac6007d55d7"
+      }
     },
     {
       "id": 473,
@@ -8060,7 +10639,15 @@
       },
       "correct": ["D"],
       "explanation": "A consistent setup checklist reduces the chance of overlooking important configuration and promotes consistency across a team's Projects.",
-      "source_id": 486
+      "source_id": 486,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "5f4649e181b1d6d8"
+      }
     },
     {
       "id": 474,
@@ -8077,7 +10664,15 @@
       },
       "correct": ["D"],
       "explanation": "Differentiating and specifically flagging the high-stakes edge cases for escalation — while keeping routine handling lightweight — is a proportionate design.",
-      "source_id": 487
+      "source_id": 487,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "90395e70d59a1ddd"
+      }
     },
     {
       "id": 475,
@@ -8094,7 +10689,15 @@
       },
       "correct": ["D"],
       "explanation": "Risk categorization should account for a component's ultimate use — a low-risk-seeming piece feeding into a high-stakes final product warrants review calibrated to that eventual use.",
-      "source_id": 488
+      "source_id": 488,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "54459cde570f4964"
+      }
     },
     {
       "id": 476,
@@ -8111,7 +10714,15 @@
       },
       "correct": ["C"],
       "explanation": "Proactively seeking guidance and flagging the policy gap is more responsible than assuming automatic approval for an unaddressed new use case.",
-      "source_id": 489
+      "source_id": 489,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3a43532d4e8d92e2"
+      }
     },
     {
       "id": 477,
@@ -8145,7 +10756,15 @@
       },
       "correct": ["A"],
       "explanation": "Comparing the requested scope and detail (for example number of sections, depth) against what similar past requests have needed is a practical way to anticipate truncation risk, and to section the work proactively if the scope looks large.",
-      "source_id": 491
+      "source_id": 491,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "e9b5f73ff6902352"
+      }
     },
     {
       "id": 479,
@@ -8179,7 +10798,15 @@
       },
       "correct": ["B"],
       "explanation": "The presence or absence of natural structural markers directly affects how straightforward it is to find coherent, meaning-preserving chunk boundaries.",
-      "source_id": 493
+      "source_id": 493,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "96010933e6b15188"
+      }
     },
     {
       "id": 481,
@@ -8196,7 +10823,15 @@
       },
       "correct": ["C"],
       "explanation": "Explicitly differentiating the angle or constraint for each item within a single batch request is a direct way to engineer genuine variety across the set.",
-      "source_id": 494
+      "source_id": 494,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "77f1f1ccf0e0591d"
+      }
     },
     {
       "id": 482,
@@ -8213,7 +10848,15 @@
       },
       "correct": ["C"],
       "explanation": "Vague requests for 'more creativity' lack the concrete, actionable specificity that a targeted change in framing or constraint provides.",
-      "source_id": 495
+      "source_id": 495,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "865bd3d0c11ee247"
+      }
     },
     {
       "id": 483,
@@ -8247,7 +10890,15 @@
       },
       "correct": ["A"],
       "explanation": "Destination-specific conventions can differ from generic 'good formatting,' so checking against the actual target catches mismatches that isolated review wouldn't surface.",
-      "source_id": 497
+      "source_id": 497,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "f943d8e5aa56ccab"
+      }
     },
     {
       "id": 485,
@@ -8264,7 +10915,15 @@
       },
       "correct": ["B"],
       "explanation": "Clear communication plus explicit resolution of the outdated instruction addresses both the practical contradiction and the risk of confusing existing users.",
-      "source_id": 498
+      "source_id": 498,
+      "confidence": {
+        "rag": "amber",
+        "level": "high",
+        "basis": "reasoning",
+        "timeSensitive": false,
+        "reviewed": "2026-10-05",
+        "contentHash": "3c3c8487d299e76e"
+      }
     },
     {
       "id": 486,

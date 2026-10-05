@@ -31,6 +31,8 @@ export interface QuestionConfidence {
   reworded?: boolean;
   /** Anthropic documentation pages that back the answer. */
   sources?: string[];
+  /** Hash of the question, options, key and explanation the review covered. */
+  contentHash?: string;
 }
 
 export interface Question {

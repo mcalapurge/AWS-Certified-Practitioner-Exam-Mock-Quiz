@@ -417,7 +417,8 @@ questions, show no footnote.
   "timeSensitive": false,
   "reviewed": "2026-10-05",
   "reworded": true,
-  "sources": ["https://platform.claude.com/docs/en/..."]
+  "sources": ["https://platform.claude.com/docs/en/..."],
+  "contentHash": "0123456789abcdef"
 }
 ```
 
@@ -429,6 +430,9 @@ questions, show no footnote.
 - `reworded` (optional) marks questions edited after review.
 - `timeSensitive` marks answers that depend on recently changed platform
   behaviour, which the live exam may lag.
+- `contentHash` (written by `apply`) is a hash of the question, options, key
+  and explanation that were reviewed. `diff` treats the rating as current only
+  while it still matches.
 
 `tests/unit/question-confidence-data.test.mjs` enforces the schema and the
 rules that tie a rating to its evidence: green needs `high` + `docs` + a
@@ -437,7 +441,14 @@ also checks that every CCDV-F question is rated. When you add or edit a
 prebuilt question, run the `validate-questions` skill: it reviews the questions
 your diff touched and writes `confidence` for you (don't hand-edit it), or the
 test will fail. `npm run questions -- diff` flags any rating older than the
-latest edit to its question. The coverage report counts ratings per exam and warns on red or unrated
+latest edit to its question.
+
+`tests/unit/question-length-tell.test.mjs` guards both banks against an
+answer-length tell: the keyed option may be the longest option in at most 40%
+of single-answer questions (`LONGEST_KEYED_MAX`), and no other length rank may
+exceed that either. `npm run questions -- lint` fails a bank over the limit.
+When writing questions, keep keys to their essential claim (detail goes in the
+explanation) and give distractors comparable, plausible-but-wrong detail. The coverage report counts ratings per exam and warns on red or unrated
 questions. User-facing wording lives in `features/quiz/lib/confidence.ts`, which
 `tests/unit/confidence.test.mjs` imports directly through Node's type
 stripping, so keep that file free of runtime imports.

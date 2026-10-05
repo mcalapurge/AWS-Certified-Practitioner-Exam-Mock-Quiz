@@ -8,6 +8,7 @@ import {
   applyPatch,
   blindItem,
   buildPattern,
+  contentHash,
   deriveConfidence,
   diffBank,
   fillSourceIds,
@@ -128,6 +129,15 @@ describe("reviewReason", () => {
       "retags don't count",
     );
   });
+  test("a recorded content hash decides staleness, even for an identical re-rating", () => {
+    const stamped = {
+      ...edited,
+      confidence: { ...rated.confidence, contentHash: contentHash(edited) },
+    };
+    assert.equal(reviewReason([rated, stamped]), null);
+    const editedAgain = { ...stamped, explanation: "Changed again." };
+    assert.match(reviewReason([rated, stamped, editedAgain]), /changed after it was last rated/);
+  });
   test("--all re-reviews everything", () => {
     assert.match(reviewReason([null, rated], { all: true }), /--all/);
   });
@@ -234,6 +244,8 @@ describe("lintConfidence", () => {
       lintConfidence({ ...base, sources: ["https://example.com/x"] }).join(),
       /not Anthropic docs/,
     );
+    assert.deepEqual(lintConfidence({ ...base, contentHash: "0123456789abcdef" }), []);
+    assert.match(lintConfidence({ ...base, contentHash: "abc" }).join(), /contentHash/);
   });
 });
 

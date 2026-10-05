@@ -73,12 +73,12 @@
       "explanation": "Latency sensitivity is the key driver: real-time, user-facing interactions need synchronous calls; bulk/delay-tolerant work suits the Batches API.",
       "source_id": 45,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/batch-processing"]
+        "contentHash": "12dac8844099ef5c"
       }
     },
     {
@@ -207,7 +207,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/batch-processing"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/batch-processing"],
+        "contentHash": "1790acb5b79511b2"
       }
     },
     {
@@ -257,7 +258,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/batch-processing"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/batch-processing"],
+        "contentHash": "251d6e779917c0e6"
       }
     },
     {
@@ -282,7 +284,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "3a50de8621ed4fc1"
       }
     },
     {
@@ -307,7 +310,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "cfb7f3b0e05783d7"
       }
     },
     {
@@ -332,7 +336,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "9e46d2db5f1a8b8b"
       }
     },
     {
@@ -382,7 +387,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "2cefb665833e9f27"
       }
     },
     {
@@ -457,7 +463,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "a990d7d201617fcb"
       }
     },
     {
@@ -482,7 +489,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/citations"],
+        "contentHash": "52aec25a8b16cf0b"
       }
     },
     {
@@ -506,7 +514,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "77df6a2c3f95419e"
       }
     },
     {
@@ -578,7 +587,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "adc3ff24a00ea42f"
       }
     },
     {
@@ -602,7 +612,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "0ab8ab1065d703bf"
       }
     },
     {
@@ -626,7 +637,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "786a78a024e956d3"
       }
     },
     {
@@ -646,12 +658,12 @@
       "explanation": "Non-interactive runs load whatever hooks, settings, skills and MCP servers the host has configured, and a run that loads whatever the host happens to have is not reproducible. State the context explicitly, for example with a bare mode that skips local discovery, for jobs that must behave identically everywhere.",
       "source_id": 20283,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/headless"]
+        "contentHash": "ef67f8da9764dc99"
       }
     },
     {
@@ -679,7 +691,8 @@
         "sources": [
           "https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions",
           "https://platform.claude.com/docs/en/about-claude/models/overview"
-        ]
+        ],
+        "contentHash": "ab236ea8453e6519"
       }
     },
     {
@@ -703,7 +716,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "607b046b742ddd97"
       }
     },
     {
@@ -730,7 +744,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions"
-        ]
+        ],
+        "contentHash": "43432ea4680d80af"
       }
     },
     {
@@ -754,7 +769,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "177d5f109132fc18"
       }
     },
     {
@@ -801,9 +817,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": false,
+        "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/plugins/dependencies.md"]
+        "sources": ["https://code.claude.com/docs/en/plugin-dependencies"],
+        "contentHash": "d1425352a28f65f9"
       }
     },
     {
@@ -827,7 +844,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "59900e4dbc9de01d"
       }
     },
     {
@@ -851,7 +869,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "e8df63f4608c377b"
       }
     },
     {
@@ -999,10 +1018,8 @@
         "basis": "docs",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide.md",
-          "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide.md"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"],
+        "contentHash": "85f6b981d58c2588"
       }
     },
     {
@@ -1051,10 +1068,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide.md",
-          "https://platform.claude.com/docs/en/build-with-claude/effort.md"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/extended-thinking"],
+        "contentHash": "af663bb2d1c9172f"
       }
     },
     {
@@ -1080,9 +1095,10 @@
         "timeSensitive": true,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/effort.md",
-          "https://platform.claude.com/docs/en/models/opus-4-6/overview.md"
-        ]
+          "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
+          "https://platform.claude.com/docs/en/build-with-claude/effort"
+        ],
+        "contentHash": "a6362f5b20ac2fa8"
       }
     },
     {
@@ -1105,9 +1121,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/effort.md"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/effort"],
+        "contentHash": "9d3baacbbf31d6a3"
       }
     },
     {
@@ -1208,7 +1225,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "5f19b749a4e80844"
       }
     },
     {
@@ -1234,8 +1252,10 @@
         "timeSensitive": true,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages.md"
-        ]
+          "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages",
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+        ],
+        "contentHash": "c1c2b9841426ca61"
       }
     },
     {
@@ -1255,12 +1275,13 @@
       "explanation": "The raw API sees only what you send. The Agent SDK defaults to a minimal prompt, and Claude Code adds full working context. A rule the application depends on must be stated once per channel it relies on.",
       "source_id": 20286,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/memory.md"]
+        "sources": ["https://code.claude.com/docs/en/memory"],
+        "contentHash": "3d3fd9604c11db5f"
       }
     },
     {
@@ -1284,7 +1305,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "7c035144492933b0"
       }
     },
     {
@@ -1305,10 +1327,11 @@
       "source_id": 20288,
       "confidence": {
         "rag": "amber",
-        "level": "medium",
+        "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "a5ddb97fcb4278c8"
       }
     },
     {
@@ -1333,7 +1356,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/memory.md"]
+        "sources": ["https://code.claude.com/docs/en/memory"],
+        "contentHash": "a3a48fa24309d30c"
       }
     },
     {
@@ -1540,7 +1564,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/pdf-support.md"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/pdf-support"],
+        "contentHash": "d315220cc9afe092"
       }
     },
     {
@@ -1763,9 +1788,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"],
+        "contentHash": "413355cd3973770c"
       }
     },
     {
@@ -1815,7 +1841,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"],
+        "contentHash": "8ed27778339910e2"
       }
     },
     {
@@ -1839,7 +1866,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "cd85fc1b7eb8ac35"
       }
     },
     {
@@ -1863,7 +1891,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "16c0fd5c785d0662"
       }
     },
     {
@@ -1888,7 +1917,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/data-residency"]
+        "contentHash": "08b6283186374f0c"
       }
     },
     {
@@ -1912,7 +1941,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "9d533a4cb97f26de"
       }
     },
     {
@@ -1936,7 +1966,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "3007161c944cf456"
       }
     },
     {
@@ -1960,7 +1991,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "33e306fb3ee3a400"
       }
     },
     {
@@ -1984,7 +2016,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "20ac0361f93da365"
       }
     },
     {
@@ -2061,7 +2094,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/sessions"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/sessions"],
+        "contentHash": "54f23c268eb3fca4"
       }
     },
     {
@@ -2087,7 +2121,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/sessions"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/sessions"],
+        "contentHash": "d2e66b69296c7c52"
       }
     },
     {
@@ -2132,16 +2167,14 @@
       "explanation": "Resuming restores the conversation, including earlier tool calls, and normally the model. It does not restore every launch-time setting. A session that was running with bypassPermissions or in plan mode comes back in the default mode, and flags such as --mcp-config, --settings and --add-dir must be passed again, so elevated settings have to be re-supplied on purpose.",
       "source_id": 20293,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
+        "rag": "green",
+        "level": "high",
         "basis": "docs",
-        "timeSensitive": false,
+        "timeSensitive": true,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://code.claude.com/docs/en/sessions",
-          "https://code.claude.com/docs/en/agent-sdk/sessions"
-        ]
+        "sources": ["https://code.claude.com/docs/en/sessions"],
+        "contentHash": "b0e9e61d5617e560"
       }
     },
     {
@@ -2169,7 +2202,8 @@
         "sources": [
           "https://code.claude.com/docs/en/agent-sdk/sessions",
           "https://code.claude.com/docs/en/sessions"
-        ]
+        ],
+        "contentHash": "3d8610213d923132"
       }
     },
     {
@@ -2194,7 +2228,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "contentHash": "058dde56eecddf0f"
       }
     },
     {
@@ -2218,7 +2252,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "93f33f150e2a9a63"
       }
     },
     {
@@ -2242,7 +2277,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "07e4485471f5bbe3"
       }
     },
     {
@@ -2267,10 +2303,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/api/errors",
-          "https://platform.claude.com/docs/en/api/versioning"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "b674c25180c49713"
       }
     },
     {
@@ -2295,10 +2329,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/api/errors",
-          "https://platform.claude.com/docs/en/build-with-claude/data-residency"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "09f672e85c064058"
       }
     },
     {
@@ -2394,7 +2426,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "03179cf96762e713"
       }
     },
     {
@@ -2418,7 +2451,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "6db96bffdfc7e985"
       }
     },
     {
@@ -2468,7 +2502,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"],
+        "contentHash": "b7932cec9977b498"
       }
     },
     {
@@ -2591,9 +2626,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": false,
+        "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"],
+        "contentHash": "eea83511d0c052a9"
       }
     },
     {
@@ -2618,7 +2654,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"],
+        "contentHash": "667176cf1619b9c3"
       }
     },
     {
@@ -2792,7 +2829,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/streaming"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"],
+        "contentHash": "ae8ddec805913caf"
       }
     },
     {
@@ -2815,9 +2853,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "d679246f65259e6e"
       }
     },
     {
@@ -2840,12 +2879,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
-          "https://platform.claude.com/docs/en/about-claude/model-deprecations"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "8915ca34165fddf1"
       }
     },
     {
@@ -2943,7 +2980,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "94f25d99bb74a9ae"
       }
     },
     {
@@ -2968,7 +3006,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback"],
+        "contentHash": "b01b6a960bacd43f"
       }
     },
     {
@@ -2992,7 +3031,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "38cc62ece6125925"
       }
     },
     {
@@ -3017,7 +3057,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"],
+        "contentHash": "3564eb1ea6f8412e"
       }
     },
     {
@@ -3042,7 +3083,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"],
+        "contentHash": "4e1407bae31f848d"
       }
     },
     {
@@ -3090,7 +3132,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "519bd94be0256018"
       }
     },
     {
@@ -3101,20 +3144,22 @@
       "topic_difficulty": "Hard",
       "question": "A team wants to skip the evaluation gate to hit a launch date. What is the strongest argument against it?",
       "options": {
-        "A": "A skipped gate raises no error, so name what it would have refused before agreeing",
+        "A": "A skipped gate fails silently, so first name what it would have caught",
         "B": "Evaluation gates make the model more accurate",
         "C": "The API will reject requests that use prompts which have not passed a registered evaluation gate",
         "D": "Gates are legally required for all AI systems"
       },
       "correct": ["A"],
-      "explanation": "Skipping a gate raises no error: the system works on the day but cannot be reasoned about later. Schedule arguments always sound stronger than an absent signal, so asking what the gate would have caught makes the trade explicit.",
+      "explanation": "Skipping a gate raises no error: the system ships on time, but nobody knows what the gate would have stopped. Schedule pressure usually sounds stronger than an absent signal, so naming what the gate would have caught makes the trade-off explicit before anyone agrees to it.",
       "source_id": 20266,
       "confidence": {
         "rag": "amber",
-        "level": "high",
+        "level": "medium",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "reworded": true,
+        "contentHash": "bcf3c1e9f0befcb0"
       }
     },
     {
@@ -3140,11 +3185,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"],
+        "contentHash": "7b0dfd3630cd9129"
       }
     },
     {
@@ -3170,11 +3212,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"],
+        "contentHash": "e29142ab9e56812a"
       }
     },
     {
@@ -3200,11 +3239,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"],
+        "contentHash": "616fe06b9aff5051"
       }
     },
     {
@@ -3366,7 +3402,11 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons"]
+        "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons",
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
+        ],
+        "contentHash": "3f71e1a4f1ada217"
       }
     },
     {
@@ -3493,7 +3533,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/overview"]
+        "sources": ["https://platform.claude.com/docs/en/api/overview"],
+        "contentHash": "df4b258629de2e3b"
       }
     },
     {
@@ -3518,10 +3559,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/api/overview",
-          "https://platform.claude.com/docs/en/api/errors"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/api/overview"],
+        "contentHash": "f1395beb491d6dc9"
       }
     },
     {
@@ -3546,7 +3585,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/openai-sdk"]
+        "sources": ["https://platform.claude.com/docs/en/cli-sdks-libraries/libraries/openai-sdk"],
+        "contentHash": "114c6a2072c039b4"
       }
     },
     {
@@ -3622,15 +3662,13 @@
       "explanation": "A user is waiting, so batch is unavailable. The defensible lever is evidence: the cheapest tier (or effort level) that passes an eval of representative traffic, plus caching the stable prefix so repeated system-prompt tokens bill at the read rate.",
       "source_id": 86,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
-          "https://platform.claude.com/docs/en/build-with-claude/effort"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+        "contentHash": "c2f4631483a936f2"
       }
     },
     {
@@ -3711,7 +3749,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/effort"]
+        "contentHash": "41a3ab684f86feb8"
       }
     },
     {
@@ -4027,8 +4065,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md"
-        ]
+          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
+        ],
+        "contentHash": "3ba490a1892f92d6"
       }
     },
     {
@@ -4048,14 +4088,12 @@
       "explanation": "Attribution precedes optimisation: record tokens in, tokens out and cache reads per call, by feature. Every remedy without it is across-the-board and damages features that never drove spend.",
       "source_id": 20346,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md"
-        ]
+        "contentHash": "9b51e43ff61c146a"
       }
     },
     {
@@ -4080,9 +4118,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"],
+        "contentHash": "b7b49182765f538a"
       }
     },
     {
@@ -4108,9 +4145,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md",
+          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
           "https://platform.claude.com/docs/en/build-with-claude/task-budgets"
-        ]
+        ],
+        "contentHash": "9b5f162e4883f779"
       }
     },
     {
@@ -4119,7 +4157,7 @@
       "topic": "Effort, Adaptive Thinking & Fast Mode",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "Which three settings are independent, and are often confused as one 'quality dial'?",
+      "question": "Which three settings are separate controls, yet are often confused as one 'quality dial'?",
       "options": {
         "A": "Model choice, thinking and effort",
         "B": "Streaming, batching and caching",
@@ -4127,19 +4165,23 @@
         "D": "max_tokens, stop sequences and system prompt length"
       },
       "correct": ["A"],
-      "explanation": "Model choice is the capability tier, thinking is whether and how the model reasons first, and effort is how many tokens it spends. A larger model buys capability; thinking and effort buy deliberation on the same model. Fast mode is separate again: a speed setting at premium pricing on supported models.",
+      "explanation": "Model choice is the capability tier. Thinking is whether the model reasons in thinking blocks before answering. Effort is how much work it puts into the whole response, including how often and how deeply it thinks. A larger model buys capability; thinking and effort buy deliberation on the same model. Some models can't turn thinking off, which leaves effort as the main lever. Fast mode is separate again: a speed setting at premium pricing on supported models.",
       "source_id": 20325,
       "confidence": {
-        "rag": "green",
-        "level": "high",
-        "basis": "docs",
+        "rag": "amber",
+        "level": "medium",
+        "basis": "reasoning",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
+        "reworded": true,
         "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost",
+          "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5",
+          "https://platform.claude.com/docs/en/build-with-claude/thinking",
           "https://platform.claude.com/docs/en/build-with-claude/effort",
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md",
           "https://platform.claude.com/docs/en/build-with-claude/fast-mode"
-        ]
+        ],
+        "contentHash": "1298ff5c6ed1367c"
       }
     },
     {
@@ -4165,7 +4207,8 @@
         "timeSensitive": true,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/fast-mode"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/fast-mode"],
+        "contentHash": "7ba44ab74f1a6829"
       }
     },
     {
@@ -4216,9 +4259,11 @@
         "timeSensitive": true,
         "reviewed": "2026-10-05",
         "sources": [
+          "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
           "https://platform.claude.com/docs/en/api/errors",
-          "https://platform.claude.com/docs/en/build-with-claude/effort"
-        ]
+          "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5"
+        ],
+        "contentHash": "07d22d12decbd3d1"
       }
     },
     {
@@ -4241,12 +4286,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/thinking",
-          "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/thinking"],
+        "contentHash": "0aa109aa03b74d88"
       }
     },
     {
@@ -4349,7 +4392,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "fa388320de485d10"
       }
     },
     {
@@ -4374,7 +4418,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "c9130cfbc9e9beba"
       }
     },
     {
@@ -4474,7 +4519,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "fc7ad441c0850a21"
       }
     },
     {
@@ -4499,7 +4545,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "c6562c509ffc6cc1"
       }
     },
     {
@@ -4549,7 +4596,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "ebe38fa99e1e134a"
       }
     },
     {
@@ -4574,7 +4622,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "0132886a46352377"
       }
     },
     {
@@ -4599,7 +4648,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "8273e3bf8153d98f"
       }
     },
     {
@@ -4624,7 +4674,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "sources": ["https://platform.claude.com/docs/en/api/errors"],
+        "contentHash": "9d42764da0f5c1b2"
       }
     },
     {
@@ -4649,7 +4700,11 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/glossary"]
+        "sources": [
+          "https://platform.claude.com/docs/en/about-claude/glossary",
+          "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"
+        ],
+        "contentHash": "a5447be7f0fd867b"
       }
     },
     {
@@ -4669,12 +4724,16 @@
       "explanation": "Temperature selects; the window holds. This is a capacity problem that needs both sections in the same request, or a deliberate split that carries the needed state. Sampling settings, latency improvements and output caps all act on generation, not on input capacity. On Claude 4.7 and later, non-default temperature is rejected anyway.",
       "source_id": 20318,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"]
+        "sources": [
+          "https://platform.claude.com/docs/en/about-claude/glossary",
+          "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+        ],
+        "contentHash": "ebb6af58a06620c9"
       }
     },
     {
@@ -4699,7 +4758,11 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/glossary"]
+        "sources": [
+          "https://platform.claude.com/docs/en/about-claude/glossary",
+          "https://platform.claude.com/docs/en/build-with-claude/token-counting"
+        ],
+        "contentHash": "b7801a7dd82628e1"
       }
     },
     {
@@ -4724,7 +4787,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"],
+        "contentHash": "4e99b4ab31339924"
       }
     },
     {
@@ -4805,7 +4869,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"],
+        "contentHash": "3e16bd851dc86bce"
       }
     },
     {
@@ -4830,7 +4895,8 @@
         "basis": "docs",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"]
+        "sources": ["https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"],
+        "contentHash": "33fbf7d17f2d8a5f"
       }
     },
     {
@@ -5029,16 +5095,16 @@
       "explanation": "A smaller tier changes the output. Streaming improves perceived latency, caching shortens time to first token, and fast mode makes the same model generate faster. Lowering effort also cuts latency but trades some thoroughness, so measure it.",
       "source_id": 20351,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
-        "timeSensitive": true,
+        "basis": "docs",
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
-          "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5",
-          "https://platform.claude.com/docs/en/build-with-claude/prompt-caching"
-        ]
+          "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"
+        ],
+        "contentHash": "02fec22147be6a18"
       }
     },
     {
@@ -5058,14 +5124,13 @@
       "explanation": "Cost-effective architecture matches model capability to task difficulty and latency needs, using smaller, faster models for simple, high-volume work and reserving the most capable model for genuinely complex reasoning, rather than defaulting to one tier for everything.",
       "source_id": 72,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+        "contentHash": "a041cb8a9183f894"
       }
     },
     {
@@ -5089,7 +5154,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "a3b657ac8d8d7c08"
       }
     },
     {
@@ -5115,7 +5181,7 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://platform.claude.com/docs/en/about-claude/models/overview"]
+        "contentHash": "eda3f1f3cdc7f20e"
       }
     },
     {
@@ -5187,7 +5253,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "7763290acbbbaf79"
       }
     },
     {
@@ -5285,9 +5352,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence.md"
-        ]
+        "contentHash": "d7424fbb89160771"
       }
     },
     {
@@ -5311,7 +5376,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "73159cfa10450110"
       }
     },
     {
@@ -5334,12 +5400,13 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-          "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5"
-        ]
+          "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide",
+          "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+        ],
+        "contentHash": "ccb26161c59880cc"
       }
     },
     {
@@ -5364,7 +5431,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"],
+        "contentHash": "c0aca4c7807a4730"
       }
     },
     {
@@ -5389,7 +5457,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/model-deprecations"],
+        "contentHash": "77a97430800a80c6"
       }
     },
     {
@@ -5414,7 +5483,8 @@
         "basis": "docs",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/pricing.md"]
+        "sources": ["https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"],
+        "contentHash": "1b38043e6ca5bc5b"
       }
     },
     {
@@ -5434,14 +5504,15 @@
       "explanation": "Newer models follow instructions more literally, so stale verbose or 'be thorough' instructions can be obeyed fully, increasing output and spend. Migration includes auditing prompts written for the previous model; remove cruft that no longer serves a purpose and re-measure.",
       "source_id": 20466,
       "confidence": {
-        "rag": "green",
-        "level": "high",
+        "rag": "amber",
+        "level": "medium",
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices.md"
-        ]
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "f742555f89a52c88"
       }
     },
     {
@@ -5491,7 +5562,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/about-claude/pricing.md"]
+        "sources": ["https://platform.claude.com/docs/en/about-claude/pricing"],
+        "contentHash": "1663b36fb5acc75b"
       }
     },
     {
@@ -5515,7 +5587,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "6ae862c4e4d8a4b8"
       }
     },
     {
@@ -5614,9 +5687,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://code.claude.com/docs/en/agent-sdk/overview.md",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner.md"
-        ]
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner",
+          "https://code.claude.com/docs/en/agent-sdk/agent-loop"
+        ],
+        "contentHash": "128dfd14935e9145"
       }
     },
     {
@@ -5639,13 +5713,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": false,
+        "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/managed-agents/overview.md",
-          "https://platform.claude.com/docs/en/managed-agents/agent-setup.md",
-          "https://platform.claude.com/docs/en/managed-agents/environments.md"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/managed-agents/overview"],
+        "contentHash": "2cbc9dc3a4eb8063"
       }
     },
     {
@@ -5670,7 +5741,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/managed-agents/overview.md"]
+        "sources": ["https://platform.claude.com/docs/en/managed-agents/overview"],
+        "contentHash": "bad21d904c998c08"
       }
     },
     {
@@ -5694,7 +5766,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "ba0863bf2199e1d3"
       }
     },
     {
@@ -5719,7 +5793,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop.md"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "4a059e53e0f629ac"
       }
     },
     {
@@ -5744,7 +5819,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner.md"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner"],
+        "contentHash": "bdace94e9a2ec5b7"
       }
     },
     {
@@ -5768,7 +5844,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "813730505d1890e8"
       }
     },
     {
@@ -5841,7 +5918,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "bdb79a2f6c8b904a"
       }
     },
     {
@@ -5865,7 +5944,12 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://www.anthropic.com/engineering/building-effective-agents",
+          "https://code.claude.com/docs/en/agent-sdk/overview"
+        ],
+        "contentHash": "5df275a1bf0b1f4f"
       }
     },
     {
@@ -5889,7 +5973,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "f4934f2bb8c370ab"
       }
     },
     {
@@ -5938,7 +6024,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/research/building-effective-agents"],
+        "contentHash": "67e49525bcc66f82"
       }
     },
     {
@@ -5962,7 +6049,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "b5ba261f425fa666"
       }
     },
     {
@@ -6006,12 +6094,13 @@
       "explanation": "A subagent starts with no parent conversation. Whatever its launching prompt omits is simply absent, so short delegation instructions produce workers that misread the assignment or duplicate each other.",
       "source_id": 20243,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop.md"]
+        "sources": ["https://www.anthropic.com/engineering/multi-agent-research-system"],
+        "contentHash": "94c08c6e425c41cd"
       }
     },
     {
@@ -6194,7 +6283,8 @@
         "sources": [
           "https://code.claude.com/docs/en/hooks",
           "https://code.claude.com/docs/en/agent-sdk/agent-loop"
-        ]
+        ],
+        "contentHash": "c8ea3b0fea73afc5"
       }
     },
     {
@@ -6219,10 +6309,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://code.claude.com/docs/en/agent-sdk/overview",
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop"
-        ]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "b957f636d8b4ddcb"
       }
     },
     {
@@ -6295,15 +6383,13 @@
       "explanation": "Long-running agents accumulate context over many steps; without active management (summarization, pruning) this can exceed context limits or dilute the model's focus with irrelevant history.",
       "source_id": 106,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop",
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop.md"
-        ]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "1e8819c7508597b9"
       }
     },
     {
@@ -6407,7 +6493,11 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"]
+        "sources": [
+          "https://code.claude.com/docs/en/agent-sdk/agent-loop",
+          "https://www.anthropic.com/engineering/building-effective-agents"
+        ],
+        "contentHash": "e5f19d2296dec5ed"
       }
     },
     {
@@ -6427,15 +6517,16 @@
       "explanation": "Non-terminating loops need an explicit bound plus progress detection so repeated identical states break out. Model capability does not guarantee termination.",
       "source_id": 10081,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
           "https://www.anthropic.com/engineering/building-effective-agents",
           "https://code.claude.com/docs/en/agent-sdk/agent-loop"
-        ]
+        ],
+        "contentHash": "926e71b300a22312"
       }
     },
     {
@@ -6455,12 +6546,13 @@
       "explanation": "Least privilege: give the agent only the tools its task needs. A booking agent that can reach every tool in the organization turns one bad decision or one injected instruction into an incident with a much larger blast radius.",
       "source_id": 203,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/subagents"],
+        "contentHash": "5a1e453c1a11d7f4"
       }
     },
     {
@@ -6505,15 +6597,13 @@
       "explanation": "Manager/subagent patterns decompose complex tasks so each subagent operates with a narrower, more focused context, generally improving reliability and manageability over one large monolithic agent. Nothing guarantees zero errors, and evaluation and tool use are still needed.",
       "source_id": 96,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://www.anthropic.com/engineering/multi-agent-research-system",
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop"
-        ]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/subagents"],
+        "contentHash": "eee133c2eea963fa"
       }
     },
     {
@@ -6538,7 +6628,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/subagents"],
+        "contentHash": "909023e1bc0c15d8"
       }
     },
     {
@@ -6563,7 +6654,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/subagents"],
+        "contentHash": "94a8087db81152be"
       }
     },
     {
@@ -6613,7 +6705,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/multi-agent-research-system"]
+        "contentHash": "c5796063eea9007e"
       }
     },
     {
@@ -6638,7 +6730,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "5fe3a71f6e986fa2"
       }
     },
     {
@@ -6664,9 +6757,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://www.anthropic.com/engineering/building-effective-agents",
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop"
-        ]
+          "https://code.claude.com/docs/en/agent-sdk/agent-loop",
+          "https://www.anthropic.com/engineering/building-effective-agents"
+        ],
+        "contentHash": "e9c8f4b18af64c6f"
       }
     },
     {
@@ -6711,16 +6805,14 @@
       "explanation": "The model deciding it is finished is the normal exit and a useful signal, but not a guarantee: open-ended tasks can run long. Hard ceilings (maximum turns, maximum spend) bound the run and report which limit was hit, for example as error_max_turns or error_max_budget_usd results in the Agent SDK.",
       "source_id": 20247,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
-        "basis": "reasoning",
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop",
-          "https://code.claude.com/docs/en/agent-sdk/agent-loop.md"
-        ]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "978e0313045a6d26"
       }
     },
     {
@@ -6795,7 +6887,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "34a8e11bcdfee6f0"
       }
     },
     {
@@ -6820,7 +6913,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "4d0d15edfbfd37a7"
       }
     },
     {
@@ -6870,7 +6964,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/multi-agent-research-system"]
+        "sources": ["https://www.anthropic.com/engineering/multi-agent-research-system"],
+        "contentHash": "d457d4a246900cd9"
       }
     },
     {
@@ -6915,13 +7010,14 @@
       "explanation": "Workflows orchestrate the model through predefined code paths, so if the steps can be written down in advance, code holds the plan (a chain, router or other workflow). If the path cannot be hardcoded, an agent lets the model direct its own steps, while code still enforces turn caps, spend caps and validation.",
       "source_id": 20234,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
-        "basis": "reasoning",
+        "rag": "green",
+        "level": "high",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "ca87297e354e93f3"
       }
     },
     {
@@ -6946,7 +7042,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "22cc3adec6428239"
       }
     },
     {
@@ -6971,7 +7068,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"]
+        "sources": ["https://www.anthropic.com/engineering/building-effective-agents"],
+        "contentHash": "7fd991c59a56bfdd"
       }
     },
     {
@@ -7073,14 +7171,13 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
         "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-          "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
-          "https://platform.claude.com/docs/en/build-with-claude/thinking"
-        ]
+          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        ],
+        "contentHash": "0d4c88b1488e1a0d"
       }
     },
     {
@@ -7100,17 +7197,19 @@
       "explanation": "Thinking arrives in separate thinking content blocks ahead of the response, so the text the application returns can be just the JSON verdict. Where thinking is off, asking for reasoning in a delimited section and the answer in a separate tagged section achieves the same separation. On the newest models, prompts asking the model to write out its reasoning in the response may be declined, so rely on thinking there.",
       "source_id": 10091,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
+        "rag": "green",
+        "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-          "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
-          "https://platform.claude.com/docs/en/build-with-claude/thinking"
-        ]
+          "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+          "https://platform.claude.com/docs/en/build-with-claude/thinking",
+          "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback"
+        ],
+        "contentHash": "f9ec24dba6408195"
       }
     },
     {
@@ -7135,10 +7234,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
-          "https://platform.claude.com/docs/en/build-with-claude/context-windows"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-windows"],
+        "contentHash": "c788d22dcb084f21"
       }
     },
     {
@@ -7218,9 +7315,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/context-editing",
-          "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
-        ]
+          "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "https://platform.claude.com/docs/en/build-with-claude/context-editing"
+        ],
+        "contentHash": "6330c16882ef2b58"
       }
     },
     {
@@ -7245,7 +7343,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-editing"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/context-editing"],
+        "contentHash": "dc4905b151a799ab"
       }
     },
     {
@@ -7265,15 +7364,13 @@
       "explanation": "Compaction may drop anything inside the region it summarises. Changing the threshold alters frequency, not what a summary can discard, and restating the rule in the conversation puts it back inside the region being summarised.",
       "source_id": 20354,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
-          "https://platform.claude.com/docs/en/build-with-claude/compaction"
-        ]
+        "sources": ["https://code.claude.com/docs/en/agent-sdk/agent-loop"],
+        "contentHash": "ef56b022f686757f"
       }
     },
     {
@@ -7321,7 +7418,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "ef8311e1339c4fb0"
       }
     },
     {
@@ -7348,7 +7446,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
-        ]
+        ],
+        "contentHash": "046ad2ea8644142a"
       }
     },
     {
@@ -7404,7 +7503,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        ],
+        "contentHash": "ea9f3a4f74c937b6"
       }
     },
     {
@@ -7566,7 +7666,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        ],
+        "contentHash": "b7db05b40c490b90"
       }
     },
     {
@@ -7637,11 +7738,13 @@
       "explanation": "Schemas answer the shape question, not the truth question. A check catches a confident wrong answer only when its correctness rests on something established outside the model.",
       "source_id": 20359,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "b67971270f561d63"
       }
     },
     {
@@ -7689,7 +7792,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "f31220cafe77bb6b"
       }
     },
     {
@@ -7710,10 +7814,11 @@
       "source_id": 20362,
       "confidence": {
         "rag": "amber",
-        "level": "high",
+        "level": "medium",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "221821877fb9db9b"
       }
     },
     {
@@ -7738,7 +7843,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "1e42cc91b813909e"
       }
     },
     {
@@ -7762,7 +7868,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "25e29bd4da57c283"
       }
     },
     {
@@ -7786,7 +7893,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "52f1f0cf7e072ef0"
       }
     },
     {
@@ -7839,9 +7947,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        "contentHash": "1f94a572267f68fc"
       }
     },
     {
@@ -7868,7 +7974,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        ],
+        "contentHash": "1e37cc56cd43e7f5"
       }
     },
     {
@@ -7895,7 +8002,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        ],
+        "contentHash": "cd8b6de2fc91a664"
       }
     },
     {
@@ -7919,7 +8027,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "4fd32a5b4a43f5e6"
       }
     },
     {
@@ -7946,7 +8055,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
-        ]
+        ],
+        "contentHash": "9227ebe6075c3c11"
       }
     },
     {
@@ -8020,9 +8130,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "aacdf30708da2fa6"
       }
     },
     {
@@ -8070,9 +8181,10 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"]
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/structured-outputs"],
+        "contentHash": "7875bbd44f074fa6"
       }
     },
     {
@@ -8092,11 +8204,13 @@
       "explanation": "System vs. user prompt separation helps keep static guidance separate from dynamic input, improving clarity and enabling prompt caching on the static portion.",
       "source_id": 286,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/build-with-claude/prompt-caching"],
+        "contentHash": "7089eb6fd8a1cb97"
       }
     },
     {
@@ -8337,8 +8451,9 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks.md"
-        ]
+          "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks"
+        ],
+        "contentHash": "0201f296540ea445"
       }
     },
     {
@@ -8465,10 +8580,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"],
+        "contentHash": "680bb93f27d9b9b2"
       }
     },
     {
@@ -8538,11 +8651,13 @@
       "explanation": "Cross-client, cross-team, protocol-level interoperability is exactly what MCP servers are designed for.",
       "source_id": 417,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "611975876a8e4163"
       }
     },
     {
@@ -8619,7 +8734,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool"
-        ]
+        ],
+        "contentHash": "d7de5bbf20fd9a1a"
       }
     },
     {
@@ -8723,7 +8839,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "c4665407886dae1f"
       }
     },
     {
@@ -8747,7 +8864,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "fb097f8b78938546"
       }
     },
     {
@@ -8795,7 +8913,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "6f59037d8bd719aa"
       }
     },
     {
@@ -8815,11 +8934,13 @@
       "explanation": "MCP standardizes how external tools/resources/prompts are exposed to LLM clients, enabling interoperability across different servers and clients.",
       "source_id": 112,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "70fe8599a8b3228c"
       }
     },
     {
@@ -8843,7 +8964,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "fa363d419d5b20ba"
       }
     },
     {
@@ -8867,7 +8989,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "62bed08392c3fec3"
       }
     },
     {
@@ -8887,12 +9010,14 @@
       "explanation": "In MCP, 'resources' specifically refers to read-only or reference data (e.g., documents, records) that an MCP server exposes for a client to retrieve.",
       "source_id": 296,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "reworded": true
+        "reworded": true,
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "fad14c48d9ebf080"
       }
     },
     {
@@ -8912,11 +9037,13 @@
       "explanation": "In MCP, 'tools' specifically refers to invocable actions with defined input schemas that a client (and ultimately the model) can call to have the server perform work.",
       "source_id": 311,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "a91f071242670f86"
       }
     },
     {
@@ -9013,7 +9140,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "526fd95483e98878"
       }
     },
     {
@@ -9088,7 +9216,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/mcp"]
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "269a15463d68cfe8"
       }
     },
     {
@@ -9168,7 +9297,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use"
-        ]
+        ],
+        "contentHash": "78f461fead798bfc"
       }
     },
     {
@@ -9194,9 +9324,9 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
-        ]
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use"
+        ],
+        "contentHash": "372fb3ca90913d92"
       }
     },
     {
@@ -9221,7 +9351,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "105c36991b6813e3"
       }
     },
     {
@@ -9246,7 +9377,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "65949841ff7a46a1"
       }
     },
     {
@@ -9270,7 +9402,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "af425132256a1680"
       }
     },
     {
@@ -9320,7 +9454,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/plugins"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "ba163fe23338194c"
       }
     },
     {
@@ -9340,16 +9475,14 @@
       "explanation": "A non-fork subagent starts with a fresh context: it does not see the parent's conversation history or the Skills the parent has already invoked. Listing a Skill in the subagent's skills field preloads its full content at startup. Without that, the subagent can still discover and invoke available Skills through the Skill tool, unless that tool is removed from its tool list.",
       "source_id": 20397,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
+        "rag": "green",
+        "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://code.claude.com/docs/en/sub-agents",
-          "https://code.claude.com/docs/en/agent-sdk/subagents"
-        ]
+        "sources": ["https://code.claude.com/docs/en/sub-agents"],
+        "contentHash": "b074fcabef18a997"
       }
     },
     {
@@ -9374,9 +9507,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
-        ]
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "41d0338a96db58c0"
       }
     },
     {
@@ -9401,9 +9533,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
-        ]
+        "sources": ["https://code.claude.com/docs/en/mcp"],
+        "contentHash": "b9a2dcb6455404d3"
       }
     },
     {
@@ -9452,7 +9583,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"],
+        "contentHash": "a43231853b03481e"
       }
     },
     {
@@ -9504,7 +9636,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"],
+        "contentHash": "05e1f8c946abf6f0"
       }
     },
     {
@@ -9608,9 +9741,12 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use"]
+        "sources": [
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use"
+        ],
+        "contentHash": "b2230b127bb3bab3"
       }
     },
     {
@@ -9634,7 +9770,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "ded7ded660f0ba6e"
       }
     },
     {
@@ -9659,7 +9796,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"],
+        "contentHash": "e90b4b911033ec9b"
       }
     },
     {
@@ -9679,14 +9817,15 @@
       "explanation": "Dispatch is the last point you control the call. A tool call is a proposal from a non-deterministic caller, not trusted input; loosening the schema makes a remote service your first validator.",
       "source_id": 20381,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
-        ]
+        ],
+        "contentHash": "2353fd29b1d5e40b"
       }
     },
     {
@@ -9713,7 +9852,8 @@
         "reviewed": "2026-10-05",
         "sources": [
           "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls"
-        ]
+        ],
+        "contentHash": "8c86d29a9d9b0e7f"
       }
     },
     {
@@ -9761,10 +9901,11 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": true,
+        "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"],
+        "contentHash": "ab4f973cae49dc89"
       }
     },
     {
@@ -9789,7 +9930,11 @@
         "basis": "docs",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"]
+        "sources": [
+          "https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5",
+          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools"
+        ],
+        "contentHash": "ebde98747cfafa98"
       }
     },
     {
@@ -9839,10 +9984,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
-          "https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"],
+        "contentHash": "134bceb04d169456"
       }
     },
     {
@@ -9867,7 +10010,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"]
+        "sources": ["https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"],
+        "contentHash": "b234618d6861c0ec"
       }
     },
     {
@@ -9891,7 +10035,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "d43eb5a426d85eac"
       }
     },
     {
@@ -9916,7 +10061,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"]
+        "contentHash": "5ed9c1c767ba5d30"
       }
     },
     {
@@ -9940,7 +10085,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/security"],
+        "contentHash": "6d68be85482d4c48"
       }
     },
     {
@@ -10013,7 +10160,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/hooks"]
+        "sources": ["https://code.claude.com/docs/en/hooks"],
+        "contentHash": "55f0e3ea4df38a14"
       }
     },
     {
@@ -10039,10 +10187,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://code.claude.com/docs/en/hooks",
-          "https://code.claude.com/docs/en/hooks-guide"
-        ]
+        "sources": ["https://code.claude.com/docs/en/hooks"],
+        "contentHash": "499011780e3ffbd1"
       }
     },
     {
@@ -10067,7 +10213,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/hooks"]
+        "sources": ["https://code.claude.com/docs/en/hooks"],
+        "contentHash": "e11c3b88b7edc8c1"
       }
     },
     {
@@ -10146,7 +10293,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "77f31fcca09e0fa7"
       }
     },
     {
@@ -10218,7 +10366,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "ef9f8055814a968a"
       }
     },
     {
@@ -10290,7 +10439,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "2dea18d7717352e8"
       }
     },
     {
@@ -10338,7 +10488,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "92b31227aae6c6ec"
       }
     },
     {
@@ -10362,7 +10513,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "c5bef3206347c435"
       }
     },
     {
@@ -10386,7 +10538,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "1d84430dec200f1c"
       }
     },
     {
@@ -10410,7 +10563,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "5a4104a35ebcde6d"
       }
     },
     {
@@ -10434,7 +10588,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "652aac1a12bf23dc"
       }
     },
     {
@@ -10482,7 +10637,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/security"],
+        "contentHash": "5828ea62239fd261"
       }
     },
     {
@@ -10506,7 +10663,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "df6abe37bd54c52d"
       }
     },
     {
@@ -10530,7 +10688,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "92baac298551c921"
       }
     },
     {
@@ -10554,7 +10713,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "424f10294a487b65"
       }
     },
     {
@@ -10574,11 +10734,16 @@
       "explanation": "Sandboxing limits the blast radius of buggy or manipulated code by constraining its access to sensitive resources.",
       "source_id": 464,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://code.claude.com/docs/en/sandboxing",
+          "https://code.claude.com/docs/en/security"
+        ],
+        "contentHash": "fbdaa29dd14290d7"
       }
     },
     {
@@ -10598,11 +10763,16 @@
       "explanation": "Sandboxing limits damage even in a worst-case scenario where injected instructions succeed in influencing what code runs.",
       "source_id": 465,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": [
+          "https://code.claude.com/docs/en/sandboxing",
+          "https://code.claude.com/docs/en/security"
+        ],
+        "contentHash": "a291ec493fbf432c"
       }
     },
     {
@@ -10674,7 +10844,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/security"],
+        "contentHash": "f68f12d2724b6d97"
       }
     },
     {
@@ -10698,7 +10870,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://code.claude.com/docs/en/security"],
+        "contentHash": "d422d220314d834e"
       }
     },
     {
@@ -10723,10 +10897,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://code.claude.com/docs/en/sandboxing",
-          "https://code.claude.com/docs/en/permissions"
-        ]
+        "sources": ["https://code.claude.com/docs/en/sandboxing"],
+        "contentHash": "01c30e4d3e5221f8"
       }
     },
     {
@@ -10750,7 +10922,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "12b3c3269eabeefd"
       }
     },
     {
@@ -10775,7 +10948,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/authentication.md"]
+        "contentHash": "e3a9a6cc1203ace9"
       }
     },
     {
@@ -10798,12 +10971,12 @@
         "rag": "green",
         "level": "high",
         "basis": "docs",
-        "timeSensitive": false,
+        "timeSensitive": true,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://platform.claude.com/docs/en/manage-claude/workload-identity-federation.md",
-          "https://platform.claude.com/docs/en/manage-claude/authentication.md"
-        ]
+          "https://platform.claude.com/docs/en/manage-claude/workload-identity-federation"
+        ],
+        "contentHash": "75c90ccf3ec4c400"
       }
     },
     {
@@ -10827,7 +11000,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "44abd242b513a1f0"
       }
     },
     {
@@ -10847,12 +11021,12 @@
       "explanation": "Configuration holds a reference, never a value. A managed store collapses scattered copies into one and gives you an audit trail.",
       "source_id": 20416,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/authentication.md"]
+        "contentHash": "c4315132f3b100e4"
       }
     },
     {
@@ -10877,7 +11051,7 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/manage-claude/authentication.md"]
+        "contentHash": "d32683bfadcae1d3"
       }
     },
     {
@@ -10931,7 +11105,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/memory"]
+        "sources": ["https://code.claude.com/docs/en/memory"],
+        "contentHash": "f46845b0bf24991f"
       }
     },
     {
@@ -10957,7 +11132,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://code.claude.com/docs/en/memory"]
+        "sources": ["https://code.claude.com/docs/en/memory"],
+        "contentHash": "321138c4adcd0bd4"
       }
     },
     {
@@ -10982,7 +11158,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/memory"]
+        "sources": ["https://code.claude.com/docs/en/memory"],
+        "contentHash": "30e48360db4b9413"
       }
     },
     {
@@ -11007,7 +11184,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/skills"]
+        "sources": ["https://code.claude.com/docs/en/slash-commands"],
+        "contentHash": "35ea12f06e2a5cbd"
       }
     },
     {
@@ -11027,13 +11205,14 @@
       "explanation": "Custom commands have been merged into skills: a command file and a skill with the same name both create /name. The skill format adds a directory for supporting files such as scripts and references, and by default Claude can load a skill on its own when a request matches its description (unless disable-model-invocation is set). Command files keep working, but the docs recommend skills for new work.",
       "source_id": 20439,
       "confidence": {
-        "rag": "amber",
-        "level": "medium",
+        "rag": "green",
+        "level": "high",
         "basis": "docs",
         "timeSensitive": true,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://code.claude.com/docs/en/skills"]
+        "sources": ["https://code.claude.com/docs/en/skills"],
+        "contentHash": "13f2487a2911fd12"
       }
     },
     {
@@ -11058,7 +11237,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/headless"]
+        "sources": ["https://code.claude.com/docs/en/headless"],
+        "contentHash": "f1c352a023f7843c"
       }
     },
     {
@@ -11083,7 +11263,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/headless"]
+        "sources": ["https://code.claude.com/docs/en/headless"],
+        "contentHash": "d164d340e60e0679"
       }
     },
     {
@@ -11187,9 +11368,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://code.claude.com/docs/en/headless",
+          "https://code.claude.com/docs/en/permission-modes",
           "https://code.claude.com/docs/en/permissions"
-        ]
+        ],
+        "contentHash": "3af76697118d3a78"
       }
     },
     {
@@ -11214,7 +11396,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/permission-modes"]
+        "sources": ["https://code.claude.com/docs/en/permission-modes"],
+        "contentHash": "26bdcc5450b4ccc6"
       }
     },
     {
@@ -11235,14 +11418,11 @@
       "source_id": 20431,
       "confidence": {
         "rag": "amber",
-        "level": "medium",
+        "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://code.claude.com/docs/en/checkpointing",
-          "https://code.claude.com/docs/en/permission-modes"
-        ]
+        "contentHash": "834f65a891fdb4cf"
       }
     },
     {
@@ -11268,9 +11448,10 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "sources": [
-          "https://code.claude.com/docs/en/settings",
-          "https://code.claude.com/docs/en/permissions"
-        ]
+          "https://code.claude.com/docs/en/permissions",
+          "https://code.claude.com/docs/en/settings"
+        ],
+        "contentHash": "968ba2d4fbe8fed2"
       }
     },
     {
@@ -11295,7 +11476,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/sub-agents"]
+        "sources": ["https://code.claude.com/docs/en/sub-agents"],
+        "contentHash": "73f49de83ef8d776"
       }
     },
     {
@@ -11349,7 +11531,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/hooks"]
+        "sources": ["https://code.claude.com/docs/en/hooks-guide"],
+        "contentHash": "4523ceeaaf943f84"
       }
     },
     {
@@ -11399,7 +11582,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md"]
+        "sources": ["https://code.claude.com/docs/en/skills"],
+        "contentHash": "acb28969a529598e"
       }
     },
     {
@@ -11424,10 +11608,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-          "https://platform.claude.com/docs/en/build-with-claude/skills-guide.md"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "b75387fca569045e"
       }
     },
     {
@@ -11453,11 +11635,8 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": [
-          "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview.md",
-          "https://code.claude.com/docs/en/skills",
-          "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"
-        ]
+        "sources": ["https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"],
+        "contentHash": "fe4798cfadfc2c9f"
       }
     },
     {
@@ -11482,7 +11661,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/settings"]
+        "sources": ["https://code.claude.com/docs/en/settings"],
+        "contentHash": "e827be2a7815bee1"
       }
     },
     {
@@ -11507,7 +11687,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/settings"]
+        "sources": ["https://code.claude.com/docs/en/settings"],
+        "contentHash": "30500c10d262ecfe"
       }
     },
     {
@@ -11532,7 +11713,8 @@
         "basis": "docs",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://code.claude.com/docs/en/settings"]
+        "sources": ["https://code.claude.com/docs/en/settings"],
+        "contentHash": "1ef36a9d7ebfc531"
       }
     },
     {
@@ -11556,7 +11738,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "96f439a469744855"
       }
     },
     {
@@ -11607,7 +11790,7 @@
         "timeSensitive": false,
         "reviewed": "2026-10-05",
         "reworded": true,
-        "sources": ["https://platform.claude.com/docs/en/api/errors"]
+        "contentHash": "cbf06baa45f51c4a"
       }
     },
     {
@@ -11631,7 +11814,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "50b3607bdf22aef9"
       }
     },
     {
@@ -11655,7 +11839,9 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"],
+        "contentHash": "37065a6e3854f8a3"
       }
     },
     {
@@ -11679,7 +11865,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "e9adffbbb6192831"
       }
     },
     {
@@ -11699,11 +11886,13 @@
       "explanation": "Model-as-judge uses an LLM to score outputs against defined criteria, allowing evaluation to scale beyond fully manual review.",
       "source_id": 137,
       "confidence": {
-        "rag": "amber",
+        "rag": "green",
         "level": "high",
-        "basis": "reasoning",
+        "basis": "docs",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "sources": ["https://platform.claude.com/docs/en/test-and-evaluate/develop-tests"],
+        "contentHash": "cab47a2725a15e05"
       }
     },
     {
@@ -11723,12 +11912,13 @@
       "explanation": "A judge means nothing until its agreement with human judgement is measured on a sample; recalibrate the rubric where they disagree. Clear, specific rubrics and periodic spot checks keep it honest.",
       "source_id": 20446,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"]
+        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"],
+        "contentHash": "6b413a2c26164508"
       }
     },
     {
@@ -11752,7 +11942,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "358e78ef432b5f8a"
       }
     },
     {
@@ -11777,7 +11968,8 @@
         "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "reworded": true
+        "reworded": true,
+        "contentHash": "7e6b1c408bad2f56"
       }
     },
     {
@@ -11797,12 +11989,13 @@
       "explanation": "Coverage beats rubric polish. Real failures and negative cases make an eval that can actually detect regressions.",
       "source_id": 20447,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"]
+        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"],
+        "contentHash": "466a7f2ba4365dd3"
       }
     },
     {
@@ -11850,7 +12043,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "8166064964fd5f7d"
       }
     },
     {
@@ -11874,7 +12068,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "5d7b16fdae2ae7ae"
       }
     },
     {
@@ -11898,7 +12093,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "50ccc2f92e6b9a04"
       }
     },
     {
@@ -11918,12 +12114,12 @@
       "explanation": "An eval measures; a trace locates. Use both: evals to decide whether to ship, traces to debug a failing case.",
       "source_id": 20444,
       "confidence": {
-        "rag": "green",
+        "rag": "amber",
         "level": "high",
-        "basis": "docs",
+        "basis": "reasoning",
         "timeSensitive": false,
         "reviewed": "2026-10-05",
-        "sources": ["https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"]
+        "contentHash": "c45130102d11b53e"
       }
     },
     {
@@ -11947,7 +12143,8 @@
         "level": "high",
         "basis": "reasoning",
         "timeSensitive": false,
-        "reviewed": "2026-10-05"
+        "reviewed": "2026-10-05",
+        "contentHash": "308e1d30939390d1"
       }
     }
   ]

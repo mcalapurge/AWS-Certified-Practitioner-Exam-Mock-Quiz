@@ -25,15 +25,15 @@ driven by `scripts/review-questions.mjs` (`npm run questions -- <command>`).
 
 **What gets populated**, so nothing is left for a human to fill in by hand:
 
-| Data                                                                         | Where                             | Step               |
-| ---------------------------------------------------------------------------- | --------------------------------- | ------------------ |
-| `confidence` (rag, level, basis, sources, timeSensitive, reworded, reviewed) | each reviewed question            | `apply`            |
-| fixes and re-keys from adjudication                                          | each patched question             | `apply`            |
-| `source_id` for new questions (20000 + id)                                   | each new question                 | `apply`            |
-| `total_questions`, `actual_domain_distribution`                              | the bank's header                 | `apply`            |
-| topic `keywords`, so a wrong answer maps to the right topic                  | `<prefix>_study_guide.json`       | `keywords --write` |
-| generated quiz and study data                                                | `src/features/{quiz,study}/data/` | `npm run parse`    |
-| question and section counts                                                  | AGENTS.md, the bank's `note`      | Step 7 (by hand)   |
+| Data                                                                                      | Where                             | Step               |
+| ----------------------------------------------------------------------------------------- | --------------------------------- | ------------------ |
+| `confidence` (rag, level, basis, sources, timeSensitive, reworded, reviewed, contentHash) | each reviewed question            | `apply`            |
+| fixes and re-keys from adjudication                                                       | each patched question             | `apply`            |
+| `source_id` for new questions (20000 + id)                                                | each new question                 | `apply`            |
+| `total_questions`, `actual_domain_distribution`                                           | the bank's header                 | `apply`            |
+| topic `keywords`, so a wrong answer maps to the right topic                               | `<prefix>_study_guide.json`       | `keywords --write` |
+| generated quiz and study data                                                             | `src/features/{quiz,study}/data/` | `npm run parse`    |
+| question and section counts                                                               | AGENTS.md, the bank's `note`      | Step 7 (by hand)   |
 
 AWS exams aren't covered: their questions come from read-only markdown
 submodules and carry no ratings.
@@ -90,7 +90,9 @@ re-reviews every added or changed question regardless.
 
 The bank-level warning that the keyed option is the longest in X/Y questions
 matters most. With four options, chance is 25%; well above that, "pick the
-longest" beats knowing the material.
+longest" beats knowing the material. Across a whole bank, `lint` and the unit
+tests fail above 40% (`LONGEST_KEYED_MAX`), and no other length rank may exceed
+that either, so don't fix it by making every key the second-longest.
 
 If nothing needs review, skip to Step 6: the keyword and parse steps still
 apply to retags and new topics.
@@ -183,7 +185,9 @@ Only the blind reviewer's own doc check earns a docs basis. The adjudicator's
 sources are recorded, but they only count toward the basis when they settled a
 disagreement, so a judgement call never turns green on a second opinion.
 `reworded: true` is set whenever a patch landed. `timeSensitive` comes from the
-adjudicator if there is one, otherwise from the reviewer.
+adjudicator if there is one, otherwise from the reviewer. `contentHash` records the
+content that was rated, so `diff` treats a re-review as current even when its
+rating (and date) came out identical to the old one.
 
 `apply` refuses to run, and writes nothing, when any of these is true:
 
