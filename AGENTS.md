@@ -29,7 +29,7 @@ under `scripts/sources/`, one `_practice_questions.json` + `_study_guide.json`
 pair per exam:
 
 - `ccdvf_practice_questions.json` + `ccdvf_study_guide.json` — Claude Certified
-  Developer – Foundations (CCDV-F): 226 questions + 63 study sections.
+  Developer – Foundations (CCDV-F): 467 questions + 90 study sections.
 - `ccao_practice_questions.json` + `ccao_study_guide.json` — Claude Certified
   Associate – Foundations (CCAO-F): 487 questions + 37 study sections.
 

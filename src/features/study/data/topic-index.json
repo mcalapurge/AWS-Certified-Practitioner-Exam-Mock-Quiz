@@ -794,92 +794,152 @@
     ]
   },
   {
+    "id": "developer-foundations:exam_overview_strategy",
+    "examId": "developer-foundations",
+    "slug": "exam_overview_strategy",
+    "category": "Exam Strategy",
+    "title": "Exam Overview & Strategy",
+    "keywords": []
+  },
+  {
+    "id": "developer-foundations:gotchas_cheat_sheet",
+    "examId": "developer-foundations",
+    "slug": "gotchas_cheat_sheet",
+    "category": "Exam Strategy",
+    "title": "Gotchas Cheat Sheet",
+    "keywords": []
+  },
+  {
+    "id": "developer-foundations:requirements_constraint_elicitation",
+    "examId": "developer-foundations",
+    "slug": "requirements_constraint_elicitation",
+    "category": "Applications and Integration",
+    "title": "Requirements & Constraint Elicitation",
+    "keywords": [
+      "tenants",
+      "infrastructure requirements bound",
+      "testable functional requirement",
+      "provider handles automatically",
+      "always satisfied automatically",
+      "team's authorization approach",
+      "alongside an architecture"
+    ]
+  },
+  {
+    "id": "developer-foundations:software_engineering_foundations_rest_idempotency_concurrency",
+    "examId": "developer-foundations",
+    "slug": "software_engineering_foundations_rest_idempotency_concurrency",
+    "category": "Applications and Integration",
+    "title": "Software Engineering Foundations (REST, Idempotency, Concurrency)",
+    "keywords": [
+      "updates",
+      "deadline-day migration concentrates",
+      "anthropic-version and content-type",
+      "asynchronous batch submission",
+      "parse responses positionally",
+      "asynchronous approach keeps",
+      "versioning policy reserves",
+      "restructuring changes form",
+      "whether it double-writes"
+    ]
+  },
+  {
+    "id": "developer-foundations:code_review_testing_ci_for_llm_features",
+    "examId": "developer-foundations",
+    "slug": "code_review_testing_ci_for_llm_features",
+    "category": "Applications and Integration",
+    "title": "Code Review, Testing & CI for LLM Features",
+    "keywords": [
+      "scored evaluation against",
+      "pull request",
+      "behave identically everywhere",
+      "prompt is behaviour-defining",
+      "several unrelated features"
+    ]
+  },
+  {
+    "id": "developer-foundations:instruction_channels_application_boundaries",
+    "examId": "developer-foundations",
+    "slug": "instruction_channels_application_boundaries",
+    "category": "Applications and Integration",
+    "title": "Instruction Channels & Application Boundaries",
+    "keywords": [
+      "authority",
+      "producer's schedule rather",
+      "context shifts probability",
+      "writes a customer-facing",
+      "claude code's terminal"
+    ]
+  },
+  {
+    "id": "developer-foundations:session_lifecycle_resumption",
+    "examId": "developer-foundations",
+    "slug": "session_lifecycle_resumption",
+    "category": "Applications and Integration",
+    "title": "Session Lifecycle & Resumption",
+    "keywords": [
+      "transcript",
+      "recency",
+      "cross-host resumption needs"
+    ]
+  },
+  {
+    "id": "developer-foundations:configuration_management_version_pinning",
+    "examId": "developer-foundations",
+    "slug": "configuration_management_version_pinning",
+    "category": "Applications and Integration",
+    "title": "Configuration Management & Version Pinning",
+    "keywords": [
+      "tracked configuration",
+      "developer's machine-specific local",
+      "guarantees byte-identical outputs",
+      "configuration after upgrading",
+      "four downstream applications",
+      "changed behaviour overnight",
+      "predates current traffic",
+      "generation the dateless"
+    ]
+  },
+  {
+    "id": "developer-foundations:system_lifecycle_production_operations",
+    "examId": "developer-foundations",
+    "slug": "system_lifecycle_production_operations",
+    "category": "Applications and Integration",
+    "title": "System Lifecycle & Production Operations",
+    "keywords": [
+      "against the current",
+      "truncations",
+      "ongoing operate-and-maintain phase",
+      "since partner-operated platforms",
+      "requirements never mentioned",
+      "strongest argument against"
+    ]
+  },
+  {
+    "id": "developer-foundations:conversation_state_management",
+    "examId": "developer-foundations",
+    "slug": "conversation_state_management",
+    "category": "Applications and Integration",
+    "title": "Conversation State Management",
+    "keywords": [
+      "application must resend",
+      "verbatim",
+      "assistant's tool-request turn",
+      "process-wide structure rather"
+    ]
+  },
+  {
     "id": "developer-foundations:streaming_api",
     "examId": "developer-foundations",
     "slug": "streaming_api",
     "category": "Applications and Integration",
     "title": "Streaming API",
     "keywords": [
-      "full message",
-      "sequence of server-sent",
-      "arrive",
-      "long stream",
-      "favors streaming"
-    ]
-  },
-  {
-    "id": "developer-foundations:structured_output",
-    "examId": "developer-foundations",
-    "slug": "structured_output",
-    "category": "Applications and Integration",
-    "title": "Structured Output",
-    "keywords": [
-      "re integrating",
-      "json conforming",
-      "practical mechanism",
-      "extraction service"
-    ]
-  },
-  {
-    "id": "developer-foundations:error_handling_rate_limits",
-    "examId": "developer-foundations",
-    "slug": "error_handling_rate_limits",
-    "category": "Applications and Integration",
-    "title": "Error Handling & Rate Limits",
-    "keywords": [
-      "exponential backoff",
-      "authentication failure",
-      "python codebase"
-    ]
-  },
-  {
-    "id": "developer-foundations:tool_use_mechanics",
-    "examId": "developer-foundations",
-    "slug": "tool_use_mechanics",
-    "category": "Applications and Integration",
-    "title": "Tool Use Mechanics",
-    "keywords": [
-      "tool_result content",
-      "decides whether",
-      "defined tool",
-      "tool executes",
-      "tool-use blocks"
-    ]
-  },
-  {
-    "id": "developer-foundations:prompt_caching",
-    "examId": "developer-foundations",
-    "slug": "prompt_caching",
-    "category": "Applications and Integration",
-    "title": "Prompt Caching",
-    "keywords": [
-      "static system",
-      "cache read",
-      "cached prefix"
-    ]
-  },
-  {
-    "id": "developer-foundations:stop_reasons",
-    "examId": "developer-foundations",
-    "slug": "stop_reasons",
-    "category": "Applications and Integration",
-    "title": "Stop Reasons",
-    "keywords": [
-      "stop reason",
-      "stop_reason",
-      "now sees"
-    ]
-  },
-  {
-    "id": "developer-foundations:multimodal_input_vision_pdf",
-    "examId": "developer-foundations",
-    "slug": "multimodal_input_vision_pdf",
-    "category": "Applications and Integration",
-    "title": "Multimodal Input (Vision/PDF)",
-    "keywords": [
-      "base64",
-      "pdf",
-      "multiple images"
+      "delta",
+      "characterizes how streaming",
+      "client ignores unrecognized",
+      "streaming reduces perceived",
+      "mid-stream failures arrive"
     ]
   },
   {
@@ -890,9 +950,78 @@
     "title": "Batches API",
     "keywords": [
       "delay-tolerant work",
-      "submit",
-      "cost reduction",
-      "retrievable until"
+      "result set",
+      "hours",
+      "caller-supplied custom identifier",
+      "equivalent synchronous requests",
+      "automatically cache everything"
+    ]
+  },
+  {
+    "id": "developer-foundations:stop_reasons",
+    "examId": "developer-foundations",
+    "slug": "stop_reasons",
+    "category": "Applications and Integration",
+    "title": "Stop Reasons",
+    "keywords": [
+      "stop reason",
+      "assistant content back",
+      "truncate responses unintentionally",
+      "status-code-only error handling"
+    ]
+  },
+  {
+    "id": "developer-foundations:tool_use_mechanics",
+    "examId": "developer-foundations",
+    "slug": "tool_use_mechanics",
+    "category": "Applications and Integration",
+    "title": "Tool Use Mechanics",
+    "keywords": [
+      "tool_result content block",
+      "successful result containing",
+      "tool description important",
+      "defined tool automatically",
+      "conversation can continue",
+      "tool_result blocks saying"
+    ]
+  },
+  {
+    "id": "developer-foundations:structured_output",
+    "examId": "developer-foundations",
+    "slug": "structured_output",
+    "category": "Applications and Integration",
+    "title": "Structured Output",
+    "keywords": [
+      "structured outputs compile",
+      "actively encourages fabrication",
+      "schema in output_config.format",
+      "yields schema-shaped arguments"
+    ]
+  },
+  {
+    "id": "developer-foundations:prompt_caching",
+    "examId": "developer-foundations",
+    "slug": "prompt_caching",
+    "category": "Applications and Integration",
+    "title": "Prompt Caching",
+    "keywords": [
+      "breakpoint",
+      "entry",
+      "uncached input",
+      "across calls"
+    ]
+  },
+  {
+    "id": "developer-foundations:multimodal_input_vision_pdf",
+    "examId": "developer-foundations",
+    "slug": "multimodal_input_vision_pdf",
+    "category": "Applications and Integration",
+    "title": "Multimodal Input (Vision/PDF)",
+    "keywords": [
+      "image content blocks",
+      "document content blocks",
+      "far more tokens",
+      "approach avoids re-uploading"
     ]
   },
   {
@@ -902,22 +1031,7 @@
     "category": "Applications and Integration",
     "title": "Citations (Document-Grounded Responses)",
     "keywords": [
-      "citations",
-      "citations feature",
-      "source locations"
-    ]
-  },
-  {
-    "id": "developer-foundations:conversation_state_management",
-    "examId": "developer-foundations",
-    "slug": "conversation_state_management",
-    "category": "Applications and Integration",
-    "title": "Conversation State Management",
-    "keywords": [
-      "prior turns",
-      "fresh conversation",
-      "verbatim",
-      "chat product"
+      "citations"
     ]
   },
   {
@@ -925,37 +1039,60 @@
     "examId": "developer-foundations",
     "slug": "extended_thinking",
     "category": "Applications and Integration",
-    "title": "Extended Thinking",
+    "title": "Extended & Adaptive Thinking",
     "keywords": [
-      "thinking content",
       "gain",
-      "request-level cost/quality",
-      "thinking output"
+      "dedicated reasoning-only endpoint",
+      "extended thinking eliminates",
+      "unmodified when continuing",
+      "application choose whether"
+    ]
+  },
+  {
+    "id": "developer-foundations:llm_fundamentals_tokens_context_window_sampling",
+    "examId": "developer-foundations",
+    "slug": "llm_fundamentals_tokens_context_window_sampling",
+    "category": "Model Selection and Optimization",
+    "title": "LLM Fundamentals (Tokens, Context Window, Sampling)",
+    "keywords": [
+      "much input fits",
+      "retrieval infrastructure spends",
+      "non-default sampling parameters",
+      "construction and investigate",
+      "counting endpoint rather",
+      "degradation of accuracy",
+      "including system prompt"
     ]
   },
   {
     "id": "developer-foundations:general_applications_and_integration",
     "examId": "developer-foundations",
     "slug": "general_applications_and_integration",
-    "category": "Applications and Integration",
-    "title": "General Applications and Integration",
+    "category": "Model Selection and Optimization",
+    "title": "API Request Anatomy & Client SDKs",
     "keywords": [
-      "http/json endpoints",
-      "sending plain",
-      "key live"
+      "raw http",
+      "hide claude-specific features",
+      "standard http/json interface",
+      "anthropic recommends placing",
+      "server-side in configuration",
+      "standing instructions go"
     ]
   },
   {
-    "id": "developer-foundations:batch_vs_synchronous_cost",
+    "id": "developer-foundations:error_handling_rate_limits",
     "examId": "developer-foundations",
-    "slug": "batch_vs_synchronous_cost",
+    "slug": "error_handling_rate_limits",
     "category": "Model Selection and Optimization",
-    "title": "Batch vs Synchronous Cost",
+    "title": "Error Handling & Rate Limits",
     "keywords": [
-      "top priority",
-      "discount",
-      "relaxed",
-      "synchronous real-time"
+      "correct handling strategy",
+      "retry-after",
+      "status code",
+      "distinction between retryable",
+      "requests risk idle-connection",
+      "rejected before reaching",
+      "retrying the identical"
     ]
   },
   {
@@ -965,12 +1102,41 @@
     "category": "Model Selection and Optimization",
     "title": "Model Tier Selection",
     "keywords": [
-      "light tier",
-      "task complexity",
-      "quality bar",
+      "well-defined expected outputs",
+      "tier and accept",
       "tier selection",
-      "capable available",
-      "tier change"
+      "cost-effective architecture matches",
+      "normalizing postal addresses",
+      "comparing average response",
+      "public benchmark measures",
+      "public benchmark rank"
+    ]
+  },
+  {
+    "id": "developer-foundations:effort_adaptive_thinking_fast_mode",
+    "examId": "developer-foundations",
+    "slug": "effort_adaptive_thinking_fast_mode",
+    "category": "Model Selection and Optimization",
+    "title": "Effort, Adaptive Thinking & Fast Mode",
+    "keywords": [
+      "premium pricing",
+      "depth with output_config.effort",
+      "effort trades thoroughness",
+      "default thinking display",
+      "building a multi-model"
+    ]
+  },
+  {
+    "id": "developer-foundations:model_versions_deprecation_migration",
+    "examId": "developer-foundations",
+    "slug": "model_versions_deprecation_migration",
+    "category": "Model Selection and Optimization",
+    "title": "Model Versions, Deprecation & Migration",
+    "keywords": [
+      "instructions written",
+      "anthropic notifies customers",
+      "change between generations",
+      "scheduled for retirement"
     ]
   },
   {
@@ -982,20 +1148,25 @@
     "keywords": [
       "repeated input",
       "constraining response length",
-      "roughly 10",
-      "tiered routing"
+      "lower max_tokens",
+      "attribution precedes optimisation",
+      "specifically targets repeated",
+      "context window requirement",
+      "per-request figure copied"
     ]
   },
   {
-    "id": "developer-foundations:latency_vs_throughput_tradeoffs",
+    "id": "developer-foundations:batch_vs_synchronous_cost",
     "examId": "developer-foundations",
-    "slug": "latency_vs_throughput_tradeoffs",
+    "slug": "batch_vs_synchronous_cost",
     "category": "Model Selection and Optimization",
-    "title": "Latency vs Throughput Tradeoffs",
+    "title": "Batch vs Synchronous Cost",
     "keywords": [
-      "throughput",
-      "measures",
-      "duration"
+      "configuration fits best",
+      "relaxed",
+      "route everything synchronously",
+      "repeated system-prompt tokens",
+      "combination of optimizations"
     ]
   },
   {
@@ -1005,23 +1176,27 @@
     "category": "Model Selection and Optimization",
     "title": "Output Token Cost Management",
     "keywords": [
-      "output ceiling",
-      "ceiling truncates",
-      "verbosity",
-      "directly affect",
-      "maximum-tokens parameter"
+      "low output ceiling",
+      "maximum-tokens parameter actually",
+      "explicit formatting instructions",
+      "ceiling truncates mid-sentence",
+      "different per-token pricing"
     ]
   },
   {
-    "id": "developer-foundations:manager_subagent_architecture",
+    "id": "developer-foundations:latency_vs_throughput_tradeoffs",
     "examId": "developer-foundations",
-    "slug": "manager_subagent_architecture",
-    "category": "Agents and Workflows",
-    "title": "Manager/Subagent Architecture",
+    "slug": "latency_vs_throughput_tradeoffs",
+    "category": "Model Selection and Optimization",
+    "title": "Latency vs Throughput Tradeoffs",
     "keywords": [
-      "primary benefit",
-      "decomposing",
-      "remit"
+      "time-to-first-token",
+      "concurrency improved throughput",
+      "streaming improves perceived",
+      "synonymous when concurrency",
+      "real-time moderation check",
+      "throughput via concurrency",
+      "perceived latency measures"
     ]
   },
   {
@@ -1031,56 +1206,35 @@
     "category": "Agents and Workflows",
     "title": "Workflow vs Agent Distinction",
     "keywords": [
-      "orchestrated",
-      "planning",
-      "developer-orchestrated workflow"
+      "developer-orchestrated",
+      "predictable execution paths"
     ]
   },
   {
-    "id": "developer-foundations:stopping_conditions",
+    "id": "developer-foundations:workflow_patterns_chaining_routing_parallelization_orchestrator_workers_evaluator_optimizer",
     "examId": "developer-foundations",
-    "slug": "stopping_conditions",
+    "slug": "workflow_patterns_chaining_routing_parallelization_orchestrator_workers_evaluator_optimizer",
     "category": "Agents and Workflows",
-    "title": "Stopping Conditions",
+    "title": "Workflow Patterns (Chaining, Routing, Parallelization, Orchestrator-Workers, Evaluator-Optimizer)",
     "keywords": [
-      "fixed number",
-      "success condition",
-      "agent halts"
+      "pattern fits",
+      "workflow-or-agent decision belongs",
+      "parallelization covers sectioning",
+      "genuinely parallel exploration",
+      "whether the sequence"
     ]
   },
   {
-    "id": "developer-foundations:general_agents_and_workflows",
+    "id": "developer-foundations:agent_build_options_tool_runner_agent_sdk_managed_agents",
     "examId": "developer-foundations",
-    "slug": "general_agents_and_workflows",
+    "slug": "agent_build_options_tool_runner_agent_sdk_managed_agents",
     "category": "Agents and Workflows",
-    "title": "General Agents and Workflows",
+    "title": "Agent Build Options (Tool Runner, Agent SDK, Managed Agents)",
     "keywords": [
-      "assigned randomly",
-      "strongly indicates"
-    ]
-  },
-  {
-    "id": "developer-foundations:agent_frameworks_langgraph_strands_vs_native_sdk",
-    "examId": "developer-foundations",
-    "slug": "agent_frameworks_langgraph_strands_vs_native_sdk",
-    "category": "Agents and Workflows",
-    "title": "Agent Frameworks (LangGraph / Strands) vs Native SDK",
-    "keywords": [
-      "native",
-      "native sdk",
-      "third-party frameworks"
-    ]
-  },
-  {
-    "id": "developer-foundations:agent_safety_guardrails",
-    "examId": "developer-foundations",
-    "slug": "agent_safety_guardrails",
-    "category": "Agents and Workflows",
-    "title": "Agent Safety & Guardrails",
-    "keywords": [
-      "guardrail",
-      "autonomous coding",
-      "meaningfully bound"
+      "constraint the library",
+      "tool runner",
+      "removes non-compliant options",
+      "subtypes distinguish success"
     ]
   },
   {
@@ -1091,8 +1245,7 @@
     "title": "Claude Agent SDK",
     "keywords": [
       "scaffolding",
-      "general purpose",
-      "history-management code repetitive"
+      "agents without reimplementing"
     ]
   },
   {
@@ -1102,9 +1255,46 @@
     "category": "Agents and Workflows",
     "title": "Custom Agent Loops",
     "keywords": [
-      "custom agent",
-      "loop occasionally",
-      "custom agent loop"
+      "agent loops",
+      "occasionally runs indefinitely"
+    ]
+  },
+  {
+    "id": "developer-foundations:manager_subagent_architecture",
+    "examId": "developer-foundations",
+    "slug": "manager_subagent_architecture",
+    "category": "Agents and Workflows",
+    "title": "Manager/Subagent Architecture",
+    "keywords": [
+      "primary benefit",
+      "workers negotiate contradictions",
+      "traceability without abandoning",
+      "different programming language"
+    ]
+  },
+  {
+    "id": "developer-foundations:agent_handoffs_state_resumability",
+    "examId": "developer-foundations",
+    "slug": "agent_handoffs_state_resumability",
+    "category": "Agents and Workflows",
+    "title": "Agent Handoffs, State & Resumability",
+    "keywords": [
+      "coordinator's full conversation",
+      "reconstructing it downstream",
+      "downstream stage sometimes",
+      "several named milestones"
+    ]
+  },
+  {
+    "id": "developer-foundations:stopping_conditions",
+    "examId": "developer-foundations",
+    "slug": "stopping_conditions",
+    "category": "Agents and Workflows",
+    "title": "Stopping Conditions",
+    "keywords": [
+      "success condition",
+      "well-defined completion/stopping criteria",
+      "returning distinct states"
     ]
   },
   {
@@ -1114,9 +1304,71 @@
     "category": "Agents and Workflows",
     "title": "Context/Memory Management",
     "keywords": [
-      "restart",
-      "context/memory management",
-      "retaining only decision-relevant"
+      "agent's context",
+      "outside the conversation"
+    ]
+  },
+  {
+    "id": "developer-foundations:agent_safety_guardrails",
+    "examId": "developer-foundations",
+    "slug": "agent_safety_guardrails",
+    "category": "Agents and Workflows",
+    "title": "Agent Safety & Guardrails",
+    "keywords": [
+      "instructions influence behavior",
+      "agent unrestricted permissions",
+      "approval before irreversible",
+      "destructive database command",
+      "since prompt instructions"
+    ]
+  },
+  {
+    "id": "developer-foundations:agent_frameworks_langgraph_strands_vs_native_sdk",
+    "examId": "developer-foundations",
+    "slug": "agent_frameworks_langgraph_strands_vs_native_sdk",
+    "category": "Agents and Workflows",
+    "title": "Agent Frameworks (LangGraph / Strands) vs Native SDK",
+    "keywords": [
+      "orchestration",
+      "frameworks cannot",
+      "claude-only projects wanting"
+    ]
+  },
+  {
+    "id": "developer-foundations:general_agents_and_workflows",
+    "examId": "developer-foundations",
+    "slug": "general_agents_and_workflows",
+    "category": "Agents and Workflows",
+    "title": "General Agents and Workflows",
+    "keywords": [
+      "data-dependent and cannot",
+      "tools actually necessary"
+    ]
+  },
+  {
+    "id": "developer-foundations:system_vs_user_prompt_separation",
+    "examId": "developer-foundations",
+    "slug": "system_vs_user_prompt_separation",
+    "category": "Prompt and Context Engineering",
+    "title": "System vs User Prompt Separation",
+    "keywords": [
+      "user turns",
+      "consolidate standing behaviour",
+      "durable instructions belong",
+      "developer's own instruction"
+    ]
+  },
+  {
+    "id": "developer-foundations:xml_structuring",
+    "examId": "developer-foundations",
+    "slug": "xml_structuring",
+    "category": "Prompt and Context Engineering",
+    "title": "XML Structuring",
+    "keywords": [
+      "separate request",
+      "untrusted user-supplied strings",
+      "randomizing wording undermines",
+      "robust than pattern-matching"
     ]
   },
   {
@@ -1127,7 +1379,7 @@
     "title": "Role Prompting",
     "keywords": [
       "senior security",
-      "assigning"
+      "specialized tools associated"
     ]
   },
   {
@@ -1137,45 +1389,8 @@
     "category": "Prompt and Context Engineering",
     "title": "Negative Instructions",
     "keywords": [
-      "desired behavior",
-      "negative",
+      "positively",
       "forcefully without specifying"
-    ]
-  },
-  {
-    "id": "developer-foundations:chain_of_thought_prompting",
-    "examId": "developer-foundations",
-    "slug": "chain_of_thought_prompting",
-    "category": "Prompt and Context Engineering",
-    "title": "Chain-of-Thought Prompting",
-    "keywords": [
-      "reason step",
-      "multi-step pricing",
-      "step-by-step reasoning"
-    ]
-  },
-  {
-    "id": "developer-foundations:output_length_constraints",
-    "examId": "developer-foundations",
-    "slug": "output_length_constraints",
-    "category": "Prompt and Context Engineering",
-    "title": "Output Length Constraints",
-    "keywords": [
-      "considering explicitly",
-      "reliably produces",
-      "considering explicitly specifying"
-    ]
-  },
-  {
-    "id": "developer-foundations:system_vs_user_prompt_separation",
-    "examId": "developer-foundations",
-    "slug": "system_vs_user_prompt_separation",
-    "category": "Prompt and Context Engineering",
-    "title": "System vs User Prompt Separation",
-    "keywords": [
-      "considering putting",
-      "document-analysis product",
-      "mixing untrusted"
     ]
   },
   {
@@ -1185,32 +1400,30 @@
     "category": "Prompt and Context Engineering",
     "title": "Few-Shot Prompting",
     "keywords": [
-      "few-shot prompting",
-      "diminishing",
-      "typically improve format/style"
+      "diminishing returns",
+      "classifier's few-shot examples"
     ]
   },
   {
-    "id": "developer-foundations:context_drift_long_conversations",
+    "id": "developer-foundations:chain_of_thought_prompting",
     "examId": "developer-foundations",
-    "slug": "context_drift_long_conversations",
+    "slug": "chain_of_thought_prompting",
     "category": "Prompt and Context Engineering",
-    "title": "Context Drift & Long Conversations",
+    "title": "Chain-of-Thought Prompting",
     "keywords": [
-      "force",
-      "original instructions/goal",
-      "conflicting information accumulates"
+      "model to reason",
+      "calculation returns confidently"
     ]
   },
   {
-    "id": "developer-foundations:xml_structuring",
+    "id": "developer-foundations:output_length_constraints",
     "examId": "developer-foundations",
-    "slug": "xml_structuring",
+    "slug": "output_length_constraints",
     "category": "Prompt and Context Engineering",
-    "title": "XML Structuring",
+    "title": "Output Length Constraints",
     "keywords": [
-      "named tags",
-      "structural constraints/schemas"
+      "considering explicitly specifying",
+      "subjective adjectives leave"
     ]
   },
   {
@@ -1221,56 +1434,73 @@
     "title": "Structured Output Reliability",
     "keywords": [
       "remove the schema",
-      "application-side validate-and-retry loop",
-      "application-side validate-and-retry"
+      "constrained generation removes"
     ]
   },
   {
-    "id": "developer-foundations:mcp_resources_tools_prompts",
+    "id": "developer-foundations:output_verification_shape_vs_truth",
     "examId": "developer-foundations",
-    "slug": "mcp_resources_tools_prompts",
-    "category": "Tools and MCPs",
-    "title": "MCP Resources/Tools/Prompts",
+    "slug": "output_verification_shape_vs_truth",
+    "category": "Prompt and Context Engineering",
+    "title": "Output Verification (Shape vs. Truth)",
     "keywords": [
-      "re building",
-      "compressing the context",
-      "change which underlying"
+      "self-reported confidence",
+      "extraction pipeline",
+      "rejection"
     ]
   },
   {
-    "id": "developer-foundations:built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
+    "id": "developer-foundations:prompt_iteration_diagnosis",
     "examId": "developer-foundations",
-    "slug": "built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
-    "category": "Tools and MCPs",
-    "title": "Built-in vs Custom Tools vs Skills vs MCP (Decision Framework)",
+    "slug": "prompt_iteration_diagnosis",
+    "category": "Prompt and Context Engineering",
+    "title": "Prompt Iteration & Diagnosis",
     "keywords": [
-      "skill",
-      "since skills",
-      "pure instructional/behavioral pattern"
+      "diagnose before re-prompting",
+      "examples showing extraction",
+      "aggressive phrasing written",
+      "previous step's structured",
+      "distribution that already",
+      "adding instructions until"
     ]
   },
   {
-    "id": "developer-foundations:built_in_tools_web_search_code_execution_computer_use",
+    "id": "developer-foundations:context_window_management_clearing_compaction_context_rot",
     "examId": "developer-foundations",
-    "slug": "built_in_tools_web_search_code_execution_computer_use",
-    "category": "Tools and MCPs",
-    "title": "Built-In Tools (Web Search, Code Execution, Computer Use)",
+    "slug": "context_window_management_clearing_compaction_context_rot",
+    "category": "Prompt and Context Engineering",
+    "title": "Context Window Management (Clearing, Compaction, Context Rot)",
     "keywords": [
-      "defined and maintained",
-      "interact",
-      "up-to-date information"
+      "removing spent material",
+      "summarises",
+      "requests loses cross-references",
+      "prompt engineering composes",
+      "forgot because temperature"
     ]
   },
   {
-    "id": "developer-foundations:mcp_transport_mechanisms_stdio_vs_http_sse",
+    "id": "developer-foundations:context_drift_long_conversations",
     "examId": "developer-foundations",
-    "slug": "mcp_transport_mechanisms_stdio_vs_http_sse",
-    "category": "Tools and MCPs",
-    "title": "MCP Transport Mechanisms (stdio vs HTTP/SSE)",
+    "slug": "context_drift_long_conversations",
+    "category": "Prompt and Context Engineering",
+    "title": "Context Drift & Long Conversations",
     "keywords": [
-      "stdio",
-      "http-based transports",
-      "local subprocess"
+      "conflicting information accumulates",
+      "accumulated several superseded",
+      "instructions issued far"
+    ]
+  },
+  {
+    "id": "developer-foundations:tool_schema_design_strict_mode",
+    "examId": "developer-foundations",
+    "slug": "tool_schema_design_strict_mode",
+    "category": "Tools and MCPs",
+    "title": "Tool Schema Design & Strict Mode",
+    "keywords": [
+      "return a structured",
+      "tool's input",
+      "free-text",
+      "under-marking produces incomplete"
     ]
   },
   {
@@ -1280,33 +1510,10 @@
     "category": "Tools and MCPs",
     "title": "Tool Error Handling & Descriptions",
     "keywords": [
-      "description quality",
-      "explicit error",
-      "strongest tool"
-    ]
-  },
-  {
-    "id": "developer-foundations:mcp_server_design",
-    "examId": "developer-foundations",
-    "slug": "mcp_server_design",
-    "category": "Tools and MCPs",
-    "title": "MCP Server Design",
-    "keywords": [
-      "well-defined tools/resources",
-      "exposing well-defined tools/resources",
-      "tools/resources/prompts with clear"
-    ]
-  },
-  {
-    "id": "developer-foundations:mcp_fundamentals",
-    "examId": "developer-foundations",
-    "slug": "mcp_fundamentals",
-    "category": "Tools and MCPs",
-    "title": "MCP Fundamentals",
-    "keywords": [
-      "external tools/resources/prompts",
-      "tools/resources/prompts are exposed",
-      "interoperability across different"
+      "rather than silently",
+      "tool's natural-language description",
+      "strongest tool description",
+      "tool result explaining"
     ]
   },
   {
@@ -1316,9 +1523,8 @@
     "category": "Tools and MCPs",
     "title": "tool_choice Parameter",
     "keywords": [
-      "tool_choice parameter",
-      "tool_choice parameter control",
-      "tool_choice controls"
+      "call only existed",
+      "tool_choice setting prevents"
     ]
   },
   {
@@ -1328,9 +1534,115 @@
     "category": "Tools and MCPs",
     "title": "Parallel Tool Use",
     "keywords": [
-      "defining multiple",
-      "consider several available",
-      "requesting multiple tool"
+      "contain several tool_use",
+      "separate system message"
+    ]
+  },
+  {
+    "id": "developer-foundations:large_tool_sets_tool_search",
+    "examId": "developer-foundations",
+    "slug": "large_tool_sets_tool_search",
+    "category": "Tools and MCPs",
+    "title": "Large Tool Sets & Tool Search",
+    "keywords": [
+      "tool with deferred",
+      "overlapping descriptions made"
+    ]
+  },
+  {
+    "id": "developer-foundations:built_in_tools_web_search_code_execution_computer_use",
+    "examId": "developer-foundations",
+    "slug": "built_in_tools_web_search_code_execution_computer_use",
+    "category": "Tools and MCPs",
+    "title": "Built-In Tools (Web Search, Code Execution, Computer Use)",
+    "keywords": [
+      "claude's built-in",
+      "anthropic-defined schema but",
+      "legacy desktop application"
+    ]
+  },
+  {
+    "id": "developer-foundations:built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
+    "examId": "developer-foundations",
+    "slug": "built_in_vs_custom_tools_vs_skills_vs_mcp_decision_framework",
+    "category": "Tools and MCPs",
+    "title": "Built-in vs Custom Tools vs Skills vs MCP (Decision Framework)",
+    "keywords": [
+      "since skills",
+      "pure instructional/behavioral pattern",
+      "correct distinguishing traits",
+      "anthropic already runs"
+    ]
+  },
+  {
+    "id": "developer-foundations:skills_plugins_packaging_and_progressive_disclosure",
+    "examId": "developer-foundations",
+    "slug": "skills_plugins_packaging_and_progressive_disclosure",
+    "category": "Tools and MCPs",
+    "title": "Skills & Plugins (Packaging and Progressive Disclosure)",
+    "keywords": [
+      "name and description",
+      "installed",
+      "documented internal procedure",
+      "mcp server configurations"
+    ]
+  },
+  {
+    "id": "developer-foundations:mcp_fundamentals",
+    "examId": "developer-foundations",
+    "slug": "mcp_fundamentals",
+    "category": "Tools and MCPs",
+    "title": "MCP Fundamentals",
+    "keywords": [
+      "hosts",
+      "tools/resources/prompts are exposed"
+    ]
+  },
+  {
+    "id": "developer-foundations:mcp_resources_tools_prompts",
+    "examId": "developer-foundations",
+    "slug": "mcp_resources_tools_prompts",
+    "category": "Tools and MCPs",
+    "title": "MCP Resources/Tools/Prompts",
+    "keywords": [
+      "compressing the context",
+      "resources are application-placed"
+    ]
+  },
+  {
+    "id": "developer-foundations:mcp_transport_mechanisms_stdio_vs_http_sse",
+    "examId": "developer-foundations",
+    "slug": "mcp_transport_mechanisms_stdio_vs_http_sse",
+    "category": "Tools and MCPs",
+    "title": "MCP Transports (stdio vs Streamable HTTP)",
+    "keywords": [
+      "streamable http",
+      "remote/multi-user access compared"
+    ]
+  },
+  {
+    "id": "developer-foundations:mcp_server_design",
+    "examId": "developer-foundations",
+    "slug": "mcp_server_design",
+    "category": "Tools and MCPs",
+    "title": "MCP Server Design",
+    "keywords": [
+      "exposing well-defined tools/resources",
+      "standard output carries"
+    ]
+  },
+  {
+    "id": "developer-foundations:mcp_configuration_scopes_server_security",
+    "examId": "developer-foundations",
+    "slug": "mcp_configuration_scopes_server_security",
+    "category": "Tools and MCPs",
+    "title": "MCP Configuration Scopes & Server Security",
+    "keywords": [
+      "application-controlled read-only data",
+      "interface evolves independently",
+      "configuration scope fits",
+      "authenticate and resolve",
+      "retrieve something never"
     ]
   },
   {
@@ -1340,45 +1652,7 @@
     "category": "Tools and MCPs",
     "title": "Third-Party MCP Trust Boundaries",
     "keywords": [
-      "validation/permission scrutiny",
-      "permission and validation",
-      "third-party mcp servers"
-    ]
-  },
-  {
-    "id": "developer-foundations:human_in_the_loop_approval",
-    "examId": "developer-foundations",
-    "slug": "human_in_the_loop_approval",
-    "category": "Security and Safety",
-    "title": "Human-in-the-Loop Approval",
-    "keywords": [
-      "high-impact/irreversible actions",
-      "agent capable",
-      "approval for high-impact/irreversible"
-    ]
-  },
-  {
-    "id": "developer-foundations:general_security_and_safety",
-    "examId": "developer-foundations",
-    "slug": "general_security_and_safety",
-    "category": "Security and Safety",
-    "title": "General Security and Safety",
-    "keywords": [
-      "false framing",
-      "llm feature",
-      "sufficiently well-written prompt"
-    ]
-  },
-  {
-    "id": "developer-foundations:sandboxing_code_execution_safety",
-    "examId": "developer-foundations",
-    "slug": "sandboxing_code_execution_safety",
-    "category": "Security and Safety",
-    "title": "Sandboxing & Code Execution Safety",
-    "keywords": [
-      "sandboxing",
-      "filesystem",
-      "buggy or manipulated"
+      "third-party mcp server"
     ]
   },
   {
@@ -1388,9 +1662,10 @@
     "category": "Security and Safety",
     "title": "Prompt Injection Defense",
     "keywords": [
-      "trusted",
-      "standard prompt-injection mitigations",
-      "constraining available actions/tools"
+      "prompt-injection",
+      "authorisation enforced outside",
+      "accepts validated identifiers",
+      "throttling repeat offenders"
     ]
   },
   {
@@ -1400,9 +1675,21 @@
     "category": "Security and Safety",
     "title": "Least Privilege",
     "keywords": [
-      "designing tool/agent",
-      "read customer",
-      "permissions/tool access necessary"
+      "permissions/tool access necessary",
+      "works alongside screening",
+      "read-only access narrowly"
+    ]
+  },
+  {
+    "id": "developer-foundations:human_in_the_loop_approval",
+    "examId": "developer-foundations",
+    "slug": "human_in_the_loop_approval",
+    "category": "Security and Safety",
+    "title": "Human-in-the-Loop Approval",
+    "keywords": [
+      "approval for high-impact/irreversible",
+      "potentially irreversible action",
+      "points with consequence"
     ]
   },
   {
@@ -1412,9 +1699,60 @@
     "category": "Security and Safety",
     "title": "Output Validation",
     "keywords": [
-      "before execution",
-      "unintended real-world effects",
-      "including tool-call arguments"
+      "execution boundary",
+      "unintended real-world effects"
+    ]
+  },
+  {
+    "id": "developer-foundations:sandboxing_code_execution_safety",
+    "examId": "developer-foundations",
+    "slug": "sandboxing_code_execution_safety",
+    "category": "Security and Safety",
+    "title": "Sandboxing & Code Execution Safety",
+    "keywords": [
+      "sandboxing limits",
+      "code-execution",
+      "genuine risk-mitigation reasons"
+    ]
+  },
+  {
+    "id": "developer-foundations:hooks_as_enforcement_pretooluse_vs_posttooluse",
+    "examId": "developer-foundations",
+    "slug": "hooks_as_enforcement_pretooluse_vs_posttooluse",
+    "category": "Security and Safety",
+    "title": "Hooks as Enforcement (PreToolUse vs PostToolUse)",
+    "keywords": [
+      "pretooluse hook",
+      "hooks enforce deterministically",
+      "swapping deterministic checks"
+    ]
+  },
+  {
+    "id": "developer-foundations:secrets_api_keys_workload_identity",
+    "examId": "developer-foundations",
+    "slug": "secrets_api_keys_workload_identity",
+    "category": "Security and Safety",
+    "title": "Secrets, API Keys & Workload Identity",
+    "keywords": [
+      "key was",
+      "identity provider's configuration",
+      "broad organisation-level access",
+      "runtime configuration outside",
+      "identity is authentication",
+      "path between environments"
+    ]
+  },
+  {
+    "id": "developer-foundations:data_privacy_retention_residency",
+    "examId": "developer-foundations",
+    "slug": "data_privacy_retention_residency",
+    "category": "Security and Safety",
+    "title": "Data Privacy, Retention & Residency",
+    "keywords": [
+      "including customer identifiers",
+      "deletes all organisation",
+      "enabled per organisation",
+      "besides message content"
     ]
   },
   {
@@ -1424,44 +1762,20 @@
     "category": "Security and Safety",
     "title": "Logging & Audit Trails",
     "keywords": [
-      "logs",
-      "significantly degrades security",
-      "standard production practice"
+      "audit trails",
+      "consequential actions record"
     ]
   },
   {
-    "id": "developer-foundations:claude_code_custom_commands_slash_commands",
+    "id": "developer-foundations:general_security_and_safety",
     "examId": "developer-foundations",
-    "slug": "claude_code_custom_commands_slash_commands",
-    "category": "Claude Code",
-    "title": "Claude Code Custom Commands (Slash Commands)",
+    "slug": "general_security_and_safety",
+    "category": "Security and Safety",
+    "title": "General Security and Safety",
     "keywords": [
-      "custom slash",
-      "shortcuts for standardizing",
-      "underlying model weights"
-    ]
-  },
-  {
-    "id": "developer-foundations:claude_code_subagents",
-    "examId": "developer-foundations",
-    "slug": "claude_code_subagents",
-    "category": "Claude Code",
-    "title": "Claude Code Subagents",
-    "keywords": [
-      "claude.md entirely",
-      "test-writer or code-reviewer",
-      "narrowly-scoped assistants"
-    ]
-  },
-  {
-    "id": "developer-foundations:claude_code_interaction_modes_interactive_headless_plan_mode",
-    "examId": "developer-foundations",
-    "slug": "claude_code_interaction_modes_interactive_headless_plan_mode",
-    "category": "Claude Code",
-    "title": "Claude Code Interaction Modes (Interactive/Headless/Plan Mode)",
-    "keywords": [
-      "headless/non-interactive mode",
-      "live back-and-forth conversation"
+      "instruction forbidding destructive",
+      "sufficiently well-written prompt",
+      "surrounding system regardless"
     ]
   },
   {
@@ -1471,9 +1785,9 @@
     "category": "Claude Code",
     "title": "CLAUDE.md Configuration",
     "keywords": [
-      "claude.md file",
       "persistent project-level context/instructions",
-      "project-level context/instructions"
+      "developer's environment variables",
+      "absolute prohibition belongs"
     ]
   },
   {
@@ -1483,21 +1797,32 @@
     "category": "Claude Code",
     "title": "settings.json & Permissions",
     "keywords": [
-      "store project",
-      "purpose of settings.json",
-      "project or environment"
+      "claude/settings.local.json",
+      "purpose of settings.json"
     ]
   },
   {
-    "id": "developer-foundations:skills",
+    "id": "developer-foundations:claude_code_permission_modes_rules",
     "examId": "developer-foundations",
-    "slug": "skills",
+    "slug": "claude_code_permission_modes_rules",
     "category": "Claude Code",
-    "title": "Skills",
+    "title": "Claude Code Permission Modes & Rules",
     "keywords": [
-      "packaged instructions/capabilities",
-      "package reusable instructions/workflows",
-      "instructions/workflows for specific"
+      "allows only pre-approved",
+      "switched to bypasspermissions",
+      "nothing exposes irreversible",
+      "developer's user settings"
+    ]
+  },
+  {
+    "id": "developer-foundations:claude_code_interaction_modes_interactive_headless_plan_mode",
+    "examId": "developer-foundations",
+    "slug": "claude_code_interaction_modes_interactive_headless_plan_mode",
+    "category": "Claude Code",
+    "title": "Claude Code Interaction Modes (Interactive/Headless/Plan Mode)",
+    "keywords": [
+      "headless",
+      "returns validated structured"
     ]
   },
   {
@@ -1507,9 +1832,40 @@
     "category": "Claude Code",
     "title": "Hooks",
     "keywords": [
-      "custom scripts/logic",
       "allow custom scripts/logic",
-      "enabling custom validation"
+      "useful for formatting"
+    ]
+  },
+  {
+    "id": "developer-foundations:skills",
+    "examId": "developer-foundations",
+    "slug": "skills",
+    "category": "Claude Code",
+    "title": "Skills",
+    "keywords": [
+      "package reusable instructions/workflows",
+      "automatically between every",
+      "matches against requests"
+    ]
+  },
+  {
+    "id": "developer-foundations:claude_code_custom_commands_slash_commands",
+    "examId": "developer-foundations",
+    "slug": "claude_code_custom_commands_slash_commands",
+    "category": "Claude Code",
+    "title": "Claude Code Custom Commands (Slash Commands)",
+    "keywords": [
+      "custom slash command"
+    ]
+  },
+  {
+    "id": "developer-foundations:claude_code_subagents",
+    "examId": "developer-foundations",
+    "slug": "claude_code_subagents",
+    "category": "Claude Code",
+    "title": "Claude Code Subagents",
+    "keywords": [
+      "main session"
     ]
   },
   {
@@ -1519,19 +1875,9 @@
     "category": "Eval, Testing, and Debugging",
     "title": "Regression Testing & Golden Datasets",
     "keywords": [
-      "golden dataset"
-    ]
-  },
-  {
-    "id": "developer-foundations:general_eval_testing_and_debugging",
-    "examId": "developer-foundations",
-    "slug": "general_eval_testing_and_debugging",
-    "category": "Eval, Testing, and Debugging",
-    "title": "General Eval, Testing, and Debugging",
-    "keywords": [
-      "prompt/integration change",
-      "comparing before/after behavior",
-      "increase temperature until"
+      "golden dataset",
+      "lowest-confidence items across",
+      "single representative example"
     ]
   },
   {
@@ -1541,9 +1887,19 @@
     "category": "Eval, Testing, and Debugging",
     "title": "Model-as-Judge Evaluation",
     "keywords": [
-      "human reviewers",
-      "assess/score the quality",
-      "against defined criteria"
+      "judge"
+    ]
+  },
+  {
+    "id": "developer-foundations:tracing_failure_isolation",
+    "examId": "developer-foundations",
+    "slug": "tracing_failure_isolation",
+    "category": "Eval, Testing, and Debugging",
+    "title": "Tracing & Failure Isolation",
+    "keywords": [
+      "failure type",
+      "broke",
+      "anything downstream touched"
     ]
   },
   {
@@ -1553,9 +1909,21 @@
     "category": "Eval, Testing, and Debugging",
     "title": "Debugging Tool-Call Failures",
     "keywords": [
-      "tool execution/integration",
-      "wrong format",
-      "indefinitely without investigation"
+      "indefinitely without investigation",
+      "systematically malformed arguments",
+      "classified as retriable"
+    ]
+  },
+  {
+    "id": "developer-foundations:general_eval_testing_and_debugging",
+    "examId": "developer-foundations",
+    "slug": "general_eval_testing_and_debugging",
+    "category": "Eval, Testing, and Debugging",
+    "title": "General Eval, Testing, and Debugging",
+    "keywords": [
+      "comparing before/after behavior",
+      "regression check alongside",
+      "differently between runs"
     ]
   },
   {
