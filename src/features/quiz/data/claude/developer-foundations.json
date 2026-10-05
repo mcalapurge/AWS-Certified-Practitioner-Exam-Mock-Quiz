@@ -2,7 +2,7 @@
   "examId": "developer-foundations",
   "examName": "Claude Certified Developer – Foundations",
   "examShort": "CCDV-F",
-  "generatedAt": "2026-10-05T12:46:59.116Z",
+  "generatedAt": "2026-10-05T13:56:07.248Z",
   "questionCount": 467,
   "questions": [
     {
@@ -172,7 +172,7 @@
         },
         {
           "key": "C",
-          "text": "Producing embeddings-style bulk annotations for a data warehouse refresh that runs nightly"
+          "text": "Generating bulk tags and summaries for a data warehouse refresh that runs nightly"
         },
         {
           "key": "D",
@@ -184,7 +184,7 @@
         "C"
       ],
       "multi": true,
-      "explanation": "Batch suits high-volume, delay-tolerant work (B and C). A and D are latency-critical and interactive, where a synchronous or streaming request is required."
+      "explanation": "Batch suits high-volume, delay-tolerant work such as re-classifying a historical archive or annotating records for a nightly refresh. A live chat reply and token-by-token autocomplete are latency-critical and interactive, so they need a synchronous or streaming request."
     },
     {
       "id": "developer-foundations-303",
@@ -1777,7 +1777,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "An image's token cost scales with its dimensions, so downscaling to the smallest size that preserves the detail you need is the main lever on cost."
+      "explanation": "Claude reads images in 28x28-pixel patches, so an image costs about ceil(width/28) x ceil(height/28) visual tokens, up to the model's resolution cap (images above it are downscaled first, which caps the cost). Below that cap, larger images cost more, so downscaling to the smallest size that keeps the detail you need is the main lever on cost. Encoding method and file name do not change the token count."
     },
     {
       "id": "developer-foundations-313",
@@ -2463,14 +2463,14 @@
         },
         {
           "key": "D",
-          "text": "Session transcripts are stored locally on the machine that made them, so cross-host resumption needs an external session store keyed consistently"
+          "text": "Session transcripts are stored locally on the machine that created them, so another host can only resume a session if the transcript is made available there, typically by mirroring it to shared storage with a session store"
         }
       ],
       "correct": [
         "D"
       ],
       "multi": false,
-      "explanation": "Local session files are not reachable elsewhere. Horizontal scaling needs external session storage, with identity selecting the session."
+      "explanation": "Session files live on the machine that created them, so a different worker cannot find them. To resume across hosts, attach a session store adapter that mirrors transcripts to shared storage (and resume from a matching working directory), copy the session's .jsonl file to the new host, or skip resume and pass the needed state into a fresh session."
     },
     {
       "id": "developer-foundations-292",
@@ -2531,7 +2531,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Resuming restores content, not posture: history and model return, but plan and bypass permission modes and other launch-time flags must be supplied again."
+      "explanation": "Resuming restores the conversation, including earlier tool calls, and normally the model. It does not restore every launch-time setting. A session that was running with bypassPermissions or in plan mode comes back in the default mode, and flags such as --mcp-config, --settings and --add-dir must be passed again, so elevated settings have to be re-supplied on purpose."
     },
     {
       "id": "developer-foundations-465",
@@ -3710,7 +3710,7 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Applications and Integration",
       "number": 101,
-      "stem": "An application defines a tool named 'get_weather' in its API request. Which of the following correctly describes what happens next?",
+      "stem": "An application defines its own custom tool named 'get_weather' (name, description and input_schema) in its API request. Which of the following correctly describes what happens next?",
       "options": [
         {
           "key": "A",
@@ -3733,14 +3733,14 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block."
+      "explanation": "For a custom (client) tool, Claude does not execute anything itself. It returns a tool_use block with stop_reason 'tool_use', and the calling application runs the tool and sends the output back in a tool_result block in the next user message. Only Anthropic-provided server tools, such as web search, run on Anthropic's infrastructure."
     },
     {
       "id": "developer-foundations-102",
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Applications and Integration",
       "number": 102,
-      "stem": "An application defines a tool named 'lookup_inventory' in its API request. Which of the following correctly describes what happens next?",
+      "stem": "An application defines its own custom tool named 'lookup_inventory' (name, description and input_schema) in its API request. Which of the following correctly describes what happens next?",
       "options": [
         {
           "key": "A",
@@ -3763,7 +3763,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block."
+      "explanation": "For a custom (client) tool, Claude does not execute anything itself. It returns a tool_use block with stop_reason 'tool_use', and the calling application runs the tool and sends the output back in a tool_result block in the next user message. Only Anthropic-provided server tools, such as web search, run on Anthropic's infrastructure."
     },
     {
       "id": "developer-foundations-103",
@@ -3793,7 +3793,7 @@
         "D"
       ],
       "multi": false,
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block."
+      "explanation": "'calculate_shipping' is a user-defined (client) tool, so Claude does not execute it: Claude returns a tool_use block with the tool name and generated input, and the calling application executes the tool and sends the result back as a tool_result content block in a user message. Only Anthropic-provided server tools, such as web search or code execution, run on Anthropic's infrastructure."
     },
     {
       "id": "developer-foundations-104",
@@ -4655,7 +4655,7 @@
         },
         {
           "key": "C",
-          "text": "Enabling extended thinking on every request"
+          "text": "Setting effort to max on every request regardless of task difficulty"
         },
         {
           "key": "D",
@@ -4667,7 +4667,7 @@
         "B"
       ],
       "multi": true,
-      "explanation": "Caching stable input and trimming unnecessary output both cut spend at a fixed tier. Always-on reasoning and unbounded history growth increase it."
+      "explanation": "Caching stable input and trimming unnecessary output both cut spend at a fixed tier. Running every request at maximum effort removes constraints on token spending, and resending irrelevant history grows input tokens on every turn; both increase cost."
     },
     {
       "id": "developer-foundations-137",
@@ -4877,7 +4877,7 @@
         "B"
       ],
       "multi": false,
-      "explanation": "Fast mode buys latency alone: same model, no capability change. A smaller tier changes the output; batch is asynchronous. Note fast mode is limited to specific models and platforms and is not available inside batches."
+      "explanation": "Fast mode runs the same model with a faster inference configuration at premium pricing. It raises output tokens per second (not time to first token) and does not change the model's intelligence or capabilities. A smaller tier changes the output, and batch processing is asynchronous. Fast mode is a research preview that requires access, is limited to specific Opus models on the Claude API, and is not available with the Batch API."
     },
     {
       "id": "developer-foundations-327",
@@ -5128,7 +5128,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Treat it as temporary service-wide overload: back off and retry with bounded attempts, and consider ramping traffic gradually"
+          "text": "Treat it as temporary service-wide overload: back off and retry with exponential backoff and a cap on attempts"
         },
         {
           "key": "B",
@@ -5983,7 +5983,7 @@
         },
         {
           "key": "D",
-          "text": "Keep the light tier, since additional capability yields no measurable benefit here"
+          "text": "Keep the light tier, since it already meets the quality bar and a more capable tier would add cost and latency without a needed gain"
         }
       ],
       "correct": [
@@ -6796,7 +6796,7 @@
         },
         {
           "key": "D",
-          "text": "A build-tooling/orchestration choice layered on top of the same core agent-design principles (tool-use loops, subagents, memory) tested elsewhere in this domain"
+          "text": "A build-tooling/orchestration choice layered on top of the same core agent-design principles (tool-use loops, subagents, memory) that apply to SDK-based agents"
         }
       ],
       "correct": [
@@ -7110,7 +7110,7 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Agents and Workflows",
       "number": 245,
-      "stem": "Select the TWO accurate statements about context in a coordinator/subagent design.",
+      "stem": "Select the TWO accurate statements about context in a coordinator/subagent design where each subagent starts with a fresh context (it is not a fork of the coordinator's conversation).",
       "options": [
         {
           "key": "A",
@@ -7134,7 +7134,7 @@
         "C"
       ],
       "multi": true,
-      "explanation": "Isolation keeps material out of the coordinator's window, which is the point of delegation, and the price is visibility: the launching prompt is the only channel in, and the final message the only channel out."
+      "explanation": "Isolation keeps material out of the coordinator's window, which is the point of delegation, and the price is visibility: a fresh subagent loads its own system prompt and project context but none of the coordinator's turns, so the launching prompt is the only channel in and the final message the only channel out. (A fork is the exception: it inherits the conversation, but its tool calls still stay out of the coordinator's window.)"
     },
     {
       "id": "developer-foundations-8",
@@ -7875,7 +7875,7 @@
         },
         {
           "key": "C",
-          "text": "An agent loop does not reliably stop on its own; turn and spend ceilings that the runtime enforces, returning distinct states, guarantee termination"
+          "text": "An agent loop ends when the model stops calling tools, but nothing guarantees that happens promptly on open-ended tasks; turn and spend ceilings that the runtime enforces bound the run and return distinct result states"
         },
         {
           "key": "D",
@@ -7886,7 +7886,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "The model deciding it is finished is a useful signal, not a guarantee. Hard ceilings (maximum turns, maximum spend) bound the run and report which limit was hit."
+      "explanation": "The model deciding it is finished is the normal exit and a useful signal, but not a guarantee: open-ended tasks can run long. Hard ceilings (maximum turns, maximum spend) bound the run and report which limit was hit, for example as error_max_turns or error_max_budget_usd results in the Agent SDK."
     },
     {
       "id": "developer-foundations-227",
@@ -8104,7 +8104,7 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Agents and Workflows",
       "number": 234,
-      "stem": "What is the 'enumeration test' for choosing between a workflow and an agent?",
+      "stem": "Which test best decides whether a task should be built as a workflow or as an agent?",
       "options": [
         {
           "key": "A",
@@ -8127,7 +8127,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "Known steps take a chain; unknown ones take an agent. When the model owns the plan, code still enforces turn caps, spend caps and validation."
+      "explanation": "Workflows orchestrate the model through predefined code paths, so if the steps can be written down in advance, code holds the plan (a chain, router or other workflow). If the path cannot be hardcoded, an agent lets the model direct its own steps, while code still enforces turn caps, spend caps and validation."
     },
     {
       "id": "developer-foundations-30",
@@ -8278,7 +8278,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "Chain-of-thought prompting can improve performance on multi-step reasoning tasks, at the cost of additional output tokens"
+      "explanation": "Reasoning through a problem before answering can improve performance on multi-step reasoning tasks, and those reasoning tokens are billed as output. On current models with thinking active, that reasoning happens in thinking blocks controlled by effort. Explicitly prompting for written-out step-by-step reasoning is the fallback when thinking is off, and on some of the newest models a prompt asking the model to write out its reasoning may be declined."
     },
     {
       "id": "developer-foundations-161",
@@ -8289,7 +8289,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Ask the model to work through the intermediate steps before stating the total"
+          "text": "Have the model reason through the intermediate steps before committing to the total (in its thinking, or by asking for step-by-step work where thinking is off)"
         },
         {
           "key": "B",
@@ -8308,7 +8308,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Making intermediate reasoning explicit improves multi-step arithmetic and also exposes where a wrong answer diverged. Demanding only the final figure removes both benefits."
+      "explanation": "Working through intermediate steps improves multi-step arithmetic and shows where a wrong total diverged. On models with thinking active, this happens in thinking blocks, steered by effort. Prompting for step-by-step work is the fallback when thinking is off. Asking for only the final figure, raising temperature or repeating the question does nothing to make the calculation more reliable."
     },
     {
       "id": "developer-foundations-162",
@@ -8323,7 +8323,7 @@
         },
         {
           "key": "B",
-          "text": "Have the model reason inside a delimited section and place the final JSON in a separate section the application extracts"
+          "text": "Keep the reasoning separate from the answer: let the model reason in thinking blocks (or, where thinking is off, a delimited reasoning section) and have the application extract only the final JSON"
         },
         {
           "key": "C",
@@ -8338,7 +8338,7 @@
         "B"
       ],
       "multi": false,
-      "explanation": "Separating the reasoning from the answer with clear delimiters lets the application keep the accuracy benefit while returning only the parsed verdict downstream."
+      "explanation": "Thinking arrives in separate thinking content blocks ahead of the response, so the text the application returns can be just the JSON verdict. Where thinking is off, asking for reasoning in a delimited section and the answer in a separate tagged section achieves the same separation. On the newest models, prompts asking the model to write out its reasoning in the response may be declined, so rely on thinking there."
     },
     {
       "id": "developer-foundations-163",
@@ -9671,7 +9671,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Requested output tags give the application a deterministic anchor for extracting sections"
+          "text": "Requested output tags give the application a stable, predictable anchor for extracting sections"
         },
         {
           "key": "B",
@@ -9690,7 +9690,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Asking for output inside named tags gives the caller a stable marker to parse against, which is more robust than pattern-matching prose."
+      "explanation": "Asking for output inside named tags gives the caller a stable marker to parse against, which is more robust than pattern-matching prose. It is not a guarantee, since a tag can occasionally be missing or malformed, so the parser should still handle that case."
     },
     {
       "id": "developer-foundations-374",
@@ -9841,7 +9841,7 @@
         "D"
       ],
       "multi": true,
-      "explanation": "Built-in tools are Anthropic-defined (A) and computer use specifically covers screen interaction (D). They can be combined with custom tools in the same request, and no tool guarantees zero errors — so C and B are false."
+      "explanation": "Anthropic-provided tools are defined and maintained by Anthropic, so you enable them by type instead of writing a schema. Computer use specifically lets Claude act on a screen through screenshots, mouse clicks and keystrokes. It is an Anthropic-schema client tool that your application executes, while web search and code execution run on Anthropic's servers. These tools can be combined with your own custom tools in the same request, and no tool is guaranteed to be error-free."
     },
     {
       "id": "developer-foundations-206",
@@ -9901,7 +9901,7 @@
         "B"
       ],
       "multi": false,
-      "explanation": "Anthropic-defined tools come in two kinds: server tools that run remotely, and schema-less client tools whose execution (and safety checks) are your responsibility."
+      "explanation": "Anthropic-provided tools come in two kinds. Server tools such as web search run on Anthropic's infrastructure, and their results come back directly in the response. Anthropic-schema client tools such as bash and the text editor are declared by a versioned type, so you write no schema, but your application executes each call and is responsible for its safety checks."
     },
     {
       "id": "developer-foundations-207",
@@ -10006,7 +10006,7 @@
         },
         {
           "key": "B",
-          "text": "Skills package reusable instructions, not new executable actions with their own backend"
+          "text": "Skills package reusable instructions (optionally with bundled scripts and resources), not new tool endpoints with their own backend"
         },
         {
           "key": "C",
@@ -10022,7 +10022,7 @@
         "B"
       ],
       "multi": true,
-      "explanation": "A and B are the correct distinguishing traits. D is false (calling external APIs is exactly what custom tools/MCP servers typically do) and C is false (cross-client sharing is MCP's key value)."
+      "explanation": "Built-in tools are quickest to adopt but limited to what Anthropic provides, and Skills package know-how (instructions, plus optional scripts that run in the existing execution environment) rather than adding a new service. Custom tools and MCP servers commonly call external APIs, and sharing one server across many clients is MCP's main value."
     },
     {
       "id": "developer-foundations-403",
@@ -10397,7 +10397,7 @@
         },
         {
           "key": "B",
-          "text": "Read-only or reference data (e.g., documents, records) that an mcp server exposes for a client to retrieve"
+          "text": "Read-only or reference data (e.g., documents, records) that an MCP server exposes for a client to retrieve"
         },
         {
           "key": "C",
@@ -10453,7 +10453,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Predefined, reusable prompt templates that an mcp server can expose for clients to use"
+          "text": "Predefined, reusable prompt templates that an MCP server can expose for clients to use"
         },
         {
           "key": "B",
@@ -10943,7 +10943,7 @@
         },
         {
           "key": "C",
-          "text": "No; subagents do not inherit Skills from the parent, so the Skill must be made available to the subagent explicitly"
+          "text": "No; a subagent does not inherit the Skill content the parent has loaded, so it must be preloaded through the subagent's configuration or invoked by the subagent itself"
         },
         {
           "key": "D",
@@ -10954,7 +10954,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "A subagent starts with its own context and configuration. Permission scope carries over; Skills and conversation history do not."
+      "explanation": "A non-fork subagent starts with a fresh context: it does not see the parent's conversation history or the Skills the parent has already invoked. Listing a Skill in the subagent's skills field preloads its full content at startup. Without that, the subagent can still discover and invoke available Skills through the Skill tool, unless that tool is removed from its tool list."
     },
     {
       "id": "developer-foundations-221",
@@ -11418,7 +11418,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Whether and how Claude must use tools: auto (model decides), any (must call some tool), tool (must call a named tool), or none; note the newest models reject the forced any and tool options"
+          "text": "Whether and how Claude must use tools: auto (model decides), any (must call some tool), tool (must call a named tool), or none; note that some current models, such as Claude Opus 5.5 and Sonnet 5.5, reject the forced any and tool options"
         },
         {
           "key": "B",
@@ -11437,7 +11437,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "tool_choice accepts auto, any, tool and none. Gotcha: Claude Opus 5.5, Sonnet 5.5 and Fable 5.1 return a 400 for any and tool; use auto with a clear instruction, strict: true for schema-valid inputs, or structured outputs when the forced call only existed to obtain JSON."
+      "explanation": "tool_choice accepts auto, any, tool and none. Gotcha: Claude Opus 5.5, Sonnet 5.5, Fable 5.1 and Mythos 5.1 return a 400 for any and tool, and manual extended thinking also rejects them. On those, use auto with a clear instruction, strict: true for schema-valid inputs, or structured outputs when the forced call only existed to obtain JSON."
     },
     {
       "id": "developer-foundations-398",
@@ -11745,11 +11745,11 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Security and Safety",
       "number": 407,
-      "stem": "Why does a hook cost no tokens, unlike an instruction in the system prompt?",
+      "stem": "Why does a command hook (a script that runs on a hook event) add no model tokens, unlike an instruction in the system prompt?",
       "options": [
         {
           "key": "A",
-          "text": "Hooks run as code in the application process at defined lifecycle points, outside the model's context window"
+          "text": "Command hooks run as code in the application process at defined lifecycle points, outside the model's context window"
         },
         {
           "key": "B",
@@ -11768,7 +11768,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Because they run outside the context, hooks enforce deterministically and are not subject to the model's interpretation."
+      "explanation": "A command hook is ordinary code that runs at a lifecycle event outside the model's context, so its check uses no model tokens and does not depend on the model's interpretation. Prompt and agent hooks are different: they call a Claude model to make their decision and do consume tokens."
     },
     {
       "id": "developer-foundations-408",
@@ -11843,7 +11843,7 @@
         },
         {
           "key": "B",
-          "text": "A PreToolUse hook can refuse an action; a PostToolUse hook can only report or annotate it"
+          "text": "A PreToolUse hook can refuse an action; a PostToolUse hook runs after the tool has executed, so it can only react (report, add context, or rewrite the output Claude sees), not prevent it"
         },
         {
           "key": "C",
@@ -12870,7 +12870,7 @@
         },
         {
           "key": "C",
-          "text": "Declare the shared standard once at a wider scope (for example, user or managed instructions) and keep each repository's CLAUDE.md to its own specifics"
+          "text": "Declare the shared standard once in the organization's managed policy CLAUDE.md (deployed to every developer machine) and keep each repository's CLAUDE.md to its own specifics"
         },
         {
           "key": "D",
@@ -12881,7 +12881,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "Instruction files concatenate, broadest scope first, so layering already applies the general and the local together. Copying or linking reintroduces drift."
+      "explanation": "CLAUDE.md files at different scopes are concatenated into context, broadest scope first, so an organization-wide managed policy file and a repository's own CLAUDE.md apply together. The managed policy CLAUDE.md is the documented home for company coding standards and cannot be excluded by individual settings; a user-level ~/.claude/CLAUDE.md is personal and distributes nothing. Copying or linking reintroduces drift."
     },
     {
       "id": "developer-foundations-436",
@@ -12948,11 +12948,11 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Claude Code",
       "number": 439,
-      "stem": "How does a Skill differ from a custom slash command in Claude Code?",
+      "stem": "In current Claude Code, how does a Skill (.claude/skills/<name>/SKILL.md) differ from a legacy custom command file (.claude/commands/<name>.md)?",
       "options": [
         {
           "key": "A",
-          "text": "They are identical"
+          "text": "Only the command file creates a /name command that a person can type"
         },
         {
           "key": "B",
@@ -12960,7 +12960,7 @@
         },
         {
           "key": "C",
-          "text": "A slash command runs when a person types it; a Skill is a directory (SKILL.md plus optional scripts and files) that Claude loads on demand when a request matches its description"
+          "text": "Both create a /name command, but a Skill is a directory (SKILL.md plus optional scripts and reference files) whose description Claude can also use to load it automatically when relevant; the command file is the older single-file format"
         },
         {
           "key": "D",
@@ -12971,7 +12971,7 @@
         "C"
       ],
       "multi": false,
-      "explanation": "Load behaviour distinguishes Claude Code components: rules load per session or path, Skills load on demand, commands on invocation, subagents in their own context."
+      "explanation": "Custom commands have been merged into skills: a command file and a skill with the same name both create /name. The skill format adds a directory for supporting files such as scripts and references, and by default Claude can load a skill on its own when a request matches its description (unless disable-model-invocation is set). Command files keep working, but the docs recommend skills for new work."
     },
     {
       "id": "developer-foundations-111",
@@ -13282,7 +13282,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Automatic access to the parent's Skills"
+          "text": "Permanent changes to the underlying model's behavior that carry over to all future sessions"
         },
         {
           "key": "B",
@@ -13428,7 +13428,7 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Claude Code",
       "number": 455,
-      "stem": "What must a SKILL.md file contain at minimum for Claude to know when to use it?",
+      "stem": "Under the Agent Skills specification, what must a SKILL.md file contain at minimum so Claude knows when to use the Skill?",
       "options": [
         {
           "key": "A",
@@ -13451,7 +13451,7 @@
         "B"
       ],
       "multi": false,
-      "explanation": "The description is what Claude matches against requests; the body loads only when it matches."
+      "explanation": "The Agent Skills spec requires YAML frontmatter with name and description, and the description must say both what the Skill does and when to use it. Only that metadata is loaded at startup; Claude matches requests against the description and reads the body only when the Skill is triggered. (Claude Code is more lenient, defaulting name to the directory name, but still recommends a description so Claude knows when to use the Skill.)"
     },
     {
       "id": "developer-foundations-115",
@@ -13612,7 +13612,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Retries drain the retry budget, delay the real error, and can deepen rate limiting; when unsure, treat an error as terminal"
+          "text": "Retries drain the retry budget, delay surfacing the real error, and add load that can deepen rate limiting, while the unchanged request can never succeed"
         },
         {
           "key": "B",
@@ -13631,7 +13631,7 @@
         "A"
       ],
       "multi": false,
-      "explanation": "Ask whether the clock alone could change the outcome. If not (400, 401, 403, 404), the request must change. Misclassifying the other way shows up as a broken feature that gets fixed quickly."
+      "explanation": "Ask whether time alone could change the outcome. For errors such as 400, 401, 403 and 404 it cannot: the request itself must change, so retrying only burns the retry budget, adds load and hides the real error. Transient failures such as connection errors, 429 and 5xx responses are the ones worth retrying with exponential backoff, which is what the official SDKs do by default."
     },
     {
       "id": "developer-foundations-118",
@@ -13818,7 +13818,7 @@
       "sourceFile": "ccdvf_practice_questions.json",
       "examSet": "Eval, Testing, and Debugging",
       "number": 121,
-      "stem": "(Scenario 5) A team wants to catch quality regressions automatically before deploying a new prompt version. What testing practice best supports this?",
+      "stem": "A team wants to catch quality regressions automatically before deploying a new prompt version. What testing practice best supports this?",
       "options": [
         {
           "key": "A",

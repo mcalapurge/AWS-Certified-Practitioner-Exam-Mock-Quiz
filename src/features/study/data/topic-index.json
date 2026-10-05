@@ -879,8 +879,7 @@
     "title": "Session Lifecycle & Resumption",
     "keywords": [
       "transcript",
-      "recency",
-      "cross-host resumption needs"
+      "recency"
     ]
   },
   {
@@ -977,10 +976,9 @@
     "category": "Applications and Integration",
     "title": "Tool Use Mechanics",
     "keywords": [
-      "tool_result content block",
+      "but the application",
+      "call the tool",
       "successful result containing",
-      "tool description important",
-      "defined tool automatically",
       "conversation can continue",
       "tool_result blocks saying"
     ]
@@ -1041,7 +1039,8 @@
     "category": "Applications and Integration",
     "title": "Extended & Adaptive Thinking",
     "keywords": [
-      "gain",
+      "mechanical single-step transformations",
+      "high-volume classification pipeline",
       "dedicated reasoning-only endpoint",
       "extended thinking eliminates",
       "unmodified when continuing",
@@ -1221,7 +1220,7 @@
       "workflow-or-agent decision belongs",
       "parallelization covers sectioning",
       "genuinely parallel exploration",
-      "whether the sequence"
+      "model through predefined"
     ]
   },
   {
@@ -1294,7 +1293,7 @@
     "keywords": [
       "success condition",
       "well-defined completion/stopping criteria",
-      "returning distinct states"
+      "error_max_turns or error_max_budget_usd"
     ]
   },
   {
@@ -1411,8 +1410,7 @@
     "category": "Prompt and Context Engineering",
     "title": "Chain-of-Thought Prompting",
     "keywords": [
-      "model to reason",
-      "calculation returns confidently"
+      "thinking is off"
     ]
   },
   {
@@ -1557,7 +1555,7 @@
     "title": "Built-In Tools (Web Search, Code Execution, Computer Use)",
     "keywords": [
       "claude's built-in",
-      "anthropic-defined schema but",
+      "anthropic-provided tools come",
       "legacy desktop application"
     ]
   },
@@ -1570,7 +1568,7 @@
     "keywords": [
       "since skills",
       "pure instructional/behavioral pattern",
-      "correct distinguishing traits",
+      "existing execution environment",
       "anthropic already runs"
     ]
   },
@@ -1581,10 +1579,11 @@
     "category": "Tools and MCPs",
     "title": "Skills & Plugins (Packaging and Progressive Disclosure)",
     "keywords": [
-      "name and description",
       "installed",
       "documented internal procedure",
-      "mcp server configurations"
+      "instructions are excellent",
+      "mcp server configurations",
+      "description per request"
     ]
   },
   {
@@ -1594,8 +1593,9 @@
     "category": "Tools and MCPs",
     "title": "MCP Fundamentals",
     "keywords": [
-      "hosts",
-      "tools/resources/prompts are exposed"
+      "tools/resources/prompts are exposed",
+      "re-implementing the integration",
+      "boundaries between servers"
     ]
   },
   {
@@ -1723,8 +1723,8 @@
     "title": "Hooks as Enforcement (PreToolUse vs PostToolUse)",
     "keywords": [
       "pretooluse hook",
-      "hooks enforce deterministically",
-      "swapping deterministic checks"
+      "swapping deterministic checks",
+      "defined lifecycle points"
     ]
   },
   {
@@ -1845,7 +1845,7 @@
     "keywords": [
       "package reusable instructions/workflows",
       "automatically between every",
-      "matches against requests"
+      "agent skills specification"
     ]
   },
   {
@@ -1855,7 +1855,8 @@
     "category": "Claude Code",
     "title": "Claude Code Custom Commands (Slash Commands)",
     "keywords": [
-      "custom slash command"
+      "disable-model-invocation is set",
+      "standardize common requests"
     ]
   },
   {
@@ -1911,7 +1912,7 @@
     "keywords": [
       "indefinitely without investigation",
       "systematically malformed arguments",
-      "classified as retriable"
+      "retrying with exponential"
     ]
   },
   {

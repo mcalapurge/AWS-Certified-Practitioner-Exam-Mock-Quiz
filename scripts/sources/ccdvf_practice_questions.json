@@ -1,6 +1,6 @@
 {
   "exam": "Claude Certified Developer - Foundations (CCDV-F)",
-  "note": "Original practice questions written to mirror the publicly described CCDV-F exam domains. Not official Anthropic exam content and not guaranteed to be exhaustive; verify against Anthropic's official CCDV-F exam guide before relying on it. REBUILD (2026-08-07): duplicates removed, domain balance corrected, answer keys relabelled across all four letters. COVERAGE PASS (2026-10-05): every blueprint skill now has questions. Added topics for requirements elicitation, system lifecycle, software-engineering foundations (REST, idempotency, concurrency, review/CI), instruction channels and sessions, configuration management and version pinning, LLM fundamentals, effort/adaptive thinking/fast mode, model migration, context-window management, output verification, prompt iteration, tool schema design, large tool sets, MCP scopes and server security, Skills and plugins, hooks as enforcement, secrets and identity, data privacy/residency, Claude Code permission modes, workflow patterns, agent build options, agent handoffs, and tracing. Corrected questions made stale by current API behaviour (assistant prefill and budget_tokens now return 400 on current models, forced tool_choice is rejected on the newest models, structured outputs and Streamable HTTP replace older patterns) and rewrote templated items. Error handling and API-anatomy topics moved to Model Selection and Optimization to match the blueprint's Technical Fundamentals skill. New items have source_id >= 20000.",
+  "note": "Original practice questions written to mirror the publicly described CCDV-F exam domains. Not official Anthropic exam content and not guaranteed to be exhaustive; verify against Anthropic's official CCDV-F exam guide before relying on it. REBUILD (2026-08-07): duplicates removed, domain balance corrected, answer keys relabelled across all four letters. COVERAGE PASS (2026-10-05): every blueprint skill now has questions. Added topics for requirements elicitation, system lifecycle, software-engineering foundations (REST, idempotency, concurrency, review/CI), instruction channels and sessions, configuration management and version pinning, LLM fundamentals, effort/adaptive thinking/fast mode, model migration, context-window management, output verification, prompt iteration, tool schema design, large tool sets, MCP scopes and server security, Skills and plugins, hooks as enforcement, secrets and identity, data privacy/residency, Claude Code permission modes, workflow patterns, agent build options, agent handoffs, and tracing. Corrected questions made stale by current API behaviour (assistant prefill and budget_tokens now return 400 on current models, forced tool_choice is rejected on the newest models, structured outputs and Streamable HTTP replace older patterns) and rewrote templated items. Error handling and API-anatomy topics moved to Model Selection and Optimization to match the blueprint's Technical Fundamentals skill. New items have source_id >= 20000. AUDIT (2026-10-05): every question was answered blind by independent reviewers who verified facts against Anthropic's documentation (platform.claude.com, code.claude.com, anthropic.com); 467/467 matched the answer key. The 94 items carrying reviewer notes were re-adjudicated against the docs, and 34 were reworded to remove overstated, outdated or ambiguous wording (no answer key changed).",
   "domain_weights": {
     "Applications and Integration": "33.1%",
     "Model Selection and Optimization": "16.8%",
@@ -126,11 +126,11 @@
       "options": {
         "A": "Generating the reply in a live chat widget while the user waits",
         "B": "Re-classifying a 400,000-row archive of historical support tickets overnight",
-        "C": "Producing embeddings-style bulk annotations for a data warehouse refresh that runs nightly",
+        "C": "Generating bulk tags and summaries for a data warehouse refresh that runs nightly",
         "D": "Streaming a token-by-token response into a code editor's autocomplete"
       },
       "correct": ["B", "C"],
-      "explanation": "Batch suits high-volume, delay-tolerant work (B and C). A and D are latency-critical and interactive, where a synchronous or streaming request is required.",
+      "explanation": "Batch suits high-volume, delay-tolerant work such as re-classifying a historical archive or annotating records for a nightly refresh. A live chat reply and token-by-token autocomplete are latency-critical and interactive, so they need a synchronous or streaming request.",
       "source_id": 10003
     },
     {
@@ -1031,7 +1031,7 @@
         "D": "Images are billed per request rather than per token, so volume is irrelevant"
       },
       "correct": ["A"],
-      "explanation": "An image's token cost scales with its dimensions, so downscaling to the smallest size that preserves the detail you need is the main lever on cost.",
+      "explanation": "Claude reads images in 28x28-pixel patches, so an image costs about ceil(width/28) x ceil(height/28) visual tokens, up to the model's resolution cap (images above it are downscaled first, which caps the cost). Below that cap, larger images cost more, so downscaling to the smallest size that keeps the detail you need is the main lever on cost. Encoding method and file name do not change the token count.",
       "source_id": 10022
     },
     {
@@ -1419,10 +1419,10 @@
         "A": "Resumption requires the same IP address",
         "B": "The model forgets sessions after an hour",
         "C": "Sessions can never be resumed",
-        "D": "Session transcripts are stored locally on the machine that made them, so cross-host resumption needs an external session store keyed consistently"
+        "D": "Session transcripts are stored locally on the machine that created them, so another host can only resume a session if the transcript is made available there, typically by mirroring it to shared storage with a session store"
       },
       "correct": ["D"],
-      "explanation": "Local session files are not reachable elsewhere. Horizontal scaling needs external session storage, with identity selecting the session.",
+      "explanation": "Session files live on the machine that created them, so a different worker cannot find them. To resume across hosts, attach a session store adapter that mirrors transcripts to shared storage (and resume from a matching working directory), copy the session's .jsonl file to the new host, or skip resume and pass the needed state into a fresh session.",
       "source_id": 20291
     },
     {
@@ -1456,7 +1456,7 @@
         "D": "The model the session used"
       },
       "correct": ["A"],
-      "explanation": "Resuming restores content, not posture: history and model return, but plan and bypass permission modes and other launch-time flags must be supplied again.",
+      "explanation": "Resuming restores the conversation, including earlier tool calls, and normally the model. It does not restore every launch-time setting. A session that was running with bypassPermissions or in plan mode comes back in the default mode, and flags such as --mcp-config, --settings and --add-dir must be passed again, so elevated settings have to be re-supplied on purpose.",
       "source_id": 20293
     },
     {
@@ -2128,7 +2128,7 @@
       "topic": "Tool Use Mechanics",
       "complexity": "Foundational",
       "topic_difficulty": "Hard",
-      "question": "An application defines a tool named 'get_weather' in its API request. Which of the following correctly describes what happens next?",
+      "question": "An application defines its own custom tool named 'get_weather' (name, description and input_schema) in its API request. Which of the following correctly describes what happens next?",
       "options": {
         "A": "Claude may respond with a request to call 'get_weather' (including generated input), but the application is responsible for actually executing it and returning the result in a follow-up message",
         "B": "Claude executes 'get_weather' directly against the live backend itself",
@@ -2136,7 +2136,7 @@
         "D": "'get_weather' is executed automatically by Anthropic's servers with no application involvement"
       },
       "correct": ["A"],
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block.",
+      "explanation": "For a custom (client) tool, Claude does not execute anything itself. It returns a tool_use block with stop_reason 'tool_use', and the calling application runs the tool and sends the output back in a tool_result block in the next user message. Only Anthropic-provided server tools, such as web search, run on Anthropic's infrastructure.",
       "source_id": 49
     },
     {
@@ -2145,7 +2145,7 @@
       "topic": "Tool Use Mechanics",
       "complexity": "Foundational",
       "topic_difficulty": "Hard",
-      "question": "An application defines a tool named 'lookup_inventory' in its API request. Which of the following correctly describes what happens next?",
+      "question": "An application defines its own custom tool named 'lookup_inventory' (name, description and input_schema) in its API request. Which of the following correctly describes what happens next?",
       "options": {
         "A": "Claude may respond with a request to call 'lookup_inventory' (including generated input), but the application is responsible for actually executing it and returning the result in a follow-up message",
         "B": "'lookup_inventory' is executed automatically by Anthropic's servers with no application involvement",
@@ -2153,7 +2153,7 @@
         "D": "Claude executes 'lookup_inventory' directly against the live backend itself"
       },
       "correct": ["A"],
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block.",
+      "explanation": "For a custom (client) tool, Claude does not execute anything itself. It returns a tool_use block with stop_reason 'tool_use', and the calling application runs the tool and sends the output back in a tool_result block in the next user message. Only Anthropic-provided server tools, such as web search, run on Anthropic's infrastructure.",
       "source_id": 52
     },
     {
@@ -2170,7 +2170,7 @@
         "D": "Claude may respond with a request to call 'calculate_shipping' (including generated input), but the application is responsible for actually executing it and returning the result in a follow-up message"
       },
       "correct": ["D"],
-      "explanation": "Claude does not execute tools itself — it emits a tool_use request, and the calling application executes the tool and sends the result back as a tool_result content block.",
+      "explanation": "'calculate_shipping' is a user-defined (client) tool, so Claude does not execute it: Claude returns a tool_use block with the tool name and generated input, and the calling application executes the tool and sends the result back as a tool_result content block in a user message. Only Anthropic-provided server tools, such as web search or code execution, run on Anthropic's infrastructure.",
       "source_id": 54
     },
     {
@@ -2659,11 +2659,11 @@
       "options": {
         "A": "Caching a large static instruction block reused across requests",
         "B": "Constraining response length where verbose output adds no value",
-        "C": "Enabling extended thinking on every request",
+        "C": "Setting effort to max on every request regardless of task difficulty",
         "D": "Resending the full conversation history on every turn regardless of relevance"
       },
       "correct": ["A", "B"],
-      "explanation": "Caching stable input and trimming unnecessary output both cut spend at a fixed tier. Always-on reasoning and unbounded history growth increase it.",
+      "explanation": "Caching stable input and trimming unnecessary output both cut spend at a fixed tier. Running every request at maximum effort removes constraints on token spending, and resending irrelevant history grows input tokens on every turn; both increase cost.",
       "source_id": 10053
     },
     {
@@ -2782,7 +2782,7 @@
         "D": "Switch to a smaller tier"
       },
       "correct": ["B"],
-      "explanation": "Fast mode buys latency alone: same model, no capability change. A smaller tier changes the output; batch is asynchronous. Note fast mode is limited to specific models and platforms and is not available inside batches.",
+      "explanation": "Fast mode runs the same model with a faster inference configuration at premium pricing. It raises output tokens per second (not time to first token) and does not change the model's intelligence or capabilities. A smaller tier changes the output, and batch processing is asynchronous. Fast mode is a research preview that requires access, is limited to specific Opus models on the Claude API, and is not available with the Batch API.",
       "source_id": 20326
     },
     {
@@ -2929,7 +2929,7 @@
       "topic_difficulty": "Medium",
       "question": "An application receives an HTTP 529 (overloaded_error) from the Claude API. What is the correct handling strategy?",
       "options": {
-        "A": "Treat it as temporary service-wide overload: back off and retry with bounded attempts, and consider ramping traffic gradually",
+        "A": "Treat it as temporary service-wide overload: back off and retry with exponential backoff and a cap on attempts",
         "B": "Immediately stop using the API entirely and switch providers",
         "C": "Fix the request body, since a 529 means the request was malformed",
         "D": "Treat all non-200 responses identically regardless of code"
@@ -3408,7 +3408,7 @@
         "A": "Alternate tiers to balance cost and quality",
         "B": "Enable extended thinking to improve consistency",
         "C": "Move to the most capable tier to protect against edge cases",
-        "D": "Keep the light tier, since additional capability yields no measurable benefit here"
+        "D": "Keep the light tier, since it already meets the quality bar and a more capable tier would add cost and latency without a needed gain"
       },
       "correct": ["D"],
       "explanation": "When a light tier already meets the quality bar, additional capability adds cost and latency without benefit. Tier selection is validated empirically, not by defaulting upward.",
@@ -3867,7 +3867,7 @@
         "A": "A requirement imposed by Anthropic for all production agents",
         "B": "An inability to use Claude's tool-use feature at all",
         "C": "A fundamentally different set of agent-design principles that don't apply to SDK-based agents",
-        "D": "A build-tooling/orchestration choice layered on top of the same core agent-design principles (tool-use loops, subagents, memory) tested elsewhere in this domain"
+        "D": "A build-tooling/orchestration choice layered on top of the same core agent-design principles (tool-use loops, subagents, memory) that apply to SDK-based agents"
       },
       "correct": ["D"],
       "explanation": "The underlying agent-design principles remain the same; framework choice is an orchestration/tooling decision layered on top.",
@@ -4049,7 +4049,7 @@
       "topic": "Agent Handoffs, State & Resumability",
       "complexity": "Analysis",
       "topic_difficulty": "Medium",
-      "question": "Select the TWO accurate statements about context in a coordinator/subagent design.",
+      "question": "Select the TWO accurate statements about context in a coordinator/subagent design where each subagent starts with a fresh context (it is not a fork of the coordinator's conversation).",
       "options": {
         "A": "A subagent's own tool calls and results stay in its context; only its final message returns to the coordinator",
         "B": "Separate agents share one context window, so isolation saves no tokens",
@@ -4057,7 +4057,7 @@
         "D": "Subagents automatically see the coordinator's full conversation"
       },
       "correct": ["A", "C"],
-      "explanation": "Isolation keeps material out of the coordinator's window, which is the point of delegation, and the price is visibility: the launching prompt is the only channel in, and the final message the only channel out.",
+      "explanation": "Isolation keeps material out of the coordinator's window, which is the point of delegation, and the price is visibility: a fresh subagent loads its own system prompt and project context but none of the coordinator's turns, so the launching prompt is the only channel in and the final message the only channel out. (A fork is the exception: it inherits the conversation, but its tool calls still stay out of the coordinator's window.)",
       "source_id": 20245
     },
     {
@@ -4478,11 +4478,11 @@
       "options": {
         "A": "The model cannot read its own system prompt",
         "B": "Runtime limits make every task succeed",
-        "C": "An agent loop does not reliably stop on its own; turn and spend ceilings that the runtime enforces, returning distinct states, guarantee termination",
+        "C": "An agent loop ends when the model stops calling tools, but nothing guarantees that happens promptly on open-ended tasks; turn and spend ceilings that the runtime enforces bound the run and return distinct result states",
         "D": "Models are prohibited from deciding when a task is finished"
       },
       "correct": ["C"],
-      "explanation": "The model deciding it is finished is a useful signal, not a guarantee. Hard ceilings (maximum turns, maximum spend) bound the run and report which limit was hit.",
+      "explanation": "The model deciding it is finished is the normal exit and a useful signal, but not a guarantee: open-ended tasks can run long. Hard ceilings (maximum turns, maximum spend) bound the run and report which limit was hit, for example as error_max_turns or error_max_budget_usd results in the Agent SDK.",
       "source_id": 20247
     },
     {
@@ -4610,7 +4610,7 @@
       "topic": "Workflow Patterns (Chaining, Routing, Parallelization, Orchestrator-Workers, Evaluator-Optimizer)",
       "complexity": "Foundational",
       "topic_difficulty": "Easy",
-      "question": "What is the 'enumeration test' for choosing between a workflow and an agent?",
+      "question": "Which test best decides whether a task should be built as a workflow or as an agent?",
       "options": {
         "A": "Whether the task can be enumerated as a JSON schema",
         "B": "Whether the number of tool calls is below ten",
@@ -4618,7 +4618,7 @@
         "D": "Whether the request volume is high enough to justify an agent"
       },
       "correct": ["C"],
-      "explanation": "Known steps take a chain; unknown ones take an agent. When the model owns the plan, code still enforces turn caps, spend caps and validation.",
+      "explanation": "Workflows orchestrate the model through predefined code paths, so if the steps can be written down in advance, code holds the plan (a chain, router or other workflow). If the path cannot be hardcoded, an agent lets the model direct its own steps, while code still enforces turn caps, spend caps and validation.",
       "source_id": 20234
     },
     {
@@ -4703,7 +4703,7 @@
         "D": "It guarantees perfect output correctness regardless of task difficulty"
       },
       "correct": ["C"],
-      "explanation": "Chain-of-thought prompting can improve performance on multi-step reasoning tasks, at the cost of additional output tokens",
+      "explanation": "Reasoning through a problem before answering can improve performance on multi-step reasoning tasks, and those reasoning tokens are billed as output. On current models with thinking active, that reasoning happens in thinking blocks controlled by effort. Explicitly prompting for written-out step-by-step reasoning is the fallback when thinking is off, and on some of the newest models a prompt asking the model to write out its reasoning may be declined.",
       "source_id": 266
     },
     {
@@ -4714,13 +4714,13 @@
       "topic_difficulty": "Medium",
       "question": "A multi-step pricing calculation returns confidently wrong totals. Which prompting change is most likely to help?",
       "options": {
-        "A": "Ask the model to work through the intermediate steps before stating the total",
+        "A": "Have the model reason through the intermediate steps before committing to the total (in its thinking, or by asking for step-by-step work where thinking is off)",
         "B": "Ask for the total only, to reduce distraction",
         "C": "Raise temperature to explore more possibilities",
         "D": "Repeat the question twice in the same prompt"
       },
       "correct": ["A"],
-      "explanation": "Making intermediate reasoning explicit improves multi-step arithmetic and also exposes where a wrong answer diverged. Demanding only the final figure removes both benefits.",
+      "explanation": "Working through intermediate steps improves multi-step arithmetic and shows where a wrong total diverged. On models with thinking active, this happens in thinking blocks, steered by effort. Prompting for step-by-step work is the fallback when thinking is off. Asking for only the final figure, raising temperature or repeating the question does nothing to make the calculation more reliable.",
       "source_id": 10090
     },
     {
@@ -4732,12 +4732,12 @@
       "question": "An application needs the benefit of step-by-step reasoning but must return only a clean JSON verdict to its caller. What is the workable approach?",
       "options": {
         "A": "Abandon step-by-step reasoning, since it is incompatible with structured output",
-        "B": "Have the model reason inside a delimited section and place the final JSON in a separate section the application extracts",
+        "B": "Keep the reasoning separate from the answer: let the model reason in thinking blocks (or, where thinking is off, a delimited reasoning section) and have the application extract only the final JSON",
         "C": "Instruct the model to reason silently without producing tokens",
         "D": "Send two unrelated requests and average the results"
       },
       "correct": ["B"],
-      "explanation": "Separating the reasoning from the answer with clear delimiters lets the application keep the accuracy benefit while returning only the parsed verdict downstream.",
+      "explanation": "Thinking arrives in separate thinking content blocks ahead of the response, so the text the application returns can be just the JSON verdict. Where thinking is off, asking for reasoning in a delimited section and the answer in a separate tagged section achieves the same separation. On the newest models, prompts asking the model to write out its reasoning in the response may be declined, so rely on thinking there.",
       "source_id": 10091
     },
     {
@@ -5496,13 +5496,13 @@
       "topic_difficulty": "Hard",
       "question": "Beyond separating inputs, what further advantage does tagging offer for output handling?",
       "options": {
-        "A": "Requested output tags give the application a deterministic anchor for extracting sections",
+        "A": "Requested output tags give the application a stable, predictable anchor for extracting sections",
         "B": "It causes the model to ignore anything outside the tags",
         "C": "It compresses the prompt, reducing input tokens",
         "D": "It removes the need to validate the response"
       },
       "correct": ["A"],
-      "explanation": "Asking for output inside named tags gives the caller a stable marker to parse against, which is more robust than pattern-matching prose.",
+      "explanation": "Asking for output inside named tags gives the caller a stable marker to parse against, which is more robust than pattern-matching prose. It is not a guarantee, since a tag can occasionally be missing or malformed, so the parser should still handle that case.",
       "source_id": 10105
     },
     {
@@ -5587,7 +5587,7 @@
         "D": "Computer use allows Claude to interact with a screen via actions like screenshots, clicks, and keystrokes"
       },
       "correct": ["A", "D"],
-      "explanation": "Built-in tools are Anthropic-defined (A) and computer use specifically covers screen interaction (D). They can be combined with custom tools in the same request, and no tool guarantees zero errors — so C and B are false.",
+      "explanation": "Anthropic-provided tools are defined and maintained by Anthropic, so you enable them by type instead of writing a schema. Computer use specifically lets Claude act on a screen through screenshots, mouse clicks and keystrokes. It is an Anthropic-schema client tool that your application executes, while web search and code execution run on Anthropic's servers. These tools can be combined with your own custom tools in the same request, and no tool is guaranteed to be error-free.",
       "source_id": 409
     },
     {
@@ -5621,7 +5621,7 @@
         "D": "Both always execute in your application"
       },
       "correct": ["B"],
-      "explanation": "Anthropic-defined tools come in two kinds: server tools that run remotely, and schema-less client tools whose execution (and safety checks) are your responsibility.",
+      "explanation": "Anthropic-provided tools come in two kinds. Server tools such as web search run on Anthropic's infrastructure, and their results come back directly in the response. Anthropic-schema client tools such as bash and the text editor are declared by a versioned type, so you write no schema, but your application executes each call and is responsible for its safety checks.",
       "source_id": 20404
     },
     {
@@ -5684,12 +5684,12 @@
       "question": "Select the TWO correct distinctions in the built-in vs. custom vs. Skill vs. MCP decision framework.",
       "options": {
         "A": "Built-in tools are the fastest to enable but limited to what Anthropic provides",
-        "B": "Skills package reusable instructions, not new executable actions with their own backend",
+        "B": "Skills package reusable instructions (optionally with bundled scripts and resources), not new tool endpoints with their own backend",
         "C": "MCP servers are only useful for a single, single-team application and never shared across clients",
         "D": "Custom tools and MCP servers can never call external APIs"
       },
       "correct": ["A", "B"],
-      "explanation": "A and B are the correct distinguishing traits. D is false (calling external APIs is exactly what custom tools/MCP servers typically do) and C is false (cross-client sharing is MCP's key value).",
+      "explanation": "Built-in tools are quickest to adopt but limited to what Anthropic provides, and Skills package know-how (instructions, plus optional scripts that run in the existing execution environment) rather than adding a new service. Custom tools and MCP servers commonly call external APIs, and sharing one server across many clients is MCP's main value.",
       "source_id": 418
     },
     {
@@ -5905,7 +5905,7 @@
       "question": "You're building an MCP server that integrates with a CRM system. In MCP terminology, what does exposing 'resources' specifically provide to a connecting client?",
       "options": {
         "A": "A method for compressing the context window",
-        "B": "Read-only or reference data (e.g., documents, records) that an mcp server exposes for a client to retrieve",
+        "B": "Read-only or reference data (e.g., documents, records) that an MCP server exposes for a client to retrieve",
         "C": "A billing mechanism for tracking API spend",
         "D": "A way to change which underlying model is being used"
       },
@@ -5938,7 +5938,7 @@
       "topic_difficulty": "Medium",
       "question": "You're building an MCP server that integrates with a CRM system. In MCP terminology, what does exposing 'prompts' specifically provide to a connecting client?",
       "options": {
-        "A": "Predefined, reusable prompt templates that an mcp server can expose for clients to use",
+        "A": "Predefined, reusable prompt templates that an MCP server can expose for clients to use",
         "B": "A way to change which underlying model is being used",
         "C": "A billing mechanism for tracking API spend",
         "D": "A method for compressing the context window"
@@ -6212,11 +6212,11 @@
       "options": {
         "A": "Only if the subagent uses the same model as the parent",
         "B": "Only if the Skill is less than 100 tokens",
-        "C": "No; subagents do not inherit Skills from the parent, so the Skill must be made available to the subagent explicitly",
+        "C": "No; a subagent does not inherit the Skill content the parent has loaded, so it must be preloaded through the subagent's configuration or invoked by the subagent itself",
         "D": "Yes, subagents inherit all Skills and the full conversation"
       },
       "correct": ["C"],
-      "explanation": "A subagent starts with its own context and configuration. Permission scope carries over; Skills and conversation history do not.",
+      "explanation": "A non-fork subagent starts with a fresh context: it does not see the parent's conversation history or the Skills the parent has already invoked. Listing a Skill in the subagent's skills field preloads its full content at startup. Without that, the subagent can still discover and invoke available Skills through the Skill tool, unless that tool is removed from its tool list.",
       "source_id": 20397
     },
     {
@@ -6482,13 +6482,13 @@
       "topic_difficulty": "Medium",
       "question": "In the Claude API, what does the tool_choice parameter control?",
       "options": {
-        "A": "Whether and how Claude must use tools: auto (model decides), any (must call some tool), tool (must call a named tool), or none; note the newest models reject the forced any and tool options",
+        "A": "Whether and how Claude must use tools: auto (model decides), any (must call some tool), tool (must call a named tool), or none; note that some current models, such as Claude Opus 5.5 and Sonnet 5.5, reject the forced any and tool options",
         "B": "Whether streaming is enabled",
         "C": "Which programming language the SDK is written in",
         "D": "The pricing tier applied to the request"
       },
       "correct": ["A"],
-      "explanation": "tool_choice accepts auto, any, tool and none. Gotcha: Claude Opus 5.5, Sonnet 5.5 and Fable 5.1 return a 400 for any and tool; use auto with a clear instruction, strict: true for schema-valid inputs, or structured outputs when the forced call only existed to obtain JSON.",
+      "explanation": "tool_choice accepts auto, any, tool and none. Gotcha: Claude Opus 5.5, Sonnet 5.5, Fable 5.1 and Mythos 5.1 return a 400 for any and tool, and manual extended thinking also rejects them. On those, use auto with a clear instruction, strict: true for schema-valid inputs, or structured outputs when the forced call only existed to obtain JSON.",
       "source_id": 117
     },
     {
@@ -6667,15 +6667,15 @@
       "topic": "Hooks as Enforcement (PreToolUse vs PostToolUse)",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "Why does a hook cost no tokens, unlike an instruction in the system prompt?",
+      "question": "Why does a command hook (a script that runs on a hook event) add no model tokens, unlike an instruction in the system prompt?",
       "options": {
-        "A": "Hooks run as code in the application process at defined lifecycle points, outside the model's context window",
+        "A": "Command hooks run as code in the application process at defined lifecycle points, outside the model's context window",
         "B": "Hooks run on a cheaper model",
         "C": "Hooks are compressed by the API",
         "D": "Hooks are cached for free"
       },
       "correct": ["A"],
-      "explanation": "Because they run outside the context, hooks enforce deterministically and are not subject to the model's interpretation.",
+      "explanation": "A command hook is ordinary code that runs at a lifecycle event outside the model's context, so its check uses no model tokens and does not depend on the model's interpretation. Prompt and agent hooks are different: they call a Claude model to make their decision and do consume tokens.",
       "source_id": 20407
     },
     {
@@ -6721,7 +6721,7 @@
       "question": "Select the TWO accurate statements about hooks as guardrails.",
       "options": {
         "A": "A guardrail is only real if it still holds on a run where the model has already decided wrongly",
-        "B": "A PreToolUse hook can refuse an action; a PostToolUse hook can only report or annotate it",
+        "B": "A PreToolUse hook can refuse an action; a PostToolUse hook runs after the tool has executed, so it can only react (report, add context, or rewrite the output Claude sees), not prevent it",
         "C": "Asking the model to double-check its own command is an independent control",
         "D": "A PostToolUse hook can reverse a deletion that already executed"
       },
@@ -7300,11 +7300,11 @@
       "options": {
         "A": "Keep copying but review them monthly",
         "B": "Link to a wiki page from each CLAUDE.md",
-        "C": "Declare the shared standard once at a wider scope (for example, user or managed instructions) and keep each repository's CLAUDE.md to its own specifics",
+        "C": "Declare the shared standard once in the organization's managed policy CLAUDE.md (deployed to every developer machine) and keep each repository's CLAUDE.md to its own specifics",
         "D": "Put the standard in each developer's environment variables"
       },
       "correct": ["C"],
-      "explanation": "Instruction files concatenate, broadest scope first, so layering already applies the general and the local together. Copying or linking reintroduces drift.",
+      "explanation": "CLAUDE.md files at different scopes are concatenated into context, broadest scope first, so an organization-wide managed policy file and a repository's own CLAUDE.md apply together. The managed policy CLAUDE.md is the documented home for company coding standards and cannot be excluded by individual settings; a user-level ~/.claude/CLAUDE.md is personal and distributes nothing. Copying or linking reintroduces drift.",
       "source_id": 20435
     },
     {
@@ -7347,15 +7347,15 @@
       "topic": "Claude Code Custom Commands (Slash Commands)",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "How does a Skill differ from a custom slash command in Claude Code?",
+      "question": "In current Claude Code, how does a Skill (.claude/skills/<name>/SKILL.md) differ from a legacy custom command file (.claude/commands/<name>.md)?",
       "options": {
-        "A": "They are identical",
+        "A": "Only the command file creates a /name command that a person can type",
         "B": "Skills must be typed manually; commands load automatically",
-        "C": "A slash command runs when a person types it; a Skill is a directory (SKILL.md plus optional scripts and files) that Claude loads on demand when a request matches its description",
+        "C": "Both create a /name command, but a Skill is a directory (SKILL.md plus optional scripts and reference files) whose description Claude can also use to load it automatically when relevant; the command file is the older single-file format",
         "D": "Commands can bundle scripts; Skills cannot"
       },
       "correct": ["C"],
-      "explanation": "Load behaviour distinguishes Claude Code components: rules load per session or path, Skills load on demand, commands on invocation, subagents in their own context.",
+      "explanation": "Custom commands have been merged into skills: a command file and a skill with the same name both create /name. The skill format adds a directory for supporting files such as scripts and references, and by default Claude can load a skill on its own when a request matches its description (unless disable-model-invocation is set). Command files keep working, but the docs recommend skills for new work.",
       "source_id": 20439
     },
     {
@@ -7536,7 +7536,7 @@
       "topic_difficulty": "Medium",
       "question": "What does a Claude Code subagent provide that a slash command does not?",
       "options": {
-        "A": "Automatic access to the parent's Skills",
+        "A": "Permanent changes to the underlying model's behavior that carry over to all future sessions",
         "B": "Its own context window, system prompt and tool permissions, returning only its final result to the main session",
         "C": "A shortcut that inserts a saved prompt into the current conversation",
         "D": "A way to change the billing tier"
@@ -7619,7 +7619,7 @@
       "topic": "Skills",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "What must a SKILL.md file contain at minimum for Claude to know when to use it?",
+      "question": "Under the Agent Skills specification, what must a SKILL.md file contain at minimum so Claude knows when to use the Skill?",
       "options": {
         "A": "A JSON schema of input parameters",
         "B": "Frontmatter with a name and a description stating what the Skill does and when to use it, followed by the instructions",
@@ -7627,7 +7627,7 @@
         "D": "A list of every file in the repository"
       },
       "correct": ["B"],
-      "explanation": "The description is what Claude matches against requests; the body loads only when it matches.",
+      "explanation": "The Agent Skills spec requires YAML frontmatter with name and description, and the description must say both what the Skill does and when to use it. Only that metadata is loaded at startup; Claude matches requests against the description and reads the body only when the Skill is triggered. (Claude Code is more lenient, defaulting name to the directory name, but still recommends a description so Claude knows when to use the Skill.)",
       "source_id": 20455
     },
     {
@@ -7723,13 +7723,13 @@
       "topic_difficulty": "Medium",
       "question": "An error is classified as retriable, but it is actually permanent (for example, a 404 for a bad resource ID). What is the consequence?",
       "options": {
-        "A": "Retries drain the retry budget, delay the real error, and can deepen rate limiting; when unsure, treat an error as terminal",
+        "A": "Retries drain the retry budget, delay surfacing the real error, and add load that can deepen rate limiting, while the unchanged request can never succeed",
         "B": "Nothing; retries are always harmless",
         "C": "The API will automatically fix the ID",
         "D": "The request will eventually succeed"
       },
       "correct": ["A"],
-      "explanation": "Ask whether the clock alone could change the outcome. If not (400, 401, 403, 404), the request must change. Misclassifying the other way shows up as a broken feature that gets fixed quickly.",
+      "explanation": "Ask whether time alone could change the outcome. For errors such as 400, 401, 403 and 404 it cannot: the request itself must change, so retrying only burns the retry budget, adds load and hides the real error. Transient failures such as connection errors, 429 and 5xx responses are the ones worth retrying with exponential backoff, which is what the official SDKs do by default.",
       "source_id": 20449
     },
     {
@@ -7840,7 +7840,7 @@
       "topic": "Regression Testing & Golden Datasets",
       "complexity": "Foundational",
       "topic_difficulty": "Medium",
-      "question": "(Scenario 5) A team wants to catch quality regressions automatically before deploying a new prompt version. What testing practice best supports this?",
+      "question": "A team wants to catch quality regressions automatically before deploying a new prompt version. What testing practice best supports this?",
       "options": {
         "A": "Manual, ad hoc spot-checking with no fixed criteria",
         "B": "An automated regression test suite that runs the new prompt against a golden dataset and flags significant deviations before deployment",
