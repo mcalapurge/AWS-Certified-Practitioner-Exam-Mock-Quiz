@@ -15,6 +15,7 @@ import {
   haystack,
   lintConfidence,
   lintContext,
+  keyLengthRanks,
   lintQuestion,
   longestKeyedShare,
   main,
@@ -241,6 +242,17 @@ test("longestKeyedShare counts keys that are the strictly longest option", () =>
   const short = q({ options: { ...q().options, A: "x" } });
   const multi = q({ correct: ["A", "B"] });
   assert.deepEqual(longestKeyedShare([long, short, multi]), { longest: 1, single: 2 });
+});
+
+test("keyLengthRanks counts how many options outlast each key", () => {
+  const long = q({ options: { ...q().options, A: "x".repeat(200) } });
+  const short = q({ options: { ...q().options, A: "x" } });
+  const second = q({ options: { ...q().options, B: "x".repeat(200) } });
+  const multi = q({ correct: ["A", "B"] });
+  assert.deepEqual(keyLengthRanks([long, short, second, multi]), {
+    ranks: [1, 1, 0, 1],
+    single: 3,
+  });
 });
 
 test("blindItem hides the key, explanation, topic and rating", () => {
