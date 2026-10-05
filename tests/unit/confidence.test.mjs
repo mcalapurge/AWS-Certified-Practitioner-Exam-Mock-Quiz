@@ -84,6 +84,13 @@ describe("formatReviewed", () => {
     assert.equal(formatReviewed("2026-13-01"), null);
     assert.equal(formatReviewed("05/10/2026"), null);
   });
+  test("rejects impossible calendar dates", () => {
+    assert.equal(formatReviewed("2026-02-31"), null);
+    assert.equal(formatReviewed("2026-04-31"), null);
+    assert.equal(formatReviewed("2026-10-00"), null);
+    assert.equal(formatReviewed("2028-02-29"), "Feb 2028", "leap day");
+    assert.equal(formatReviewed("2026-02-29"), null);
+  });
 });
 
 describe("sourceTitle", () => {

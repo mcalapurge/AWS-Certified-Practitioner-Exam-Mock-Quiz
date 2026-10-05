@@ -103,6 +103,8 @@ test("CCDV-F questions show an answer-confidence footnote", async ({ browser }, 
     await page.getByRole("tab", { name: "Claude" }).click();
     await page.getByText("Claude Certified Developer – Foundations").first().click();
     await page.getByLabel("Custom").fill("3");
+    // Keep source order so the first question is a known docs-backed one.
+    await page.getByRole("checkbox", { name: /Shuffle questions/ }).click();
     await page.getByRole("button", { name: /Start new quiz/ }).click();
 
     const trigger = page.getByRole("button", { name: /^Answer confidence: / });
@@ -114,18 +116,22 @@ test("CCDV-F questions show an answer-confidence footnote", async ({ browser }, 
     const dialog = page.getByRole("dialog");
     await expect(dialog).toContainText("Reviewed Oct 2026");
     await expect(dialog).toContainText("Disputed:");
+    await expect(dialog).toContainText("Documentation links appear once you've answered.");
     await expect(dialog.getByRole("link")).toHaveCount(0);
     await page.keyboard.press("Escape");
     await expect(dialog).toHaveCount(0);
 
-    // Questions are drawn at random and some are multi-select, which keeps
-    // Submit disabled until enough options are picked.
+    // Multi-select questions keep Submit disabled until enough options are
+    // picked; this stays robust if the bank's order changes.
     const submit = page.getByRole("button", { name: "Submit answer" });
     const options = page.locator("button[aria-pressed]");
     for (let i = 0; !(await submit.isEnabled()); i++) await options.nth(i).click();
     await submit.click();
     await trigger.click();
-    await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("link").first()).toBeVisible();
+    await expect(dialog.getByRole("link").first()).toHaveAttribute("href", /^https:\/\//);
+    await expect(dialog).not.toContainText("Documentation links appear once you've answered.");
     await settle(page);
     await page.screenshot({
       path: testInfo.outputPath("confidence-390x844-2x.png"),

@@ -37,12 +37,15 @@ export const RAG_LEGEND: { rag: ConfidenceRag; label: string; meaning: string }[
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-// Formats "2026-10-05" without Date parsing, which would shift by timezone.
+// Formats "2026-10-05" without parsing a local Date, which would shift by
+// timezone. Impossible dates such as 2026-02-31 are rejected.
 export function formatReviewed(iso: string): string | null {
-  const m = /^(\d{4})-(\d{2})-\d{2}$/.exec(iso);
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
   if (!m) return null;
-  const month = MONTHS[Number(m[2]) - 1];
-  return month ? `${month} ${m[1]}` : null;
+  const [year, month, day] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  if (month < 1 || month > 12 || day < 1 || day > daysInMonth) return null;
+  return `${MONTHS[month - 1]} ${m[1]}`;
 }
 
 export function describeConfidence(c: QuestionConfidence): ConfidenceView {
