@@ -45,10 +45,12 @@ const quizDataDir = path.join(repoRoot, "src", "features", "quiz", "data");
 // ---- CLI args ----
 const args = process.argv.slice(2);
 const flags = new Map(
-  args.filter((a) => a.startsWith("--")).map((a) => {
-    const [k, v] = a.replace(/^--/, "").split("=");
-    return [k, v ?? true];
-  })
+  args
+    .filter((a) => a.startsWith("--"))
+    .map((a) => {
+      const [k, v] = a.replace(/^--/, "").split("=");
+      return [k, v ?? true];
+    }),
 );
 const onlyExam = args.find((a) => !a.startsWith("--")) ?? null;
 const VERBOSE = flags.has("verbose");
@@ -72,7 +74,7 @@ function buildPattern(keywords, caseInsensitive) {
     .join("|");
   return new RegExp(
     `(?:^|[^A-Za-z0-9])(?:${alternation})(?:[^A-Za-z0-9]|$)`,
-    caseInsensitive ? "i" : undefined
+    caseInsensitive ? "i" : undefined,
   );
 }
 function haystackOf(q) {
@@ -123,8 +125,13 @@ function analyze(exam, topicIndex, sourceQuestions, shippedQuestions) {
   const N = sourceQuestions.length;
   const per = new Map(idx.map((t) => [t.id, { n: 0, hit: 0 }]));
   const fpCount = new Map();
-  let correct = 0, wrongOnly = 0, zero = 0, extraFlag = 0;
-  const wrongList = [], zeroList = [], missingTopic = new Set();
+  let correct = 0,
+    wrongOnly = 0,
+    zero = 0,
+    extraFlag = 0;
+  const wrongList = [],
+    zeroList = [],
+    missingTopic = new Set();
 
   for (let k = 0; k < N; k++) {
     const sq = sourceQuestions[k];
@@ -132,22 +139,48 @@ function analyze(exam, topicIndex, sourceQuestions, shippedQuestions) {
     if (!shipped) continue; // question was dropped during normalisation
     const trueTitle = sq?.topic;
     const tid = titleToId.get(trueTitle);
-    if (!tid) { missingTopic.add(trueTitle ?? "(no topic field)"); continue; }
+    if (!tid) {
+      missingTopic.add(trueTitle ?? "(no topic field)");
+      continue;
+    }
     per.get(tid).n++;
     const mapped = map(shipped);
-    if (mapped.length === 0) { zero++; zeroList.push({ num: shipped.number, topic: trueTitle }); continue; }
+    if (mapped.length === 0) {
+      zero++;
+      zeroList.push({ num: shipped.number, topic: trueTitle });
+      continue;
+    }
     if (mapped.includes(tid)) {
-      correct++; per.get(tid).hit++;
+      correct++;
+      per.get(tid).hit++;
       if (mapped.length > 1) extraFlag++;
     } else {
       wrongOnly++;
-      wrongList.push({ num: shipped.number, topic: trueTitle, mapped: mapped.map((id) => idToTitle.get(id)) });
+      wrongList.push({
+        num: shipped.number,
+        topic: trueTitle,
+        mapped: mapped.map((id) => idToTitle.get(id)),
+      });
     }
     for (const m of mapped) if (m !== tid) fpCount.set(m, (fpCount.get(m) || 0) + 1);
   }
 
   const checked = correct + wrongOnly + zero;
-  return { idx, per, idToTitle, fpCount, N, checked, correct, wrongOnly, zero, extraFlag, wrongList, zeroList, missingTopic };
+  return {
+    idx,
+    per,
+    idToTitle,
+    fpCount,
+    N,
+    checked,
+    correct,
+    wrongOnly,
+    zero,
+    extraFlag,
+    wrongList,
+    zeroList,
+    missingTopic,
+  };
 }
 
 function pct(a, b) {
@@ -165,7 +198,7 @@ async function main() {
       console.warn(
         "⚠️  topics.ts no longer matches this checker's assumptions " +
           "(regex template or the claude case-insensitivity rule changed). " +
-          "Re-sync buildPattern/haystackOf in scripts/check-topic-mapping.mjs.\n"
+          "Re-sync buildPattern/haystackOf in scripts/check-topic-mapping.mjs.\n",
       );
     }
   }
@@ -178,7 +211,7 @@ async function main() {
     console.error(
       onlyExam
         ? `No checkable exam "${onlyExam}" (needs scripts/sources/<prefix>_practice_questions.json with a per-question "topic" field).`
-        : "No checkable exams found. Prebuilt Claude exams carry per-question topic tags; AWS exams don't."
+        : "No checkable exams found. Prebuilt Claude exams carry per-question topic tags; AWS exams don't.",
     );
     process.exit(1);
   }
@@ -190,13 +223,15 @@ async function main() {
     const shipped = (await readJson(exam.shipped)).questions;
 
     if (!sourceQuestions[0] || typeof sourceQuestions[0].topic !== "string") {
-      console.log(`\n${exam.examId}: source has no per-question "topic" field — skipping (not checkable).`);
+      console.log(
+        `\n${exam.examId}: source has no per-question "topic" field — skipping (not checkable).`,
+      );
       continue;
     }
     if (sourceQuestions.length !== shipped.length) {
       console.warn(
         `\n${exam.examId}: source (${sourceQuestions.length}) and shipped (${shipped.length}) question counts differ — ` +
-          `data may be stale. Run \`npm run parse\` first.`
+          `data may be stale. Run \`npm run parse\` first.`,
       );
     }
 
@@ -207,17 +242,30 @@ async function main() {
     if (!pass) anyFail = true;
 
     console.log(`\n${"═".repeat(72)}`);
-    console.log(`${exam.examId}  ·  ${exam.examName}  ·  ${r.idx.length} topics, ${r.checked} questions`);
+    console.log(
+      `${exam.examId}  ·  ${exam.examName}  ·  ${r.idx.length} topics, ${r.checked} questions`,
+    );
     console.log(`${"─".repeat(72)}`);
-    console.log(`  ${pass ? "✅ PASS" : "❌ FAIL"}   (thresholds: correct ≥ ${MIN_CORRECT}%, wrong-only ≤ ${MAX_WRONG}%)`);
-    console.log(`  correct topic flagged : ${String(r.correct).padStart(4)}  (${pct(r.correct, r.checked)}%)`);
-    console.log(`  wrong topic only      : ${String(r.wrongOnly).padStart(4)}  (${pct(r.wrongOnly, r.checked)}%)`);
-    console.log(`  no match (lost)       : ${String(r.zero).padStart(4)}  (${pct(r.zero, r.checked)}%)`);
+    console.log(
+      `  ${pass ? "✅ PASS" : "❌ FAIL"}   (thresholds: correct ≥ ${MIN_CORRECT}%, wrong-only ≤ ${MAX_WRONG}%)`,
+    );
+    console.log(
+      `  correct topic flagged : ${String(r.correct).padStart(4)}  (${pct(r.correct, r.checked)}%)`,
+    );
+    console.log(
+      `  wrong topic only      : ${String(r.wrongOnly).padStart(4)}  (${pct(r.wrongOnly, r.checked)}%)`,
+    );
+    console.log(
+      `  no match (lost)       : ${String(r.zero).padStart(4)}  (${pct(r.zero, r.checked)}%)`,
+    );
     console.log(`  (of correct, also flagged an extra topic: ${r.extraFlag})`);
 
     if (r.missingTopic.size) {
-      console.log(`  ⚠️  ${r.missingTopic.size} source topic(s) have no matching study-guide title: ` +
-        [...r.missingTopic].slice(0, 5).join(" | ") + (r.missingTopic.size > 5 ? " …" : ""));
+      console.log(
+        `  ⚠️  ${r.missingTopic.size} source topic(s) have no matching study-guide title: ` +
+          [...r.missingTopic].slice(0, 5).join(" | ") +
+          (r.missingTopic.size > 5 ? " …" : ""),
+      );
     }
 
     const lowRecall = r.idx
@@ -226,10 +274,11 @@ async function main() {
       .sort((a, b) => a.p.hit / a.p.n - b.p.hit / b.p.n);
     if (lowRecall.length) {
       console.log(`\n  Low-recall topics (<70%):`);
-      for (const { t, p } of lowRecall) console.log(`    ${String(p.hit).padStart(2)}/${String(p.n).padStart(2)}  ${t.title}`);
+      for (const { t, p } of lowRecall)
+        console.log(`    ${String(p.hit).padStart(2)}/${String(p.n).padStart(2)}  ${t.title}`);
     }
 
-    const deadTopics = r.idx.filter((t) => (r.per.get(t.id).n === 0));
+    const deadTopics = r.idx.filter((t) => r.per.get(t.id).n === 0);
     if (VERBOSE && deadTopics.length) {
       console.log(`\n  Topics with no questions in the bank: ${deadTopics.length}`);
     }
@@ -237,9 +286,12 @@ async function main() {
     if (r.wrongOnly) {
       console.log(`\n  Mislabeled questions (flagged wrong topic, true topic missed):`);
       for (const w of r.wrongList.slice(0, VERBOSE ? Infinity : 15)) {
-        console.log(`    Q${w.num}  true="${w.topic}"  →  ${w.mapped.map((m) => `"${m}"`).join(", ")}`);
+        console.log(
+          `    Q${w.num}  true="${w.topic}"  →  ${w.mapped.map((m) => `"${m}"`).join(", ")}`,
+        );
       }
-      if (!VERBOSE && r.wrongList.length > 15) console.log(`    … and ${r.wrongList.length - 15} more (--verbose for all)`);
+      if (!VERBOSE && r.wrongList.length > 15)
+        console.log(`    … and ${r.wrongList.length - 15} more (--verbose for all)`);
     }
 
     if (VERBOSE && r.zero) {
@@ -249,7 +301,9 @@ async function main() {
   }
 
   console.log(`\n${"═".repeat(72)}`);
-  console.log(anyFail ? "❌ One or more exams failed the thresholds." : "✅ All checked exams passed.");
+  console.log(
+    anyFail ? "❌ One or more exams failed the thresholds." : "✅ All checked exams passed.",
+  );
   process.exit(anyFail ? 1 : 0);
 }
 

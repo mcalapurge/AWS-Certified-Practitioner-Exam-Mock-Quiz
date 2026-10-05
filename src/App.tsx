@@ -17,7 +17,7 @@ import { examsForProvider } from "@/features/quiz/lib/exams";
 const StudyScreen = lazy(() =>
   import("@/features/study/components/StudyScreen").then((m) => ({
     default: m.StudyScreen,
-  }))
+  })),
 );
 
 export default function App() {
@@ -42,7 +42,7 @@ export default function App() {
   // setup screen rather than interrupting an in-progress quiz.
   const [studyOpen, setStudyOpen] = useState(false);
   const [studyExamId, setStudyExamId] = useState<ExamId>(
-    () => examsForProvider(provider)[0].examId
+    () => examsForProvider(provider)[0].examId,
   );
 
   // When the provider switches, reset studyExamId to the new provider's first

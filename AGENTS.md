@@ -50,8 +50,9 @@ repos above and pulled in via `git submodule update --remote`.
 ```
 .
 ├── .gitmodules                                     # submodule pins
-├── .github/workflows/main.yaml                     # CI — build + S3 deploy (gated on [deploy] in the commit msg)
-├── .claude/skills/                                 # repo workflows: add-exam, check-data, deploy, sync-upstream
+├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, check-data
+├── .github/workflows/main.yaml                     # CD on push to main — build + S3 deploy
+├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream
 ├── AGENTS.md                                       # this file
 ├── CLAUDE.md                                       # pointer to AGENTS.md
 ├── LICENSE                                         # MIT
@@ -93,6 +94,7 @@ npm run parse      # regenerate JSON datasets from the markdown + prebuilt sourc
 npm run dev        # start Vite on http://localhost:5173 (parse runs first; PORT env overrides)
 npm run build      # tsc --noEmit && vite build (parse runs first)
 npm run preview    # preview the production build
+npm run test:e2e   # Playwright browser tests against the built app (run `npm run build` first)
 npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
 ```
 
@@ -117,13 +119,14 @@ Prefer them over improvising — they encode this repo's conventions and footgun
   the markdown-submodule and prebuilt-JSON paths; mirrors "Adding a new exam" below).
 - **`check-data`** — audit the weak-topic keyword mapping (`npm run check-data`).
 - **`sync-upstream`** — bump the AWS submodule pins and regenerate the datasets.
-- **`deploy`** — ship to production. **Non-obvious gating:** CI
-  (`.github/workflows/main.yaml`) only deploys when a commit pushed to `main`
-  has the literal string **`[deploy]`** in its message; any other push is a
-  silent no-op. The one build gate is `npm run build` (no separate test/lint
-  stage), so build locally first. The deploy runs `aws s3 sync … --delete` to
-  the production bucket — it's public and effectively irreversible, so get an
-  explicit user yes before pushing.
+
+## CI/CD
+
+CI (`.github/workflows/ci.yaml`) runs on every push: `npm run format:check`,
+`npm run typecheck`, `npm run check-data` (run locally with `npm run ci`;
+`npm run format` fixes style). CD (`.github/workflows/main.yaml`) deploys to S3
+(`aws s3 sync … --delete`) on every push to `main` — public and effectively
+irreversible, so get an explicit user yes before pushing to `main`.
 
 ## Folder conventions
 
@@ -204,7 +207,7 @@ Each exam's `ExamMeta` (`src/features/quiz/lib/exams.ts`) carries a
 for which exams appear in `SetupScreen`'s exam picker and `StudyScreen`'s exam
 tabs (it skips any id missing from `meta.json`, so a not-yet-parsed exam can't
 crash the picker). `useQuiz(provider)` takes the active provider and re-hydrates
-the in-progress quiz for *that* provider whenever it changes (the mount effect
+the in-progress quiz for _that_ provider whenever it changes (the mount effect
 is keyed on `provider`), so a saved AWS attempt never surfaces while Claude is
 active, and vice versa.
 
@@ -227,7 +230,7 @@ active, and vice versa.
 - **shadcn components.** Add new primitives with
   `npx shadcn@latest add <name>` — that respects `components.json`. Edit in place
   if you need to customize; do not re-export from `@/components/ui` indirectly.
-- **Comments.** Default to none. Only justify the *why* — hidden constraints,
+- **Comments.** Default to none. Only justify the _why_ — hidden constraints,
   workarounds, non-obvious invariants.
 - **Persistence keys.** localStorage keys are versioned (`examprep:v1:...`).
   If you change the on-disk shape, bump the version and add a load-time migration
@@ -259,6 +262,7 @@ into each other's UI despite sharing storage — splitting the key would add a
 second migration and a second source of truth for no behavioral change.
 
 The flagging timing depends on the feedback mode:
+
 - **Instant mode** — `useQuiz.lockAnswer` flags topics the moment a wrong answer
   is locked, so the guide grows in real time as the user works through the quiz
   (and survives if they exit before finishing).
@@ -267,6 +271,7 @@ The flagging timing depends on the feedback mode:
   instant-mode path so locks aren't re-flagged on submit.
 
 The guide surfaces in two places:
+
 - A weak-topics banner on the **Setup screen** with a tap-to-review affordance.
 - A **"Your study guide"** group at the top of the **StudyScreen** sidebar with
   a checkbox per topic. Unmastered topics get a `×N` hits badge for recurring
@@ -283,6 +288,7 @@ match than mis-attribute one. It applies only to the **markdown-sourced (AWS)**
 exams; prebuilt (Claude) sections carry hand-authored `keywords` in their
 source JSON and pass through unchanged — validate those with `npm run
 check-data`. The derived signal sources are:
+
 - "Amazon X" / "AWS X" service captures (highest precision)
 - ALL-CAPS acronyms 3-5 chars from titles and slugs (filtered against a stopword
   list for very generic terms like `AI`, `ML`, `GB`)
@@ -365,7 +371,7 @@ example.
 
 - Don't hand-edit files under `src/features/quiz/data/` or
   `src/features/study/data/` — they are regenerated. Prebuilt-JSON exam
-  content (no submodule) lives in `scripts/sources/` instead and *is*
+  content (no submodule) lives in `scripts/sources/` instead and _is_
   hand-edited directly — only the generated `data/` output is off-limits.
 - Don't commit changes inside the submodule directories. Send fixes upstream
   to the source repos linked at the top of this file, then bump the pin via
@@ -376,3 +382,12 @@ example.
 - Don't downgrade React below 19 — Radix's current minor versions require it.
 - Don't put localStorage writes or other side effects inside a `setState`
   updater — StrictMode runs them twice in dev.
+
+## Browser tests
+
+`tests/e2e/app.spec.ts` (Playwright, Chromium) drives the production build served
+by `vite preview` on port 4173: setup-screen screenshots at five viewports, the
+AWS ⇄ Claude toggle, a quiz start, and study notes. Each screenshot lands in
+`test-results/` and CI uploads every PNG as its own unzipped artifact. Build with
+the submodules initialised first, otherwise the parsers overwrite the committed
+AWS data.

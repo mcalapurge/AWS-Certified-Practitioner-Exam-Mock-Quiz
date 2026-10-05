@@ -81,7 +81,7 @@ export function StudyScreen({ provider, initialExamId, onExit }: Props) {
 
   const groups = useMemo(
     () => (studyGuideGroup ? [studyGuideGroup, ...allGroups] : allGroups),
-    [studyGuideGroup, allGroups]
+    [studyGuideGroup, allGroups],
   );
 
   const adornments = useMemo(() => {
@@ -137,7 +137,7 @@ export function StudyScreen({ provider, initialExamId, onExit }: Props) {
 
   const selected = useMemo(
     () => data.sections.find((s) => s.id === selectedId) ?? null,
-    [data, selectedId]
+    [data, selectedId],
   );
 
   return (
@@ -174,7 +174,8 @@ export function StudyScreen({ provider, initialExamId, onExit }: Props) {
             <div className="font-medium">
               {guideStats.remaining > 0 ? (
                 <>
-                  {guideStats.remaining} topic{guideStats.remaining === 1 ? "" : "s"} in your study guide
+                  {guideStats.remaining} topic{guideStats.remaining === 1 ? "" : "s"} in your study
+                  guide
                 </>
               ) : (
                 <>All flagged topics mastered — nice work.</>
@@ -199,9 +200,7 @@ export function StudyScreen({ provider, initialExamId, onExit }: Props) {
             <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
               <BookOpen className="size-4" />
               <span>{data.examShort} topics</span>
-              <span className="text-muted-foreground font-normal">
-                ({data.sectionCount})
-              </span>
+              <span className="text-muted-foreground font-normal">({data.sectionCount})</span>
             </div>
             <SectionPicker
               groups={groups}
@@ -214,9 +213,7 @@ export function StudyScreen({ provider, initialExamId, onExit }: Props) {
             {selected ? (
               <MarkdownView content={selected.content} />
             ) : (
-              <p className="text-sm text-muted-foreground">
-                Pick a topic to start reading.
-              </p>
+              <p className="text-sm text-muted-foreground">Pick a topic to start reading.</p>
             )}
           </article>
         </CardContent>

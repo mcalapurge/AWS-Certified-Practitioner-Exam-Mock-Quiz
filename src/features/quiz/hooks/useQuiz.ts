@@ -4,17 +4,10 @@ import { loadExam } from "../lib/exams";
 import { buildQuiz, emptyAnswer, finalize, isAnswerCorrect } from "../lib/scoring";
 import { mapQuestionToTopics } from "../../study/lib/topics";
 import { addTopics, loadStudyGuide, saveStudyGuide } from "../../study/lib/study-guide";
-import {
-  appendHistory,
-  clearInProgress,
-  loadInProgress,
-  saveInProgress,
-} from "../lib/storage";
+import { appendHistory, clearInProgress, loadInProgress, saveInProgress } from "../lib/storage";
 
 export type View =
-  | { kind: "setup" }
-  | { kind: "quiz"; state: QuizState }
-  | { kind: "results"; result: QuizResult };
+  { kind: "setup" } | { kind: "quiz"; state: QuizState } | { kind: "results"; result: QuizResult };
 
 const PERSIST_DEBOUNCE_MS = 200;
 
@@ -60,7 +53,7 @@ export function useQuiz(provider: Provider) {
         setStarting(false);
       }
     },
-    [provider]
+    [provider],
   );
 
   const resumeQuiz = useCallback(() => {
@@ -108,9 +101,7 @@ export function useQuiz(provider: Provider) {
         if (q && ans && !isAnswerCorrect(q, ans.selected)) {
           const topicIds = mapQuestionToTopics(q, next.config.examId);
           if (topicIds.length) {
-            saveStudyGuide(
-              addTopics(loadStudyGuide(), topicIds, next.config.examId)
-            );
+            saveStudyGuide(addTopics(loadStudyGuide(), topicIds, next.config.examId));
             window.dispatchEvent(new Event("examprep:study-guide-changed"));
           }
         }
@@ -118,7 +109,7 @@ export function useQuiz(provider: Provider) {
       setInProgress(next);
       setView({ kind: "quiz", state: next });
     },
-    [view]
+    [view],
   );
 
   const exitToSetup = useCallback(() => {
@@ -155,7 +146,7 @@ export function useQuiz(provider: Provider) {
       finishQuiz,
       exitToSetup,
       restart,
-    ]
+    ],
   );
 }
 
@@ -180,7 +171,7 @@ function addIncorrectTopicsToGuide(result: QuizResult) {
 export function setQuestionSelection(
   state: QuizState,
   questionId: string,
-  selected: string[]
+  selected: string[],
 ): QuizState {
   const prev = state.answers[questionId] ?? emptyAnswer();
   return {

@@ -16,7 +16,8 @@ export function QuestionGrid({ state, onJump }: Props) {
       >
         {state.questions.map((q, i) => {
           const a = state.answers[q.id];
-          let stateClass = "border-border bg-secondary text-muted-foreground hover:border-primary/60 hover:text-foreground";
+          let stateClass =
+            "border-border bg-secondary text-muted-foreground hover:border-primary/60 hover:text-foreground";
 
           if (a) {
             if (state.config.feedback === "instant" && a.locked) {
@@ -38,7 +39,7 @@ export function QuestionGrid({ state, onJump }: Props) {
                 "h-9 rounded-md border text-sm font-semibold transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 stateClass,
-                i === state.cursor && "ring-2 ring-primary"
+                i === state.cursor && "ring-2 ring-primary",
               )}
             >
               {i + 1}
