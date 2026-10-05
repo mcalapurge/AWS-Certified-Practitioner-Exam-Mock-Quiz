@@ -296,3 +296,40 @@ describe("CLI", () => {
     }
   });
 });
+
+describe("answer-confidence counts", () => {
+  test("are null for exams without ratings", () => {
+    assert.equal(summariseExam(awsLike()).confidence, null);
+  });
+
+  test("count each rating and flag disputed or unrated questions", () => {
+    const exam = claudeLike();
+    const rags = ["green", "green", "amber", "red", null, "amber"];
+    exam.questions.forEach((x, i) => {
+      x.rag = rags[i];
+      x.timeSensitive = i < 2;
+    });
+    const s = summariseExam(exam);
+    assert.deepEqual(s.confidence, { green: 2, amber: 2, red: 1, unrated: 1, timeSensitive: 2 });
+    const w = s.warnings.join("\n");
+    assert.match(w, /1 question\(s\) have a disputed \(red\) answer key/);
+    assert.match(w, /1 question\(s\) have no answer-confidence rating/);
+    const html = renderHtml(buildReport([exam]));
+    assert.match(
+      html,
+      /Verified 2 · .*Best practice 2 · .*Disputed 1 · Unrated 1 · Recently changed 2/,
+    );
+    assert.match(
+      renderMarkdown(buildReport([exam])),
+      /🟢 2 verified · 🟠 2 best practice · 🔴 1 disputed/,
+    );
+  });
+
+  test("the real CCDV-F bank is fully rated with nothing disputed", async () => {
+    const report = buildReport(await loadExams());
+    const ccdvf = report.exams.find((e) => e.examId === "developer-foundations");
+    assert.equal(ccdvf.confidence.unrated, 0);
+    assert.equal(ccdvf.confidence.red, 0);
+    assert.equal(ccdvf.confidence.green + ccdvf.confidence.amber, ccdvf.questionCount);
+  });
+});

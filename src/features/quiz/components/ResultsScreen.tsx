@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import type { QuizResult } from "../types";
 import { isAnswerCorrect } from "../lib/scoring";
 import { RichText } from "./RichText";
+import { ConfidenceFootnote } from "./ConfidenceFootnote";
 
 type Filter = "all" | "wrong" | "right";
 
@@ -131,6 +132,9 @@ export function ResultsScreen({ result, examName, onRestart }: Props) {
                     text={q.explanation}
                     className="text-xs text-muted-foreground leading-relaxed mt-2"
                   />
+                )}
+                {q.confidence && (
+                  <ConfidenceFootnote confidence={q.confidence} revealed className="mt-3" />
                 )}
               </li>
             );

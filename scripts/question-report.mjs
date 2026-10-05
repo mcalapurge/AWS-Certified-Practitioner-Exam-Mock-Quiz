@@ -30,6 +30,7 @@ export const THIN_TOPIC_THRESHOLD = 3;
 // A category whose share is further than this from its blueprint weight is flagged.
 export const WEIGHT_TOLERANCE = 0.05;
 const LETTERS = ["A", "B", "C", "D"];
+const RAGS = ["green", "amber", "red"];
 
 const readJson = async (p) => JSON.parse(await readFile(p, "utf8"));
 
@@ -102,6 +103,8 @@ export async function loadExams(repoRoot = REPO_ROOT) {
           correct: q.correct,
           topic: src ? (s?.topic ?? null) : undefined,
           complexity: s?.complexity ?? null,
+          rag: s?.confidence?.rag ?? null,
+          timeSensitive: s?.confidence?.timeSensitive === true,
         };
       }),
     });
@@ -200,6 +203,21 @@ export function summariseExam(exam) {
         .sort((a, b) => byName(a.name, b.name))
     : null;
 
+  // Answer-key review ratings (prebuilt exams only). null when nothing was reviewed.
+  let confidence = null;
+  if (exam.questions.some((q) => q.rag)) {
+    confidence = { green: 0, amber: 0, red: 0, unrated: 0, timeSensitive: 0 };
+    for (const q of exam.questions) {
+      if (RAGS.includes(q.rag)) confidence[q.rag]++;
+      else confidence.unrated++;
+      if (q.timeSensitive) confidence.timeSensitive++;
+    }
+    if (confidence.red)
+      warnings.push(`${confidence.red} question(s) have a disputed (red) answer key.`);
+    if (confidence.unrated)
+      warnings.push(`${confidence.unrated} question(s) have no answer-confidence rating.`);
+  }
+
   return {
     examId: exam.examId,
     examName: exam.examName,
@@ -211,6 +229,7 @@ export function summariseExam(exam) {
     topics,
     complexity,
     answerKey,
+    confidence,
     warnings,
   };
 }
@@ -304,6 +323,13 @@ function renderExam(e) {
     ? `<p class="muted">Complexity: ${e.complexity.map((c) => `${escapeHtml(c.name)} ${c.count}`).join(" · ")}</p>`
     : "";
 
+  const c = e.confidence;
+  const confidenceLine = c
+    ? `<p class="muted">Answer confidence: <span class="rag rag-green">●</span> Verified ${c.green} · <span class="rag rag-amber">●</span> Best practice ${c.amber} · <span class="rag rag-red">●</span> Disputed ${c.red}${
+        c.unrated ? ` · Unrated ${c.unrated}` : ""
+      } · Recently changed ${c.timeSensitive}</p>`
+    : "";
+
   const warnings = e.warnings.length
     ? `<ul class="warnings">${e.warnings.map((w) => `<li>${escapeHtml(w)}</li>`).join("")}</ul>`
     : `<p class="ok">No coverage warnings.</p>`;
@@ -331,6 +357,7 @@ function renderExam(e) {
         <tbody><tr>${answerRow}</tr></tbody>
       </table>
       ${complexity}
+      ${confidenceLine}
       ${warnings}
     </section>`;
 }
@@ -350,9 +377,9 @@ export function renderHtml(report) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Question Coverage Report</title>
 <style>
-  :root { --bg:#fafaf9; --fg:#1c1917; --muted:#57534e; --line:#e7e5e4; --card:#ffffff; --accent:#c2410c; --warn:#b45309; --ok:#15803d; --track:#f5f5f4; }
+  :root { --bg:#fafaf9; --fg:#1c1917; --muted:#57534e; --line:#e7e5e4; --card:#ffffff; --accent:#c2410c; --warn:#b45309; --ok:#15803d; --bad:#b91c1c; --track:#f5f5f4; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#1c1917; --fg:#f5f5f4; --muted:#a8a29e; --line:#44403c; --card:#292524; --accent:#fb923c; --warn:#fbbf24; --ok:#4ade80; --track:#44403c; }
+    :root { --bg:#1c1917; --fg:#f5f5f4; --muted:#a8a29e; --line:#44403c; --card:#292524; --accent:#fb923c; --warn:#fbbf24; --ok:#4ade80; --bad:#f87171; --track:#44403c; }
   }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -380,6 +407,9 @@ export function renderHtml(report) {
   a { color:var(--accent); }
   .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
   .code { white-space:nowrap; }
+  .rag-green { color:var(--ok); }
+  .rag-amber { color:var(--warn); }
+  .rag-red { color:var(--bad); }
   @media (max-width: 640px) {
     .hide-sm { display:none; }
     section { padding:14px; }
@@ -431,6 +461,13 @@ export function renderMarkdown(report) {
     );
     for (const c of e.categories)
       lines.push(`| ${c.name.replaceAll("|", "\\|")} | ${c.count} | ${pct(c.share)} |`);
+    if (e.confidence) {
+      const c = e.confidence;
+      lines.push(
+        "",
+        `Answer confidence: 🟢 ${c.green} verified · 🟠 ${c.amber} best practice · 🔴 ${c.red} disputed · ${c.timeSensitive} recently changed`,
+      );
+    }
   }
   return lines.join("\n") + "\n";
 }

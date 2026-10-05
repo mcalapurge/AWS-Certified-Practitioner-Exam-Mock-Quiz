@@ -96,3 +96,50 @@ test("study notes open from setup", async ({ browser }, testInfo) => {
     await context.close();
   }
 });
+
+test("CCDV-F questions show an answer-confidence footnote", async ({ browser }, testInfo) => {
+  const { context, page } = await openPage(browser, 390, 844, 2);
+  try {
+    await page.getByRole("tab", { name: "Claude" }).click();
+    await page.getByText("Claude Certified Developer – Foundations").first().click();
+    await page.getByLabel("Custom").fill("3");
+    await page.getByRole("button", { name: /Start new quiz/ }).click();
+
+    const trigger = page.getByRole("button", { name: /^Answer confidence: / });
+    await expect(trigger).toBeVisible();
+    await expect(trigger).toHaveAttribute("data-rag", /^(green|amber|red)$/);
+
+    // Doc links stay hidden until the question is answered, so they can't hint at it.
+    await trigger.click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toContainText("Reviewed Oct 2026");
+    await expect(dialog).toContainText("Disputed:");
+    await expect(dialog.getByRole("link")).toHaveCount(0);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+
+    await page.locator("button[aria-pressed]").first().click();
+    await page.getByRole("button", { name: "Submit answer" }).click();
+    await trigger.click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await settle(page);
+    await page.screenshot({
+      path: testInfo.outputPath("confidence-390x844-2x.png"),
+      fullPage: true,
+    });
+  } finally {
+    await context.close();
+  }
+});
+
+test("AWS questions show no answer-confidence footnote", async ({ browser }) => {
+  const { context, page } = await openPage(browser, 1280, 720, 1);
+  try {
+    await page.getByLabel("Custom").fill("3");
+    await page.getByRole("button", { name: /Start new quiz/ }).click();
+    await expect(page.locator("button[aria-pressed]").first()).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Answer confidence: / })).toHaveCount(0);
+  } finally {
+    await context.close();
+  }
+});

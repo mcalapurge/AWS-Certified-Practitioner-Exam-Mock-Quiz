@@ -154,13 +154,15 @@ src/
 │   ├── lib/
 │   │   ├── exams.ts          # examMeta (eager) + examsForProvider(provider) + loadExam(id) (async chunk)
 │   │   ├── scoring.ts        # buildQuiz, isAnswerCorrect, finalize, answeredCount
-│   │   └── storage.ts        # localStorage load/save helpers
+│   │   ├── storage.ts        # localStorage load/save helpers
+│   │   └── confidence.ts     # answer-confidence (RAG) wording + legend
 │   ├── hooks/
 │   │   └── useQuiz.ts        # state machine + lockAnswer (instant-mode flagging)
 │   └── components/
 │       ├── SetupScreen.tsx
 │       ├── QuizScreen.tsx
 │       ├── QuestionCard.tsx
+│       ├── ConfidenceFootnote.tsx # RAG footnote + details popover
 │       ├── QuestionGrid.tsx
 │       ├── ResumeBanner.tsx
 │       ├── ResultsScreen.tsx
@@ -350,7 +352,8 @@ example.
 1. Drop the raw file(s) in `scripts/sources/` as a
    `<prefix>_practice_questions.json` + `<prefix>_study_guide.json` pair.
    Questions need `id`, `domain`, `question`, `options` (an object keyed by
-   letter), `correct` (array of letters), `explanation`, and optionally a
+   letter), `correct` (array of letters), `explanation`, optionally a
+   `confidence` rating (see "Answer confidence (RAG)" below), and optionally a
    `topic` matching a study-guide section title (only that lets `check-data`
    grade the exam's keyword mapping); sections must already match the app's
    `Section` shape (`{id, examId, slug, category, title, keywords, content}`) —
@@ -387,6 +390,48 @@ example.
 - Don't downgrade React below 19 — Radix's current minor versions require it.
 - Don't put localStorage writes or other side effects inside a `setState`
   updater — StrictMode runs them twice in dev.
+
+## Answer confidence (RAG)
+
+Prebuilt (Claude) questions may carry a `confidence` object, recording how well
+their answer key has been verified. The parser passes it through to the shipped
+data, and `QuestionCard`/`ResultsScreen` render it as a footnote
+(`features/quiz/components/ConfidenceFootnote.tsx`). The footnote is a
+colour-plus-icon label that opens a popover explaining the rating, with a legend
+for all three statuses. Doc links appear only after the question is answered,
+since they could hint at it. Questions without the field, such as all AWS
+questions, show no footnote.
+
+```json
+"confidence": {
+  "rag": "green | amber | red",
+  "level": "high | medium | low",
+  "basis": "docs | reasoning",
+  "timeSensitive": false,
+  "reviewed": "2026-10-05",
+  "reworded": true,
+  "sources": ["https://platform.claude.com/docs/en/..."]
+}
+```
+
+- **green**: a reviewer answered blind, matched the key with high confidence,
+  and confirmed it in Anthropic's docs.
+- **amber**: matched the key, but rests on best-practice reasoning or medium
+  confidence.
+- **red**: a reviewer disagreed or had low confidence.
+- `reworded` (optional) marks questions edited after review.
+- `timeSensitive` marks answers that depend on recently changed platform
+  behaviour, which the live exam may lag.
+
+`tests/unit/question-confidence-data.test.mjs` enforces the schema and the
+rules that tie a rating to its evidence: green needs `high` + `docs` + a
+source, low confidence must be red, and sources must be Anthropic-owned docs. It
+also checks that every CCDV-F question is rated. When you add or edit a
+prebuilt question, re-review it and set `confidence` to match, or the test will
+fail. The coverage report counts ratings per exam and warns on red or unrated
+questions. User-facing wording lives in `features/quiz/lib/confidence.ts`, which
+`tests/unit/confidence.test.mjs` imports directly through Node's type
+stripping, so keep that file free of runtime imports.
 
 ## Question coverage report
 
