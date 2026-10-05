@@ -38,11 +38,19 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Unit tests
+        run: npm test
+
       - name: Topic mapping accuracy
         run: npm run check-data
 
       - name: Build
         run: npm run build
+
+      # Runs after the build so it reads the data the parsers just regenerated.
+      # Writes report/question-report.{html,json} and a job-summary digest.
+      - name: Question coverage report
+        run: npm run report
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
@@ -52,15 +60,15 @@ jobs:
         run: npm run test:e2e
 
       # upload-artifact only skips the zip for a single file, so call its client
-      # library directly and upload each screenshot as its own unzipped artifact.
-      # Unzipped PNGs open in the browser from the run page.
+      # library directly and upload each screenshot and report file as its own
+      # unzipped artifact, so nothing needs extracting after download.
       - name: Install artifact client
         if: always()
         run: |
           mkdir -p "$RUNNER_TEMP/artifact-client"
           npm install --prefix "$RUNNER_TEMP/artifact-client" @actions/artifact@6.2.1
 
-      - name: Upload screenshots
+      - name: Upload screenshots and question report
         if: always()
         uses: actions/github-script@v9
         with:
@@ -70,8 +78,8 @@ jobs:
               `${process.env.RUNNER_TEMP}/artifact-client/node_modules/@actions/artifact/lib/artifact.js`
             )
             const client = new DefaultArtifactClient()
-            const screenshots = await glob.create('test-results/*/*.png')
-            for await (const file of screenshots.globGenerator()) {
+            const files = await glob.create('test-results/*/*.png\nreport/question-report.*')
+            for await (const file of files.globGenerator()) {
               const { id } = await client.uploadArtifact(basename(file), [file], dirname(file), {
                 skipArchive: true,
                 retentionDays: 7,

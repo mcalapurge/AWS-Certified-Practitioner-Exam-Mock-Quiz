@@ -17,7 +17,7 @@
     "examId": "developer-foundations",
     "examName": "Claude Certified Developer – Foundations",
     "examShort": "CCDV-F",
-    "questionCount": 226,
+    "questionCount": 467,
     "provider": "claude"
   },
   "associate-foundations": {

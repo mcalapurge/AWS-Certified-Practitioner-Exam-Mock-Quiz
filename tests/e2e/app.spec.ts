@@ -96,3 +96,60 @@ test("study notes open from setup", async ({ browser }, testInfo) => {
     await context.close();
   }
 });
+
+test("CCDV-F questions show an answer-confidence footnote", async ({ browser }, testInfo) => {
+  const { context, page } = await openPage(browser, 390, 844, 2);
+  try {
+    await page.getByRole("tab", { name: "Claude" }).click();
+    await page.getByText("Claude Certified Developer – Foundations").first().click();
+    await page.getByLabel("Custom").fill("3");
+    // Keep source order so the first question is a known docs-backed one.
+    await page.getByRole("checkbox", { name: /Shuffle questions/ }).click();
+    await page.getByRole("button", { name: /Start new quiz/ }).click();
+
+    const trigger = page.getByRole("button", { name: /^Answer confidence: / });
+    await expect(trigger).toBeVisible();
+    await expect(trigger).toHaveAttribute("data-rag", /^(green|amber|red)$/);
+
+    // Doc links stay hidden until the question is answered, so they can't hint at it.
+    await trigger.click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toContainText("Reviewed Oct 2026");
+    await expect(dialog).toContainText("Disputed:");
+    await expect(dialog).toContainText("Documentation links appear once you've answered.");
+    await expect(dialog.getByRole("link")).toHaveCount(0);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+
+    // Multi-select questions keep Submit disabled until enough options are
+    // picked; this stays robust if the bank's order changes.
+    const submit = page.getByRole("button", { name: "Submit answer" });
+    const options = page.locator("button[aria-pressed]");
+    for (let i = 0; !(await submit.isEnabled()); i++) await options.nth(i).click();
+    await submit.click();
+    await trigger.click();
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("link").first()).toBeVisible();
+    await expect(dialog.getByRole("link").first()).toHaveAttribute("href", /^https:\/\//);
+    await expect(dialog).not.toContainText("Documentation links appear once you've answered.");
+    await settle(page);
+    await page.screenshot({
+      path: testInfo.outputPath("confidence-390x844-2x.png"),
+      fullPage: true,
+    });
+  } finally {
+    await context.close();
+  }
+});
+
+test("AWS questions show no answer-confidence footnote", async ({ browser }) => {
+  const { context, page } = await openPage(browser, 1280, 720, 1);
+  try {
+    await page.getByLabel("Custom").fill("3");
+    await page.getByRole("button", { name: /Start new quiz/ }).click();
+    await expect(page.locator("button[aria-pressed]").first()).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Answer confidence: / })).toHaveCount(0);
+  } finally {
+    await context.close();
+  }
+});

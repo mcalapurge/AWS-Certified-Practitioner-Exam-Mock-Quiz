@@ -60,6 +60,7 @@ function buildPrebuiltQuestions(exam, raw) {
     correct: q.correct,
     multi: q.correct.length > 1,
     explanation: q.explanation,
+    ...(q.confidence ? { confidence: q.confidence } : {}),
   }));
 }
 

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import type { AnswerRecord, FeedbackMode, Question } from "../types";
 import { isAnswerCorrect } from "../lib/scoring";
 import { RichText } from "./RichText";
+import { ConfidenceFootnote } from "./ConfidenceFootnote";
 
 interface Props {
   question: Question;
@@ -93,6 +94,14 @@ export function QuestionCard({
         )}
 
         {showResult && <ResultBanner question={question} correct={isCorrect} />}
+
+        {question.confidence && (
+          <ConfidenceFootnote
+            confidence={question.confidence}
+            revealed={showResult}
+            className="border-t pt-3"
+          />
+        )}
       </CardContent>
     </Card>
   );

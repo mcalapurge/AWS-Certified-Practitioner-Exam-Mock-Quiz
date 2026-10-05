@@ -29,7 +29,7 @@ under `scripts/sources/`, one `_practice_questions.json` + `_study_guide.json`
 pair per exam:
 
 - `ccdvf_practice_questions.json` + `ccdvf_study_guide.json` — Claude Certified
-  Developer – Foundations (CCDV-F): 226 questions + 63 study sections.
+  Developer – Foundations (CCDV-F): 467 questions + 90 study sections.
 - `ccao_practice_questions.json` + `ccao_study_guide.json` — Claude Certified
   Associate – Foundations (CCAO-F): 487 questions + 37 study sections.
 
@@ -50,16 +50,16 @@ repos above and pulled in via `git submodule update --remote`.
 ```
 .
 ├── .gitmodules                                     # submodule pins
-├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, check-data
+├── .github/workflows/ci.yaml                       # CI on every push — prettier, typecheck, unit tests, check-data, build, report, e2e
 ├── .github/workflows/main.yaml                     # CD on push to main — build + S3 deploy
-├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream
+├── .claude/skills/                                 # repo workflows: add-exam, check-data, sync-upstream, validate-questions
 ├── AGENTS.md                                       # this file
 ├── CLAUDE.md                                       # pointer to AGENTS.md
 ├── LICENSE                                         # MIT
 ├── README.md
 ├── AWS-Certified-Cloud-Practitioner-Notes/         # submodule — read-only upstream
 ├── aws-certified-ai-practitioner-study-notes/      # submodule — read-only upstream
-├── scripts/                                        # markdown/JSON → app-data parsers
+├── scripts/                                        # markdown/JSON → app-data parsers, data check, coverage report
 │   └── sources/                                    # static source JSON for prebuilt exams (Claude)
 └── src/                                            # the React app
 ```
@@ -96,6 +96,9 @@ npm run build      # tsc --noEmit && vite build (parse runs first)
 npm run preview    # preview the production build
 npm run test:e2e   # Playwright browser tests against the built app (run `npm run build` first)
 npm run check-data # audit weak-topic keyword mapping for the prebuilt (Claude) exams
+npm test           # unit tests (Node's built-in runner, tests/unit/**/*.test.mjs)
+npm run report     # question-coverage report → report/question-report.{html,json}
+npm run questions -- diff  # lint + list questions added/changed since origin/main that still need a review
 ```
 
 `check-data` (`scripts/check-topic-mapping.mjs`) is a regression gate for the
@@ -119,12 +122,21 @@ Prefer them over improvising — they encode this repo's conventions and footgun
   the markdown-submodule and prebuilt-JSON paths; mirrors "Adding a new exam" below).
 - **`check-data`** — audit the weak-topic keyword mapping (`npm run check-data`).
 - **`sync-upstream`** — bump the AWS submodule pins and regenerate the datasets.
+- **`validate-questions`** — validate the prebuilt questions a diff (PR/MR,
+  branch, commit range or uncommitted work) adds or changes: lint them, have
+  subagents answer them blind against Anthropic's docs, adjudicate
+  disagreements, then populate each one's `confidence` rating, `source_id`, the
+  bank totals and topic keywords (`scripts/review-questions.mjs`,
+  `npm run questions -- <diff|prepare|compare|apply|keywords|lint>`).
 
 ## CI/CD
 
 CI (`.github/workflows/ci.yaml`) runs on every push: `npm run format:check`,
-`npm run typecheck`, `npm run check-data` (run locally with `npm run ci`;
-`npm run format` fixes style). CD (`.github/workflows/main.yaml`) deploys to S3
+`npm run typecheck`, `npm test`, `npm run check-data`, the build, `npm run
+report`, and the Playwright tests (run the fast subset locally with `npm run
+ci`; `npm run format` fixes style). The question report and screenshots are
+uploaded as unzipped artifacts, and the report's digest is added to the job
+summary. CD (`.github/workflows/main.yaml`) deploys to S3
 (`aws s3 sync … --delete`) on every push to `main` — public and effectively
 irreversible, so get an explicit user yes before pushing to `main`.
 
@@ -149,13 +161,15 @@ src/
 │   ├── lib/
 │   │   ├── exams.ts          # examMeta (eager) + examsForProvider(provider) + loadExam(id) (async chunk)
 │   │   ├── scoring.ts        # buildQuiz, isAnswerCorrect, finalize, answeredCount
-│   │   └── storage.ts        # localStorage load/save helpers
+│   │   ├── storage.ts        # localStorage load/save helpers
+│   │   └── confidence.ts     # answer-confidence (RAG) wording + legend
 │   ├── hooks/
 │   │   └── useQuiz.ts        # state machine + lockAnswer (instant-mode flagging)
 │   └── components/
 │       ├── SetupScreen.tsx
 │       ├── QuizScreen.tsx
 │       ├── QuestionCard.tsx
+│       ├── ConfidenceFootnote.tsx # RAG footnote + details popover
 │       ├── QuestionGrid.tsx
 │       ├── ResumeBanner.tsx
 │       ├── ResultsScreen.tsx
@@ -345,7 +359,8 @@ example.
 1. Drop the raw file(s) in `scripts/sources/` as a
    `<prefix>_practice_questions.json` + `<prefix>_study_guide.json` pair.
    Questions need `id`, `domain`, `question`, `options` (an object keyed by
-   letter), `correct` (array of letters), `explanation`, and optionally a
+   letter), `correct` (array of letters), `explanation`, optionally a
+   `confidence` rating (see "Answer confidence (RAG)" below), and optionally a
    `topic` matching a study-guide section title (only that lets `check-data`
    grade the exam's keyword mapping); sections must already match the app's
    `Section` shape (`{id, examId, slug, category, title, keywords, content}`) —
@@ -382,6 +397,82 @@ example.
 - Don't downgrade React below 19 — Radix's current minor versions require it.
 - Don't put localStorage writes or other side effects inside a `setState`
   updater — StrictMode runs them twice in dev.
+
+## Answer confidence (RAG)
+
+Prebuilt (Claude) questions may carry a `confidence` object, recording how well
+their answer key has been verified. The parser passes it through to the shipped
+data, and `QuestionCard`/`ResultsScreen` render it as a footnote
+(`features/quiz/components/ConfidenceFootnote.tsx`). The footnote is a
+colour-plus-icon label that opens a popover explaining the rating, with a legend
+for all three statuses. Doc links appear only after the question is answered,
+since they could hint at it. Questions without the field, such as all AWS
+questions, show no footnote.
+
+```json
+"confidence": {
+  "rag": "green | amber | red",
+  "level": "high | medium | low",
+  "basis": "docs | reasoning",
+  "timeSensitive": false,
+  "reviewed": "2026-10-05",
+  "reworded": true,
+  "sources": ["https://platform.claude.com/docs/en/..."],
+  "contentHash": "0123456789abcdef"
+}
+```
+
+- **green**: a reviewer answered blind, matched the key with high confidence,
+  and confirmed it in Anthropic's docs.
+- **amber**: matched the key, but rests on best-practice reasoning or medium
+  confidence.
+- **red**: a reviewer disagreed or had low confidence.
+- `reworded` (optional) marks questions edited after review.
+- `timeSensitive` marks answers that depend on recently changed platform
+  behaviour, which the live exam may lag.
+- `contentHash` (written by `apply`) is a hash of the question, options, key
+  and explanation that were reviewed. `diff` treats the rating as current only
+  while it still matches.
+
+`tests/unit/question-confidence-data.test.mjs` enforces the schema and the
+rules that tie a rating to its evidence: green needs `high` + `docs` + a
+source, low confidence must be red, and sources must be Anthropic-owned docs. It
+also checks that every CCDV-F question is rated. When you add or edit a
+prebuilt question, run the `validate-questions` skill: it reviews the questions
+your diff touched and writes `confidence` for you (don't hand-edit it), or the
+test will fail. `npm run questions -- diff` flags any rating older than the
+latest edit to its question.
+
+`tests/unit/question-length-tell.test.mjs` guards both banks against an
+answer-length tell: the keyed option may be the longest option in at most 40%
+of single-answer questions (`LONGEST_KEYED_MAX`), and no other length rank may
+exceed that either. `npm run questions -- lint` fails a bank over the limit.
+When writing questions, keep keys to their essential claim (detail goes in the
+explanation) and give distractors comparable, plausible-but-wrong detail. The coverage report counts ratings per exam and warns on red or unrated
+questions. User-facing wording lives in `features/quiz/lib/confidence.ts`, which
+`tests/unit/confidence.test.mjs` imports directly through Node's type
+stripping, so keep that file free of runtime imports.
+
+## Question coverage report
+
+`scripts/question-report.mjs` counts questions per exam and per category:
+domains for prebuilt (Claude) exams, with blueprint weight and drift, or
+practice sets for AWS exams. Prebuilt exams also get per-topic counts, the
+complexity mix and the answer-key spread. It reads the generated
+`src/features/quiz/data/` plus `scripts/sources/` (only the source banks carry
+topics and weights) and writes to `report/` (gitignored):
+
+- `question-report.json`: the canonical data, with a versioned `schemaVersion`.
+- `question-report.html`: a self-contained view of the same data (inline CSS,
+  no scripts or network, light/dark), with the JSON embedded in a
+  `<script type="application/json" id="report-data">` block.
+
+Warnings flag meta/data count mismatches, untagged questions, topics with no
+study section or no questions, thin topics (< 3 questions), and domains more
+than 5 percentage points off their blueprint weight. They are informational and
+never fail CI. Pure functions are exported and covered by
+`tests/unit/question-report.test.mjs`. If you change the JSON shape, bump
+`SCHEMA_VERSION`.
 
 ## Browser tests
 

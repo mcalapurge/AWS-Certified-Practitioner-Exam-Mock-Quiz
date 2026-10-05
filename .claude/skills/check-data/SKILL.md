@@ -77,7 +77,7 @@ Per exam it prints:
 - **Low-recall topics** and, with `--verbose`, the exact unmatched / mislabeled
   question ids to target.
 
-Healthy baseline (2026-08-07): `associate-foundations` 95.1% correct / 0%
+Healthy baseline (2026-10-05): `associate-foundations` 95.1% correct / 0%
 wrong-only; `developer-foundations` 100% / 0%.
 
 ## Step 4 — If an exam fails, fix the keywords
