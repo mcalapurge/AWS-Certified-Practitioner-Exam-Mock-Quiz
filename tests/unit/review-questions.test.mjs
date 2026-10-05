@@ -8,6 +8,7 @@ import {
   applyPatch,
   blindItem,
   buildPattern,
+  contentHash,
   deriveConfidence,
   diffBank,
   fillSourceIds,
@@ -15,6 +16,7 @@ import {
   haystack,
   lintConfidence,
   lintContext,
+  keyLengthRanks,
   lintQuestion,
   longestKeyedShare,
   main,
@@ -127,6 +129,15 @@ describe("reviewReason", () => {
       "retags don't count",
     );
   });
+  test("a recorded content hash decides staleness, even for an identical re-rating", () => {
+    const stamped = {
+      ...edited,
+      confidence: { ...rated.confidence, contentHash: contentHash(edited) },
+    };
+    assert.equal(reviewReason([rated, stamped]), null);
+    const editedAgain = { ...stamped, explanation: "Changed again." };
+    assert.match(reviewReason([rated, stamped, editedAgain]), /changed after it was last rated/);
+  });
   test("--all re-reviews everything", () => {
     assert.match(reviewReason([null, rated], { all: true }), /--all/);
   });
@@ -233,6 +244,8 @@ describe("lintConfidence", () => {
       lintConfidence({ ...base, sources: ["https://example.com/x"] }).join(),
       /not Anthropic docs/,
     );
+    assert.deepEqual(lintConfidence({ ...base, contentHash: "0123456789abcdef" }), []);
+    assert.match(lintConfidence({ ...base, contentHash: "abc" }).join(), /contentHash/);
   });
 });
 
@@ -241,6 +254,17 @@ test("longestKeyedShare counts keys that are the strictly longest option", () =>
   const short = q({ options: { ...q().options, A: "x" } });
   const multi = q({ correct: ["A", "B"] });
   assert.deepEqual(longestKeyedShare([long, short, multi]), { longest: 1, single: 2 });
+});
+
+test("keyLengthRanks counts how many options outlast each key", () => {
+  const long = q({ options: { ...q().options, A: "x".repeat(200) } });
+  const short = q({ options: { ...q().options, A: "x" } });
+  const second = q({ options: { ...q().options, B: "x".repeat(200) } });
+  const multi = q({ correct: ["A", "B"] });
+  assert.deepEqual(keyLengthRanks([long, short, second, multi]), {
+    ranks: [1, 1, 0, 1],
+    single: 3,
+  });
 });
 
 test("blindItem hides the key, explanation, topic and rating", () => {

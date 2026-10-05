@@ -2,7 +2,7 @@
   "examId": "associate-foundations",
   "examName": "Claude Certified Associate – Foundations",
   "examShort": "CCAO-F",
-  "generatedAt": "2026-08-07T15:42:19.117Z",
+  "generatedAt": "2026-10-05T15:10:05.120Z",
   "sectionCount": 37,
   "sections": [
     {
@@ -35,7 +35,9 @@
         "vague low-value",
         "prompt after",
         "draft correctly",
-        "draft still"
+        "draft still",
+        "what's wrong",
+        "revision"
       ],
       "content": "When a response falls short, the effective move is to diagnose specifically what's wrong (too long, wrong tone, missing a requirement, uses jargon) and give a targeted instruction addressing exactly that gap — not to vaguely say 'this isn't right' or resend the identical prompt hoping for a different result.\n\nThe exam tests recognition of specific, actionable feedback ('cut this to half the length, make the tone more conversational') versus vague feedback ('make it better'). Also watch for the scenario where a requirement was never actually stated in the original prompt — that's a prompting gap to fill in, not a model error to blame."
     },
@@ -52,7 +54,9 @@
         "prompt summarize",
         "reliably produces",
         "best supplies",
-        "providing context"
+        "providing context",
+        "constraints and format",
+        "clarifying audience"
       ],
       "content": "The exam's foundational prompting framework breaks an effective prompt into five elements: role (who Claude should act as), context (relevant background), task (the specific thing to do), constraint (limits like length, tone, or things to avoid), and format (the desired shape of the output). A prompt missing several of these tends to produce a generic, unfocused response, because Claude has to guess at what 'good' looks like for that specific situation.\n\nOn the exam, expect scenario questions that show a thin, underspecified prompt and ask what's missing, or that ask you to identify which prompt among several options best supplies all five elements. The pattern to recognize: a bare topic with no role/context/constraint/format is the weak option; the strongest option names a role, gives background, states the task, bounds it (length/tone), and specifies the output shape."
     },
@@ -69,7 +73,8 @@
         "well-written meeting",
         "good example",
         "words professional",
-        "imperfect match"
+        "imperfect match",
+        "abstract"
       ],
       "content": "Providing one or more examples of a desired style, tone, or format ('example-driven' or 'few-shot' prompting) resolves ambiguity that a purely verbal description can leave open — 'professional but warm' means different things to different people, but a concrete example pins it down. This is especially valuable for recurring tasks (weekly reports, standard client replies) where a validated past example can be reused as a template.\n\nWatch for the nuance that a single example carries some risk of over-fitting to incidental details (like the specific topic) rather than the general pattern intended — and that using an imperfect example still works if you explicitly note which aspects to follow and which don't apply."
     },
@@ -119,7 +124,8 @@
         "dataset summary",
         "research task",
         "request skip",
-        "explicitly tell"
+        "explicitly tell",
+        "divergent brainstorming"
       ],
       "content": "Different task types call for different prompting emphasis: brainstorming benefits from loosened constraints and explicit requests for volume/variety; drafting benefits from tight constraints on tone, structure, and audience; analysis needs clear evaluative questions or comparison criteria; research needs clear source guidance and an awareness that time-sensitive facts may need verification.\n\nExpect scenario questions that name a task type and ask what detail matters most for it — the correct answer usually matches the specific need of that task type (e.g., audience/tone for drafting, specific comparison questions for analysis) rather than a generic 'more detail is always better' answer."
     },
@@ -137,7 +143,9 @@
         "diagram rather",
         "one-off inline",
         "data meant",
-        "between inline"
+        "between inline",
+        "productivity consideration",
+        "short conversational"
       ],
       "content": "Matching output format to actual need matters: a quick conversational answer belongs inline, a substantial reusable deliverable (a diagram, a document meant to be edited across sessions) belongs in a standalone artifact, and data meant for import into another system belongs in a clean structured/tabular format. Over-using artifacts for trivial content adds friction; under-using them for substantial content creates avoidable rework.\n\nThe exam tests matching format to the described need — a quick clarifying question in an ongoing chat should stay inline even though artifacts exist as an option; multi-dimensional comparison data belongs in a table rather than buried in prose."
     },
@@ -159,7 +167,8 @@
         "fact-checking against",
         "client-facing document",
         "checking context",
-        "draft states"
+        "draft states",
+        "always self-explanatory"
       ],
       "content": "A primary source is the original, authoritative origin of a fact (the actual filing, statute, dataset, or official record) as opposed to a secondhand summary that could introduce its own errors or spin. Fact-checking means actively tracing a specific claim back to a primary source, not just judging whether the response reads plausibly.\n\nThe exam likes scenarios where a claim is attributed vaguely ('according to a well-known study,' 'the company's annual report') — the correct move is always to locate and check the actual specific source, including its context (sample size, date, scope), not to accept a vague attribution as sufficient."
     },
@@ -180,7 +189,9 @@
         "specific fact",
         "appropriately hedged",
         "hallucinated",
-        "technical parameter"
+        "technical parameter",
+        "flagged automatically",
+        "response sounds"
       ],
       "content": "A hallucination is confidently-stated, fluent content that is factually wrong or invented, with no stylistic tell distinguishing it from accurate content. This is the single most heavily weighted concept on the exam (Output Evaluation is the heaviest domain at 21%) — the core insight is that fluency and confidence are not accuracy signals, and specific-sounding but uncited numbers, citations, or quotes deserve independent verification precisely because their specificity can create false confidence.\n\nExpect scenarios involving uncited statistics, plausible-looking legal citations, or fabricated quotes attributed to real people — the correct answer is consistently 'verify against an independent source,' never 'trust it because it sounds right' or 'trust it because it's detailed.'"
     },
@@ -196,7 +207,10 @@
         "niche obscure",
         "healthier mental",
         "specific numbers",
-        "business recommendation"
+        "business recommendation",
+        "hedging",
+        "confidently-wrong answers",
+        "unreliable heuristic"
       ],
       "content": "Confidence, fluency, and length are stylistic properties with no necessary connection to accuracy — a long, detailed, confidently-worded answer can be elaborately wrong just as easily as a hedged one can be simply wrong. The corrective isn't a better way to 'read' tone; it's independent verification proportional to the stakes involved, regardless of how the response is phrased.\n\nThe exam likes paired-comparison scenarios (a hedged answer vs. a confident one to the same question) specifically to test whether you'll wrongly favor the confident phrasing — the correct answer is always that both require the same independent verification."
     },
@@ -231,7 +245,9 @@
         "argument structure",
         "proposal recommends",
         "long report",
-        "comparison document"
+        "comparison document",
+        "unsupported",
+        "argument/structure level"
       ],
       "content": "Beyond individual facts, a document can still fail if its parts contradict each other — a recommendation that doesn't match the supporting data, a conclusion the evidence doesn't actually support, terminology that shifts partway through, or content pitched at the wrong depth for its audience. This is a distinct skill from fact-checking: a document built from entirely accurate individual facts can still have a flawed overall structure.\n\nWatch for scenarios describing an internal contradiction (a table showing one option winning while the conclusion recommends a different one) — the correct response is always to resolve the contradiction before finalizing, never to publish both or ignore the mismatch."
     },
@@ -250,7 +266,9 @@
         "different sections",
         "percentage change",
         "dashboard summary",
-        "specific correlation"
+        "specific correlation",
+        "representative",
+        "understanding provenance"
       ],
       "content": "Numbers carry an appearance of precision that can mask an underlying problem: a percentage with no stated baseline period, an average that could be skewed by outliers, a ratio claim with no stated sample size, or confusion between percentage points and relative percentage change. Oddly precise-looking figures in a context where such precision wouldn't realistically exist can even be a subtle hallucination signal.\n\nExpect scenario questions probing exactly these failure modes — a '9 out of 10' claim with no sample size, a 'doubled' claim built from tiny absolute numbers, two sections of one report showing different totals for the same metric — the correct response is always to seek the missing context or reconcile the discrepancy, not to accept the number at face value."
     },
@@ -270,7 +288,9 @@
         "feature best supports",
         "substantial well-formatted",
         "artifact versus",
-        "reasonable test"
+        "reasonable test",
+        "feature choice",
+        "everyday productivity"
       ],
       "content": "Beyond knowing what each feature does, the applied skill is choosing the minimum sufficient feature for a given task: a one-off unrelated question doesn't need a Project; a quick factual answer about a stable topic doesn't need a search-enabled mode; a small ask doesn't need to become a full artifact. Over-provisioning features adds setup overhead without a matching benefit.\n\nA good mental checklist the exam rewards: does this need persistent context across future conversations (→ Project), does it need current information (→ search mode), will it be a substantial reusable deliverable (→ artifact)? If none apply, plain conversation is correct."
     },
@@ -284,7 +304,8 @@
         "model tier",
         "tier choice",
         "lighter tier",
-        "moderately complex"
+        "moderately complex",
+        "task's real"
       ],
       "content": "Claude's model tiers trade off speed/cost against depth of reasoning capability: lighter, faster tiers suit simple, high-volume, low-stakes tasks (quick classification, simple formatting), while more capable tiers suit nuanced, high-stakes, judgment-heavy work (a sensitive client communication, a complex synthesis). Defaulting to the most capable tier for everything wastes cost/speed without a quality benefit on simple tasks; defaulting to the lightest tier for everything risks insufficient quality on complex ones.\n\nExpect scenario questions naming a specific task and asking which tier fits — match task complexity/stakes to tier capability, and recognize that empirically testing a lighter tier's sufficiency is a reasonable way to validate the choice for a recurring task."
     },
@@ -298,7 +319,8 @@
         "deployment",
         "individual accounts",
         "plan tier",
-        "plan permits"
+        "plan permits",
+        "data-handling policies"
       ],
       "content": "Organization-oriented plans/deployments typically add centralized administration, consistent policy enforcement, and collaboration features that individual personal accounts don't provide — value that grows as a team's size and coordination needs grow. Business users should understand their organization's actual plan and its data-handling implications, rather than assuming based on personal past experience or what an unrelated organization uses.\n\nExpect questions on why an organization might move from individual accounts toward a managed deployment as it scales, and on checking with policy/an administrator rather than assuming when uncertain about what a given plan permits."
     },
@@ -317,7 +339,9 @@
         "content artifacts",
         "interactive tool",
         "artifact generally",
-        "work belongs"
+        "work belongs",
+        "back-and-forth conversational",
+        "substantial standalone"
       ],
       "content": "Claude's core product surfaces each serve a different need: plain chat for one-off conversations, Projects for persistent shared context/instructions/knowledge sources across many related conversations, Artifacts for substantial or reusable standalone content (documents, diagrams, interactive tools), and a research/web-search-enabled mode for tasks that genuinely need current, post-training information.\n\nThe exam tests matching surface to described need — recurring team work with shared context points to Projects; a reusable document or interactive tool points to Artifacts; a question depending on very recent developments points to a search-enabled mode; everything else is fine as plain chat."
     },
@@ -334,7 +358,8 @@
         "long conversation",
         "across separate",
         "time persisting",
-        "distinguish between"
+        "distinguish between",
+        "new chat"
       ],
       "content": "Very long conversations can dilute relevant context or become unfocused; a fresh, summarized restart can outperform continuing an overloaded thread. For context needed repeatedly across separate conversations, persisting it via a Project (rather than manually re-explaining every time, or assuming it carries over automatically) is the efficient approach — separate, unconfigured conversations generally don't share context with each other.\n\nWatch for the distinction between one-off context (fine to mention manually once) and recurring context (worth persisting), and the practice of carrying a concise summary of key decisions forward when starting a new conversation phase."
     },
@@ -350,7 +375,8 @@
         "mandatory human",
         "consequential action",
         "contract terms",
-        "review intensity"
+        "review intensity",
+        "human accountability"
       ],
       "content": "The core HITL principle: AI handles drafting, extraction, or analysis; a human retains meaningful review and authorization over consequential actions, with the checkpoint placed BEFORE the action takes effect (not just reviewed after). Review intensity should be proportional to risk — not every minor action needs the same scrutiny as a six-figure payment or an external legal document.\n\nThis is the single largest topic on the exam by question volume in this domain. Expect many scenario variants (refunds, contracts, permission changes, vendor payments) all testing the same pattern: AI drafts/extracts, a human authorizes before the consequential action executes, and mandatory review scales with actual stakes."
     },
@@ -378,7 +404,9 @@
         "distinct stages",
         "catching issues",
         "review checkpoint",
-        "client deliverable"
+        "client deliverable",
+        "transitions",
+        "workflow chains"
       ],
       "content": "Designing a workflow as distinct stages (research → draft → review → finalize) creates natural checkpoints that catch errors before they propagate into a much larger amount of downstream work — this is the same principle as task decomposition, applied at the workflow-design level. The right number of stages balances catching real risks at meaningful transitions against adding needless process overhead for trivial steps.\n\nExpect scenarios where an early-stage error (e.g., in data extraction) would corrupt everything built on top of it without a checkpoint — the correct answer recognizes the checkpoint's value specifically in preventing wasted downstream effort, not just as a generic quality step."
     },
@@ -394,7 +422,8 @@
         "format mismatches",
         "specific structured",
         "structured format",
-        "underlying analysis"
+        "underlying analysis",
+        "format requirement"
       ],
       "content": "Identifying the actual downstream destination (a project-management tool, a client email, a spreadsheet import) before generating content — and specifying its exact format requirements up front — avoids a reformatting step that erodes the efficiency gain of using AI assistance in the first place. Different downstream consumers of the same underlying content may need genuinely different structures.\n\nExpect scenarios where output needs to feed a specific system or field structure — the correct answer is always to specify the exact target format in the prompt itself, rather than generating something generic and manually reformatting afterward."
     },
@@ -416,7 +445,9 @@
         "project is configured",
         "manually re-entered",
         "everything there",
-        "instructions become"
+        "instructions become",
+        "explicitly anticipate",
+        "appropriate context"
       ],
       "content": "Project-level custom instructions establish standing guidance (tone, format, recurring context) that automatically applies to every conversation within that Project, removing the need to repeat it manually each time. The same clarity/specificity principles that make a good individual prompt also make good custom instructions — and because they apply broadly and repeatedly, getting them right at setup time has an outsized, compounding payoff.\n\nExpect questions on what custom instructions are for, how they persist automatically to new conversations in the Project, and the practice of reviewing/updating them when the underlying business context (like a rebrand) changes."
     },
@@ -433,7 +464,8 @@
         "clearly stated",
         "standing defaults",
         "permanent change",
-        "different projects"
+        "different projects",
+        "troubleshoot"
       ],
       "content": "A specific, explicit instruction for one particular conversation can reasonably take precedence for that instance without erasing a Project-level standing default elsewhere — similar to a general policy allowing a specific, stated exception. Understanding which level (Project vs. individual conversation) a given rule was actually set at is the key diagnostic tool when behavior seems unexpectedly inconsistent.\n\nA common exam trap: a rule that was only ever mentioned once in a past, separate conversation was never actually persisted as a Project instruction — the fix is to properly configure it at the Project level, not to assume something is broken."
     },
@@ -473,7 +505,8 @@
         "excessive fragmentation",
         "configuration instructions",
         "assigning clear",
-        "practice standardization"
+        "practice standardization",
+        "team's"
       ],
       "content": "A shared Project keeps a team working from the same context, instructions, and knowledge sources — improving consistency compared to each member maintaining separate, disconnected setups. The right granularity (one big Project vs. many narrow ones) depends on how much genuine context overlap exists between bodies of work; both over-consolidation and excessive fragmentation create their own problems (diluted relevance vs. duplicated, inconsistent configuration).\n\nExpect scenarios about scaling teams, multiple distinct clients, and the value of assigning clear ownership for maintaining a shared Project's configuration so it doesn't drift out of date with no one responsible."
     },
@@ -589,7 +622,8 @@
         "reformatted",
         "desired formatting",
         "fix assume",
-        "check formatting"
+        "check formatting",
+        "straightforward fix"
       ],
       "content": "Misaligned tables, inconsistent bullet/paragraph mixing, or irregular heading hierarchies are fixed by explicitly naming the exact syntax or structure wanted (Markdown table syntax with headers, a specific numbering convention) — a concrete example of the target format resolves ambiguity a verbal description might leave open, the same principle as example-driven prompting. It's also worth checking formatting against the actual destination's real conventions, since something that looks fine in isolation may still not match a specific template or platform's requirements.\n\nExpect direct 'what's the fix' questions pairing a described formatting problem with the specific corrective instruction."
     },

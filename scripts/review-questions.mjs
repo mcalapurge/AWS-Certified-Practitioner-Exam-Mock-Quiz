@@ -18,7 +18,8 @@
 //             bank's `total_questions` and `actual_domain_distribution`.
 //   keywords  suggest (or --write) study-guide keywords so every question in
 //             scope maps to its own topic in the weak-topic matcher.
-//   lint      lint every question in every bank (errors only unless --verbose).
+//   lint      lint every question in every bank (errors only unless --verbose),
+//             and fail a bank whose keyed option is the longest too often.
 //
 // Options: --base <ref>  --out <dir> (default report/question-review)
 //          --batch-size <n> (default 15)  --all  --json  --write  --date <YYYY-MM-DD>
@@ -110,6 +111,13 @@ export function reviewReason(versions, { all = false } = {}) {
   const head = versions.at(-1);
   if (all) return "re-review requested (--all)";
   if (!head.confidence) return "no confidence rating";
+  // A rating made by `apply` records the content it rated, which also covers a
+  // re-review whose outcome (and date) matched the old rating exactly.
+  if (head.confidence.contentHash) {
+    return head.confidence.contentHash === contentHash(head)
+      ? null
+      : "content changed after it was last rated";
+  }
   let content = -1;
   let rating = -1;
   versions.forEach((v, i) => {
@@ -252,6 +260,27 @@ export function longestKeyedShare(questions) {
   return { longest, single };
 }
 export const LONGEST_KEYED_WARN = 0.5;
+// Bank-wide ceiling: `lint` fails, and the unit tests fail, above this share.
+export const LONGEST_KEYED_MAX = 0.4;
+
+/**
+ * Where the keyed option of each single-answer question ranks by length:
+ * ranks[0] counts keys no other option outlasts, ranks[1] keys with one longer
+ * option, and so on. Trimming every key would just move the tell to
+ * "pick the second-longest", so no rank should dominate.
+ */
+export function keyLengthRanks(questions) {
+  const ranks = [];
+  let single = 0;
+  for (const q of questions) {
+    if (q.correct?.length !== 1 || !q.options) continue;
+    single++;
+    const keyed = String(q.options[q.correct[0]] ?? "").length;
+    const rank = Object.values(q.options).filter((t) => String(t).length > keyed).length;
+    ranks[rank] = (ranks[rank] ?? 0) + 1;
+  }
+  return { ranks: Array.from(ranks, (n) => n ?? 0), single };
+}
 
 /** Schema and consistency rules for a confidence rating (mirrors the unit test). */
 export function lintConfidence(c) {
@@ -267,6 +296,8 @@ export function lintConfidence(c) {
     out.push("confidence.reviewed must be YYYY-MM-DD");
   if (c.reworded !== undefined && c.reworded !== true)
     out.push("confidence.reworded is true or absent");
+  if (c.contentHash !== undefined && !/^[0-9a-f]{16}$/.test(c.contentHash))
+    out.push("confidence.contentHash must be 16 hex characters");
   for (const u of c.sources ?? [])
     if (!ANTHROPIC_DOCS.test(u)) out.push(`confidence source is not Anthropic docs: ${u}`);
   if (c.rag === "green" && !(c.level === "high" && c.basis === "docs" && c.sources?.length)) {
@@ -889,7 +920,7 @@ async function cmdApply(root, opts) {
         verdict: verdict?.verdict ?? null,
         ...confidence,
       });
-      return { ...next, confidence };
+      return { ...next, confidence: { ...confidence, contentHash: contentHash(next) } };
     });
     updated.set(bankName, {
       ...bank,
@@ -997,6 +1028,17 @@ async function cmdLint(root, opts) {
         if (p.level === "error" || opts.verbose)
           console.log(`${bank.prefix}#${q.id} ${p.level.toUpperCase()}: ${p.message}`);
       }
+    }
+    const { longest, single } = longestKeyedShare(data.questions);
+    if (single && longest / single > LONGEST_KEYED_MAX) {
+      errors++;
+      console.log(
+        `${bank.prefix} ERROR: the keyed option is the longest in ${longest}/${single} single-answer questions (max ${LONGEST_KEYED_MAX * 100}%, chance is 25%); lengthen distractors or trim keys`,
+      );
+    } else if (opts.verbose && single) {
+      console.log(
+        `${bank.prefix}: the keyed option is the longest in ${longest}/${single} single-answer questions (${Math.round((longest / single) * 100)}%)`,
+      );
     }
   }
   console.log(errors ? `${errors} lint error(s).` : "No lint errors.");

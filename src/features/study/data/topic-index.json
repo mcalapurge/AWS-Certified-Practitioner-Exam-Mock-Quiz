@@ -868,7 +868,8 @@
       "producer's schedule rather",
       "context shifts probability",
       "writes a customer-facing",
-      "claude code's terminal"
+      "claude code's terminal",
+      "consumer's schedule"
     ]
   },
   {
@@ -879,7 +880,8 @@
     "title": "Session Lifecycle & Resumption",
     "keywords": [
       "transcript",
-      "recency"
+      "recency",
+      "original session"
     ]
   },
   {
@@ -911,7 +913,9 @@
       "ongoing operate-and-maintain phase",
       "since partner-operated platforms",
       "requirements never mentioned",
-      "strongest argument against"
+      "strongest argument against",
+      "anthropic-operated platforms",
+      "successful response"
     ]
   },
   {
@@ -953,7 +957,8 @@
       "hours",
       "caller-supplied custom identifier",
       "equivalent synchronous requests",
-      "automatically cache everything"
+      "automatically cache everything",
+      "batches automatically"
     ]
   },
   {
@@ -980,7 +985,8 @@
       "call the tool",
       "successful result containing",
       "conversation can continue",
-      "tool_result blocks saying"
+      "tool_result blocks saying",
+      "tool_use block"
     ]
   },
   {
@@ -993,7 +999,8 @@
       "structured outputs compile",
       "actively encourages fabrication",
       "schema in output_config.format",
-      "yields schema-shaped arguments"
+      "yields schema-shaped arguments",
+      "compile"
     ]
   },
   {
@@ -1060,7 +1067,8 @@
       "construction and investigate",
       "counting endpoint rather",
       "degradation of accuracy",
-      "including system prompt"
+      "including system prompt",
+      "everything competes"
     ]
   },
   {
@@ -1108,7 +1116,9 @@
       "normalizing postal addresses",
       "comparing average response",
       "public benchmark measures",
-      "public benchmark rank"
+      "public benchmark rank",
+      "task complexity",
+      "keep the light"
     ]
   },
   {
@@ -1233,7 +1243,8 @@
       "constraint the library",
       "tool runner",
       "removes non-compliant options",
-      "subtypes distinguish success"
+      "subtypes distinguish success",
+      "comparing anything"
     ]
   },
   {
@@ -1293,7 +1304,8 @@
     "keywords": [
       "success condition",
       "well-defined completion/stopping criteria",
-      "error_max_turns or error_max_budget_usd"
+      "error_max_turns or error_max_budget_usd",
+      "definition of done"
     ]
   },
   {
@@ -1341,7 +1353,8 @@
     "title": "General Agents and Workflows",
     "keywords": [
       "data-dependent and cannot",
-      "tools actually necessary"
+      "tools actually necessary",
+      "missing permission"
     ]
   },
   {
@@ -1459,7 +1472,8 @@
       "aggressive phrasing written",
       "previous step's structured",
       "distribution that already",
-      "adding instructions until"
+      "adding instructions until",
+      "evaluated separately"
     ]
   },
   {
@@ -1473,7 +1487,9 @@
       "summarises",
       "requests loses cross-references",
       "prompt engineering composes",
-      "forgot because temperature"
+      "forgot because temperature",
+      "every distraction",
+      "context engineering"
     ]
   },
   {
@@ -1498,7 +1514,8 @@
       "return a structured",
       "tool's input",
       "free-text",
-      "under-marking produces incomplete"
+      "under-marking produces incomplete",
+      "out intermittently"
     ]
   },
   {
@@ -1583,7 +1600,8 @@
       "documented internal procedure",
       "instructions are excellent",
       "mcp server configurations",
-      "description per request"
+      "description per request",
+      "environment assumptions"
     ]
   },
   {
@@ -1595,7 +1613,8 @@
     "keywords": [
       "tools/resources/prompts are exposed",
       "re-implementing the integration",
-      "boundaries between servers"
+      "boundaries between servers",
+      "project-scoped connection"
     ]
   },
   {
@@ -1628,7 +1647,8 @@
     "title": "MCP Server Design",
     "keywords": [
       "exposing well-defined tools/resources",
-      "standard output carries"
+      "standard output carries",
+      "client's request"
     ]
   },
   {
@@ -1712,7 +1732,8 @@
     "keywords": [
       "sandboxing limits",
       "code-execution",
-      "genuine risk-mitigation reasons"
+      "genuine risk-mitigation reasons",
+      "complementing permissions"
     ]
   },
   {
@@ -1724,7 +1745,9 @@
     "keywords": [
       "pretooluse hook",
       "swapping deterministic checks",
-      "defined lifecycle points"
+      "defined lifecycle points",
+      "posttooluse hook",
+      "model's interpretation"
     ]
   },
   {
@@ -1739,7 +1762,8 @@
       "broad organisation-level access",
       "runtime configuration outside",
       "identity is authentication",
-      "path between environments"
+      "path between environments",
+      "services"
     ]
   },
   {
@@ -1787,7 +1811,8 @@
     "keywords": [
       "persistent project-level context/instructions",
       "developer's environment variables",
-      "absolute prohibition belongs"
+      "absolute prohibition belongs",
+      "project-specific context"
     ]
   },
   {
@@ -1833,7 +1858,8 @@
     "title": "Hooks",
     "keywords": [
       "allow custom scripts/logic",
-      "useful for formatting"
+      "useful for formatting",
+      "scripts automatically"
     ]
   },
   {
@@ -1856,7 +1882,8 @@
     "title": "Claude Code Custom Commands (Slash Commands)",
     "keywords": [
       "disable-model-invocation is set",
-      "standardize common requests"
+      "standardize common requests",
+      "repeatable requests"
     ]
   },
   {
@@ -1900,7 +1927,9 @@
     "keywords": [
       "failure type",
       "broke",
-      "anything downstream touched"
+      "anything downstream touched",
+      "inputs and outputs",
+      "measure accuracy"
     ]
   },
   {
@@ -1912,7 +1941,8 @@
     "keywords": [
       "indefinitely without investigation",
       "systematically malformed arguments",
-      "retrying with exponential"
+      "retrying with exponential",
+      "integration/execution layer"
     ]
   },
   {
@@ -1924,7 +1954,8 @@
     "keywords": [
       "comparing before/after behavior",
       "regression check alongside",
-      "differently between runs"
+      "differently between runs",
+      "exact-match assertions"
     ]
   },
   {
@@ -1956,7 +1987,9 @@
       "vague low-value",
       "prompt after",
       "draft correctly",
-      "draft still"
+      "draft still",
+      "what's wrong",
+      "revision"
     ]
   },
   {
@@ -1972,7 +2005,9 @@
       "prompt summarize",
       "reliably produces",
       "best supplies",
-      "providing context"
+      "providing context",
+      "constraints and format",
+      "clarifying audience"
     ]
   },
   {
@@ -1988,7 +2023,8 @@
       "well-written meeting",
       "good example",
       "words professional",
-      "imperfect match"
+      "imperfect match",
+      "abstract"
     ]
   },
   {
@@ -2035,7 +2071,8 @@
       "dataset summary",
       "research task",
       "request skip",
-      "explicitly tell"
+      "explicitly tell",
+      "divergent brainstorming"
     ]
   },
   {
@@ -2052,7 +2089,9 @@
       "diagram rather",
       "one-off inline",
       "data meant",
-      "between inline"
+      "between inline",
+      "productivity consideration",
+      "short conversational"
     ]
   },
   {
@@ -2073,7 +2112,8 @@
       "fact-checking against",
       "client-facing document",
       "checking context",
-      "draft states"
+      "draft states",
+      "always self-explanatory"
     ]
   },
   {
@@ -2093,7 +2133,9 @@
       "specific fact",
       "appropriately hedged",
       "hallucinated",
-      "technical parameter"
+      "technical parameter",
+      "flagged automatically",
+      "response sounds"
     ]
   },
   {
@@ -2108,7 +2150,10 @@
       "niche obscure",
       "healthier mental",
       "specific numbers",
-      "business recommendation"
+      "business recommendation",
+      "hedging",
+      "confidently-wrong answers",
+      "unreliable heuristic"
     ]
   },
   {
@@ -2141,7 +2186,9 @@
       "argument structure",
       "proposal recommends",
       "long report",
-      "comparison document"
+      "comparison document",
+      "unsupported",
+      "argument/structure level"
     ]
   },
   {
@@ -2159,7 +2206,9 @@
       "different sections",
       "percentage change",
       "dashboard summary",
-      "specific correlation"
+      "specific correlation",
+      "representative",
+      "understanding provenance"
     ]
   },
   {
@@ -2178,7 +2227,9 @@
       "feature best supports",
       "substantial well-formatted",
       "artifact versus",
-      "reasonable test"
+      "reasonable test",
+      "feature choice",
+      "everyday productivity"
     ]
   },
   {
@@ -2191,7 +2242,8 @@
       "model tier",
       "tier choice",
       "lighter tier",
-      "moderately complex"
+      "moderately complex",
+      "task's real"
     ]
   },
   {
@@ -2204,7 +2256,8 @@
       "deployment",
       "individual accounts",
       "plan tier",
-      "plan permits"
+      "plan permits",
+      "data-handling policies"
     ]
   },
   {
@@ -2222,7 +2275,9 @@
       "content artifacts",
       "interactive tool",
       "artifact generally",
-      "work belongs"
+      "work belongs",
+      "back-and-forth conversational",
+      "substantial standalone"
     ]
   },
   {
@@ -2238,7 +2293,8 @@
       "long conversation",
       "across separate",
       "time persisting",
-      "distinguish between"
+      "distinguish between",
+      "new chat"
     ]
   },
   {
@@ -2253,7 +2309,8 @@
       "mandatory human",
       "consequential action",
       "contract terms",
-      "review intensity"
+      "review intensity",
+      "human accountability"
     ]
   },
   {
@@ -2279,7 +2336,9 @@
       "distinct stages",
       "catching issues",
       "review checkpoint",
-      "client deliverable"
+      "client deliverable",
+      "transitions",
+      "workflow chains"
     ]
   },
   {
@@ -2294,7 +2353,8 @@
       "format mismatches",
       "specific structured",
       "structured format",
-      "underlying analysis"
+      "underlying analysis",
+      "format requirement"
     ]
   },
   {
@@ -2315,7 +2375,9 @@
       "project is configured",
       "manually re-entered",
       "everything there",
-      "instructions become"
+      "instructions become",
+      "explicitly anticipate",
+      "appropriate context"
     ]
   },
   {
@@ -2331,7 +2393,8 @@
       "clearly stated",
       "standing defaults",
       "permanent change",
-      "different projects"
+      "different projects",
+      "troubleshoot"
     ]
   },
   {
@@ -2369,7 +2432,8 @@
       "excessive fragmentation",
       "configuration instructions",
       "assigning clear",
-      "practice standardization"
+      "practice standardization",
+      "team's"
     ]
   },
   {
@@ -2477,7 +2541,8 @@
       "reformatted",
       "desired formatting",
       "fix assume",
-      "check formatting"
+      "check formatting",
+      "straightforward fix"
     ]
   },
   {

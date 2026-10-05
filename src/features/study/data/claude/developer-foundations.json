@@ -2,7 +2,7 @@
   "examId": "developer-foundations",
   "examName": "Claude Certified Developer – Foundations",
   "examShort": "CCDV-F",
-  "generatedAt": "2026-10-05T13:56:07.384Z",
+  "generatedAt": "2026-10-05T15:10:05.115Z",
   "sectionCount": 90,
   "sections": [
     {
@@ -85,7 +85,8 @@
         "producer's schedule rather",
         "context shifts probability",
         "writes a customer-facing",
-        "claude code's terminal"
+        "claude code's terminal",
+        "consumer's schedule"
       ],
       "content": "Every application has edges where content crosses: user input, fetched documents, tool output, files, schemas, logs. For each edge, a **crossing rule** names what may cross, which component decides, and what happens to material that fails.\n\n### Key facts\n- **Authority follows the channel.** Three destinations, never two:\n  - **Persistent rules** → top-level `system`.\n  - **This request's question and the user's own material** → the user turn.\n  - **Third-party content** (web pages, emails, tool output) → `tool_result` blocks, labelled and delimited, with the policy stated in `system`.\n- **Never put your own instructions in a tool result**: content there is treated as untrusted and may be ignored.\n- **Mid-conversation system messages** (on supported current models) let an operator add a rule late without editing top-level `system`, so the cached prefix survives. They cannot be the first message.\n- **Interfaces differ in what is already in context.** The raw API supplies nothing; the Agent SDK defaults to a minimal prompt; Claude Code and headless runs add full working context. State the rules your app depends on **once per channel**.\n- **Project instruction files load as context, not as system prompt and not as enforcement.** Anything that must \"never\" happen needs a deterministic gate (hook, permission rule, server-side check).\n- **One call, one output contract.** Stages with different success criteria get separate calls, separate schemas and separate evals.\n- **A schema is a contract with three parties**: the model, the consumer and the platform. Write it from the consumer's needs; version it on the consumer's schedule. Required properties are emitted first; enum capitalisation is not guaranteed.\n\n### Exam traps\n- Concatenating fetched content into the system prompt \"so the model definitely sees it\".\n- Assuming a rule that works in Claude Code also applies through the raw API.\n- Strengthening an instruction to satisfy a \"must never\" requirement.\n- Merging extraction and summarisation into one call to save tokens while quality suffers.\n\n### Remember\nFor every option, ask what must be true for the guarantee to hold, and **who checks it**. If the answer is \"the model\", it is an improvement, not a control.\n"
     },
@@ -97,7 +98,8 @@
       "title": "Session Lifecycle & Resumption",
       "keywords": [
         "transcript",
-        "recency"
+        "recency",
+        "original session"
       ],
       "content": "Sessions decide **whose history** a request sees. Getting this wrong leaks one user's context into another's conversation.\n\n### Key facts\n- **Continue** resolves by recency, **resume** resolves by identifier, **fork** copies a history into a new identifier. In anything serving more than one conversation, **identity must select the session**, and only an identifier does that.\n- **Resuming restores content, not all posture.** History and (normally) the model come back, and ordinary modes such as auto or manual are restored, but plan and bypassPermissions fall back to the default, and launch flags such as `--mcp-config`, `--settings` and `--add-dir` must be passed again.\n- **Local session files live on the machine that created them.** To resume on another host (load-balanced workers), make the transcript available there (typically a session store adapter keyed consistently, or by copying the session file), or start a fresh session with the needed state passed in.\n- **Three doors into a fresh conversation**, all needed:\n  - the **clock** (idle or absolute age),\n  - **events** (logout, task completion, role change, unrecoverable error),\n  - **intent** (the application decides the request is new work).\n- A rule that depends on the user starting a new chat is **not a guarantee**.\n- **Ending a session does not delete its transcript.** Retention follows the documented default or the organisation's configured period.\n- Since the Messages API is stateless, cross-talk between users is always an **application** bug (for example, history in a process-wide variable).\n\n### Exam traps\n- \"Resume the most recent session\" in a multi-user backend.\n- A single idle timeout as the only reset mechanism.\n- Assuming a session's transcript disappears when the session ends.\n\n### Remember\nRecency is not identity.\n"
     },
@@ -131,7 +133,9 @@
         "ongoing operate-and-maintain phase",
         "since partner-operated platforms",
         "requirements never mentioned",
-        "strongest argument against"
+        "strongest argument against",
+        "anthropic-operated platforms",
+        "successful response"
       ],
       "content": "Go-live does not end the project. It opens a **standing phase** (operate, maintain, evolve) with no completion date, which lasts until the system is switched off.\n\n### Key facts\n- A **gate** is a decision that can **refuse** against a named artifact: an eval score against baseline, a recorded pin, a live metric, a routed finding. Skipping a gate raises no error; the system works on the day and cannot be reasoned about later.\n- **Instrument from day one**: cost per call, latency, failures. In-app cost is an approximation to trend; billing comes from the provider.\n- **Refusals arrive on HTTP 200** (`stop_reason: \"refusal\"`), so a failure metric built only on transport errors stays flat while usable responses fall. Track refusals and truncations separately.\n- **Your dependency retires on someone else's calendar.** Anthropic gives at least **60 days' notice** before retiring publicly released models; requests then fail. Amazon Bedrock and Google Cloud publish their own dates. Use the Console usage export to find remaining call sites.\n- Migration between current models is mostly drop-in **at the request level**, but check removed features (prefill, sampling parameters, thinking budgets), changed thinking and refusal behaviour, and token counts. Score against the outgoing baseline.\n- **Iteration** means a production finding reaches the requirement it contradicts and re-enters through a gate. A finding left in an incident record is folklore.\n- **Retention outlives the application**: switching a system off stops traffic and settles nothing already stored.\n\n### Exam traps\n- A finite activity (launch review, retrospective, handover document) offered as \"the phase the system is now in\".\n- Ownership changes (transfer to a platform team) offered as lifecycle progress.\n- Deferring a retirement notice until the date forces an unplanned migration.\n- Promoting a new version first and \"watching production\" for differences.\n\n### Remember\nExactly one thing on a lifecycle list runs as long as the system does: operation. Ask of each option whether it terminates.\n"
     },
@@ -176,7 +180,8 @@
         "hours",
         "caller-supplied custom identifier",
         "equivalent synchronous requests",
-        "automatically cache everything"
+        "automatically cache everything",
+        "batches automatically"
       ],
       "content": "The Message Batches API processes large volumes of independent Messages requests **asynchronously at 50% of standard prices**, with high throughput. Choose it when **nobody is waiting** on any individual result.\n\n### Key facts\n- Up to **100,000 requests or 256 MB** per batch, whichever comes first.\n- **Most batches finish within an hour**; results are available when all requests finish or after 24 hours. Requests not processed within **24 hours expire**.\n- Results remain downloadable for **29 days**.\n- Each request carries a caller-assigned **`custom_id`**. Results arrive in **any order**, so always join on `custom_id`, never by position.\n- Result types: `succeeded`, `errored`, `canceled`, `expired`. **Only succeeded requests are billed.**\n- Discounts **stack** with prompt caching. Because processing can take longer than 5 minutes, the **1-hour cache TTL** improves hit rates on shared prefixes.\n- Not allowed in a batch: `stream`, fast mode, cache pre-warming with `max_tokens: 0`, and some request-level features. Check the docs for the current list.\n\n### Exam traps\n- Batch offered as a **speed** improvement (throughput is high; turnaround on any one answer is worse).\n- Batch offered for a live chat, an autocomplete or a moderation gate in the user's path.\n- Assuming results come back in submission order.\n\n### Remember\nLarge volume + no clock on any single result + cost named → batch.\n"
     },
@@ -205,7 +210,8 @@
         "call the tool",
         "successful result containing",
         "conversation can continue",
-        "tool_result blocks saying"
+        "tool_result blocks saying",
+        "tool_use block"
       ],
       "content": "You define tools (name, description, JSON-schema input) on a request. Claude **decides** whether to call them and **generates the arguments**; **your application executes** them and returns the results. Claude never runs client tools itself.\n\n### Key facts\n- The response contains `tool_use` blocks (`id`, `name`, `input`) and `stop_reason: \"tool_use\"`.\n- Reply with a **user** turn of `tool_result` blocks, each echoing the matching **`tool_use_id`**. For several calls, return **all results together in one user message**, and put nothing else in it (extra text after results can cause empty replies).\n- Report failures as a `tool_result` with **`is_error: true`** and a short description, so the model can adapt. Never return a fake success or an empty value.\n- Keep the `tools` array **unchanged** across the loop (it is part of the cached prefix) and pass thinking blocks back verbatim.\n- Several tools may be defined per request; the model picks among them or none.\n- Tool definitions are billed input tokens on every request.\n- Server tools (web search, web fetch, code execution) run on Anthropic's infrastructure; their results arrive in the same response. Errors from server tools arrive as result blocks, not exceptions.\n- Parse tool `input` as JSON; never string-match the serialised form.\n\n### Exam traps\n- \"Claude executes the tool against your backend.\"\n- Returning tool output as prose, in the assistant turn, under the system role, or without the `tool_use_id`.\n- Answering only one of several parallel calls.\n\n### Remember\nThe model proposes; your code disposes, and every proposal gets exactly one matching answer.\n"
     },
@@ -219,7 +225,8 @@
         "structured outputs compile",
         "actively encourages fabrication",
         "schema in output_config.format",
-        "yields schema-shaped arguments"
+        "yields schema-shaped arguments",
+        "compile"
       ],
       "content": "When a program consumes the response, **constrain the shape at generation time** and still **validate on receipt**.\n\n### Key facts\n- **Structured outputs**: `output_config: {format: {type: \"json_schema\", schema: ...}}` compiles your schema into a grammar so the final response always parses and matches it. (The older `output_format` parameter is deprecated.) SDK helpers such as `messages.parse()` validate automatically.\n- **Strict tool use**: `strict: true` on a tool definition guarantees `tool_use.input` validates against the tool's schema (needs `additionalProperties: false` and `required`).\n- Escapes that still return without usable structure: **refusal** and **max_tokens truncation**. Check `stop_reason` first.\n- SDKs strip constraints the grammar cannot express (ranges, lengths); enforce those in your own validation. Enum casing can vary; compare case-insensitively.\n- To get prose and data together, put the explanation in a **string field of the schema**.\n- Give the model a legitimate way to say \"not found\" (nullable fields or explicit sentinel values). Forcing every field to be filled encourages fabrication.\n- Structured outputs and **citations are incompatible** (400).\n- Prefill-based JSON forcing no longer works on Claude 4.6+ (400).\n\n### Exam traps\n- \"Lower temperature to guarantee valid JSON\" (never guaranteed, and non-default temperature is rejected on 4.7+).\n- \"Use a bigger model and skip validation.\"\n- Regex over prose for machine-consumed output.\n\n### Remember\nConstraining generation removes a failure class; parsing harder only changes how loudly the consumer fails.\n"
     },
@@ -291,7 +298,8 @@
         "construction and investigate",
         "counting endpoint rather",
         "degradation of accuracy",
-        "including system prompt"
+        "including system prompt",
+        "everything competes"
       ],
       "content": "Four basic facts make a surprising number of scenarios easy: what a token is, what the window is, why identical requests differ, and which setting controls which behaviour.\n\n### Key facts\n- A **token** is the unit you are billed in, limited by and debugging against: roughly **3.5 English characters** for Claude (it varies by language). Input, output and thinking are all counted in tokens, at different rates. Use the token-counting endpoint (free) rather than estimates.\n- **Generation samples one token at a time**, so identical inputs can produce differently worded outputs, **even at temperature 0**. That is a property of the technology, not a bug. The application's response is validation, retries and constrained output shapes.\n- The **context window** bounds everything one request carries: system prompt, messages, tool definitions, images, documents, and the response and thinking. It behaves like **working memory, not storage**. Recall degrades as it fills (**context rot**).\n- **Each setting does one job**:\n\n| Setting | Changes | Cannot change |\n|---|---|---|\n| Sampling (temperature etc.) | Which candidate token is chosen | How much input fits; cost |\n| Context window | How much one request can hold | Run-to-run wording variation |\n| `max_tokens` | Maximum response length (a hard ceiling) | How much input fits |\n| Effort | How many tokens are spent thinking and responding | Window size |\n\n- On Claude 4.7 and later, non-default `temperature`/`top_p`/`top_k` are **rejected with 400**. Steer with prompting instead.\n- **Zero-shot → one-shot → few-shot** trades tokens for adherence. If you already hold labelled examples of the desired output, putting them in the prompt is the cheapest mechanism that fits.\n\n### Exam traps\n- A sampling parameter offered for a **capacity** problem (document too long), or trimming input offered for a **consistency** problem.\n- Confirming run-to-run variation as a bug, or proposing a fix that \"makes the model deterministic\".\n- Training a custom model when a handful of examples in the prompt would do.\n\n### Remember\nTemperature selects; the window holds. Name which machine an option acts on.\n"
     },
@@ -342,7 +350,9 @@
         "normalizing postal addresses",
         "comparing average response",
         "public benchmark measures",
-        "public benchmark rank"
+        "public benchmark rank",
+        "task complexity",
+        "keep the light"
       ],
       "content": "Model choice is a decision against **three numbers you are rarely given**: the quality bar, the latency ceiling and the cost per unit of work. Obtain them first, then choose.\n\n### Key facts\n- Capability, price and (usually) latency rise together across Haiku → Sonnet → Opus → Fable-class models. Rosters change, so confirm the current lineup and prices in the docs. The per-token price roughly doubles at each step.\n- Match capability to task: narrow, pattern-based, high-volume work (classification, extraction, routing) suits lighter tiers; ambiguous, high-stakes multi-step reasoning justifies more capable ones.\n- **Evidence decides**: evaluate candidate tiers on representative labelled data and pick the **cheapest that clears the bar**. Step **up** when an eval shows the bar missed on hard cases; step **down** when it shows a cheaper tier holding.\n- Compare on **cost per completed task**, not per token. A stronger model often uses fewer turns and retries. Price the hardest tenth of the workload.\n- Tier choice can be **per step**: a light model for routine steps, escalation for the demanding subtask. Routing saves money only if the router is accurate, so evaluate it.\n- Before building a multi-model cascade, measure the most capable model at **lower effort**. It often matches, and one model keeps one cache namespace.\n\n### Exam traps\n- \"Always the biggest model\" or \"always the cheapest\".\n- Choosing by public benchmark rank or by the tier a previous unrelated project used.\n- Using a smaller tier to fix latency when quality must stay the same (that changes the output; see Latency).\n\n### Remember\nName all three numbers. An option that optimises one and ignores the other two is the trap.\n"
     },
@@ -476,7 +486,8 @@
         "constraint the library",
         "tool runner",
         "removes non-compliant options",
-        "subtypes distinguish success"
+        "subtypes distinguish success",
+        "comparing anything"
       ],
       "content": "Four ways to build an agent, separated by two questions: **who supplies the harness** (loop plus context management) and **who supplies the deployment** (where it runs).\n\n| Approach | You write | Harness | Hosting |\n|---|---|---|---|\n| Manual loop on the Messages API | The `while stop_reason == \"tool_use\"` loop | You | You |\n| **Tool Runner** (API SDK helper) | Just your tool functions | SDK loops over **your** tools | You |\n| **Claude Agent SDK** | A prompt plus options (`query()`) | The Claude Code harness: built-in file/shell/search tools, MCP, hooks, subagents, permissions, sessions | You |\n| **Managed Agents** | Agent config plus tool results | Anthropic | Anthropic hosts the loop **and** a per-session sandbox; agents are versioned resources |\n\n### Key facts\n- Tool Runner ≠ Agent SDK. The Tool Runner is a thin helper in the regular API SDK; the Agent SDK is Claude Code as a library.\n- **Ownership ledger**: adopting a harness removes loop, dispatch and history code, but brings its own assumptions (for example, the Agent SDK runs a subprocess per session and writes transcripts to local disk).\n- **Half-adoption is the expensive answer**: hand-writing history or dispatch after adopting a framework creates two sources of truth.\n- A **custom loop** is justified by a constraint the harness cannot meet, not by unfamiliarity. You then own context management, parallel tool handling, retries and exit conditions.\n- Branch on the run's **result subtype** (success, max turns, max budget, error), not on final text.\n- **Hosted runtimes store session state server-side.** Check residency, retention and compliance requirements first; a rule that forbids it removes the option outright. Self-hosted sandboxes move execution onto your infrastructure while orchestration (and the model's view of tool inputs/outputs) stays with Anthropic.\n\n### Exam traps\n- Weighing a regulatory constraint against convenience.\n- Rebuilding a piece of the harness \"for safety\".\n- Expecting the model to stop on its own instead of configuring turn/budget ceilings.\n\n### Remember\nName the constraint first, then ask which options survive it.\n"
     },
@@ -541,7 +552,8 @@
       "keywords": [
         "success condition",
         "well-defined completion/stopping criteria",
-        "error_max_turns or error_max_budget_usd"
+        "error_max_turns or error_max_budget_usd",
+        "definition of done"
       ],
       "content": "An agent needs **both** a definition of done **and** a backstop.\n\n### Key facts\n- **Success condition**: what completion means, checked explicitly (tests pass, booking confirmed, all files migrated).\n- **Safety bounds**: maximum turns/iterations, token or dollar budget, wall-clock time. These halt the run regardless of progress and should report **which** bound was hit.\n- \"The model stopped calling tools\" means it has nothing more to try, not that it succeeded. Verify against the success condition.\n- Add **progress detection** (repeated identical calls or states) so a stuck loop exits before the cap.\n- Bounds belong in the runtime, not the prompt. A task budget the model can see helps it pace itself; a hard limit stops it.\n\n### Exam traps\n- An arbitrary fixed turn count unrelated to the task as the only rule.\n- Running until the context window is exhausted.\n- \"Use a smarter model so it knows when to stop.\"\n\n### Remember\nHalt on success or on exhausting the allowance, whichever comes first, and say which.\n"
     },
@@ -593,7 +605,8 @@
       "title": "General Agents and Workflows",
       "keywords": [
         "data-dependent and cannot",
-        "tools actually necessary"
+        "tools actually necessary",
+        "missing permission"
       ],
       "content": "Cross-cutting agent design reflexes that show up in mixed scenarios.\n\n### Key facts\n- **Agency is warranted** when the steps cannot be enumerated in advance and depend on discoveries. Volume, output format and latency constraints alone do not imply an agent.\n- **Least privilege for tools**: give each agent only the tools its task requires.\n- **Decompose** large goals into well-scoped subtasks with clear contracts.\n- **Explicit termination**: success condition plus ceilings.\n- **Observability**: trace each step's inputs, tool calls and outputs so failures can be located.\n- **Cost awareness**: agents cost more than workflows, and multi-agent systems much more. Make sure the value justifies it.\n\n### Exam traps\n- Every tool in the organisation \"for flexibility\".\n- An agent chosen because the task is high-volume or needs JSON.\n\n### Remember\nSimplest tier that works, smallest tool surface that works, and code that decides when it ends.\n"
     },
@@ -721,7 +734,8 @@
         "aggressive phrasing written",
         "previous step's structured",
         "distribution that already",
-        "adding instructions until"
+        "adding instructions until",
+        "evaluated separately"
       ],
       "content": "Re-prompting without a diagnosis lengthens prompts without fixing them. **Name the failure, add the missing piece, measure.**\n\n### Key facts\n- Diagnosis map:\n  - **Wrong shape** → an output constraint (format spec, structured outputs).\n  - **Invented structure** → worked examples.\n  - **Drifting scope** → a more specific system prompt.\n  - **Fails on one input variant** → a rule or example covering that variant.\n  - **Uneven quality across subtasks in one call** → split into a chain of focused calls.\n- **Iterate on evidence**: failing cases with input, expected and actual output. Rewriting from scratch discards what already passed.\n- The **evaluation set must contain the inputs that fail** in production, plus rules for messy traffic (missing mandatory fields, conflicting passages, out-of-scope requests).\n- **Prohibitions supply no method**: \"never leave a field empty\" turns missing answers into invented ones.\n- Not every failing eval is a prompting problem; latency and cost may be better solved by model or configuration choices.\n- When migrating models, audit prompts for **cruft** written for the older model (over-emphatic language, workarounds for old behaviours).\n\n### Exam traps\n- Repeating an instruction more firmly (adds no missing piece).\n- Adding clean-set examples to fix live-traffic failures.\n- Relaxing the check that reports the failure.\n\n### Remember\nFor any prompt change, say which piece it adds and where it puts it.\n"
     },
@@ -736,7 +750,9 @@
         "summarises",
         "requests loses cross-references",
         "prompt engineering composes",
-        "forgot because temperature"
+        "forgot because temperature",
+        "every distraction",
+        "context engineering"
       ],
       "content": "The context window is **one budget** drawn on by everything: system prompt, tool definitions, messages, tool results, images, documents, and the response and thinking. Context engineering decides what should occupy it across a whole run.\n\n### Key facts\n- **Context rot**: recall and accuracy degrade as the window fills. A bigger window does **not** treat drift; it preserves every distraction at full detail.\n- **Spent context** (tool output that already did its job) is resent and billed every turn and competes for attention.\n- **Bloat** is size (cost, eventually a 400); **drift** is behaviour (stale details, dropped constraints, degrading tool choice) and reports nothing.\n- **Two server-side levers** (beta features on current models):\n  - **Context editing / clearing** removes old tool results (or thinking) and leaves placeholders; configurable with how many recent uses to keep, the minimum to clear and tools to exclude.\n  - **Compaction** summarises earlier history into a block that replaces it (lossy, and an extra billed sampling step). Append the full response content so compaction blocks persist.\n- Anything that must hold for the whole run lives **outside the compactable region**: the system prompt, or a record re-injected every turn.\n- **Isolation** keeps material out: subagents do their reading in their own windows and return only a summary.\n- **Retrieval** for corpora larger than any window; pass explicit state to later steps (context never travels on its own).\n- Cached tokens still occupy the window: caching changes price, not space.\n\n### Exam traps\n- Raising or lowering the compaction threshold to stop a rule being lost (frequency, not content).\n- Truncating to the latest turn or resetting every turn (continuity destroyed).\n- Rewriting an already precise instruction when the problem is what accumulated around it.\n\n### Remember\nAsk whether an option changes how much room exists, how often something is discarded, or **what** may be discarded. Drift only responds to the third.\n"
     },
@@ -763,7 +779,8 @@
         "return a structured",
         "tool's input",
         "free-text",
-        "under-marking produces incomplete"
+        "under-marking produces incomplete",
+        "out intermittently"
       ],
       "content": "A tool call is a **proposal from a non-deterministic caller**, not trusted input. Design definitions so the right tool is chosen with complete arguments, and validate at dispatch anyway.\n\n### Key facts\n- **Four points where tool information is used**:\n  1. the **description** at selection time,\n  2. the **schema** at generation time,\n  3. **your code** at dispatch time,\n  4. the **result** on the next turn.\n\n  Most wrong answers repair the right problem at the wrong point.\n- **Wrong tool chosen** → fix descriptions. **Missing or ill-formatted arguments** → fix the schema (`required`, `enum`, formats, per-parameter descriptions).\n- **Required** means the operation is meaningless without the field. Over-marking forces invented values; under-marking produces incomplete calls. Allow explicit null/\"unknown\" where absence is legitimate.\n- **`strict: true`** (on the tool definition) constrains sampling so inputs always validate. It needs `additionalProperties: false` and `required`, and supports a JSON Schema subset (complex regex patterns excluded).\n- **Validate at dispatch** regardless. Undeclared or invalid arguments get a structured error result, not execution. Loosening the schema makes a remote service your first validator.\n- **Approval at dispatch** for irreversible writes. A denial with a reason lets the model route around it.\n- **Consolidate one resource's operations** under an action parameter; never fold unrelated contracts into a catch-all with a free-text argument.\n\n### Exam traps\n- A sampling setting or prompt instruction to fix missing parameters.\n- Reordering tools as if position were priority.\n- Merging confused tools into one generic tool.\n\n### Remember\nSelection lives in the description; completeness lives in the schema; trust lives in your dispatcher.\n"
     },
@@ -855,7 +872,8 @@
         "documented internal procedure",
         "instructions are excellent",
         "mcp server configurations",
-        "description per request"
+        "description per request",
+        "environment assumptions"
       ],
       "content": "**Agent Skills** package instructions, scripts and resources in a folder (`SKILL.md` plus optional files) that Claude loads **only when relevant**.\n\n### Key facts\n- **Progressive disclosure**:\n  1. **Name and description** (short, around a hundred tokens) are always loaded.\n  2. The **SKILL.md body** loads when a request matches (keep it compact, under about five thousand tokens).\n  3. **Bundled files and scripts** cost nothing until read or run.\n- The **description is the matching criterion**: state what the Skill does and when to use it. A vague description never loads.\n- Same `SKILL.md` format across surfaces, but **discovery differs**: filesystem directories in Claude Code and the Agent SDK; uploaded workspace Skills (pinned versions in production) on the API, used with the code execution tool. Custom Skills do **not** sync between surfaces automatically.\n- **Subagents don't inherit the parent's loaded Skills or conversation.** Preload Skills into a subagent with its `skills` field; a subagent with the Skill tool can still discover and invoke project, user and plugin Skills itself.\n- **Portability**: absolute paths, local commands and environment variables baked into a Skill make it install everywhere and run only for the author. Test in a clean environment.\n- **Plugins** bundle Skills, agents, hooks, slash commands and MCP server configs into one **versioned** unit. Pin plugin versions; an unconstrained dependency tracks the newest release.\n\n### Exam traps\n- A long procedure in the always-on system prompt instead of a Skill.\n- Treating a clean install as proof a Skill works.\n- Expecting Skills to provide authenticated API access.\n\n### Remember\nPay for the description every time and for the body only when it is needed.\n"
     },
@@ -868,7 +886,8 @@
       "keywords": [
         "tools/resources/prompts are exposed",
         "re-implementing the integration",
-        "boundaries between servers"
+        "boundaries between servers",
+        "project-scoped connection"
       ],
       "content": "The **Model Context Protocol** is an open standard for connecting LLM applications to external tools, data and prompts: build an integration once and use it from any compatible client.\n\n### Key facts\n- **Host** (Claude Code, Claude apps, your Agent SDK app) → creates one **client** per **server** connection → the server exposes **tools, resources and prompts**.\n- The host enforces boundaries: a server does not see the conversation history or other servers' data unless the host passes it.\n- Messages are **JSON-RPC 2.0**, over **stdio** (local child process) or **Streamable HTTP** (remote).\n- On the Claude API, the **MCP connector** lets a Messages request call remote MCP servers directly (requires both the server entry and a matching MCP toolset).\n- MCP standardises **integration**; it does not replace the Messages API, compress prompts or handle billing.\n\n### Exam traps\n- \"MCP guarantees servers are safe.\"\n- \"Only Claude can use MCP servers.\"\n\n### Remember\nMCP is the integration contract, not the model API.\n"
     },
@@ -904,7 +923,8 @@
       "title": "MCP Server Design",
       "keywords": [
         "exposing well-defined tools/resources",
-        "standard output carries"
+        "standard output carries",
+        "client's request"
       ],
       "content": "A good MCP server exposes a **clean, consumer-independent interface**: well-defined tools, resources and prompts with clear schemas and descriptions.\n\n### Key facts\n- **Earn the server**: build one when more than one consumer needs the capability and its interface evolves independently of them. One consumer with a stable interface is cheaper as a direct tool.\n- Design the interface **independently of the first consumer**; otherwise you rebuild the coupling a server exists to remove.\n- **Named, scoped operations** (`get_order_status`, `refund_order`) rather than a general query tool: each can be authorised and validated separately.\n- Clear descriptions and schemas matter as much as in direct tools; they are what the model selects with.\n- **Errors**: return structured, specific errors without leaking internals (stack traces, connection strings).\n- The server does not choose models, render UI or see the conversation history.\n\n### Exam traps\n- A single \"run any SQL\" tool called \"flexible\".\n- Building the interface around one application's quirks.\n\n### Remember\nDesign for every consumer you will have, not the one who asked first.\n"
     },
@@ -995,7 +1015,8 @@
       "keywords": [
         "sandboxing limits",
         "code-execution",
-        "genuine risk-mitigation reasons"
+        "genuine risk-mitigation reasons",
+        "complementing permissions"
       ],
       "content": "Code an agent runs (generated or influenced by untrusted content) should execute in an **isolated environment** with constrained network, filesystem and credential access.\n\n### Key facts\n- Sandboxing **limits blast radius** if code is buggy or manipulated by injected instructions. It does not guarantee correctness.\n- It is **one layer of defence in depth**, alongside least privilege, output validation and human approval.\n- **Permission rules vs sandboxing**: command matching gates commands somebody named but does not reason about effects; **OS-level isolation** limits what any command can reach.\n- Anthropic's code execution tool runs in an Anthropic-hosted sandbox. Self-hosted execution (bash tool, Claude Code) needs your own isolation; `bypassPermissions` belongs only in containers or VMs.\n- Restrict egress (allow-listed domains), mount only needed directories, use short-lived credentials, and run as a non-root user.\n\n### Exam traps\n- Unrestricted host access \"because it's required for code execution\".\n- \"Sandboxing removes the need for other controls.\"\n\n### Remember\nAssume the code will eventually do the worst thing it can reach, and make sure it can't reach much.\n"
     },
@@ -1008,7 +1029,9 @@
       "keywords": [
         "pretooluse hook",
         "swapping deterministic checks",
-        "defined lifecycle points"
+        "defined lifecycle points",
+        "posttooluse hook",
+        "model's interpretation"
       ],
       "content": "**Hooks** are your code (shell commands, HTTP calls, or SDK callbacks) that run at defined lifecycle points in Claude Code and the Agent SDK. Command, HTTP and MCP-tool hooks run in the application process, outside the context window, so they cost no tokens and are deterministic. (Prompt-type and agent-type hooks are the exception: they call a Claude model to judge a condition, so they do use tokens.)\n\n### Key facts\n- **PreToolUse** runs **before** a tool executes and can **deny** it (or require confirmation). This is the point of refusal.\n- **PostToolUse** runs **after** execution: it can log, give feedback, or even replace the result Claude sees (`updatedToolOutput`), but it **cannot block or undo** the action.\n- A requirement naming **both prevention and a record** needs **two hooks at two events**.\n- **Hooks tighten, never loosen**: a PreToolUse deny holds in **every permission mode, including bypassPermissions**; a hook returning \"allow\" does not override a deny rule. When several hooks match, they run in parallel and the most restrictive PreToolUse decision wins (deny, then defer, then ask, then allow).\n- **Matchers filter tool names, not effects**: a hook on the file-editing tools does not see `sed -i` run through Bash. Cover every tool that can produce the effect (an `if` field with permission-rule syntax, such as `Bash(rm *)`, narrows a handler by arguments), and add sandboxing.\n- Other useful events include session start/end, user prompt submit, stop, subagent stop and pre-compaction.\n- Scope enforcement to **destructive operations and sensitive access** to keep runs fast; don't remove the control to fix speed.\n- Hooks in managed settings can't be removed by individual developers.\n\n### Exam traps\n- A PostToolUse hook offered to \"block\" something.\n- CLAUDE.md or a system prompt rule for an absolute prohibition.\n- One check at session start or end for per-action policy.\n\n### Remember\nPreToolUse refuses; PostToolUse reports.\n"
     },
@@ -1024,7 +1047,8 @@
         "broad organisation-level access",
         "runtime configuration outside",
         "identity is authentication",
-        "path between environments"
+        "path between environments",
+        "services"
       ],
       "content": "A credential is a **copy set**: every place its value came to rest, plus the access each place carries. Damage is decided by the **count** of copies, the **reach** of one copy, and its **life** before it stops working.\n\n### Key facts\n- A secret committed to a tracked file **lives in history** and every earlier clone. Overwriting it fixes nothing: **revoke and rotate**, and keep only a **reference** in configuration.\n- **Configuration holds references, never values.** Environment variables suit a secret one process needs; a **managed secret store** suits secrets shared by several consumers or that need auditing (it records who read each value).\n- **Distinct keys per environment and per service.** A shared key links environments you separated deliberately, and replacing it is an outage everywhere.\n- **Rotate** on a schedule (bounds undetected leaks) and **immediately on suspicion**. **Expiry** bounds a leaked key's life but replaces neither storage nor rotation.\n- **Claude API keys** are tied to a **workspace**; key properties such as workspace and expiration are fixed at creation, so approval belongs at issue time. **Admin API keys** carry organisation-wide management access; issuing one is the whole authorisation decision.\n- **Workload identity federation** exchanges a provider-issued identity token for a **short-lived access token**: no static secret to mint, distribute or rotate.\n- **Authentication ≠ authorisation**: verify a session token's signature, issuer and audience, then grant only what that session's task needs.\n- Misuse is visible only where someone recorded use: secret-store read logs, key inventories, per-key usage reports.\n- Never ship keys in browser bundles or mobile apps; proxy through your backend.\n\n### Exam traps\n- Rotating a shared key more often instead of splitting it.\n- IP restrictions or code review offered as the fix after a key has already leaked.\n- Treating a verified identity as permission to do everything that user can do.\n\n### Remember\nFix all three: fewer copies, narrower reach, shorter life.\n"
     },
@@ -1076,7 +1100,8 @@
       "keywords": [
         "persistent project-level context/instructions",
         "developer's environment variables",
-        "absolute prohibition belongs"
+        "absolute prohibition belongs",
+        "project-specific context"
       ],
       "content": "`CLAUDE.md` gives Claude Code persistent project **context**: conventions, architecture notes, commands and gotchas, so they don't need re-explaining each session.\n\n### Key facts\n- **Scopes concatenate, broadest first**: managed policy → user (`~/.claude/CLAUDE.md`) → project (`./CLAUDE.md`, committed) and `CLAUDE.local.md` (personal, gitignored), from the filesystem root down to the working directory → subdirectory files, loaded on demand when Claude reads files there. Nothing \"overrides\"; everything is layered, and conflicting rules may be followed either way, so keep them consistent.\n- Declare a cross-repository standard **once at the wide scope**; copying it into each repo or linking to a wiki reintroduces drift.\n- Keep each file **under about 200 lines** (Anthropic's guidance; longer files reduce adherence). Push narrow guidance into **`.claude/rules/`** files with a `paths` glob so they load only when Claude works on matching files. `@path/to/file` imports pull in other files.\n- Claude Code can also read a repository's `AGENTS.md`. Separately, **auto memory** is notes Claude writes itself; both are context, not configuration.\n- **It is context, not enforcement.** An absolute prohibition belongs in a **permission deny rule or a hook**.\n- It loads as conversation context rather than as the system prompt. In the Agent SDK it loads only when you opt into those setting sources.\n- `/init` can bootstrap one; `/memory` edits it.\n\n### Exam traps\n- CLAUDE.md as a security control.\n- Storing API keys in it.\n- Assuming it replaces `settings.json`.\n\n### Remember\nCLAUDE.md shapes what Claude attempts; settings and hooks decide what it is allowed to do.\n"
     },
@@ -1126,7 +1151,8 @@
       "title": "Hooks",
       "keywords": [
         "allow custom scripts/logic",
-        "useful for formatting"
+        "useful for formatting",
+        "scripts automatically"
       ],
       "content": "Hooks run **your code at defined points** in Claude Code's lifecycle: before and after tool calls, on prompt submit, at session start and end, on stop, before compaction, and more.\n\n### Key facts\n- **PreToolUse** can block or require confirmation for a tool call; **PostToolUse** runs after (formatters, linters, logging, feedback).\n- Configured in settings files (user, project, local or managed), with **matchers** on tool names.\n- Deterministic and outside the context window: the right tool for \"always\" and \"never\" rules that CLAUDE.md can only suggest.\n- Typical uses: auto-format after edits, block writes to protected paths, enforce test runs before stop, audit logging, notifications.\n- See the Security domain's *Hooks as Enforcement* section for deny semantics across permission modes.\n\n### Exam traps\n- \"Hooks are required for every project\" or \"hooks are UI themes\".\n\n### Remember\nIf it must happen every time, make it a hook, not a hope.\n"
     },
@@ -1151,7 +1177,8 @@
       "title": "Claude Code Custom Commands (Slash Commands)",
       "keywords": [
         "disable-model-invocation is set",
-        "standardize common requests"
+        "standardize common requests",
+        "repeatable requests"
       ],
       "content": "Custom slash commands are **named, reusable prompts** a person invokes by typing `/name`, standardising common requests across a team. **Custom commands have now been merged into Skills**: `.claude/commands/deploy.md` and `.claude/skills/deploy/SKILL.md` both create `/deploy`. Old command files keep working, but prefer a Skill for new work, since Skills can bundle supporting files.\n\n### Key facts\n- Defined as markdown files (project-scoped and committed, or personal). They support arguments and frontmatter such as allowed tools.\n- Typed `/name` invocation runs in the current context. Contrast:\n  - **Skills**: also typable as `/skill-name`, and Claude can load them automatically on a description match.\n  - **Subagents**: run in their **own context window**.\n  - **Hooks**: run automatically at lifecycle events.\n- Commands can also be distributed via plugins.\n\n### Exam traps\n- \"Commands change model weights or pricing.\"\n- Thinking commands and Skills are unrelated mechanisms: a Skill is the newer, richer form of the same thing.\n\n### Remember\nA command is a single-file Skill you type; a Skill can also be discovered by Claude and carry supporting files.\n"
     },
@@ -1199,7 +1226,9 @@
       "keywords": [
         "failure type",
         "broke",
-        "anything downstream touched"
+        "anything downstream touched",
+        "inputs and outputs",
+        "measure accuracy"
       ],
       "content": "Every check has a **field of view**: one function, one call, one flow, one number. Failures often live in the **seams between** components, which no unit test sees.\n\n### Key facts\n- A **trace** records each step's prompt, tool calls, intermediate outputs and timing, turning \"a case failed\" into \"step four failed, and here is what it received\". Default telemetry is often structural only; content capture is opt-in.\n- **Isolate origin**: read what the model returned before anything downstream touched it.\n  - Right output, wrong behaviour → **integration** layer.\n  - Wrong output from truncated or malformed input → **integration**.\n  - Wrong output from complete, well-formed input → prompts, examples or model choice.\n- **Intermittent failures**: capture full input and output from a passing and a failing run, then diff them.\n- **Errors carry their identity across boundaries** or lose it. Distinct failures (invalid ID, expired token, timeout, refusal) need distinct errors.\n- **Partial failure**: report what was attempted, the failure type and any partial result. Don't return empty, abort everything, or retry forever.\n- **An eval measures whether a change helped; a trace says where a run broke.**\n\n### Exam traps\n- Changing a parameter or swapping the model before the failing step is located.\n- More unit tests when every component already passes and the flow is wrong.\n- One generic error message for every backend failure.\n\n### Remember\nAsk what an option would have to observe to be right, then check whether anybody is observing it.\n"
     },
@@ -1212,7 +1241,8 @@
       "keywords": [
         "indefinitely without investigation",
         "systematically malformed arguments",
-        "retrying with exponential"
+        "retrying with exponential",
+        "integration/execution layer"
       ],
       "content": "When a tool call fails, locate the failure **before** fixing it: model-generated arguments, your execution/integration layer, or the external service.\n\n### Key facts\n- **Malformed or missing arguments, repeatedly** → the tool's description and schema are underspecified (formats, required fields, enums). Fix the definition, consider `strict: true`, and validate at dispatch.\n- **Wrong tool chosen** → overlapping or vague descriptions.\n- **Execution errors** → your code or the downstream service. Return `is_error` results with specific messages so the model can adapt.\n- **Classify retriability by cause**: could the clock alone change the outcome? Connection errors, 429, 529, other 5xx and timeouts may clear (the official SDKs retry these with backoff by default); 400, 401, 403 and 404 never do.\n- **A retry across a boundary that writes is a second write** unless it is idempotent.\n- Check `stop_reason`: a `max_tokens` cut can truncate a tool call's JSON.\n\n### Exam traps\n- \"Raise the temperature\" or \"upgrade the model\" for malformed arguments.\n- Retrying indefinitely without investigation.\n- Disabling the tool.\n\n### Remember\nSelection, schema, dispatch, service: find which one broke.\n"
     },
@@ -1225,7 +1255,8 @@
       "keywords": [
         "comparing before/after behavior",
         "regression check alongside",
-        "differently between runs"
+        "differently between runs",
+        "exact-match assertions"
       ],
       "content": "Testing an LLM feature means testing a **variable, billed, versioned dependency**. Ordinary practice still applies, aimed at different properties.\n\n### Key facts\n- **Compare before/after on a fixed evaluation set** to attribute a regression to a prompt, model or integration change.\n- **Assert on properties, not strings**: schema validity, extracted values, rubric scores, presence of required facts.\n- **Three CI stages** that fit: a scored eval with a threshold, contract tests over schemas and parsers, and a token/cost regression check.\n- **Segment results** by category; overall averages hide clustered failures.\n- **Debug by locating first** (traces), then fix the owning layer.\n- **Production monitoring**: cost, latency, failures (including refusals and truncations), and periodic sampling for quality.\n\n### Exam traps\n- Raising temperature until outputs \"look better\".\n- Assuming the model changed without checking your own changes first.\n\n### Remember\nMeasure to decide, trace to locate, and fix the layer that owns the failure.\n"
     }
